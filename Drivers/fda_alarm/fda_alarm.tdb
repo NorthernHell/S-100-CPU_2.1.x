@@ -1,0 +1,372 @@
+[function] alarm_ulint
+SingleTextLine=send ULINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=ULINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_lint
+SingleTextLine=send LINT varaible to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=LINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_lreal
+SingleTextLine=send LREAL variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=LREAL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_resend
+SingleTextLine=obsolete
+GroupName=FDA alarm
+Type=DINT
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_int
+SingleTextLine=send INTvariable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=INT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_bool
+SingleTextLine=send BOOL variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_send
+SingleTextLine=obsolete
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_string
+SingleTextLine=send STRING variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_udint
+SingleTextLine=send UDINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=UDINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_dint
+SingleTextLine=send DINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=DINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_uint
+SingleTextLine=send UINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=UINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_usint
+SingleTextLine=send USINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=USINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_sint
+SingleTextLine=send SINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=SINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_real
+SingleTextLine=send REAL variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_time
+SingleTextLine=send TIME variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=TIME
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_date
+SingleTextLine=send DATEvariable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=DATE
+ShortName=
+SingleTextLine=
+[end]
+
+[device] send
+PackageName=rt
+DriverName=alarm
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] status
+PackageName=rt
+DriverName=alarm
+Type=DINT
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[complex] Alarm
+PackageName=rt
+DriverName=alarm
+SingleTextLine=FDA alarm
+Devices=send,status
+ComplexOption=1
+[end]
+
+[deviceParam] IP_address
+Format=STRING
+Access=USER DEFINED
+Default=None
+SingleTextLine=IP address of computer with FDA-OPC
+[end]
+
+[deviceParam] Port
+Format=WORD
+Access=USER DEFINED
+Default=1520
+SingleTextLine=UDP port on computer with FDA-OPC for alarm receive
+[end]
+
+;$$[$desc] alarm_ulint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_lint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_lreal
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_resend
+;$$<return value:
+;$$<0  - if answer was received
+;$$<1  - if if answer wasn't received and new alarm send
+;$$<-1  -if error
+;$$[end]
+
+;$$[$desc] alarm_int
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_bool
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_send
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_string
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_udint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_dint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_uint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_usint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_sint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_real
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_time
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[$desc] alarm_date
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$:alarm_ulint
+;$$:alarm_lint
+;$$:Alarm&rtalarm
+;$$:alarm_lreal
+;$$:alarm_resend
+;$$:alarm_int
+;$$:alarm_bool
+;$$:alarm_send
+;$$:alarm_string
+;$$:alarm_udint
+;$$:alarm_dint
+;$$:alarm_uint
+;$$:alarm_usint
+;$$:alarm_sint
+;$$:send&rtalarm
+;$$:status&rtalarm
+;$$:alarm_real
+;$$:alarm_time
+;$$:alarm_date
+;$$>Default
+;$$[end]
+

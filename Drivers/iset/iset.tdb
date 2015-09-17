@@ -1,0 +1,50 @@
+[function] setSave
+SingleTextLine=записать значения уставок
+GroupName=ISET
+Type=DINT
+[end]
+
+[pOUParam] filename
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=FILE
+SingleTextLine=file name
+[end]
+
+[function] setRegName
+SingleTextLine=зарегистрировать переменную для использования в качестве уставки
+GroupName=ISET
+Type=DINT
+[end]
+
+[pOUParam] Name
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NAME
+SingleTextLine=Name of a variable
+[end]
+
+[function] setRead
+SingleTextLine=считать значения уставок
+GroupName=ISET
+Type=DINT
+[end]
+
+[pOUParam] filename
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=FILE
+SingleTextLine=File name
+[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$:setSave
+;$$:setRegName
+;$$:setRead
+;$$>Default
+;$$[end]
+

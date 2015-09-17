@@ -1,0 +1,29 @@
+[device] RtSched
+PackageName=realtime
+DriverName=sched
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=0
+[end]
+
+[deviceParam] isRealTimeTask
+Format=BOOLEAN
+Access=USER DEFINED
+Default=true
+SingleTextLine=set scheduler FIFO if true
+[end]
+
+[deviceParam] priority
+Format=LONG
+Access=USER DEFINED
+Default=10
+SingleTextLine=setup process priority
+[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
+

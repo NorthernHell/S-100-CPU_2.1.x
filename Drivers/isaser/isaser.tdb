@@ -1,0 +1,248 @@
+[function] ISA_SERIAL_SET
+SingleTextLine=Sets the paramaters of a communication link
+Help=[Context]4568
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] ARG1
+Direction=Input
+Type=DINT
+ShortName=ARG1
+SingleTextLine=For PCP_SER: handshake
+[end]
+
+[pOUParam] ARG2
+Direction=Input
+Type=DINT
+ShortName=ARG2
+SingleTextLine=For PCP_SER: baud rate
+[end]
+
+[pOUParam] ARG3
+Direction=Input
+Type=DINT
+ShortName=ARG3
+SingleTextLine=For PCP_SER: number of stop bits
+[end]
+
+[pOUParam] ARG4
+Direction=Input
+Type=STRING
+StringLength=8
+ShortName=ARG4
+SingleTextLine=For PCP_SER: parity
+[end]
+
+[function] ISA_SERIAL_RECEIVE
+SingleTextLine=Receives data from the communication link
+Help=[Context]4566
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] DATA
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=DATA
+SingleTextLine=Receive information
+[end]
+
+[pOUParam] LENGTH
+Direction=Input
+Type=DINT
+ShortName=LGTH
+SingleTextLine=Length of the data in bytes
+[end]
+
+[pOUParam] TIMEOUT
+Direction=Input
+Type=DINT
+ShortName=TIMO
+SingleTextLine=Maximum of seconds during which a receive block occurs
+[end]
+
+[function] ISA_SERIAL_OPEN
+SingleTextLine=Open a communication link
+Help=[Context]4565
+GroupName=Communications
+Type=DINT
+ShortName=RES
+[end]
+
+[pOUParam] SERVER
+Direction=Input
+Type=STRING
+StringLength=7
+ShortName=SERV
+SingleTextLine=Administrator used: PCP_SER or PCP_IP
+[end]
+
+[pOUParam] PORT
+Direction=Input
+Type=STRING
+StringLength=16
+ShortName=PORT
+SingleTextLine=For PCP_SER: name of the serial device. FOR PCP_IP: IP port number of the server
+[end]
+
+[function] ISA_SERIAL_SEND
+SingleTextLine=Function send data on the communication link
+Help=[Context]4567
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] DATA
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=DATA
+SingleTextLine=Information to be transmitted
+[end]
+
+[pOUParam] LENGTH
+Direction=Input
+Type=DINT
+ShortName=LGTH
+SingleTextLine=Length of the data in bytes
+[end]
+
+[function] ISA_SERIAL_DISCONNECT
+SingleTextLine=Disconnect the communication link
+Help=[Context]4564
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] FLUSH
+Direction=Input
+Type=STRING
+StringLength=5
+ShortName=FLSH
+SingleTextLine=Indicates whether the data transmission must be completed before stopping the communication
+[end]
+
+[function] ISA_SERIAL_STATUS
+SingleTextLine=Return a series of communication statuses
+Help=[Context]4569
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] STAT1
+Direction=Input
+Type=DINT
+ShortName=ST1
+SingleTextLine=For PCP_SER and PCP_IP: Error number
+[end]
+
+[pOUParam] STAT2
+Direction=Input
+Type=DINT
+ShortName=ST2
+SingleTextLine=For PCP_SER: Number of receive characters. For PCP_IP: Port number of the client or server
+[end]
+
+[pOUParam] STAT3
+Direction=Input
+Type=DINT
+ShortName=ST3
+SingleTextLine=For PCP_SER: CD control bit. For PCP_IP:not used
+[end]
+
+[pOUParam] STAT4
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=ST4
+SingleTextLine=For PCP_SER: Not used. For PCP_IP: Address of the client or server
+[end]
+
+[function] ISA_SERIAL_CLOSE
+SingleTextLine=Closes the communication port
+Help=[Context]4562
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[function] ISA_SERIAL_CONNECT
+SingleTextLine=function performs a physical connection
+Help=[Context]4563
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] MODE
+Direction=Input
+Type=STRING
+StringLength=6
+ShortName=MODE
+SingleTextLine=Connection mode: SERVER or CLIENT
+[end]
+
+[pOUParam] BUFFER
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=BUFF
+SingleTextLine=Needed information for the connection mode and protocol
+[end]
+

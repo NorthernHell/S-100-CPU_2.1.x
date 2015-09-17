@@ -1,0 +1,2026 @@
+[array] RESERVED_AE_CONTEXT
+SingleTextLine=Reserved AE context
+Type=SINT
+Dimension=[1..88]
+[end]
+
+[structure] GAIN_PID
+[end]
+
+[display] 0
+[field] DirectActing
+Type=BOOL
+SingleTextLine=''
+[end]
+
+[field] ProportionalGain
+Type=REAL
+SingleTextLine=''
+[end]
+
+[field] TimeIntegral
+Type=REAL
+SingleTextLine=''
+[end]
+
+[field] TimeDerivative
+Type=REAL
+SingleTextLine=''
+[end]
+
+[field] DerivativeGain
+Type=REAL
+SingleTextLine=''
+[end]
+
+[structure] TIMESPEC
+SingleTextLine=structured type representing the time the process value of an I/O channel was last updated
+[end]
+
+[display] 0
+[field] Sec
+Type=DINT
+SingleTextLine=Number of seconds; elapsed since 1970/01/01 00:00:00:000; in the timestamp of the process value (TIME)
+[end]
+
+[field] Nsec
+Type=DINT
+SingleTextLine=Number of nanoseconds in the timestamp of the process value; from the beginning of the second indicated by Sec (TIME)
+[end]
+
+[structure] COND_P_BOOL
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] state
+Type=DINT
+SingleTextLine=bit 0=active/inactive; bit 1=enable/disable; bit 2=ack/no ack
+[end]
+
+[field] activeTime
+Type=TIMESPEC
+SingleTextLine=Condition active start time
+[end]
+
+[field] inactiveTime
+Type=TIMESPEC
+SingleTextLine=Condition inactive start time
+[end]
+
+[field] ackTime
+Type=TIMESPEC
+SingleTextLine=Acknowledge time
+[end]
+
+[field] timeout
+Type=DINT
+SingleTextLine=Timeout value
+[end]
+
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+[end]
+
+[field] acknowledge
+Type=BOOL
+SingleTextLine=Acknowledgement
+[end]
+
+[field] mode
+Type=SINT
+SingleTextLine=0=0->1 active; 2=1->0 active; 3=0->1 or 1->0 active
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+[end]
+
+[structure] ERROR
+SingleTextLine=structured type indicating if an error occurred regarding the I/O channel
+[end]
+
+[display] 1
+[field] Layer
+Type=DINT
+SingleTextLine=layer of the error (DINT)
+[end]
+
+[field] Number
+Type=DINT
+SingleTextLine=number of the error (DINT)
+[end]
+
+[structure] QUALITY
+SingleTextLine=Structured type indicating how good the process value of an I/O channel is
+[end]
+
+[display] 0
+[field] Value
+Type=SINT
+SingleTextLine=Number of the quality (SINT)
+[end]
+
+[structure] COND_P_DINT
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] state
+Type=DINT
+SingleTextLine=bit 0=active/inactive; bit 1=enable/disable; bit 2=ack/no ack
+[end]
+
+[field] activeTime
+Type=TIMESPEC
+SingleTextLine=Condition active start time
+[end]
+
+[field] inactiveTime
+Type=TIMESPEC
+SingleTextLine=Condition inactive start time
+[end]
+
+[field] ackTime
+Type=TIMESPEC
+SingleTextLine=Acknowledge time
+[end]
+
+[field] timeout
+Type=DINT
+SingleTextLine=Timeout value
+[end]
+
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+[end]
+
+[field] acknowledge
+Type=BOOL
+SingleTextLine=Acknowledgement
+[end]
+
+[field] level
+Type=DINT
+SingleTextLine=Level comparaison (limits) SetPoint (deviation) Value comparaison (Rate of Change)
+[end]
+
+[field] hysteresis
+Type=DINT
+SingleTextLine=Hysteresis value
+[end]
+
+[field] deadband
+Type=DINT
+SingleTextLine=Deadband value
+[end]
+
+[field] period
+Type=DINT
+SingleTextLine=Rate of Change period value
+[end]
+
+[field] deviation
+Type=DINT
+SingleTextLine=Deviation value
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+[end]
+
+[structure] EVENT_P_BOOL
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+[end]
+
+[field] mode
+Type=SINT
+SingleTextLine=Deadband value
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+[end]
+
+[structure] EVENT_P_DINT
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+[end]
+
+[field] deadband
+Type=DINT
+SingleTextLine=deadband value
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+[end]
+
+[structure] AT_PARAM
+[end]
+
+[display] 0
+[field] Load
+Type=REAL
+[end]
+
+[field] Deviation
+Type=REAL
+[end]
+
+[field] Step
+Type=REAL
+[end]
+
+[field] ATDynaSet
+Type=REAL
+[end]
+
+[field] ATReset
+Type=BOOL
+[end]
+
+[structure] COND_P_REAL
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] state
+Type=DINT
+SingleTextLine=bit 0=active/inactive; bit 1=enable/disable; bit 2=ack/no ack
+[end]
+
+[field] activeTime
+Type=TIMESPEC
+SingleTextLine=Condition active start time
+[end]
+
+[field] inactiveTime
+Type=TIMESPEC
+SingleTextLine=Condition inactive start time
+[end]
+
+[field] ackTime
+Type=TIMESPEC
+SingleTextLine=Acknowledge time
+[end]
+
+[field] timeout
+Type=DINT
+SingleTextLine=Timeout value
+[end]
+
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+[end]
+
+[field] acknowledge
+Type=BOOL
+SingleTextLine=Acknowledgement
+[end]
+
+[field] level
+Type=REAL
+SingleTextLine=Level comparaison (limits) SetPoint (deviation) Value comparaison (Rate of Change)
+[end]
+
+[field] hysteresis
+Type=REAL
+SingleTextLine=Hysteresis value
+[end]
+
+[field] deadband
+Type=REAL
+SingleTextLine=Deadband value
+[end]
+
+[field] period
+Type=DINT
+SingleTextLine=Rate of Change period value
+[end]
+
+[field] deviation
+Type=REAL
+SingleTextLine=Deviation value
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+[end]
+
+[structure] EVENT_P_REAL
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+[end]
+
+[field] deadband
+Type=REAL
+SingleTextLine=deadband value
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+[end]
+
+[structure] ALARM_SETTING
+[end]
+
+[display] 1
+[field] HighLimit
+Type=REAL
+[end]
+
+[field] HighAlarm
+Type=REAL
+[end]
+
+[field] HighWarning
+Type=REAL
+[end]
+
+[field] LowWarning
+Type=REAL
+[end]
+
+[field] LowAlarm
+Type=REAL
+[end]
+
+[field] LowLimit
+Type=REAL
+[end]
+
+[field] DeadBand
+Type=REAL
+[end]
+
+[field] HighDeviation
+Type=REAL
+[end]
+
+[field] LowDeviation
+Type=REAL
+[end]
+
+[field] RateOfChangePeriod
+Type=REAL
+[end]
+
+[field] RateOfChangeUp
+Type=REAL
+[end]
+
+[field] RateOfChangeDown
+Type=REAL
+[end]
+
+[field] DelayInTime
+Type=REAL
+[end]
+
+[field] DelayOutTime
+Type=REAL
+[end]
+
+[field] HighLimitEnable
+Type=BOOL
+[end]
+
+[field] HighAlarmEnable
+Type=BOOL
+[end]
+
+[field] HighWarningEnable
+Type=BOOL
+[end]
+
+[field] LowWarningEnable
+Type=BOOL
+[end]
+
+[field] LowAlarmEnable
+Type=BOOL
+[end]
+
+[field] LowLimitEnable
+Type=BOOL
+[end]
+
+[field] HighDeviationEnable
+Type=BOOL
+[end]
+
+[field] LowDeviationEnable
+Type=BOOL
+[end]
+
+[field] RateOfChangeUpEnable
+Type=BOOL
+[end]
+
+[field] RateOfChangeDownEnable
+Type=BOOL
+[end]
+
+[field] RingBack
+Type=BOOL
+[end]
+
+[function] GET_TIME_STRING
+SingleTextLine=Get time in string format YYYY/MM/DD HH:MM:SS MMM
+Help=[Context2]Coll_ISa5_rtm.prt_std.get_time_string
+GroupName=String Manipulation
+Type=STRING
+StringLength=255
+ShortName=OUT
+[end]
+
+[pOUParam] SEC
+Direction=Input
+Type=DINT
+ShortName=SEC
+SingleTextLine=Number of second since 1970/01/01
+[end]
+
+[pOUParam] NSEC
+Direction=Input
+Type=DINT
+ShortName=NSEC
+SingleTextLine=Number of nano second in current second
+[end]
+
+[function] SET_PRIORITY
+Help=[Context2]Coll_ISa5_rtm.prt_std.set_priority
+GroupName=Process Control
+Type=SINT
+ShortName=Q
+[end]
+
+[pOUParam] INPUT
+Direction=Input
+Type=SINT
+ShortName=IN
+SingleTextLine=New priority for the virtual machine.
+[end]
+
+[functionBlock] MATRIX
+SingleTextLine=Matrix functions package
+Help=[Context2]Coll_ISa5_rtm.prt_stb.function_blocks
+GroupName=Arithmetic Operations
+InitInstance=No
+Is1499=No
+[end]
+
+[pOUParam] OPERATION
+Direction=Input
+Type=DINT
+ShortName=OP
+SingleTextLine=Operation selector
+[end]
+
+[pOUParam] MATRIX_1
+Direction=Input
+Type=DINT
+ShortName=MAT1
+SingleTextLine=General purpose input matrix #1
+[end]
+
+[pOUParam] MATRIX_2
+Direction=Input
+Type=DINT
+ShortName=MAT2
+SingleTextLine=General purpose input matrix #2
+[end]
+
+[pOUParam] MATRIX_3
+Direction=Input
+Type=DINT
+ShortName=MAT3
+SingleTextLine=General purpose input matrix #3
+[end]
+
+[pOUParam] INDEX_1
+Direction=Input
+Type=DINT
+ShortName=IDX1
+SingleTextLine=General purpose input index #1
+[end]
+
+[pOUParam] INDEX_2
+Direction=Input
+Type=DINT
+ShortName=IDX2
+SingleTextLine=General purpose input index #2
+[end]
+
+[pOUParam] IN_INTEGER_VALUE
+Direction=Input
+Type=DINT
+ShortName=INT
+SingleTextLine=General purpose INTEGER input container
+[end]
+
+[pOUParam] IN_FLOAT_VALUE
+Direction=Input
+Type=REAL
+ShortName=FLT
+SingleTextLine=General purpose FLOAT input container
+[end]
+
+[pOUParam] ERROR_CODE
+Direction=Output
+Type=DINT
+ShortName=ERR
+SingleTextLine=Last operation's error code
+[end]
+
+[pOUParam] MATRIX_RESULT
+Direction=Output
+Type=DINT
+ShortName=RES
+SingleTextLine=Resulting matrix
+[end]
+
+[pOUParam] MATRIX_TYPE
+Direction=Output
+Type=DINT
+ShortName=TYPE
+SingleTextLine=Matrix type
+[end]
+
+[pOUParam] MATRIX_ROWS
+Direction=Output
+Type=DINT
+ShortName=ROWS
+SingleTextLine=Matrix rows count
+[end]
+
+[pOUParam] MATRIX_COLS
+Direction=Output
+Type=DINT
+ShortName=COLS
+SingleTextLine=matrix cols count
+[end]
+
+[pOUParam] OUT_INTEGER_VALUE
+Direction=Output
+Type=DINT
+ShortName=INTG
+SingleTextLine=General purpose INTEGER output container
+[end]
+
+[pOUParam] OUT_FLOAT_VALUE
+Direction=Output
+Type=REAL
+ShortName=FLT
+SingleTextLine=General purpose FLOAT output container
+[end]
+
+[functionBlock] NOW
+SingleTextLine=Get current system time
+Help=[Context2]Coll_ISa5_rtm.prt_stb.now
+GroupName=Time Operations
+InitInstance=No
+Is1499=No
+[end]
+
+[pOUParam] SEC
+Direction=Output
+Type=DINT
+ShortName=SEC
+SingleTextLine=Number of second since 1970/01/01
+[end]
+
+[pOUParam] NSEC
+Direction=Output
+Type=DINT
+ShortName=NSEC
+SingleTextLine=Number of nano second in current second
+[end]
+
+[functionBlock] IPIDCONTROLLER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.ipidcontroller
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Process
+Direction=Input
+Type=REAL
+ShortName=P
+SingleTextLine=Process Value
+[end]
+
+[pOUParam] SetPoint
+Direction=Input
+Type=REAL
+ShortName=SP
+SingleTextLine=Set Point
+[end]
+
+[pOUParam] FeedBack
+Direction=Input
+Type=REAL
+ShortName=FB
+SingleTextLine=FeedBack
+[end]
+
+[pOUParam] Auto
+Direction=Input
+Type=BOOL
+ShortName=AUTO
+SingleTextLine=
+[end]
+
+[pOUParam] Initialize
+Direction=Input
+Type=BOOL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] Gains
+Direction=Input
+Type=GAIN_PID
+ShortName=GNS
+SingleTextLine=
+[end]
+
+[pOUParam] AutoTune
+Direction=Input
+Type=BOOL
+ShortName=ATUN
+SingleTextLine=
+[end]
+
+[pOUParam] ATParameters
+Direction=Input
+Type=AT_PARAM
+ShortName=ATPA
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] AbsoluteError
+Direction=Output
+Type=REAL
+ShortName=AERR
+SingleTextLine=
+[end]
+
+[pOUParam] ATWarning
+Direction=Output
+Type=DINT
+ShortName=ATW
+SingleTextLine=
+[end]
+
+[pOUParam] OutGains
+Direction=Output
+Type=GAIN_PID
+ShortName=OGNS
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_IPIDCONTROLLER
+Direction=Local
+Type=SINT
+Dimension=[1..184]
+ShortName=RDIC
+SingleTextLine=Reserved parameter for IPIDCONTROLLER
+[end]
+
+[functionBlock] SETPOINT
+Help=[Context2]Coll_ISa5_rtm.prt_stb.setpoint
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] TrackVariable
+Direction=Input
+Type=REAL
+ShortName=TV
+SingleTextLine=
+[end]
+
+[pOUParam] TargetSetpoint
+Direction=Input
+Type=REAL
+ShortName=TS
+SingleTextLine=
+[end]
+
+[pOUParam] RampRate
+Direction=Input
+Type=REAL
+ShortName=RR
+SingleTextLine=
+[end]
+
+[pOUParam] RampTime
+Direction=Input
+Type=REAL
+ShortName=RT
+SingleTextLine=
+[end]
+
+[pOUParam] Command
+Direction=Input
+Type=DINT
+ShortName=CMD
+SingleTextLine=
+[end]
+
+[pOUParam] PulseUp
+Direction=Input
+Type=BOOL
+ShortName=PU
+SingleTextLine=
+[end]
+
+[pOUParam] PulseDown
+Direction=Input
+Type=BOOL
+ShortName=PD
+SingleTextLine=
+[end]
+
+[pOUParam] PulseRate
+Direction=Input
+Type=DINT
+ShortName=PR
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_SETPOINT
+Direction=Local
+Type=SINT
+Dimension=[1..40]
+ShortName=RDSP
+SingleTextLine=Reserved parameter for SETPOINT
+[end]
+
+[functionBlock] GET_TIME_STRUCT
+SingleTextLine=Get time structure
+Help=[Context2]Coll_ISa5_rtm.prt_stb.get_time_struct
+GroupName=Time Operations
+InitInstance=No
+Is1499=No
+[end]
+
+[pOUParam] SEC
+Direction=Input
+Type=DINT
+ShortName=SEC
+SingleTextLine=Number of second since 1970/01/01
+[end]
+
+[pOUParam] NSEC
+Direction=Input
+Type=DINT
+ShortName=NSEC
+SingleTextLine=Number of nano second in current second
+[end]
+
+[pOUParam] YEAR
+Direction=Output
+Type=DINT
+ShortName=YEAR
+SingleTextLine=Year
+[end]
+
+[pOUParam] MONTH
+Direction=Output
+Type=DINT
+ShortName=MON.
+SingleTextLine=Month
+[end]
+
+[pOUParam] DAY
+Direction=Output
+Type=DINT
+ShortName=DAY
+SingleTextLine=Day
+[end]
+
+[pOUParam] HOUR
+Direction=Output
+Type=DINT
+ShortName=HOUR
+SingleTextLine=Hour
+[end]
+
+[pOUParam] MINUTE
+Direction=Output
+Type=DINT
+ShortName=MIN
+SingleTextLine=Minute
+[end]
+
+[pOUParam] SECOND
+Direction=Output
+Type=DINT
+ShortName=SEC
+SingleTextLine=Second
+[end]
+
+[pOUParam] MSEC
+Direction=Output
+Type=DINT
+ShortName=MSEC
+SingleTextLine=Millisecond
+[end]
+
+[functionBlock] RATIO
+Help=[Context2]Coll_ISa5_rtm.prt_stb.ratio
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputE
+Direction=Input
+Type=REAL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] Ratio
+Direction=Input
+Type=REAL
+ShortName=RAT
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] CHARACTERIZER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.characterizer
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] X0_10
+Direction=Input
+Type=REAL
+Dimension=[0..10]
+ShortName=X
+SingleTextLine=
+[end]
+
+[pOUParam] Y0_10
+Direction=Input
+Type=REAL
+Dimension=[0..10]
+ShortName=Y
+SingleTextLine=
+[end]
+
+[pOUParam] __ADI_X0_10
+Direction=Hidden
+Type=UINT
+InitValue=0
+ShortName=_ADI
+SingleTextLine=ADI hidden parameter for <X0_10> array input
+[end]
+
+[pOUParam] __ADI_Y0_10
+Direction=Hidden
+Type=UINT
+InitValue=0
+ShortName=_ADI
+SingleTextLine=ADI hidden parameter for <Y0_10> array input
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] LEADLAGCONTROLLER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.leadlagcontroller
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] TimeLead
+Direction=Input
+Type=REAL
+ShortName=Lead
+SingleTextLine=
+[end]
+
+[pOUParam] A
+Direction=Input
+Type=REAL
+ShortName=A
+SingleTextLine=
+[end]
+
+[pOUParam] TimeLag
+Direction=Input
+Type=REAL
+ShortName=Lag
+SingleTextLine=
+[end]
+
+[pOUParam] B
+Direction=Input
+Type=REAL
+ShortName=B
+SingleTextLine=
+[end]
+
+[pOUParam] Enable
+Direction=Input
+Type=BOOL
+ShortName=ENB
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] Status
+Direction=Output
+Type=DINT
+ShortName=STAT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_LEADLAGCONTROLLER
+Direction=Local
+Type=SINT
+Dimension=[1..36]
+ShortName=RDLL
+SingleTextLine=Reserved parameter for LEADLAGCONTROLLER
+[end]
+
+[functionBlock] TRACKANDHOLD
+Help=[Context2]Coll_ISa5_rtm.prt_stb.trackandhold
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Initial
+Direction=Input
+Type=REAL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] TrackVariable
+Direction=Input
+Type=REAL
+ShortName=TV
+SingleTextLine=
+[end]
+
+[pOUParam] TrackCommand
+Direction=Input
+Type=BOOL
+ShortName=TC
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_TRACKANDHOLD
+Direction=Local
+Type=SINT
+Dimension=[1..4]
+ShortName=RDTH
+SingleTextLine=Reserved parameter for TRACKANDHOLD
+[end]
+
+[functionBlock] BIAS
+Help=[Context2]Coll_ISa5_rtm.prt_stb.bias
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputE
+Direction=Input
+Type=REAL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] Bias
+Direction=Input
+Type=REAL
+ShortName=BIAS
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] SCALER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.scaler
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] InputMin
+Direction=Input
+Type=REAL
+ShortName=IMIN
+SingleTextLine=
+[end]
+
+[pOUParam] InputMax
+Direction=Input
+Type=REAL
+ShortName=IMAX
+SingleTextLine=
+[end]
+
+[pOUParam] OutputMin
+Direction=Input
+Type=REAL
+ShortName=OMIN
+SingleTextLine=
+[end]
+
+[pOUParam] OutputMax
+Direction=Input
+Type=REAL
+ShortName=OMAX
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] RATIOCALIBRATION
+Help=[Context2]Coll_ISa5_rtm.prt_stb.ratiocalibration
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputE
+Direction=Input
+Type=REAL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] Initial
+Direction=Input
+Type=REAL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] HighLimit
+Direction=Input
+Type=REAL
+ShortName=HLIM
+SingleTextLine=
+[end]
+
+[pOUParam] LowLimit
+Direction=Input
+Type=REAL
+ShortName=LLIM
+SingleTextLine=
+[end]
+
+[pOUParam] TrackVariable
+Direction=Input
+Type=REAL
+ShortName=TV
+SingleTextLine=
+[end]
+
+[pOUParam] TrackCommand
+Direction=Input
+Type=BOOL
+ShortName=TC
+SingleTextLine=
+[end]
+
+[pOUParam] Ratio
+Direction=Output
+Type=REAL
+ShortName=RAT
+SingleTextLine=
+[end]
+
+[pOUParam] TrackOutput
+Direction=Output
+Type=REAL
+ShortName=TO
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_RATIOCALIBRATION
+Direction=Local
+Type=SINT
+Dimension=[1..8]
+ShortName=RDRC
+SingleTextLine=Reserved parameter for RATIOCALIBRATION
+[end]
+
+[functionBlock] DIGITALALARM
+Help=[Context2]Coll_ISa5_rtm.prt_stb.digitalalarm
+GroupName=Alarms Management
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=BOOL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] OutputEnable
+Direction=Input
+Type=BOOL
+ShortName=ENB
+SingleTextLine=
+[end]
+
+[pOUParam] Acknowledge
+Direction=Input
+Type=BOOL
+ShortName=ACK
+SingleTextLine=
+[end]
+
+[pOUParam] Mode
+Direction=Input
+Type=DINT
+ShortName=MODE
+SingleTextLine=
+[end]
+
+[pOUParam] RingBack
+Direction=Input
+Type=BOOL
+ShortName=RB
+SingleTextLine=
+[end]
+
+[pOUParam] Period
+Direction=Input
+Type=REAL
+ShortName=PER
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=DINT
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_DIGITALALARM
+Direction=Local
+Type=SINT
+Dimension=[1..32]
+ShortName=RDDA
+SingleTextLine=Reserved parameter for DIGITALALARM
+[end]
+
+[functionBlock] TRANSFERSWITCH
+Help=[Context2]Coll_ISa5_rtm.prt_stb.transferswitch
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputB
+Direction=Input
+Type=REAL
+ShortName=INB
+SingleTextLine=
+[end]
+
+[pOUParam] Command
+Direction=Input
+Type=BOOL
+ShortName=CMD
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] ANALOGALARM
+Help=[Context2]Coll_ISa5_rtm.prt_stb.analogalarm
+GroupName=Alarms Management
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputB
+Direction=Input
+Type=REAL
+ShortName=INB
+SingleTextLine=
+[end]
+
+[pOUParam] OutputEnable
+Direction=Input
+Type=BOOL
+Dimension=[0..2]
+ShortName=ENB
+SingleTextLine=
+[end]
+
+[pOUParam] Acknowledge
+Direction=Input
+Type=BOOL
+Dimension=[0..2]
+ShortName=ACK
+SingleTextLine=
+[end]
+
+[pOUParam] AlarmSetting
+Direction=Input
+Type=ALARM_SETTING
+ShortName=SET
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] __ADI_OutputEnable
+Direction=Hidden
+Type=UINT
+InitValue=0
+ShortName=_ADI
+SingleTextLine=ADI hidden parameter for <OutputEnable> array input
+[end]
+
+[pOUParam] __ADI_Acknowledge
+Direction=Hidden
+Type=UINT
+InitValue=0
+ShortName=_ADI
+SingleTextLine=ADI hidden parameter for <Acknowledge> array input
+[end]
+
+[pOUParam] OutputA
+Direction=Output
+Type=DINT
+ShortName=OUTA
+SingleTextLine=
+[end]
+
+[pOUParam] OutputB
+Direction=Output
+Type=DINT
+ShortName=OUTB
+SingleTextLine=
+[end]
+
+[pOUParam] OutputC
+Direction=Output
+Type=DINT
+ShortName=OUTC
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_ANALOGALARM
+Direction=Local
+Type=SINT
+Dimension=[1..252]
+ShortName=RDAA
+SingleTextLine=Reserved parameter for ANALOGALARM
+[end]
+
+[functionBlock] BATCHSWITCH
+Help=[Context2]Coll_ISa5_rtm.prt_stb.batchswitch
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] HighLimit
+Direction=Input
+Type=REAL
+ShortName=HLIM
+SingleTextLine=
+[end]
+
+[pOUParam] LowLimit
+Direction=Input
+Type=REAL
+ShortName=LLIM
+SingleTextLine=
+[end]
+
+[pOUParam] PreLoad
+Direction=Input
+Type=REAL
+ShortName=PREL
+SingleTextLine=
+[end]
+
+[pOUParam] Gain
+Direction=Input
+Type=REAL
+ShortName=GAIN
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] COMPARATOR
+Help=[Context2]Coll_ISa5_rtm.prt_stb.comparator
+GroupName=Comparator Operations
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] LimitValue
+Direction=Input
+Type=REAL
+ShortName=LIM
+SingleTextLine=
+[end]
+
+[pOUParam] DeadBand
+Direction=Input
+Type=REAL
+ShortName=DB
+SingleTextLine=
+[end]
+
+[pOUParam] DirectActing
+Direction=Input
+Type=BOOL
+ShortName=DIR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=BOOL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_COMPARATOR
+Direction=Local
+Type=SINT
+Dimension=[1..4]
+ShortName=RDCP
+SingleTextLine=Reserved parameter for COMPARATOR
+[end]
+
+[functionBlock] LIMITER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.limiter
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] HighLimit
+Direction=Input
+Type=REAL
+ShortName=HLIM
+SingleTextLine=
+[end]
+
+[pOUParam] LowLimit
+Direction=Input
+Type=REAL
+ShortName=LLIM
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] HighStatus
+Direction=Output
+Type=BOOL
+ShortName=HSTS
+SingleTextLine=
+[end]
+
+[pOUParam] LowStatus
+Direction=Output
+Type=BOOL
+ShortName=LSTS
+SingleTextLine=
+[end]
+
+[functionBlock] RATELIMITER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.ratelimiter
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] UpRate
+Direction=Input
+Type=REAL
+ShortName=UP
+SingleTextLine=
+[end]
+
+[pOUParam] DownRate
+Direction=Input
+Type=REAL
+ShortName=DOWN
+SingleTextLine=
+[end]
+
+[pOUParam] Enable
+Direction=Input
+Type=BOOL
+ShortName=ENB
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RaisingLimit
+Direction=Output
+Type=BOOL
+ShortName=RL
+SingleTextLine=
+[end]
+
+[pOUParam] FallingLimit
+Direction=Output
+Type=BOOL
+ShortName=FL
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_RATELIMITER
+Direction=Local
+Type=SINT
+Dimension=[1..12]
+ShortName=RDRL
+SingleTextLine=Reserved parameter for RATELIMITER
+[end]
+
+[functionBlock] SIGNALSELECTOR
+Help=[Context2]Coll_ISa5_rtm.prt_stb.signal_selector
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputB
+Direction=Input
+Type=REAL
+ShortName=INB
+SingleTextLine=
+[end]
+
+[pOUParam] InputC
+Direction=Input
+Type=REAL
+ShortName=INC
+SingleTextLine=
+[end]
+
+[pOUParam] Selector
+Direction=Input
+Type=BOOL
+ShortName=SEL
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] BATCHTOTALIZER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.batchtotalizer
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] InitialValue
+Direction=Input
+Type=REAL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] Preset1
+Direction=Input
+Type=REAL
+ShortName=PRE1
+SingleTextLine=
+[end]
+
+[pOUParam] Preset2
+Direction=Input
+Type=REAL
+ShortName=PRE2
+SingleTextLine=
+[end]
+
+[pOUParam] ZeroDropOut
+Direction=Input
+Type=REAL
+ShortName=ZERO
+SingleTextLine=
+[end]
+
+[pOUParam] PulseScaling
+Direction=Input
+Type=REAL
+ShortName=PSCL
+SingleTextLine=
+[end]
+
+[pOUParam] TimeBase
+Direction=Input
+Type=DINT
+ShortName=TBAS
+SingleTextLine=
+[end]
+
+[pOUParam] Stop
+Direction=Input
+Type=BOOL
+ShortName=STOP
+SingleTextLine=
+[end]
+
+[pOUParam] Reset
+Direction=Input
+Type=BOOL
+ShortName=RST
+SingleTextLine=
+[end]
+
+[pOUParam] DirectActing
+Direction=Input
+Type=BOOL
+ShortName=DA
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Total
+Direction=Output
+Type=REAL
+ShortName=TOT
+SingleTextLine=
+[end]
+
+[pOUParam] Alarm1
+Direction=Output
+Type=BOOL
+ShortName=ALM1
+SingleTextLine=
+[end]
+
+[pOUParam] Alarm2
+Direction=Output
+Type=BOOL
+ShortName=ALM2
+SingleTextLine=
+[end]
+
+[pOUParam] Pulse
+Direction=Output
+Type=BOOL
+ShortName=PULS
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_BATCHTOTALIZER
+Direction=Local
+Type=SINT
+Dimension=[1..16]
+ShortName=RDBT
+SingleTextLine=Reserved parameter for BATCHTOTALIZER
+[end]
+
+[functionBlock] RETENTIVEONTIMER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.retentiveontimer
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputOn
+Direction=Input
+Type=BOOL
+ShortName=INO
+SingleTextLine=
+[end]
+
+[pOUParam] InputEnable
+Direction=Input
+Type=BOOL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] DelayTime
+Direction=Input
+Type=REAL
+ShortName=DTIM
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=BOOL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] OutputNot
+Direction=Output
+Type=BOOL
+ShortName=ONOT
+SingleTextLine=
+[end]
+
+[pOUParam] ElapseTime
+Direction=Output
+Type=REAL
+ShortName=ETIM
+SingleTextLine=
+[end]
+
+[pOUParam] RemainingTime
+Direction=Output
+Type=REAL
+ShortName=RTIM
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_RETENTIVEONTIMER
+Direction=Local
+Type=SINT
+Dimension=[1..8]
+ShortName=RDRT
+SingleTextLine=Reserved parameter for RETENTIVEONTIMER
+[end]
+
+[functionBlock] BIASCALIBRATION
+Help=[Context2]Coll_ISa5_rtm.prt_stb.biascalibration
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputE
+Direction=Input
+Type=REAL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] Initial
+Direction=Input
+Type=REAL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] HighLimit
+Direction=Input
+Type=REAL
+ShortName=HLIM
+SingleTextLine=
+[end]
+
+[pOUParam] LowLimit
+Direction=Input
+Type=REAL
+ShortName=LLIM
+SingleTextLine=
+[end]
+
+[pOUParam] TrackVariable
+Direction=Input
+Type=REAL
+ShortName=TV
+SingleTextLine=
+[end]
+
+[pOUParam] TrackCommand
+Direction=Input
+Type=BOOL
+ShortName=TC
+SingleTextLine=
+[end]
+
+[pOUParam] Bias
+Direction=Output
+Type=REAL
+ShortName=BIAS
+SingleTextLine=
+[end]
+
+[pOUParam] TrackOutput
+Direction=Output
+Type=REAL
+ShortName=TO
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_BIASCALIBRATION
+Direction=Local
+Type=SINT
+Dimension=[1..8]
+ShortName=RDBC
+SingleTextLine=Reserved parameter for BIASCALIBRATION
+[end]
+
+[functionBlock] FLIPFLOP
+Help=[Context2]Coll_ISa5_rtm.prt_stb.flipflop
+GroupName=Boolean Operations
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Set
+Direction=Input
+Type=BOOL
+ShortName=SET
+SingleTextLine=
+[end]
+
+[pOUParam] Reset
+Direction=Input
+Type=BOOL
+ShortName=RES
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=BOOL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_FLIPFLOP
+Direction=Local
+Type=SINT
+Dimension=[1..8]
+ShortName=RDFF
+SingleTextLine=Reserved parameter for FLIPFLOP
+[end]
+

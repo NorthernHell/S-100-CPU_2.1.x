@@ -1,0 +1,25 @@
+################################################################################
+###  write package name in this file to exclude package from IsaVM  ############
+###  set # before package name to include optional package into IsaVM  #########
+################################################################################
+
+### samples for iodk ###
+cjiosmpl
+cjcsmpl
+
+### advanced functions from original ISaGRAF 5.21
+#isaser
+#isaafb
+
+### user drivers and C-functions ###
+logger
+dpid
+pwm
+gui
+ilon100
+pc7can
+serfunc
+init
+isaruby
+sms
+logbdb

@@ -1,0 +1,40 @@
+[complex] FDA_serv
+PackageName=rt
+DriverName=serv
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] in_size
+Format=LONG
+Access=USER DEFINED
+Default=60000
+SingleTextLine=Size of UDP input buffer (pameter -i for fda_serv utility)
+[end]
+
+[deviceParam] port
+Format=WORD
+Access=USER DEFINED
+Default=1510
+SingleTextLine=UDP port (parameter -p for fda_serv utility)
+[end]
+
+[deviceParam] out_size
+Format=LONG
+Access=USER DEFINED
+Default=60000
+SingleTextLine=Size of UDP output buffer (pameter -s for fda_serv utility)
+[end]
+
+[deviceParam] timeout
+Format=WORD
+Access=USER DEFINED
+Default=0
+SingleTextLine=Parameter -t for fda_serv utility. If 0 fda_serv works in blocking mode
+[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
+

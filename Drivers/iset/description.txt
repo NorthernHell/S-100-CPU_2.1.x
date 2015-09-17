@@ -1,0 +1,1 @@
+functions library for save/read variables values to/from disk

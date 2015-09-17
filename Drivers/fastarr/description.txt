@@ -1,0 +1,1 @@
+functions library for fast work with arrays

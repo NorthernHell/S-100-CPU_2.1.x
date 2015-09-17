@@ -1,0 +1,427 @@
+[function] rt_all_by_type
+GroupName=FDA functions
+Type=DINT
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for all variables of type "typename"
+[end]
+
+[pOUParam] typename
+Direction=Input
+Type=STRING
+StringLength=5
+ShortName=
+SingleTextLine=name of type
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] rt_begin
+GroupName=FDA functions
+Type=DINT
+[end]
+
+[function] rt_log_name
+GroupName=FDA functions
+Type=DINT
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=enable or disable logging
+[end]
+
+[pOUParam] name
+Direction=Input
+Type=STRING
+StringLength=128
+ShortName=
+SingleTextLine=name of a variable, struct or array
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=dopusk for logging
+[end]
+
+[function] rt_arr
+GroupName=FDA functions
+Type=DINT
+[end]
+
+[pOUParam] name
+Direction=Input
+Type=STRING
+StringLength=128
+ShortName=
+SingleTextLine=array name
+[end]
+
+[pOUParam] start
+Direction=Input
+Type=DINT
+ShortName=
+SingleTextLine=start index of a element
+[end]
+
+[pOUParam] nmbr
+Direction=Input
+Type=DINT
+ShortName=
+SingleTextLine=number of elements for archiving
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=disable or enable logging
+[end]
+
+[function] rt_var_ulint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=ULINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_bool
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=BOOL
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_dint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=DINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_uint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=UINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_lreal
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=LREAL
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] rt_var_sint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=SINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_int
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=TIME
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_real
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=REAL
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=5
+SingleTextLine=dopusk for logging
+[end]
+
+[function] rt_var_time
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=TIME
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_date
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=DATE
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_udint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=UDINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_usint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=USINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_lint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=LINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[device] control
+PackageName=rt
+DriverName=logs
+Type=DINT
+Direction=Output
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] state
+PackageName=rt
+DriverName=logs
+SingleTextLine=get status if 'open' completed with errors; number of logged variables in current cycle if OK
+Type=DINT
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] in
+PackageName=rt
+DriverName=logs
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[complex] rtlog
+PackageName=rt
+DriverName=logs
+SingleTextLine=FDA variables registrator
+Devices=control,state,in
+ComplexOption=1
+[end]
+
+[deviceParam] maxvars
+Format=LONG
+Access=USER DEFINED
+Default=500
+SingleTextLine=size of RT table in number variables
+[end]
+
+[deviceParam] mode
+Format=WORD
+Access=USER DEFINED
+Default=3
+SingleTextLine=1 - network mode, 2- local mode, other value - both modes
+[end]
+
+;$$[$desc] control&rtlogs
+;$$<reserv channel for control device
+;$$[end]
+
+;$$[$desc] state&rtlogs
+;$$<resrv chanel - device indicator
+;$$[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
+

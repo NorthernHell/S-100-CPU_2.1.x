@@ -1,0 +1,52 @@
+[function] sys_kill
+GroupName=sys
+Type=BOOL
+ShortName=2
+[end]
+
+[pOUParam] pid
+Direction=Input
+Type=DINT
+ShortName=1
+SingleTextLine=
+[end]
+
+[function] sys_exec
+GroupName=sys
+Type=DINT
+[end]
+
+[pOUParam] ProgName
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=1
+SingleTextLine=
+[end]
+
+[pOUParam] Args
+Direction=Input
+Type=STRING
+StringLength=128
+Dimension=[1..16]
+ShortName=2
+SingleTextLine=
+[end]
+
+[pOUParam] Nargs
+Direction=Input
+Type=DINT
+ShortName=3
+SingleTextLine=
+[end]
+
+;$$[$desc] sys_exec
+;$$<Start background program
+;$$<Return PID of started process
+;$$[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
+

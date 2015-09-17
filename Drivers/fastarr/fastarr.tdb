@@ -1,0 +1,371 @@
+[structure] St_Handle
+[end]
+
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
+[end]
+
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
+[end]
+
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[function] Fast_array_dot
+SingleTextLine=scalar multiply of a fast arraies
+GroupName=FastArray
+Type=LREAL
+ShortName=res
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_array_range
+SingleTextLine=linear range of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] firstData
+Direction=Input
+Type=LREAL
+ShortName=dat1
+SingleTextLine=
+[end]
+
+[pOUParam] lastData
+Direction=Input
+Type=LREAL
+ShortName=dat2
+SingleTextLine=
+[end]
+
+[function] Fast_array_create
+SingleTextLine=Creation of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] NameArr
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NArr
+SingleTextLine=The Name of ISaGRAF's Array
+[end]
+
+[function] FastLibInit
+GroupName=FastArray
+Type=BOOL
+ShortName=2
+[end]
+
+[function] Fast_array_add
+SingleTextLine=summa of a fast arraies
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleSum
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=arraySum=arrayA + arrayB
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_array_min
+SingleTextLine=Find of of min  value
+GroupName=FastArray
+Type=LREAL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[function] Fast_array_max
+SingleTextLine=Find of of max  value
+GroupName=FastArray
+Type=LREAL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[function] Fast_array_cumulsum
+SingleTextLine=cumulative sum of elements of fast array
+GroupName=FastArray
+Type=LREAL
+ShortName=Res
+[end]
+
+[pOUParam] ConsumArr
+Direction=Input
+Type=St_Handle
+ShortName=Arr
+SingleTextLine=The summing Array
+[end]
+
+[function] Fast_array_mul
+SingleTextLine=multiply of a fast arraies
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleRes
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=arrayRes=arrayA  x arrayB
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_array_fill
+SingleTextLine=Filling of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] dataTofill
+Direction=Input
+Type=LREAL
+ShortName=data
+SingleTextLine=
+[end]
+
+[function] Fast_array_zeroes
+SingleTextLine=Zeroing of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[function] Fast_array_copy
+SingleTextLine=Copying of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=Res
+[end]
+
+[pOUParam] ConsumArr
+Direction=Input
+Type=St_Handle
+ShortName=CArr
+SingleTextLine=The consuming Array
+[end]
+
+[pOUParam] ProducArray
+Direction=Input
+Type=St_Handle
+ShortName=PArr
+SingleTextLine=The producing Array
+[end]
+
+[function] Fast_array_scale
+SingleTextLine=Miltply of a fast array on koefficient
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] koeff
+Direction=Input
+Type=LREAL
+ShortName=koef
+SingleTextLine=
+[end]
+
+[function] Fast_array_spectrum
+SingleTextLine=power spectrum of  fast array
+GroupName=FastArray
+Type=UDINT
+ShortName=res
+[end]
+
+[pOUParam] handleData
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleSpectrum
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+;$$[$desc] Fast_array_dot
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_range
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_create
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_add
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_min
+;$$<Find and return minimal value of array items
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_max
+;$$<Find and return maximal value of array items
+;$$<
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_cumulsum
+;$$<The Copying of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_mul
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_fill
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_zeroes
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_copy
+;$$<The Copying of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_scale
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_array_spectrum
+;$$<calculate  the power spectrum of dataarray
+;$$<return number of garmonics or 0 (if error)
+;$$<
+;$$<
+;$$[end]
+
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
+

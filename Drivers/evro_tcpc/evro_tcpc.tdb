@@ -1,0 +1,274 @@
+[device] MTCP_AI
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=UINT
+Direction=Input
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=0
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] FUNCTION
+Format=LONG
+Access=USER DEFINED
+Default=4
+SingleTextLine=odbus function 3-read input registers 4-read holding registers
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=temeout s
+[end]
+
+[device] MTCP_DO
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=0
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=temeout s
+[end]
+
+[device] MODBUS_TCP_STATUS
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=0
+[end]
+
+[device] MTCP_DI
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=0
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=temeout s
+[end]
+
+[device] MTCP_AO
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=UINT
+Direction=Output
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=0
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] FUNCTION
+Format=LONG
+Access=USER DEFINED
+Default=16
+SingleTextLine=modbus function number (16 or 6)
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=temeout s
+[end]
+
+[complex] MODBUS_TCP_CLIENT_AI
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_AI,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+[complex] MODBUS_TCP_CLIENT_DO
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_DO,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+[complex] MODBUS_TCP_CLIENT_DI
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_DI,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+[complex] MODBUS_TCP_CLIENT_AO
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_AO,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$:MTCP_AI&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AI&evro_tcpc_evro_tcpc_
+;$$:MTCP_DO&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_DO&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_STATUS&evro_tcpc_evro_tcpc_
+;$$:MTCP_DI&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_DI&evro_tcpc_evro_tcpc_
+;$$:MTCP_AO&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AO&evro_tcpc_evro_tcpc_
+;$$>Default
+;$$[end]
+

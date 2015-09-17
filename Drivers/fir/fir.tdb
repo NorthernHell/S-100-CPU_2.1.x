@@ -1,0 +1,166 @@
+[structure] FIR_Handle
+[end]
+
+[display] 0
+[field] FirPtr
+Type=ULINT
+SingleTextLine=The Address of Matrix [2,N] with FIR coeffs in Matrix[1]
+[end]
+
+[field] Range
+Type=DINT
+SingleTextLine=The FIR dimension (N)
+[end]
+
+[field] DataCounter
+Type=DINT
+SingleTextLine=counter data have being filter
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[structure] St_Handle
+[end]
+
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
+[end]
+
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
+[end]
+
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[function] FIR_vector
+GroupName=FIR
+Type=BOOL
+ShortName=4
+[end]
+
+[pOUParam] FirHandle
+Direction=Input
+Type=FIR_Handle
+ShortName=1
+SingleTextLine=handler FIR object
+[end]
+
+[pOUParam] Source
+Direction=Input
+Type=St_Handle
+ShortName=2
+SingleTextLine=data array for filtering
+[end]
+
+[pOUParam] Dest
+Direction=Input
+Type=St_Handle
+ShortName=3
+SingleTextLine=
+[end]
+
+[function] FIRf
+GroupName=FIR
+Type=REAL
+ShortName=3
+[end]
+
+[pOUParam] FirHandle
+Direction=Input
+Type=FIR_Handle
+ShortName=1
+SingleTextLine=handler FIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=REAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+[function] FIR_create
+SingleTextLine=Creation of a FIR object
+GroupName=FIR
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleFir
+Direction=Input
+Type=FIR_Handle
+ShortName=Hand
+SingleTextLine=handler of FIR Object
+[end]
+
+[pOUParam] NameCoeff
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NArr
+SingleTextLine=The Name of ISaGRAF's Array with FIR coeffs
+[end]
+
+[function] FIR
+GroupName=FIR
+Type=LREAL
+ShortName=3
+[end]
+
+[pOUParam] FirHandle
+Direction=Input
+Type=FIR_Handle
+ShortName=1
+SingleTextLine=handler FIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=LREAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+;$$[$desc] FIR_vector
+;$$<Data filtering from array Source and store in array Dest
+;$$[end]
+
+;$$[$desc] FIRf
+;$$<Data filtering point by point
+;$$[end]
+
+;$$[$desc] FIR_create
+;$$<The Creation of a FIR object
+;$$<from Isagraf Matrix with dimension [2,N]
+;$$<N - FIR degree
+;$$<Matrix [1] -  FIR coeffs "b"
+;$$<Matrix[2] - reserved system data (internal FIR stack )
+;$$<
+;$$<
+;$$<
+;$$<
+;$$[end]
+
+;$$[$desc] FIR
+;$$<Data filtering point by point
+;$$[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
+

@@ -1,0 +1,287 @@
+[structure] Mt_Handle
+[end]
+
+[display] 0
+[field] AddrMatrix
+Type=ULINT
+SingleTextLine=The Address of Matrix
+[end]
+
+[field] TypeMatrix
+Type=SINT
+SingleTextLine=The Type of Matrix
+[end]
+
+[field] DimensionOfMatrix1
+Type=DINT
+SingleTextLine=The First Dimension Of Matrix
+[end]
+
+[field] DimensionOfMatrix2
+Type=DINT
+SingleTextLine=The Second Dimension Of Matrix
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[structure] St_Handle
+[end]
+
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
+[end]
+
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
+[end]
+
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[function] Fast_matrix_fill
+SingleTextLine=Filling of a fast matrix
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Matrix
+[end]
+
+[pOUParam] dataTofill
+Direction=Input
+Type=LREAL
+ShortName=data
+SingleTextLine=
+[end]
+
+[function] Fast_matrix_copy
+SingleTextLine=Copying of a fast matrix
+GroupName=FastMatrix
+Type=BOOL
+ShortName=Res
+[end]
+
+[pOUParam] ConsumMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=CMtx
+SingleTextLine=The consuming Matrix
+[end]
+
+[pOUParam] ProducMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=PMtx
+SingleTextLine=The producing Matrix
+[end]
+
+[function] Fast_matrix_on_vec
+SingleTextLine=multiply of a fast matrix on vector-array
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=Mt_Handle
+ShortName=hA
+SingleTextLine=Matrix A
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=Vector B (fast array)
+[end]
+
+[pOUParam] handleRes
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=matrixA  x arrayB = arrayRes
+[end]
+
+[function] Fast_matrix_zeroes
+SingleTextLine=Zeroing of a fast matrix
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Matrix
+[end]
+
+[function] Fast_matrix_scale
+SingleTextLine=Miltply of a fast matrix on koefficient
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Matrix
+[end]
+
+[pOUParam] koeff
+Direction=Input
+Type=LREAL
+ShortName=koef
+SingleTextLine=
+[end]
+
+[function] Fast_matrix_add
+SingleTextLine=summa of a fast matrixes
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleSum
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=matrixSum=matrixA + matrixB
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=Mt_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=Mt_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_matrix_create
+SingleTextLine=Creation of a fast matrix
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Matrix ( range 2)
+[end]
+
+[pOUParam] NameMatrix
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NMtx
+SingleTextLine=The Name of ISaGRAF's Array [1..N, 1..M]
+[end]
+
+[function] Fast_matrix_linsolve
+SingleTextLine=Solve of linear equations system
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=Mt_Handle
+ShortName=hA
+SingleTextLine=Matrix A
+[end]
+
+[pOUParam] handleX
+Direction=Input
+Type=St_Handle
+ShortName=hX
+SingleTextLine=Vector X (fast array) - unknown vector
+[end]
+
+[pOUParam] handleRes
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=matrixA  x arrayX = arrayRes
+[end]
+
+;$$[$desc] Fast_matrix_fill
+;$$<Fill matrix any value
+;$$<
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_matrix_copy
+;$$<The Copying of a fast matrix
+;$$<
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_matrix_on_vec
+;$$<MatA * VecB = VecRes
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_matrix_zeroes
+;$$<The Creation of a fast matrix
+;$$<
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_matrix_scale
+;$$<Multiply matrix on any value
+;$$[end]
+
+;$$[$desc] Fast_matrix_add
+;$$<The Summa of a fast matrixes
+;$$<
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_matrix_create
+;$$<The Creation of a fast matrix
+;$$<
+;$$[end]
+
+;$$[$desc] Fast_matrix_linsolve
+;$$<find unknown vector X for linear system
+;$$<MatA have dimensions [1..N,1..N]
+;$$<Vecs have dimensions [1..N]
+;$$<MatA * VecX = VecRes
+;$$<
+;$$[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
+

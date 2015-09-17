@@ -1,0 +1,82 @@
+# $Id: Makefile 175 2009-08-27 19:59:03Z alexyak $
+
+#global definition
+include ../makdefs
+
+DRVSET=../Cmds/drvset.txt
+
+ifeq ($(OS),ACE_QNX4)
+DIRS= $(shell ls -D -1| grep -v "\.")
+else
+ifeq ($(OS),ACE_QNX6)
+DIRS= $(shell ls -D -1| grep -v "\.")
+else
+DIRS = $(shell ls -p | grep /| tr -d '/')
+endif
+endif
+
+listexceptions = $(shell cat exceptions| grep -v \^\#)
+
+FILTERED_DIRS = $(filter-out $(listexceptions),$(DIRS))
+AR_NAMES = $(patsubst %, ../Lib/lib%.a,$(FILTERED_DIRS))
+
+.PHONY : all force_look clean clean_all drivers check_drivers
+
+ifeq ($(FILTERED_DIRS),)
+all: check_drivers generating
+else
+all: check_drivers generating $(AR_NAMES)
+endif
+	echo $(FILTERED_DIRS)
+
+ifeq ($(FILTERED_DIRS),)
+drivers:
+else
+drivers: $(AR_NAMES)
+endif
+
+define create_rule
+$(patsubst %,../Lib/lib%.a,$(1)): force_look
+	if [ -f $(1)/Makefile ]; then make -C $(1); else true; fi
+endef
+     
+$(foreach driverdir,$(FILTERED_DIRS),$(eval $(call create_rule,$(driverdir))))
+
+force_look:
+	true
+
+iodk:
+	-for drv in $(FILTERED_DIRS); do (mkdir $(DESTDIR)/$$drv; cd $$drv; make iodk DRVDIR=$(DESTDIR)/$$drv); done
+	mkdir $(DESTDIR)/cjiosmpl
+	mkdir $(DESTDIR)/cjcsmpl
+	cp cjiosmpl/* $(DESTDIR)/cjiosmpl/
+	cp cjcsmpl/* $(DESTDIR)/cjcsmpl/
+
+clean:
+	-for drv in $(FILTERED_DIRS); do (cd $$drv; make clean); done
+	rm -f Drivers.h
+	rm -f libdefs
+	rm -f drivers.tdb
+	rm -f generating
+
+clean_all:
+	-for drv in $(DIRS); do (cd $$drv; make clean); done
+	rm -f Drivers.h
+	rm -f libdefs
+	rm -f drivers.tdb
+	rm -f generating
+	rm -f drivers.list
+	rm -f $(DRVSET)
+
+libdefs: check_drivers generating
+Drivers.h: check_drivers generating
+drivers.tdb: check_drivers generating
+
+generating: exceptions drivers.list
+	./generate.rb
+	touch generating
+
+drivers.list: check_drivers
+
+check_drivers:
+	./check_drivers.rb

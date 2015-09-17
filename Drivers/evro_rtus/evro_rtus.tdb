@@ -1,0 +1,118 @@
+[device] MODBUS_RTU_COIL_O_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=0
+[end]
+
+[device] MODBUS_RTU_INP_BITS_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=0
+[end]
+
+[device] MODBUS_RTU_COIL_I_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=0
+[end]
+
+[device] MODBUS_RTU_INP_REG_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=UINT
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=0
+[end]
+
+[device] MODBUS_RTU_HOLDING_O_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=UINT
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=0
+[end]
+
+[device] MODBUS_RTU_HOLDING_I_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=UINT
+Direction=Input
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=0
+[end]
+
+[complex] MODBUS_RTU_SERVER
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Devices=MODBUS_RTU_COIL_I_,MODBUS_RTU_COIL_O_,MODBUS_RTU_HOLDING_I_,MODBUS_RTU_HOLDING_O_,MODBUS_RTU_INP_BITS_,MODBUS_RTU_INP_REG_
+ComplexOption=3
+[end]
+
+[deviceParam] SLAVE_ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] COM_PORT
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number(1(2))
+[end]
+
+[deviceParam] BAUD_RATE
+Format=LONG
+Access=USER DEFINED
+Default=9600
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] PARITY
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] STOP_BITS
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+;$$[$desc] MODBUS_RTU_SERVER&_evro_RTUS_evro_RTUS
+;$$<MODBUS_RTU_SERVER
+;$$[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$:MODBUS_RTU_COIL_O_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_INP_BITS_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_COIL_I_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_SERVER&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_HOLDING_O_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_INP_REG_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_HOLDING_I_&_evro_RTUS_evro_RTUS
+;$$>Default
+;$$[end]
+

@@ -1,0 +1,72 @@
+[structure] DateTime
+[end]
+
+[display] 0
+[field] Day
+Type=DINT
+SingleTextLine=Day
+[end]
+
+[field] Month
+Type=DINT
+SingleTextLine=Month
+[end]
+
+[field] Year
+Type=DINT
+SingleTextLine=Year
+[end]
+
+[field] Hour
+Type=DINT
+SingleTextLine=Hour
+[end]
+
+[field] Minute
+Type=DINT
+SingleTextLine=Minute
+[end]
+
+[field] Second
+Type=DINT
+SingleTextLine=Second
+[end]
+
+[field] Weekday
+Type=DINT
+SingleTextLine=Weekday
+[end]
+
+[function] getHiResTime
+SingleTextLine=get target work time in microseconds
+GroupName=Time
+Type=ULINT
+ShortName=USEC
+[end]
+
+[functionBlock] getCurrentTime
+SingleTextLine=get current date and time
+GroupName=Time
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] GMT
+Direction=Input
+Type=BOOL
+ShortName=GMT
+SingleTextLine=get Greenwich Mean Time if TRUE, local time - if FALSE
+[end]
+
+[pOUParam] DATETIME
+Direction=Output
+Type=DateTime
+ShortName=DTIM
+SingleTextLine=
+[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
+

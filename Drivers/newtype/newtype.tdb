@@ -1,0 +1,870 @@
+[function] OR_MASK_DWORD
+SingleTextLine=DWORD OR bit-to-bit mask
+Help=[Context]4075
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Must have DWORD fomat
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=DWORD
+ShortName=MSK
+SingleTextLine=Must have DWORD format
+[end]
+
+[function] ROR_WORD
+SingleTextLine=Make the bits of a WORD rotate to the right
+Help=[Context]4086
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Any WORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] XOR_MASK_DWORD
+SingleTextLine=DWORD exclusive OR bit-to-bit mask
+Help=[Context]4100
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Must have DWORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=DWORD
+ShortName=MSK
+SingleTextLine=Must have DWORD format
+[end]
+
+[function] ROR_DWORD
+SingleTextLine=Make the bits of a DWORD rotate to the right
+Help=[Context]4084
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Any DWORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] SHR_WORD
+SingleTextLine=Make the bits of a WORD shift to the right
+Help=[Context]4094
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Any WORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] AND_MASK_LWORD
+SingleTextLine=LWORD AND bit-to-bit mask
+Help=[Context]4063
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Must have LWORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=LWORD
+ShortName=MSK
+SingleTextLine=Must have LWORD format
+[end]
+
+[function] EXPT_LREAL
+SingleTextLine=Exponent
+Help=[Context]4068
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any signed LREAL value
+[end]
+
+[pOUParam] EXP
+Direction=Input
+Type=DINT
+ShortName=EXP
+SingleTextLine=Integer exponent
+[end]
+
+[function] NOT_MASK_DWORD
+SingleTextLine=DWORD bit-to-bit negation mask
+Help=[Context]4071
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Must have DWORD format
+[end]
+
+[function] ROL_BYTE
+SingleTextLine=Make the bits of a BYTE rotate to the left
+Help=[Context]4079
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Any BYTE value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] SHL_DWORD
+SingleTextLine=Make the bits of a DWORD shift to the left
+Help=[Context]4088
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Any DWORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] TAN_LREAL
+SingleTextLine=Tangent
+Help=[Context]4097
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Cannot be equal to PI/2 modulo PI
+[end]
+
+[function] ATAN_LREAL
+SingleTextLine=Arc tangent
+Help=[Context]4066
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any LREAL value
+[end]
+
+[function] OR_MASK_BYTE
+SingleTextLine=BYTE OR bit-to-bit mask
+Help=[Context]4074
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Must have BYTE fomat
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=BYTE
+ShortName=MSK
+SingleTextLine=Must have BYTE format
+[end]
+
+[function] SIN_LREAL
+SingleTextLine=Sine
+Help=[Context]4095
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any LREAL value
+[end]
+
+[function] AND_MASK_BYTE
+SingleTextLine=BYTE AND bit-to-bit mask
+Help=[Context]4061
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Must have BYTE format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=BYTE
+ShortName=MSK
+SingleTextLine=Must have BYTE format
+[end]
+
+[function] ASIN_LREAL
+SingleTextLine=Arc sine
+Help=[Context]4065
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Must be in set [-1.0 .. +1.0]
+[end]
+
+[function] SHL_BYTE
+SingleTextLine=Make the bits of a BYTE shift to the left
+Help=[Context]4087
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Any BYTE value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] POW_LREAL
+SingleTextLine=Power calculation
+Help=[Context]4078
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] EXP
+Direction=Input
+Type=LREAL
+ShortName=EXP
+SingleTextLine=Power (exponent)
+[end]
+
+[function] ROL_LWORD
+SingleTextLine=Make the bits of a LWORD rotate to the left
+Help=[Context]4081
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Any LWORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] ROL_WORD
+SingleTextLine=Make the bits of a WORD rotate to the left
+Help=[Context]4082
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Any WORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] SHR_DWORD
+SingleTextLine=Make the bits of a DWORD shift to the right
+Help=[Context]4092
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Any DWORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] OR_MASK_WORD
+SingleTextLine=WORD OR bit-to-bit mask
+Help=[Context]4077
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Must have WORD fomat
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=WORD
+ShortName=MSK
+SingleTextLine=Must have WORD format
+[end]
+
+[function] SQRT_LREAL
+SingleTextLine=Square root
+Help=[Context]4096
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Must be greater or equal to zero
+[end]
+
+[function] AND_MASK_WORD
+SingleTextLine=WORD AND bit-to-bit mask
+Help=[Context]4064
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Must have WORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=WORD
+ShortName=MSK
+SingleTextLine=Must have WORD format
+[end]
+
+[function] LOG_LREAL
+SingleTextLine=Logarithm
+Help=[Context]4069
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Must be greater than zero
+[end]
+
+[function] OR_MASK_LWORD
+SingleTextLine=LWORD OR bit-to-bit mask
+Help=[Context]4076
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Must have WORD fomat
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=LWORD
+ShortName=MSK
+SingleTextLine=Must have LWORD format
+[end]
+
+[function] SHL_WORD
+SingleTextLine=Make the bits of a WORD shift to the left
+Help=[Context]4090
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Any WORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] XOR_MASK_LWORD
+SingleTextLine=LWORD exclusive OR bit-to-bit mask
+Help=[Context]4101
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Must have LWORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=LWORD
+ShortName=MSK
+SingleTextLine=Must have LWORD format
+[end]
+
+[function] ABS_LREAL
+SingleTextLine=Absolute value
+Help=[Context]4059
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any signed LREAL value
+[end]
+
+[function] ROR_LWORD
+SingleTextLine=Make the bits of a LWORD rotate to the right
+Help=[Context]4085
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Any LWORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] NOT_MASK_LWORD
+SingleTextLine=LWORD bit-to-bit negation mask
+Help=[Context]4072
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Must have LWORD format
+[end]
+
+[function] SHL_LWORD
+SingleTextLine=Make the bits of a LWORD shift to the left
+Help=[Context]4089
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Any LWORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] AND_MASK_DWORD
+SingleTextLine=DWORD AND bit-to-bit mask
+Help=[Context]4062
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Must have DWORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=DWORD
+ShortName=MSK
+SingleTextLine=Must have DWORD format
+[end]
+
+[function] NOT_MASK_BYTE
+SingleTextLine=BYTE bit-to-bit negation mask
+Help=[Context]4070
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Must have BYTE format
+[end]
+
+[function] XOR_MASK_BYTE
+SingleTextLine=BYTE exclusive OR bit-to-bit mask
+Help=[Context]4099
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Must have BYTE format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=BYTE
+ShortName=MSK
+SingleTextLine=Must have BYTE format
+[end]
+
+[function] COS_LREAL
+SingleTextLine=Cosine
+Help=[Context]4067
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any LREAL value
+[end]
+
+[function] ROR_BYTE
+SingleTextLine=Make the bits of a BYTE rotate to the right
+Help=[Context]4083
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Any BYTE value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] ACOS_LREAL
+SingleTextLine=Arc cosine
+Help=[Context]4060
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Must be in set (-1.0 ... +1.0)
+[end]
+
+[function] ROL_DWORD
+SingleTextLine=Make the bits of a DWORD rotate to the left
+Help=[Context]4080
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Any DWORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] SHR_BYTE
+SingleTextLine=Make the bits of a BYTE shift to the right
+Help=[Context]4091
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Any BYTE value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] SHR_LWORD
+SingleTextLine=Make the bits of a LWORD shift to the right
+Help=[Context]4093
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Any LWORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] NOT_MASK_WORD
+SingleTextLine=WORD bit-to-bit negation mask
+Help=[Context]4073
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Must have WORD format
+[end]
+
+[function] TRUNC_LREAL
+SingleTextLine=Truncate decimal part
+Help=[Context]4098
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any LREAL value
+[end]
+
+[function] XOR_MASK_WORD
+SingleTextLine=WORD exclusive OR bit-to-bit mask
+Help=[Context]4102
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Must have WORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=WORD
+ShortName=MSK
+SingleTextLine=Must have WORD format
+[end]
+

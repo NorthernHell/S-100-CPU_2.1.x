@@ -1,0 +1,1 @@
+extended functions library for long types (original)
