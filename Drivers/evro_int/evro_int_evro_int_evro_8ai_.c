@@ -13,7 +13,7 @@ Device name:        EVRO_8AI_
 #include <evro_int_evro_int_status_m.h>
 /* OEM Parameters of complex device */
 int modbus8ai=1;
-int id_2;
+int id_1;
 
 /* OEM Parameters of linked simple devices */
 
@@ -52,7 +52,7 @@ typSTATUS evro_int_evro_int_evro_8ai_IosOpen
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
 	strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
-	id_2=pOemParam->ID;
+	id_1=pOemParam->ID;
     if (evro_int_evro_int_evro_8aiIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
@@ -204,7 +204,7 @@ void evro_int_evro_int_evro_8ai_evro_avar_infoIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=id_2;
+    pRtIoSplDvc->luUser=id_1;
     evro_int_evro_int_evro_avar_infoIosRead(pRtIoSplDvc);
     modbus8ai=pRtIoSplDvc->luUser;
 }

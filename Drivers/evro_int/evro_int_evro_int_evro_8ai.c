@@ -111,7 +111,7 @@ void evro_int_evro_int_evro_8aiIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_read_input_registers(ctx, 0, 8, tab_reg);
-							//For EVRO_modules adress=30000//
+								//for EVRO_modules adress=30000//
 		if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;

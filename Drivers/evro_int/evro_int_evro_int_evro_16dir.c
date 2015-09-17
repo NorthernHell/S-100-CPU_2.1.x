@@ -304,8 +304,7 @@ void evro_int_evro_int_evro_16dirIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         //Read counters
-        rc  = modbus_read_registers(ctx, 0, 32, tab_reg);//read from holding registers
-						//For EVRO modules adress 40000
+        rc  = modbus_read_registers(ctx, 40000, 32, tab_reg);
         if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;

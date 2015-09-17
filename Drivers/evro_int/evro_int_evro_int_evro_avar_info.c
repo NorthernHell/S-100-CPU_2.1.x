@@ -144,7 +144,7 @@ void evro_int_evro_int_evro_avar_infoIosRead
         modbus_set_response_timeout(ctx, &response_timeout);
         // rc= modbus_read_input_bits(ctx, 10000, 16, tab_reg); read from the input bits registers
 		   rc= modbus_read_registers(ctx, 0, 1, tab_reg); // read from  the input registers(bit mask)
-						//for EVRO_modules adress=30000//
+								//for EVRO_modules adress=30000//
 		if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;
