@@ -11,7 +11,7 @@ Device name:        IO_8AO
 #include <evro_ext_evro_ext_io8ao.h>
 #include <evro_ext_evro_ext_modbusstatus.h>
 /* OEM Parameters of complex device */
-int modbus8ao =1;
+
 
 
 
@@ -130,7 +130,7 @@ void evro_ext_evro_ext_io_8aoio8aoIosWrite
      *   Then do not forget to update the physical data with the logical data
      */
     evro_ext_evro_ext_io8aoIosWrite(pRtIoSplDvc);
-    modbus8ao=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -203,7 +203,7 @@ void evro_ext_evro_ext_io_8aomodbusstatusIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbus8ao;
+
     evro_ext_evro_ext_modbusstatusIosRead(pRtIoSplDvc);
 }
 

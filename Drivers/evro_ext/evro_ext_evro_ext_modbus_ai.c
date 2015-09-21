@@ -10,7 +10,7 @@ Device name:        Modbus_AI
 #include <evro_ext_evro_ext_modbus_ai.h>
 #include <evro_ext_evro_ext_m_ai.h>
 #include <evro_ext_evro_ext_modbusstatus.h>
-int modbusmai =1;
+
 
 /* OEM Parameters of complex device */
 
@@ -23,6 +23,7 @@ typedef struct _tag_strM_ai
     int32  ID;   /* Device address */
     int32  Adress;   /* address of the first register */
     int32  NR;   /* number of registers */
+	int32  Func;
     int32  baud_rate;   /* Baud Rate */
     int32  NCOM;   /* COM port number */
     int32  Parity;   /* 0 - None 1-even 2-odd */
@@ -125,6 +126,7 @@ void evro_ext_evro_ext_modbus_aim_aiIosRead
      * channels are locked.
      */
     evro_ext_evro_ext_m_aiIosRead(pRtIoSplDvc);
+
 }
 
 /****************************************************************************
@@ -197,7 +199,7 @@ void evro_ext_evro_ext_modbus_aimodbusstatusIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbusmai;
+
     evro_ext_evro_ext_modbusstatusIosRead(pRtIoSplDvc);
 }
 

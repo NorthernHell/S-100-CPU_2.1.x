@@ -11,7 +11,7 @@ Device name:        EVRO_16do_
 #include <evro_int_evro_int_evro_16do.h>
 #include <evro_int_evro_int_status_m.h>
 /* OEM Parameters of complex device */
-int modbus16do_1=1;
+
 
 
 /* OEM Parameters of linked simple devices */
@@ -124,7 +124,7 @@ void evro_int_evro_int_evro_16do_evro_16doIosWrite
      *   Then do not forget to update the physical data with the logical data
      */
     evro_int_evro_int_evro_16doIosWrite(pRtIoSplDvc);
-    modbus16do_1=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -197,7 +197,7 @@ void evro_int_evro_int_evro_16do_status_mIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbus16do_1;
+
     evro_int_evro_int_status_mIosRead(pRtIoSplDvc);
 }
 

@@ -188,6 +188,9 @@ void evro_ext_evro_ext_io8tcsIosRead
      * channels are locked.
      */
     //
+	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */	
     strRtIoChan*        pChannel;
     strDfIoSplDvc*      pStaticDef;
     uint16              nbChannel;
@@ -251,13 +254,13 @@ void evro_ext_evro_ext_io8tcsIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_read_registers(ctx, 1, 9, tab_reg);
-        if (rc == -1)
+		if (rc == -1)
         {
-            pRtIoSplDvc->luUser=0;
+            cpxDev->luUser =0;
         }
         else
         {
-            pRtIoSplDvc->luUser=1;
+            cpxDev->luUser =1;
         }
         modbus_close(ctx);
         modbus_free(ctx);

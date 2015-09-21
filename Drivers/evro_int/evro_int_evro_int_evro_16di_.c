@@ -12,8 +12,6 @@ Device name:        EVRO_16dI_
 #include <evro_int_evro_int_evro_16dir.h>
 #include <evro_int_evro_int_status_m.h>
 /* OEM Parameters of complex device */
-int modbus16di_1=1;
-int id_1;
 
 
 /* OEM Parameters of linked simple devices */
@@ -53,9 +51,6 @@ typSTATUS evro_int_evro_int_evro_16di_IosOpen
      */
     strRtIoSplDvc* pRtIoSplDvc;
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
-    id_1=pOemParam->ID;
     if (evro_int_evro_int_evro_16diIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
@@ -135,7 +130,7 @@ void evro_int_evro_int_evro_16di_evro_16diIosRead
      * channels are locked.
      */
     evro_int_evro_int_evro_16diIosRead(pRtIoSplDvc);
-    modbus16di_1=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -209,7 +204,7 @@ void evro_int_evro_int_evro_16di_evro_16dirIosRead
      * channels are locked.
      */
     evro_int_evro_int_evro_16dirIosRead(pRtIoSplDvc);
-    modbus16di_1=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -282,7 +277,7 @@ void evro_int_evro_int_evro_16di_status_mIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbus16di_1;
+
     evro_int_evro_int_status_mIosRead(pRtIoSplDvc);
 }
 

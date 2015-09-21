@@ -10,24 +10,19 @@ Device name:        M_AI
 #include <evro_ext_evro_ext_m_ai.h>
 #include <modbus/modbus.h>
 /* OEM Parameters */
-extern int modbusmai;
 typedef struct _tag_strM_ai
 {
     int32  ID;   /* Device address */
     int32  Adress;   /* address of the first register */
-    int32  FUNCION;
     int32  NR;   /* number of registers */
+	int32  Func;
     int32  baud_rate;   /* Baud Rate */
     int32  NCOM;   /* COM port number */
     int32  Parity;   /* 0 - None 1-even 2-odd */
     int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
     int32  TimeOutsec;   /* temeout s */
-
 } strOemParam;
-
-
-
 /****************************************************************************
 function    : evro_ext_evro_ext_m_aiIosOpen
 description : Level 1 device Open function
@@ -103,12 +98,14 @@ void evro_ext_evro_ext_m_aiIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-//
+	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */
+    strOemParam* pOemParam;
+    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_t *ctx;
     uint16_t tab_reg[150];
     int rc;
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     struct timeval response_timeout;
     response_timeout.tv_sec = pOemParam->TimeOutsec;
     response_timeout.tv_usec = pOemParam->TimeOutu;
@@ -142,56 +139,53 @@ void evro_ext_evro_ext_m_aiIosRead
             ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'O', 8, pOemParam->Stop_bits);
         };
     }
-    if (ctx == NULL)
+    modbus_set_slave(ctx, pOemParam->ID);
+    if (modbus_connect(ctx) == -1)
     {
-        fprintf(stderr, "Unable to create the libmodbus context\n");
+		printf("Connexion failed: \n");
+        modbus_free(ctx);
     }
     else
     {
-        modbus_set_slave(ctx, pOemParam->ID);
-
-        if (modbus_connect(ctx) == -1)
+         modbus_set_response_timeout(ctx, &response_timeout);
+		if (pOemParam->Func == 3)
+		{
+			rc  = modbus_read_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
+		}
+		else
+		{
+			rc  = modbus_read_input_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
+		}
+		
+		if (rc == -1)
         {
-            printf("Connexion failed: \n");
-            modbus_free(ctx);
-            modbusmai=0;
+            cpxDev->luUser =0;
         }
         else
         {
-            modbusmai=1;
-            modbus_set_response_timeout(ctx, &response_timeout);
-            if (pOemParam->FUNCION==3)
-            {
-               // printf("m_ai libmodbus read regs\n");
-                rc  = modbus_read_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
-            }
-            else
-            {
-              //  printf("m_ai libmodbus read inp regs\n");
-                rc  = modbus_read_input_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
-            };
-            modbus_close(ctx);
-            modbus_free(ctx);
+            cpxDev->luUser =1;
         }
-    }
+	modbus_close(ctx);
+    modbus_free(ctx);
+    };
+    
     //
     strRtIoChan*        pChannel;
     strDfIoSplDvc*      pStaticDef;
     uint16              nbChannel;
     uint16              nbIndex;
-
-    uint16*              pPhyData;   /* Physical value */
-    uint16*              pLogData;   /* Logical Value    */
-    uint16               fElecData;
-    float               fMult,fDiv,fOffset;
+    int16*              pPhyData;   /* Physical value */
+    int16*              pLogData;   /* Logical Value    */
+    int16               fElecData;
+    int16               fMult,fDiv,fOffset;
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
     pChannel   =  pRtIoSplDvc->pRtIoChan;
     /*  Update all channel */
     for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
     {
-        pPhyData = (uint16*)(pChannel->pvKerPhyData);
-        pLogData = (uint16*)(pChannel->pvKerData);
+        pPhyData = (int16*)(pChannel->pvKerPhyData);
+        pLogData = (int16*)(pChannel->pvKerData);
 
         fElecData=tab_reg[nbIndex];
         if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */

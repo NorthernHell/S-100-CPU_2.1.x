@@ -38,7 +38,7 @@ typSTATUS evro_int_evro_int_evro_8roIosOpen
      */
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
-    printf("EVRO 8RO init\n");
+    printf("EVRO 8KuKu epta init\n");
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
@@ -56,15 +56,16 @@ typSTATUS evro_int_evro_int_evro_8roIosOpen
        
          if (rc == -1)
         {
-            pvRtIoDvc->luUser=0;
+           // pvRtIoDvc->luUser=0;
         }
         else
         {
-            pvRtIoDvc->luUser=1;
-        };
+           // pvRtIoDvc->luUser=1;
+        }
         modbus_close(ctx);
         modbus_free(ctx);
-    };
+    }
+	
     return (0);
 }
 
@@ -127,6 +128,11 @@ void evro_int_evro_int_evro_8roIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
+	 
+	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */
+	 
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -175,15 +181,13 @@ void evro_int_evro_int_evro_8roIosWrite
     }
     sNewMsg[ nbChannel] = 0; /* null char at the end of the string */
     /* If one variable has changed, we print in the file the new values */
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
-
-	
+    strOemParam* pOemParam;
+    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
+	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
     response_timeout.tv_usec = 20000; //for rtu_server
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_set_slave(ctx, pOemParam->ID);
    
 	//convert data for write in holding registrs 
@@ -215,14 +219,15 @@ void evro_int_evro_int_evro_8roIosWrite
 		
 		if (rc == -1)
         {
-            pRtIoSplDvc->luUser=0;
+            cpxDev->luUser =0;
         }
         else
         {
-            pRtIoSplDvc->luUser=1;
+            cpxDev->luUser =1;
         };
         modbus_close(ctx);
         modbus_free(ctx);
+	
     };
 }
 

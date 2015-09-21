@@ -11,7 +11,7 @@ Device name:        Modbus_DI
 #include <evro_ext_evro_ext_m_di.h>
 #include <evro_ext_evro_ext_modbusstatus.h>
 /* OEM Parameters of complex device */
-int modbusmdi =1;
+
 
 
 /* OEM Parameters of linked simple devices */
@@ -123,7 +123,7 @@ void evro_ext_evro_ext_modbus_dim_diIosRead
      * channels are locked.
      */
     evro_ext_evro_ext_m_diIosRead(pRtIoSplDvc);
-    modbusmdi=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -196,7 +196,7 @@ void evro_ext_evro_ext_modbus_dimodbusstatusIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbusmdi;
+
     evro_ext_evro_ext_modbusstatusIosRead(pRtIoSplDvc);
 }
 

@@ -10,7 +10,6 @@ Device name:        M_DI
 #include <evro_ext_evro_ext_m_di.h>
 #include "modbus/modbus.h"
 /* OEM Parameters */
-
 typedef struct _tag_strM_di
 {
     int32  ID;   /* Device address */
@@ -98,6 +97,9 @@ void evro_ext_evro_ext_m_diIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
+	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */	 
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_t *ctx;
@@ -139,7 +141,6 @@ void evro_ext_evro_ext_m_diIosRead
     modbus_set_slave(ctx, pOemParam->ID);
     if (modbus_connect(ctx) == -1)
     {
-        pRtIoSplDvc->luUser=0;
         printf("Connexion failed: \n");
         modbus_free(ctx);
     }
@@ -149,16 +150,15 @@ void evro_ext_evro_ext_m_diIosRead
         rc = modbus_read_input_bits(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
         
 		if (rc == -1)
-		{
-            pRtIoSplDvc->luUser=0;
+        {
+            cpxDev->luUser =0;
         }
         else
         {
-            pRtIoSplDvc->luUser=1;
+            cpxDev->luUser =1;
         }
         modbus_close(ctx);
-        modbus_free(ctx);
-		
+        modbus_free(ctx);		
     };
     ////////
     strRtIoChan*        pChannel;

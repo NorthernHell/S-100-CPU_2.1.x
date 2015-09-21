@@ -11,7 +11,7 @@ Device name:        EVRO_6rtd_
 #include <evro_int_evro_int_evro_6rtd.h>
 #include <evro_int_evro_int_status_m.h>
 /* OEM Parameters of complex device */
-int modbus6rtd=1;
+
 
 
 /* OEM Parameters of linked simple devices */
@@ -116,7 +116,7 @@ void evro_int_evro_int_evro_6rtd_evro_6rtdIosRead
      * channels are locked.
      */
     evro_int_evro_int_evro_6rtdIosRead(pRtIoSplDvc);
-    modbus6rtd=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -189,7 +189,7 @@ void evro_int_evro_int_evro_6rtd_status_mIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbus6rtd;
+
     evro_int_evro_int_status_mIosRead(pRtIoSplDvc);
 }
 

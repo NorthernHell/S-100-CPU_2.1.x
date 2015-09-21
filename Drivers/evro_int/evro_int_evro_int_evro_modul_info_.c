@@ -14,33 +14,36 @@ Device name:        EVRO_modul_info_
 #include <evro_int_evro_int_evro_indicate_info.h>
 #include <evro_int_evro_int_status_m.h>
 /* OEM Parameters of complex device */
-int modbusmodul_info_1=1;
-int id_666;
-
+/*typedef struct _tag_strEvro_modul_info_
+{
+    int32  ID;  
+  
+} strOemParam;
+*/
 
 /* OEM Parameters of linked simple devices */
 
 typedef struct _tag_strEvro_modul_info
 {
-    int32  ID;   /* Node ID */
+    int32  ID;  
   
 } strOemParam;
 
 typedef struct _tag_strEvro_avar_info
 {
-    int32  ID;   /* Node ID */
+    int32  ID;  
 	
 } strEvro_avar_info;
 
 typedef struct _tag_strEvro_temp_info
 {
-    int32  ID;   /* Node ID */
+    int32  ID;   
 
 } strEvro_temp_info;
 
 typedef struct _tag_strEvro_indicate_info
 {
-    int32  ID;   /* Node ID */
+    int32  ID;  
 
 } strEvro_indicate_info;
 
@@ -66,9 +69,6 @@ typSTATUS evro_int_evro_int_evro_modul_info_IosOpen
      */
     strRtIoSplDvc* pRtIoSplDvc;
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
-    id_666=pOemParam->ID;
     if (evro_int_evro_int_evro_modul_infoIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
@@ -164,7 +164,7 @@ void evro_int_evro_int_evro_modul_info_evro_modul_infoIosRead
      * channels are locked.
      */
     evro_int_evro_int_evro_modul_infoIosRead(pRtIoSplDvc);
-    modbusmodul_info_1=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -239,7 +239,7 @@ void evro_int_evro_int_evro_modul_info_evro_avar_infoIosRead
      * channels are locked.
      */
     evro_int_evro_int_evro_avar_infoIosRead(pRtIoSplDvc);
-    modbusmodul_info_1=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -315,7 +315,7 @@ void evro_int_evro_int_evro_modul_info_evro_temp_infoIosRead
      * channels are locked.
      */
     evro_int_evro_int_evro_temp_infoIosRead(pRtIoSplDvc);
-    modbusmodul_info_1=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -383,7 +383,7 @@ void evro_int_evro_int_evro_modul_info_evro_indicate_infoIosRead
      */
 
     evro_int_evro_int_evro_indicate_infoIosRead(pRtIoSplDvc);
-    modbusmodul_info_1=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -456,7 +456,7 @@ void evro_int_evro_int_evro_modul_info_status_mIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbusmodul_info_1;
+
     evro_int_evro_int_status_mIosRead(pRtIoSplDvc);
 }
 

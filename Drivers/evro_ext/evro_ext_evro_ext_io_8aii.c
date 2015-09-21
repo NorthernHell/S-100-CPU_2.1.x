@@ -11,7 +11,7 @@ Device name:        IO_8AII
 #include <evro_ext_evro_ext_io8aii.h>
 #include <evro_ext_evro_ext_modbusstatus.h>
 /* OEM Parameters of complex device */
-int modbus8aii =1;
+
 
 
 /* OEM Parameters of linked simple devices */
@@ -121,7 +121,7 @@ void evro_ext_evro_ext_io_8aiiio8aiiIosRead
      * channels are locked.
      */
     evro_ext_evro_ext_io8aiiIosRead(pRtIoSplDvc);
-    modbus8aii=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -194,7 +194,7 @@ void evro_ext_evro_ext_io_8aiimodbusstatusIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbus8aii;
+
     evro_ext_evro_ext_modbusstatusIosRead(pRtIoSplDvc);
 }
 

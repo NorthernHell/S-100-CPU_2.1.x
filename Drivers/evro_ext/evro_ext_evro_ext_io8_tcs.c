@@ -31,7 +31,7 @@ typedef struct _tag_strIo8tcs
     int32  Units_Type;   /* 1=°C, 2=°F */
 } strOemParam;
 
-int modbus4tcs=1;
+
 
 /****************************************************************************
 function    : evro_ext_evro_ext_io8_tcsIosOpen
@@ -125,7 +125,7 @@ void evro_ext_evro_ext_io8_tcsio8tcsIosRead
      * channels are locked.
      */
     evro_ext_evro_ext_io8tcsIosRead(pRtIoSplDvc);
-    modbus4tcs=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -198,7 +198,7 @@ void evro_ext_evro_ext_io8_tcsmodbusstatusIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbus4tcs;
+
     evro_ext_evro_ext_modbusstatusIosRead(pRtIoSplDvc);
 }
 

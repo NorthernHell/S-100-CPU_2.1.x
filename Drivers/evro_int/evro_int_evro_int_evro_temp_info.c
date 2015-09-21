@@ -121,6 +121,9 @@ void evro_int_evro_int_evro_temp_infoIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
+	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */	 
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     uint16_t tab_reg[32]; //data array
 	int rc;
@@ -142,11 +145,11 @@ void evro_int_evro_int_evro_temp_infoIosRead
 							//For EVRO_modules adress=30000//
 		if (rc == -1)
         {
-            pRtIoSplDvc->luUser=0;
+            cpxDev->luUser =0;
         }
         else
         {
-            pRtIoSplDvc->luUser=1;
+            cpxDev->luUser =1;
         };
         modbus_close(ctx);
         modbus_free(ctx);

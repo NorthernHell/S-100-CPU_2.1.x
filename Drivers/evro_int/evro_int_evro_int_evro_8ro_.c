@@ -11,7 +11,6 @@ Device name:        EVRO_8ro_
 #include <evro_int_evro_int_evro_8ro.h>
 #include <evro_int_evro_int_status_m.h>
 /* OEM Parameters of complex device */
-int modbus8ro=1;
 
 
 /* OEM Parameters of linked simple devices */
@@ -20,7 +19,7 @@ typedef struct _tag_strEvro_8ro
 {
     int32  ID;   /* Node ID */
   
-} strEvro_8ro;
+} strOemParam;
 
 
 
@@ -46,6 +45,9 @@ typSTATUS evro_int_evro_int_evro_8ro_IosOpen
 
     strRtIoSplDvc* pRtIoSplDvc;
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
+	strOemParam* pOemParam;
+    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
+//    id_2=pOemParam->ID;
     if (evro_int_evro_int_evro_8roIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
@@ -124,7 +126,7 @@ void evro_int_evro_int_evro_8ro_evro_8roIosWrite
      *   Then do not forget to update the physical data with the logical data
      */
     evro_int_evro_int_evro_8roIosWrite(pRtIoSplDvc);
-    modbus8ro=pRtIoSplDvc->luUser;
+ //   modbus8ro=pRtIoSplDvc->luUser;
 }
 
 /****************************************************************************
@@ -197,7 +199,7 @@ void evro_int_evro_int_evro_8ro_status_mIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbus8ro;
+//   pRtIoSplDvc->luUser=modbus8ro;
     evro_int_evro_int_status_mIosRead(pRtIoSplDvc);
 }
 

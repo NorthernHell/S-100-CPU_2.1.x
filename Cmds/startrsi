@@ -1,3 +1,0 @@
-# !/bin/sh
-./ISaGRAF -RSI\\Port=/dev/ttyUSB0:19200:N:1 -NoETCP
-

@@ -10,7 +10,7 @@ Device name:        Modbus_AO
 #include <evro_ext_evro_ext_modbus_ao.h>
 #include <evro_ext_evro_ext_m_ao.h>
 #include <evro_ext_evro_ext_modbusstatus.h>
-int modbusmao =1;
+
 /* OEM Parameters of complex device */
 
 
@@ -131,7 +131,7 @@ void evro_ext_evro_ext_modbus_aom_aoIosWrite
      *   Then do not forget to update the physical data with the logical data
      */
     evro_ext_evro_ext_m_aoIosWrite(pRtIoSplDvc);
-    modbusmao=pRtIoSplDvc->luUser;
+
 }
 
 /****************************************************************************
@@ -204,7 +204,7 @@ void evro_ext_evro_ext_modbus_aomodbusstatusIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbusmao;
+
     evro_ext_evro_ext_modbusstatusIosRead(pRtIoSplDvc);
 }
 

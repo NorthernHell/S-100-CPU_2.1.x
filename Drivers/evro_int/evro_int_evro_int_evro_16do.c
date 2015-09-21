@@ -127,6 +127,9 @@ void evro_int_evro_int_evro_16doIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
+	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */	 
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -219,11 +222,11 @@ void evro_int_evro_int_evro_16doIosWrite
 		
 		if (rc == -1)
         {
-            pRtIoSplDvc->luUser=0;
+            cpxDev->luUser =0;
         }
         else
         {
-            pRtIoSplDvc->luUser=1;
+            cpxDev->luUser =1;
         };
         modbus_close(ctx);
         modbus_free(ctx);

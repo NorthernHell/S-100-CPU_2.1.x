@@ -107,6 +107,9 @@ void evro_ext_evro_ext_m_aoIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
+	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */	 
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -199,23 +202,23 @@ void evro_ext_evro_ext_m_aoIosWrite
     if (modbus_connect(ctx) == -1)
     {
         printf("Connexion failed: \n");
-        pRtIoSplDvc->luUser=0;
+      //  pRtIoSplDvc->luUser=0;
         modbus_free(ctx);
     }
     else
     {
-        pRtIoSplDvc->luUser=1;
+        //pRtIoSplDvc->luUser=1;
         modbus_set_response_timeout(ctx, &response_timeout);
         if (pOemParam->Func==16)
         {
             rc = modbus_write_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
-            if (rc == -1)
-            {
-                pRtIoSplDvc->luUser=0;
-            }
-            else
-            {
-                pRtIoSplDvc->luUser=1;
+ 		if (rc == -1)
+        {
+            cpxDev->luUser =0;
+        }
+        else
+        {
+            cpxDev->luUser =1;
             }
             modbus_close(ctx);
             modbus_free(ctx);
@@ -298,147 +301,6 @@ void evro_ext_evro_ext_m_aoIosCtl
 
 }
 
-#ifdef ITGTDEF_MODIF
-/****************************************************************************
-Func    : evro_ext_evro_ext_IosMdf
-description : This service is called by the VM to manage on line modification
-   at driver level
-parameters  :
-   (input) uchar cuSubFunc:      Sub Func switch
-   (input) strRtIoDrv* pRtIoDrv: Driver run time io struct
-   (input) uint32 luMdfType:     On line modification types
-   (input) void*  pvRtIoDvc:     Reserved for future extensions
-return value: typSTATUS
-warning     :
-****************************************************************************/
-
-typSTATUS evro_ext_evro_ext_IosMdf
-(
-    uchar          cuSubFunc,    /* Sub Func switch */
-    strRtIoDrv*    pRtIoDrv,     /* Driver run time io struct */
-    uint32         luMdfType,    /* On line modification types */
-    void*          pvRtIoDvc     /* Reserved for future extensions */
-)
-{
-    /*
-         Parameters:
-
-         · cuSubFunc
-         This parameter is used to differentiate services:
-         - ISA_MDF_IO_ACCEPT: the service must return 0 if it accepts the OLM
-         - ISA_MDF_IO_GETREADY: the driver must be ready to accept the OLM
-         - ISA_MDF_IO_DONE: the driver is notified that OLM is done
-
-         · pRtIoDrv
-         Run time structure of driver
-
-         · luMdfType
-         It defines the type of on line modification (bit fields)
-         - ISA_IO_MDF_CPX_OEM: OEM parameters of complex device
-         - ISA_IO_MDF_SPL_OEM: OEM parameters of some simple device
-         - ISA_IO_MDF_CHAN_OEM: OEM parameters of some channels (NOT IMPLEMENTED YET)
-         - ISA_IO_MDF_CHAN_PARAM: IO parameters of some channels
-         - ISA_IO_MDF_CHAN_VAR: Wired IO variables of some channels
-
-         · pvRtIoDvc
-         Reserved for future extensions
-
-         Return:
-         If cuSubFunc is ISA_MDF_IO_ACCEPT:
-         This Func will return 0 if the required on line modification is
-         accepted, i.e. the driver could managed on line modification.
-         This Func will return BAD_RET if the driver does not accept the
-         required on line modification.
-         Else it return 0.
-     */
-
-    return (0);
-
-}
-
-/****************************************************************************
-Func    : evro_ext_evro_ext_m_aoIosMdf
-description : This service is called by the VM to manage on line modification
-   at simple device and channel level
-parameters  :
-   (input) uchar cuSubFunc:              Sub Func switch
-   (input) strRtIoSplDvc* pRtIoSplDvc:   Simple device run time io struct
-   (input) uint32 luMdfType:             On line modification types
-   (input) strDfIoSplDvc* pDfIoSplDvc:   New simple device default struct
-   (input) void* pvOemSplDvc:            New simple device OEM parameters
-   (input) strDfIoChan* pDfIoChan:       New first channel default struct
-   (input) void* pvOemChan:              New first channel OEM parameters
-return value: typSTATUS
-warning     :
-****************************************************************************/
-
-typSTATUS  evro_ext_evro_ext_m_aoIosMdf
-(
-    uchar          cuSubFunc,  /* Sub Func switch */
-    strRtIoSplDvc* pRtIoSplDvc,/* Simple device run time io struct */
-    uint32         luMdfType,  /* On line modification types */
-    strDfIoSplDvc* pDfIoSplDvc,/* New simple device default struct */
-    void*          pvOemSplDvc,/* New simple device OEM parameters */
-    strDfIoChan*   pDfIoChan,  /* New first channel default struct */
-    void*          pvOemChan   /* New first channel OEM parameters */
-)
-{
-    /*
-         Parameters:
-
-         · cuSubFunc
-         This parameter is used to differentiate services:
-         - ISA_MDF_IO_ACCEPT: the service must return 0 if it accepts the OLM
-         - ISA_MDF_IO_GETREADY: the driver must be ready to accept the OLM
-         - ISA_MDF_IO_DONE: the driver is notified that OLM is done
-
-         · pRtIoSplDvc
-         Run time structure of simple device.
-
-         · luMdfType
-         It defines the type of on line modification (bit fields)
-         - ISA_IO_MDF_SPL_OEM: OEM parameters of some simple device
-         - ISA_IO_MDF_CHAN_OEM: OEM parameters of some channels (NOT IMPLEMENTED YET)
-         - ISA_IO_MDF_CHAN_PARAM: IO parameters of some channels
-         - ISA_IO_MDF_CHAN_VAR: Wired IO variables of some channels
-
-         · pDfIoSplDvc
-         New simple device default structure. Old one can be reached in runtime
-         structure.
-         It is null (0) is cuSubFunc is ISA_MDF_IO_DONE
-
-         · pvOemSplDvc
-         New simple device OEM parameters. Old one can be reached in runtime
-         structure.
-         It could be null (0) if luMdfType does not contain OEM parameters of
-         simple device bit set.
-         It is null (0) is cuSubFunc is ISA_MDF_IO_DONE
-
-         · pDfIoChan
-         New first channel default structure. Old one can be reached in runtime
-         structure.
-         It is null (0) is cuSubFunc is ISA_MDF_IO_DONE
-
-         · pvOemChan
-         New first channel OEM parameters. Old one can be reached in runtime
-         structure.
-         It could be null (0) if luMdfType does not contain OEM parameters of
-         some channel bit set.
-         It is null (0) is cuSubFunc is ISA_MDF_IO_DONE
-
-         Return:
-         If cuSubFunc is ISA_MDF_IO_ACCEPT:
-         This Func will return 0 if the required on line modification is
-         accepted, i.e. the driver could managed on line modification.
-         This Func will return BAD_RET if the driver does not accept the
-         required on line modification.
-         Else it return 0.
-     */
-
-    return (0);
-
-}
-#endif
 
 /* eof ********************************************************************/
 

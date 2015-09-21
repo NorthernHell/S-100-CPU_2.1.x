@@ -95,7 +95,13 @@ void evro_ext_evro_ext_modbusstatusIosRead
     uchar*              pPhyData;   /* Physical value            */
     uchar*              pLogData;   /* Logical Value               */
     uchar               byElecData; /* Electrical value ('1' or '0') */
-
+	
+	
+	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */
+	
+	
     pStaticDef = pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  = pStaticDef->huNbChan;
     pChannel   = pRtIoSplDvc->pRtIoChan;
@@ -104,7 +110,7 @@ void evro_ext_evro_ext_modbusstatusIosRead
     {
         pPhyData = (uchar*)(pChannel->pvKerPhyData);
         pLogData = (uchar*)(pChannel->pvKerData);
-        byElecData = pRtIoSplDvc->luUser;
+		byElecData = cpxDev->luUser;
         if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
             pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &byElecData, &byElecData);
 

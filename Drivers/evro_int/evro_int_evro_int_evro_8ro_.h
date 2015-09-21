@@ -46,7 +46,6 @@ void evro_int_evro_int_evro_8ro_status_mIosCtl
    void*          pvReserved    /* Reserved */
    );
 
-
 typSTATUS evro_int_evro_int_IosMdf
    (
    uchar          cuSubFunc,    /* Sub function switch */

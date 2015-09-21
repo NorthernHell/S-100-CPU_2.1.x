@@ -100,6 +100,9 @@ void evro_ext_evro_ext_io8aiiIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
+	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */	 
     modbus_t *ctx;
     uint16_t tab_reg[10];
     int rc;
@@ -150,13 +153,13 @@ void evro_ext_evro_ext_io8aiiIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_read_registers(ctx, 1, 9, tab_reg);
-        if (rc == -1)
+ 		if (rc == -1)
         {
-            pRtIoSplDvc->luUser=0;
+            cpxDev->luUser =0;
         }
         else
         {
-            pRtIoSplDvc->luUser=1;
+            cpxDev->luUser =1;
         }
         modbus_close(ctx);
         modbus_free(ctx);
