@@ -31,21 +31,19 @@ typSTATUS evro_int_evro_int_evro_8roIosOpen
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
 )
-{
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
-    /*
+{    /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
      * For a simple device it just initializes it.
      */
+    strOemParam* pOemParam;
+    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
     printf("EVRO 8RO init\n");
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
-    uint16_t tab_reg[33];
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 50000;
+    response_timeout.tv_usec = 20000;
     modbus_set_slave(ctx, pOemParam->ID);
     if (modbus_connect(ctx) == -1)
     {
@@ -56,7 +54,7 @@ typSTATUS evro_int_evro_int_evro_8roIosOpen
     {
         modbus_set_response_timeout(ctx, &response_timeout);
        
-           if (rc == -1)
+         if (rc == -1)
         {
             pvRtIoDvc->luUser=0;
         }
@@ -183,7 +181,7 @@ void evro_int_evro_int_evro_8roIosWrite
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 100000; //for rtu_server
+    response_timeout.tv_usec = 20000; //for rtu_server
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_set_slave(ctx, pOemParam->ID);
@@ -212,8 +210,8 @@ void evro_int_evro_int_evro_8roIosWrite
     {
         modbus_set_response_timeout(ctx, &response_timeout);
        // rc  = modbus_write_bits(ctx, 0,nbChannel, sNewMsg); //write in coil registers
-          rc  = modbus_write_registers(ctx, 0, 1, tab_reg); //write in holding registers(bit mask)
-							//for EVRO_modules adress=40000//
+          rc  = modbus_write_registers(ctx, 40000, 1, tab_reg); //write in holding registers(bit mask)
+							//For EVRO_modules adress=40000//
 		
 		if (rc == -1)
         {
