@@ -128,8 +128,7 @@ void evro_int_evro_int_evro_16diIosRead
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
-    uint8_t tab_reg_2[32];// for input bits
-	uint16_t tab_reg[32]; // for input registers
+    uint8_t tab_reg[32];
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
@@ -143,40 +142,17 @@ void evro_int_evro_int_evro_16diIosRead
   else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        // rc= modbus_read_input_bits(ctx, 10000, 16, tab_reg); read from the input bits registers
-		   rc= modbus_read_input_registers(ctx, 0, 1, tab_reg); // read from  the input registers(bit mask)
-								//for EVRO_modules adress=30000//
-		if (rc == -1)
+        rc= modbus_read_input_bits(ctx, 10000, 16, tab_reg);
+        if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;
         }
         else
         {
             pRtIoSplDvc->luUser=1;
-       
-		//start data conversion for normal representation in the development environment
-		tab_reg_2[0] = ((tab_reg[0] & 0x0001) > 0) ? 1: 0;
-		tab_reg_2[1] = ((tab_reg[0] & 0x0002) > 0) ? 1: 0;
-		tab_reg_2[2] = ((tab_reg[0] & 0x0004) > 0) ? 1: 0;
-		tab_reg_2[3] = ((tab_reg[0] & 0x0008) > 0) ? 1: 0;
-		tab_reg_2[4] = ((tab_reg[0] & 0x0010) > 0) ? 1: 0;
-		tab_reg_2[5] = ((tab_reg[0] & 0x0020) > 0) ? 1: 0;
-		tab_reg_2[6] = ((tab_reg[0] & 0x0040) > 0) ? 1: 0;
-		tab_reg_2[7] = ((tab_reg[0] & 0x0080) > 0) ? 1: 0;
-		tab_reg_2[8] = ((tab_reg[0] & 0x0100) > 0) ? 1: 0;
-		tab_reg_2[9] = ((tab_reg[0] & 0x0200) > 0) ? 1: 0;
-		tab_reg_2[10] = ((tab_reg[0] & 0x0400) > 0) ? 1: 0;
-		tab_reg_2[11] = ((tab_reg[0] & 0x0800) > 0) ? 1: 0;
-		tab_reg_2[12] = ((tab_reg[0] & 0x1000) > 0) ? 1: 0;
-		tab_reg_2[13] = ((tab_reg[0] & 0x2000) > 0) ? 1: 0;
-		tab_reg_2[14] = ((tab_reg[0] & 0x4000) > 0) ? 1: 0;
-		tab_reg_2[15] = ((tab_reg[0] & 0x8000) > 0) ? 1: 0;
-		//end data conversion for normal representation in the development environment
-		};
+        }
         modbus_close(ctx);
         modbus_free(ctx);
-
-
     };
     ////////
     strRtIoChan*        pChannel;
@@ -196,9 +172,7 @@ void evro_int_evro_int_evro_16diIosRead
     {
         pPhyData = (uchar*)(pChannel->pvKerPhyData);
         pLogData = (uchar*)(pChannel->pvKerData);
-		//
-		byElecData = tab_reg_2[nbIndex];
-		//
+        byElecData = tab_reg[nbIndex];
         if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
             pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &byElecData, &byElecData);
 

@@ -39,13 +39,13 @@ typSTATUS evro_int_evro_int_evro_16doIosOpen
      * simple devices and perform corressponding initializations.
      * For a simple device it just initializes it.
      */
-    printf("EVRO 16DO init\n");
+    printf("EVRO 8AO init\n");
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
-   // uint16_t tab_reg[33];
+    uint16_t tab_reg[33];
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 20000;
+    response_timeout.tv_usec = 50000;
     modbus_set_slave(ctx, pOemParam->ID);
     if (modbus_connect(ctx) == -1)
     {
@@ -84,7 +84,7 @@ void evro_int_evro_int_evro_16doIosClose
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
 )
 {
-    printf("EVRO 16DO Exit\n");
+    printf("EVRO 8AO Exit\n");
 }
 
 /****************************************************************************
@@ -136,8 +136,7 @@ void evro_int_evro_int_evro_16doIosWrite
     uchar*           pPhyData;      /* Physical value */
     uchar*           pLogData;      /* Logic Value */
     uchar            byElecData;    /* Electrical value ('1' or '0') */
-    uint8_t          sNewMsg[128]; 
-	uint16_t		 tab_reg[32];
+    uint8_t            sNewMsg[128];
     int              okChange;      /* indicate one of the channel has changed */
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
@@ -181,33 +180,11 @@ void evro_int_evro_int_evro_16doIosWrite
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 20000;
+    response_timeout.tv_usec = 50000;
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_set_slave(ctx, pOemParam->ID);
-   
-	//convert data for write in holding registrs 
-	        tab_reg[0]=0;
-			tab_reg[0] += (uint16_t)(sNewMsg[0] << 0);
-           	tab_reg[0] += (uint16_t)(sNewMsg[1] << 1);
-            tab_reg[0] += (uint16_t)(sNewMsg[2] << 2);
-			tab_reg[0] += (uint16_t)(sNewMsg[3] << 3);
-            tab_reg[0] += (uint16_t)(sNewMsg[4] << 4);
-			tab_reg[0] += (uint16_t)(sNewMsg[5] << 5);
-            tab_reg[0] += (uint16_t)(sNewMsg[6] << 6);
-			tab_reg[0] += (uint16_t)(sNewMsg[7] << 7);
-            tab_reg[0] += (uint16_t)(sNewMsg[8] << 8);
-			tab_reg[0] += (uint16_t)(sNewMsg[9] << 9);
-            tab_reg[0] += (uint16_t)(sNewMsg[10] << 10);
-			tab_reg[0] += (uint16_t)(sNewMsg[11] << 11);
-            tab_reg[0] += (uint16_t)(sNewMsg[12] << 12);
-			tab_reg[0] += (uint16_t)(sNewMsg[13] << 13);
-            tab_reg[0] += (uint16_t)(sNewMsg[14] << 14);
-			tab_reg[0] += (uint16_t)(sNewMsg[15] << 15);       
-	//end convert data for write in holding registrs 
-			
-	//write
-	if (modbus_connect(ctx) == -1)
+    if (modbus_connect(ctx) == -1)
     {
         printf("Connexion failed: \n");
         modbus_free(ctx);
@@ -215,11 +192,8 @@ void evro_int_evro_int_evro_16doIosWrite
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        // rc  = modbus_write_bits(ctx, 0,nbChannel, sNewMsg); //write in coil registers
-           rc  = modbus_write_registers(ctx, 40000, 1, tab_reg); //write in holding registers(bit mask)
-								//For EVRO_modules adress=40000//
-		
-		if (rc == -1)
+        rc  = modbus_write_bits(ctx, 0,nbChannel, sNewMsg);
+        if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;
         }

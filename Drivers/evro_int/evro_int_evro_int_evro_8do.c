@@ -1,17 +1,17 @@
 /**************************************************************************
-File:               evro_int_evro_int_evro_8do.c
+File:               evro_int_evro_int_evro_16do.c
 Author:             Umputun
 Creation date:      21/07/2012 - 14:25
-Device name:        EVRO_8DO
+Device name:        EVRO_16do
 ***************************************************************************/
 
 #include <dsys0def.h>
 #include <dios0def.h>
-#include <evro_int_evro_int_evro_8do.h>
+#include <evro_int_evro_int_evro_16do.h>
 #include "modbus/modbus.h"
 /* OEM Parameters */
 
-typedef struct _tag_strEvro_8do
+typedef struct _tag_strEvro_16do
 {
     int32  ID;   /* Node ID */
    
@@ -19,7 +19,7 @@ typedef struct _tag_strEvro_8do
 
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8doIosOpen
+function    : evro_int_evro_int_evro_16doIosOpen
 description : Level 1 device Open function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to open
@@ -27,7 +27,7 @@ return value: typSTATUS :  0 if successful, BAD_RET if error
 warning     : Returning with an error stops the kernel resource starting
 ****************************************************************************/
 
-typSTATUS evro_int_evro_int_evro_8doIosOpen
+typSTATUS evro_int_evro_int_evro_16doIosOpen
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
 )
@@ -71,7 +71,7 @@ typSTATUS evro_int_evro_int_evro_8doIosOpen
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8doIosClose
+function    : evro_int_evro_int_evro_16doIosClose
 description : Level 1 device Close function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to close
@@ -79,7 +79,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8doIosClose
+void evro_int_evro_int_evro_16doIosClose
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
 )
@@ -88,7 +88,7 @@ void evro_int_evro_int_evro_8doIosClose
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8doIosWrite
+function    : evro_int_evro_int_evro_16doIosWrite
 description : Simple device Write function
 parameters  :
    (input) void* pvRtIoDvc :  Run time io struct of the device to write
@@ -96,7 +96,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8doIosWrite
+void evro_int_evro_int_evro_16doIosWrite
 (
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
 )
@@ -207,7 +207,7 @@ void evro_int_evro_int_evro_8doIosWrite
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8doIosCtl
+function    : evro_int_evro_int_evro_16doIosCtl
 description : Simple device Control function
 parameters  :
    (input) uchar cuSubFunct :          Sub function parameter.
@@ -218,7 +218,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8doIosCtl
+void evro_int_evro_int_evro_16doIosCtl
 (
     uchar          cuSubFunct,   /* Sub function parameter */
     strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */

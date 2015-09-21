@@ -293,7 +293,7 @@ void evro_int_evro_int_evro_8dirIosRead
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 50000;
+    response_timeout.tv_usec = 20000;
     modbus_set_slave(ctx, pRtIoSplDvc->luUser);
     if (modbus_connect(ctx) == -1)
     {

@@ -102,7 +102,7 @@ void evro_ext_evro_ext_m_diIosRead
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_t *ctx;
     uint8_t tab_reg[150];
-	int rc;
+    int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = pOemParam->TimeOutsec;
     response_timeout.tv_usec = pOemParam->TimeOutu;
@@ -147,9 +147,8 @@ void evro_ext_evro_ext_m_diIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc = modbus_read_input_bits(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
-        
-		if (rc == -1)
-		{
+        if (rc == -1)
+        {
             pRtIoSplDvc->luUser=0;
         }
         else
@@ -158,7 +157,6 @@ void evro_ext_evro_ext_m_diIosRead
         }
         modbus_close(ctx);
         modbus_free(ctx);
-		
     };
     ////////
     strRtIoChan*        pChannel;
@@ -178,9 +176,8 @@ void evro_ext_evro_ext_m_diIosRead
     {
         pPhyData = (uchar*)(pChannel->pvKerPhyData);
         pLogData = (uchar*)(pChannel->pvKerData);
- 		byElecData = tab_reg[nbIndex];
-       
-		if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
+        byElecData = tab_reg[nbIndex];
+        if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
             pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &byElecData, &byElecData);
 
 
