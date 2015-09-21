@@ -52,7 +52,7 @@ void *modbus_rtu(void*)
     while(1)
     {
 
-        uint8_t query[500];
+        uint8_t query[600];
         rc = modbus_receive(ctx_rtu, query);
         if (modbus_rtu_rabota == 0)
         {
