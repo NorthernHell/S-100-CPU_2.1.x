@@ -141,8 +141,8 @@ void evro_int_evro_int_evro_16diIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         // rc= modbus_read_input_bits(ctx, 10000, 16, tab_reg); read from the input bits registers
-		   rc= modbus_read_input_registers(ctx, 30020, 1, tab_reg); // read from  the input registers(bit mask)
-								//for EVRO_modules adress=30000//
+		   rc= modbus_read_input_registers(ctx, 30019, 1, tab_reg); // read from  the input registers(bit mask)
+								//for EVRO_modules adress=30019//
 		if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;

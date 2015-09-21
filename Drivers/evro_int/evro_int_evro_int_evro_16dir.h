@@ -5,8 +5,8 @@ Creation date:      21/07/2012 - 14:25
 Device name:        EVRO_16dIR
 ***************************************************************************/
 
-#ifndef _EVRO_INT_EVRO_INT_EVRO_16dIR_H /* nested Headers management */
-#define _EVRO_INT_EVRO_INT_EVRO_16dIR_H
+#ifndef _EVRO_INT_EVRO_INT_EVRO_16dir_H /* nested Headers management */
+#define _EVRO_INT_EVRO_INT_EVRO_16dir_H
 
 /* prototypes */
 
@@ -32,9 +32,6 @@ void evro_int_evro_int_evro_16dirIosCtl
    uint16         huChanNum,    /* Channel number if any */
    void*          pvReserved    /* Reserved */
    );
-
-
-
 #endif /* _EVRO_INT_EVRO_INT_EVRO_16dIR_H */
 
 /* eof ********************************************************************/

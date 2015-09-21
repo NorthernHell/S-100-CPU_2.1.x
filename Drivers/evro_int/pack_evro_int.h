@@ -80,10 +80,6 @@ ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8dirIosOpen", evro_int_evro_int_evro_
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8dirIosClose", evro_int_evro_int_evro_8dirIosClose) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8dirIosRead", evro_int_evro_int_evro_8dirIosRead) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8dirIosCtl", evro_int_evro_int_evro_8dirIosCtl) \
-ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16dirIosOpen", evro_int_evro_int_evro_16dirIosOpen) \
-ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16dirIosClose", evro_int_evro_int_evro_16dirIosClose) \
-ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16dirIosRead", evro_int_evro_int_evro_16dirIosRead) \
-ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16dirIosCtl", evro_int_evro_int_evro_16dirIosCtl) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_modul_infoIosOpen", evro_int_evro_int_evro_modul_infoIosOpen) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_modul_infoIosClose", evro_int_evro_int_evro_modul_infoIosClose) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_modul_infoIosRead", evro_int_evro_int_evro_modul_infoIosRead) \
@@ -142,6 +138,10 @@ ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16diIosOpen", evro_int_evro_int_evro_
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16diIosClose", evro_int_evro_int_evro_16diIosClose) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16diIosRead", evro_int_evro_int_evro_16diIosRead) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16diIosCtl", evro_int_evro_int_evro_16diIosCtl) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16dirIosOpen", evro_int_evro_int_evro_16dirIosOpen) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16dirIosClose", evro_int_evro_int_evro_16dirIosClose) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16dirIosRead", evro_int_evro_int_evro_16dirIosRead) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_16dirIosCtl", evro_int_evro_int_evro_16dirIosCtl) \
 ;
 
 #endif /* _PACK_EVRO_INT_H */

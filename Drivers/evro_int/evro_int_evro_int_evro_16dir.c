@@ -38,7 +38,7 @@ typSTATUS evro_int_evro_int_evro_16dirIosOpen
      */
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
-    printf("EVRO 16DIC init\n");
+    printf("EVRO 16DICounter init\n");
 	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
@@ -122,7 +122,7 @@ void evro_int_evro_int_evro_16dirIosRead
      * channels are locked.
      */
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
-    uint16_t tab_reg[128];
+    uint16_t tab_reg_1[128];
     uint32 tab_counters[16];
     int rc;
     strOemParam* pOemParam;
@@ -140,8 +140,8 @@ void evro_int_evro_int_evro_16dirIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         //Read counters
-        rc  = modbus_read_registers(ctx, 40001, 32, tab_reg);//read from holding registers
-						//For EVRO modules adress 40000
+        rc  =modbus_read_registers(ctx, 40001, 32, tab_reg_1);//read from holding registers
+						//For EVRO modules adress 40001
         if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;
@@ -150,23 +150,25 @@ void evro_int_evro_int_evro_16dirIosRead
         {
             pRtIoSplDvc->luUser=1;
             //Convert Counters
+	
+			tab_counters[0]=(tab_reg_1[1]<<16)+tab_reg_1[0];
+			tab_counters[1]=(tab_reg_1[3]<<16)+tab_reg_1[2];
+			tab_counters[2]=(tab_reg_1[5]<<16)+tab_reg_1[4];
+			tab_counters[3]=(tab_reg_1[7]<<16)+tab_reg_1[6];
+			tab_counters[4]=(tab_reg_1[9]<<16)+tab_reg_1[8];
+			tab_counters[5]=(tab_reg_1[11]<<16)+tab_reg_1[10];
+			tab_counters[6]=(tab_reg_1[13]<<16)+tab_reg_1[12];
+			tab_counters[7]=(tab_reg_1[15]<<16)+tab_reg_1[14];
+			tab_counters[8]=(tab_reg_1[17]<<16)+tab_reg_1[16];
+			tab_counters[9]=(tab_reg_1[19]<<16)+tab_reg_1[18];
+			tab_counters[10]=(tab_reg_1[21]<<16)+tab_reg_1[20];
+			tab_counters[11]=(tab_reg_1[23]<<16)+tab_reg_1[22];
+			tab_counters[12]=(tab_reg_1[25]<<16)+tab_reg_1[24];
+			tab_counters[13]=(tab_reg_1[27]<<16)+tab_reg_1[26];
+			tab_counters[14]=(tab_reg_1[29]<<16)+tab_reg_1[28];
+			tab_counters[15]=(tab_reg_1[31]<<16)+tab_reg_1[30];
 			
-			tab_counters[0]=(tab_reg[1]<<16)+tab_reg[0];
-			tab_counters[1]=(tab_reg[3]<<16)+tab_reg[2];
-			tab_counters[2]=(tab_reg[5]<<16)+tab_reg[4];
-			tab_counters[3]=(tab_reg[7]<<16)+tab_reg[6];
-			tab_counters[4]=(tab_reg[9]<<16)+tab_reg[8];
-			tab_counters[5]=(tab_reg[11]<<16)+tab_reg[10];
-			tab_counters[6]=(tab_reg[13]<<16)+tab_reg[12];
-			tab_counters[7]=(tab_reg[15]<<16)+tab_reg[14];
-			tab_counters[8]=(tab_reg[17]<<16)+tab_reg[16];
-			tab_counters[9]=(tab_reg[19]<<16)+tab_reg[18];
-			tab_counters[10]=(tab_reg[21]<<16)+tab_reg[20];
-			tab_counters[11]=(tab_reg[23]<<16)+tab_reg[22];
-			tab_counters[12]=(tab_reg[25]<<16)+tab_reg[24];
-			tab_counters[13]=(tab_reg[27]<<16)+tab_reg[26];
-			tab_counters[14]=(tab_reg[29]<<16)+tab_reg[28];
-			tab_counters[15]=(tab_reg[31]<<16)+tab_reg[30];
+			
 		};
         modbus_close(ctx);
         modbus_free(ctx);
@@ -185,7 +187,7 @@ void evro_int_evro_int_evro_16dirIosRead
     nbChannel  =  pStaticDef->huNbChan;
     pChannel   =  pRtIoSplDvc->pRtIoChan;
     /*  Update all channel */
-    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+    for( nbIndex = 0; nbIndex < 16; nbIndex++)
     {
         pPhyData = (uint32*)(pChannel->pvKerPhyData);
         pLogData = (uint32*)(pChannel->pvKerData);
