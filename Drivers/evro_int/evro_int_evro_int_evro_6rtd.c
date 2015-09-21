@@ -1,29 +1,25 @@
 /**************************************************************************
-File:               evro_tcpc_evro_tcpc_mtcp_ai.c
+File:               evro_int_evro_int_evro_6rtd.c
 Author:             Umputun
-Creation date:      25/02/2013 - 16:08
-Device name:        MTCP_AI
+Creation date:      21/07/2012 - 14:25
+Device name:        EVRO_6rtd
 ***************************************************************************/
 
 #include <dsys0def.h>
 #include <dios0def.h>
-#include <evro_tcpc_evro_tcpc_mtcp_ai.h>
-#include <modbus/modbus.h>
+#include <evro_int_evro_int_evro_6rtd.h>
+#include "modbus/modbus.h"
 /* OEM Parameters */
-extern int modbus_tcp_ais;
-typedef struct _tag_strMtcp_ai
+
+typedef struct _tag_strEvro_6rtd
 {
-    char   IP[16];
-    int32  PORT;
-    int32  Adress;
-    int32  NR;
-    int32  FUNCION;
-    int32  TimeOutu;
-    int32  TimeOutsec;
-} strMtcp_ai;
+    int32  ID;   /* Node ID */
+   
+} strOemParam;
+
 
 /****************************************************************************
-function    : evro_tcpc_evro_tcpc_mtcp_aiIosOpen
+function    : evro_int_evro_int_evro_6rtdIosOpen
 description : Level 1 device Open function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to open
@@ -31,17 +27,50 @@ return value: typSTATUS :  0 if successful, BAD_RET if error
 warning     : Returning with an error stops the kernel resource starting
 ****************************************************************************/
 
-typSTATUS evro_tcpc_evro_tcpc_mtcp_aiIosOpen
+typSTATUS evro_int_evro_int_evro_6rtdIosOpen
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
 )
 {
-    printf("MB TCPC AI init\n");
+     /*
+     * Basically, for a complex device the driver can browse all
+     * simple devices and perform corressponding initializations.
+     * For a simple device it just initializes it.
+     */
+	strOemParam* pOemParam;
+    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
+    printf("EVRO 6RTD init\n");
+	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    int rc;
+    struct timeval response_timeout;
+    response_timeout.tv_sec = 0;
+    response_timeout.tv_usec = 20000;
+    modbus_set_slave(ctx, pOemParam->ID);
+    if (modbus_connect(ctx) == -1)
+    {
+        printf("Connexion failed: \n");
+        modbus_free(ctx);
+    }
+    else
+    {
+        modbus_set_response_timeout(ctx, &response_timeout);
+       
+           if (rc == -1)
+        {
+            pvRtIoDvc->luUser=0;
+        }
+        else
+        {
+            pvRtIoDvc->luUser=1;
+        };
+        modbus_close(ctx);
+        modbus_free(ctx);
+    };
     return (0);
 }
 
 /****************************************************************************
-function    : evro_tcpc_evro_tcpc_mtcp_aiIosClose
+function    : evro_int_evro_int_evro_6rtdIosClose
 description : Level 1 device Close function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to close
@@ -49,17 +78,16 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_tcpc_evro_tcpc_mtcp_aiIosClose
+void evro_int_evro_int_evro_6rtdIosClose
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
 )
 {
-    printf("MB TCPC AI Close\n");
-    sleep(1);
+    printf("EVRO 6RTD Exit\n");
 }
 
 /****************************************************************************
-function    : evro_tcpc_evro_tcpc_mtcp_aiIosRead
+function    : evro_int_evro_int_evro_6rtdIosRead
 description : Simple device Read function
 parameters  :
    (input) void* pvRtIoDvc :  Run time io struct of the device to read
@@ -67,37 +95,58 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_tcpc_evro_tcpc_mtcp_aiIosRead
+void evro_int_evro_int_evro_6rtdIosRead
 (
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-    modbus_t *ctx;
-    uint16_t tab_reg[150];
-    int rc;
-    strMtcp_ai* pOemParam;
-    pOemParam=(strMtcp_ai*)(pRtIoSplDvc->pvOemParam);
+    /*
+     * pRtIoSplDvc parameter allows you to access to strRtIoChan structure
+     *  of information for each channel.
+     * If required you can then also get strDfIoChan structure.
+     *
+     * Typical implementation for each channel:
+     * (variables refer to structure fields):
+         - Get input electrical value from sensor
+         - If a conversion is required, convert it
+           The info is in channel structures in following fields:
+              cuCnvGainTyp != 0 ==> Gain/Offset to applied
+              pfnCnvCall != 0   ==> 'C' conversion to applied
+         - Update physical data (pvKerPhyData) with computed value
+         - If not locked (cuIsLocked) also update logical data (pvKerData)
+     */
+
+    /*
+     * To improve performances, the number of locked channels is given to
+     * avoid testing each of them when no channels are locked or when all
+     * channels are locked.
+     */
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    uint16_t tab_reg[32]; //data array
+	int rc;
+    strOemParam* pOemParam;
+    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     struct timeval response_timeout;
-    response_timeout.tv_sec = pOemParam->TimeOutsec;
-    response_timeout.tv_usec = pOemParam->TimeOutu;
-    ctx = modbus_new_tcp(pOemParam->IP, pOemParam->PORT); //connect
+    response_timeout.tv_sec = 0;
+    response_timeout.tv_usec = 20000;
+    modbus_set_slave(ctx, pOemParam->ID);
     if (modbus_connect(ctx) == -1)
     {
         printf("Connexion failed: \n");
-        modbus_tcp_ais=0;
         modbus_free(ctx);
     }
     else
     {
-        modbus_tcp_ais=1;
         modbus_set_response_timeout(ctx, &response_timeout);
-        if (pOemParam->FUNCION==3)
+        rc  = modbus_read_input_registers(ctx, 30019, 6, tab_reg);
+							//For EVRO_modules adress=30000//
+		if (rc == -1)
         {
-            rc  = modbus_read_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
+            pRtIoSplDvc->luUser=0;
         }
         else
         {
-            rc  = modbus_read_input_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
+            pRtIoSplDvc->luUser=1;
         };
         modbus_close(ctx);
         modbus_free(ctx);
@@ -107,11 +156,10 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
     strDfIoSplDvc*      pStaticDef;
     uint16              nbChannel;
     uint16              nbIndex;
-
     int16*              pPhyData;   /* Physical value */
     int16*              pLogData;   /* Logical Value    */
     int16               fElecData;
-    float               fMult,fDiv,fOffset;
+    int16               fMult,fDiv,fOffset;
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
     pChannel   =  pRtIoSplDvc->pRtIoChan;
@@ -121,7 +169,7 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
         pPhyData = (int16*)(pChannel->pvKerPhyData);
         pLogData = (int16*)(pChannel->pvKerData);
 
-        fElecData=tab_reg[nbIndex];
+        fElecData=tab_reg[nbIndex];		// data array
         if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
         {
             pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
@@ -139,13 +187,12 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
 
         /* update the channel if not locked */
         if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
-
         pChannel++;
     }
 }
 
 /****************************************************************************
-function    : evro_tcpc_evro_tcpc_mtcp_aiIosCtl
+function    : evro_int_evro_int_evro_6rtdIosCtl
 description : Simple device Control function
 parameters  :
    (input) uchar cuSubFunct :          Sub function parameter.
@@ -156,7 +203,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_tcpc_evro_tcpc_mtcp_aiIosCtl
+void evro_int_evro_int_evro_6rtdIosCtl
 (
     uchar          cuSubFunct,   /* Sub function parameter */
     strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
@@ -164,5 +211,19 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosCtl
     void*          pvReserved    /* Reserved */
 )
 {
+    /*
+     * cuSubFunct parameter gives a function code.
+     * An important one is ISA_IO_CTL_CHANOUTFORCE to force the output
+     *  specified by huChanNum.
+     * In this case a typical implementation is:
+        - if cuSubFunct equal ISA_IO_CTL_CHANOUTFORCE
+           - If a conversion is required, convert physical data (pvKerPhyData)
+             The info is in channel structures in following fields:
+                cuCnvGainTyp != 0 ==> Gain/Offset to applied
+                pfnCnvCall != 0   ==> 'C' conversion to applied
+           - Apply just computed electrical value to the actuator
+     */
 
 }
+/* eof ********************************************************************/
+

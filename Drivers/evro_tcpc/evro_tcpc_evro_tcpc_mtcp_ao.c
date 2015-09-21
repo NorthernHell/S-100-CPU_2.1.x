@@ -76,9 +76,9 @@ void evro_tcpc_evro_tcpc_mtcp_aoIosWrite
     uint16           nbIndex;
     uint16_t tab_reg[128];
 
-    uint16*           pPhyData;  /* Physical value */
-    uint16*           pLogData;  /* Logic Value */
-    uint16            iElecData; /* Electrical value */
+    int16*           pPhyData;  /* Physical value */
+    int16*           pLogData;  /* Logic Value */
+    int16            iElecData; /* Electrical value */
     int              iCountChange =0, okChange;
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
@@ -91,8 +91,8 @@ void evro_tcpc_evro_tcpc_mtcp_aoIosWrite
         /* update the channel if not locked  */
         if(!(pChannel->cuIsLocked))
         {
-            pPhyData = (uint16*)(pChannel->pvKerPhyData);
-            pLogData = (uint16*)(pChannel->pvKerData);
+            pPhyData = (int16*)(pChannel->pvKerPhyData);
+            pLogData = (int16*)(pChannel->pvKerData);
             okChange = 0;
             /* if value has changed or 1rst cycle */
             *pPhyData = *pLogData; /* Logic value = Physic Value */
@@ -104,8 +104,8 @@ void evro_tcpc_evro_tcpc_mtcp_aoIosWrite
 
             /* Apply gain and offset  */
             if (pChannel->luCnvDiv != 0)
-                iElecData = ((iElecData) * (uint16)(pChannel->luCnvMult)
-                             / (uint16)(pChannel->luCnvDiv)) + (uint16)(pChannel->luCnvOfs);
+                iElecData = ((iElecData) * (int16)(pChannel->luCnvMult)
+                             / (int16)(pChannel->luCnvDiv)) + (int16)(pChannel->luCnvOfs);
             tab_reg[nbIndex]=iElecData;
             /* If the variable has changed, we print in the file the new value */
             if (okChange)
@@ -192,12 +192,12 @@ void evro_tcpc_evro_tcpc_mtcp_aoIosCtl
                 pfnCnvCall != 0   ==> 'C' conversion to applied
            - Apply just computed electrical value to the actuator
      */
-    uint16*        pPhyData;      /* Physical value */
+    int16*        pPhyData;      /* Physical value */
     strRtIoChan*  pChannel;
-    uint16         iElecData;     /* Electrical value */
+    int16         iElecData;     /* Electrical value */
     pChannel  =  pRtIoSplDvc->pRtIoChan;
     pChannel += huChanNum;
-    pPhyData  = (uint16*)(pChannel->pvKerPhyData);
+    pPhyData  = (int16*)(pChannel->pvKerPhyData);
 
     switch( cuSubFunct)
     {
@@ -212,8 +212,8 @@ void evro_tcpc_evro_tcpc_mtcp_aoIosCtl
             iElecData = *pPhyData;
         /* Apply gain and offset  */
         if (pChannel->luCnvDiv != 0)
-            iElecData = ((iElecData) * (uint16)(pChannel->luCnvMult)
-                         / (uint16)(pChannel->luCnvDiv)) + (uint16)(pChannel->luCnvOfs);
+            iElecData = ((iElecData) * (int16)(pChannel->luCnvMult)
+                         / (int16)(pChannel->luCnvDiv)) + (int16)(pChannel->luCnvOfs);
         break;
     }
 

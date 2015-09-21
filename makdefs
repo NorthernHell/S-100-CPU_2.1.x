@@ -15,7 +15,7 @@ ODIR = $(ROOT)/Cmds/$(CONFDIR)
 TOOLCHAIN = /home/akru/devel/arm-2008q3
 
 #-mno-align-double was here
-CC = arm-none-linux-gnueabi-gcc -march=armv4t -mtune=arm920t -O3 -xc++ -fsigned-char -D$(OS) -DJIT_DISABLED -DARM_LINUX -DTIMEMARK=50000 -I$(ROOT)/include -I$(TOOLCHAIN)/include -Wall -c $(CC_INCLUDE)
+CC = arm-none-linux-gnueabi-gcc -march=armv4t -mtune=arm920t -O3 -xc++ -fsigned-char -D$(OS) -DJIT_DISABLED -DARM_LINUX -DTIMEMARK=50000 -I$(ROOT)/include -I$(TOOLCHAIN)/include -Wall -c $(CC_INCLUDE) -B230400
 LK = -arm-none-linux-gnueabi-gcc -s -march=armv4t -mtune=arm920
 LKFLAGS= -lm -lstdc++ -L$(TOOLCHAIN)/lib -lACE -lmodbus -L $(LDIR) 
 #-Wl,--rpath -Wl,/usr/arm-linux/lib

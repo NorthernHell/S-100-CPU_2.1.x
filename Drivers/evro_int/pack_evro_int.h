@@ -19,11 +19,15 @@ POU name:
 #include "evro_int_evro_int_evro_indicate_info.h" /* "evro_indicate_info */
 #include "evro_int_evro_int_status_m.h" /* "status_m */
 #include "evro_int_evro_int_evro_6ai_.h" /* "evro_6ai_ */
+#include "evro_int_evro_int_evro_6rtd_.h" /* "evro_6rtd_ */
+#include "evro_int_evro_int_evro_8tc_.h" /* "evro_8tc_ */
 #include "evro_int_evro_int_evro_8dir.h" /* "evro_8dir */
 #include "evro_int_evro_int_evro_16do_.h" /* "evro_16do_ */
 #include "evro_int_evro_int_evro_8ro_.h" /* "evro_8ro_ */
 #include "evro_int_evro_int_evro_4ao.h" /* "evro_4ao */
 #include "evro_int_evro_int_evro_6ai.h" /* "evro_6ai */
+#include "evro_int_evro_int_evro_6rtd.h" /* "evro_6rtd */
+#include "evro_int_evro_int_evro_8tc.h" /* "evro_8tc */
 #include "evro_int_evro_int_evro_4ao_.h" /* "evro_4ao_ */
 #include "evro_int_evro_int_evro_16do.h" /* "evro_16do */
 #include "evro_int_evro_int_evro_8ro.h" /* "evro_8ro */
@@ -76,6 +80,18 @@ ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6ai_evro_6aiIosRead", evro_int_evro_i
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6ai_evro_6aiIosCtl", evro_int_evro_int_evro_6ai_evro_6aiIosCtl) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6ai_status_mIosRead", evro_int_evro_int_evro_6ai_status_mIosRead) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6ai_status_mIosCtl", evro_int_evro_int_evro_6ai_status_mIosCtl) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtd_IosOpen", evro_int_evro_int_evro_6rtd_IosOpen) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtd_IosClose", evro_int_evro_int_evro_6rtd_IosClose) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtd_evro_6rtdIosRead", evro_int_evro_int_evro_6rtd_evro_6rtdIosRead) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtd_evro_6rtdIosCtl", evro_int_evro_int_evro_6rtd_evro_6rtdIosCtl) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtd_status_mIosRead", evro_int_evro_int_evro_6rtd_status_mIosRead) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtd_status_mIosCtl", evro_int_evro_int_evro_6rtd_status_mIosCtl) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tc_IosOpen", evro_int_evro_int_evro_8tc_IosOpen) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tc_IosClose", evro_int_evro_int_evro_8tc_IosClose) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tc_evro_8tcIosRead", evro_int_evro_int_evro_8tc_evro_8tcIosRead) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tc_evro_8tcIosCtl", evro_int_evro_int_evro_8tc_evro_8tcIosCtl) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tc_status_mIosRead", evro_int_evro_int_evro_8tc_status_mIosRead) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tc_status_mIosCtl", evro_int_evro_int_evro_8tc_status_mIosCtl) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8dirIosOpen", evro_int_evro_int_evro_8dirIosOpen) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8dirIosClose", evro_int_evro_int_evro_8dirIosClose) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8dirIosRead", evro_int_evro_int_evro_8dirIosRead) \
@@ -116,6 +132,14 @@ ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6aiIosOpen", evro_int_evro_int_evro_6
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6aiIosClose", evro_int_evro_int_evro_6aiIosClose) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6aiIosRead", evro_int_evro_int_evro_6aiIosRead) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6aiIosCtl", evro_int_evro_int_evro_6aiIosCtl) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtdIosOpen", evro_int_evro_int_evro_6rtdIosOpen) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtdIosClose", evro_int_evro_int_evro_6rtdIosClose) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtdIosRead", evro_int_evro_int_evro_6rtdIosRead) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_6rtdIosCtl", evro_int_evro_int_evro_6rtdIosCtl) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tcIosOpen", evro_int_evro_int_evro_8tcIosOpen) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tcIosClose", evro_int_evro_int_evro_8tcIosClose) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tcIosRead", evro_int_evro_int_evro_8tcIosRead) \
+ISA_DECLARE_HANDLE("evro_int_evro_int_evro_8tcIosCtl", evro_int_evro_int_evro_8tcIosCtl) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_4ao_IosOpen", evro_int_evro_int_evro_4ao_IosOpen) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_4ao_IosClose", evro_int_evro_int_evro_4ao_IosClose) \
 ISA_DECLARE_HANDLE("evro_int_evro_int_evro_4ao_evro_4aoIosWrite", evro_int_evro_int_evro_4ao_evro_4aoIosWrite) \

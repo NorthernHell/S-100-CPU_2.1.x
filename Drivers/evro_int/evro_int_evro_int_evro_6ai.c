@@ -39,7 +39,7 @@ typSTATUS evro_int_evro_int_evro_6aiIosOpen
      */
 	strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
-    printf("EVRO 8AI init\n");
+    printf("EVRO 6AI init\n");
 	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
@@ -83,7 +83,7 @@ void evro_int_evro_int_evro_6aiIosClose
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
 )
 {
-    printf("EVRO 8AI Exit\n");
+    printf("EVRO 6AI Exit\n");
 }
 
 /****************************************************************************
