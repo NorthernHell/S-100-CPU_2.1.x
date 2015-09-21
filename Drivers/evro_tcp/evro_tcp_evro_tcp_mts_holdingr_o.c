@@ -66,28 +66,57 @@ void evro_tcp_evro_tcp_mts_holdingr_oIosWrite
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
 )
 {
+////
+    strRtIoChan*     pChannel;
+    strDfIoSplDvc*   pStaticDef;
+    uint16           nbChannel;
     uint16           nbIndex;
-    int              iCountChange =0;
-    /* Update all channel  */
-    for (nbIndex=0;nbIndex<pRtIoSplDvc->huNbChan;nbIndex++) /* loop for all input channels */
-    {
-      struct _s_RtIoChan *iochan=pRtIoSplDvc->pRtIoChan+nbIndex;
 
-      if (iochan->cuIsLocked == 0)
-      {
-        if (iochan->pfnCnvCall == 0)
-	       *(int32*)iochan->pvKerPhyData=(*(int32*)iochan->pvKerData * *(int32*)(&(iochan->luCnvMult))) / *(int32*)(&(iochan->luCnvDiv)) + *(int32*)(&(iochan->luCnvOfs));
-        else
-	       iochan->pfnCnvCall(ISA_IO_DIR_OUTPUT,(int32*)iochan->pvKerData,(int32*)iochan->pvKerPhyData);
-		 // check change
-      if(*(int32*)iochan->pvKerPhyData != *(int32*)(&(iochan->luUser)))
-      { 
-        mb_mapping->tab_registers[nbIndex] = *(int32*)iochan->pvKerPhyData;
-        *(int32*)(&(iochan->luUser))=*(int32*)iochan->pvKerPhyData;
-        iCountChange++;      
-      }
-      }
+    uint16*           pPhyData;  /* Physical value */
+    uint16*           pLogData;  /* Logic Value */
+    uint16            iElecData; /* Electrical value */
+    int              iCountChange =0, okChange;
+    pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
+    nbChannel  =  pStaticDef->huNbChan;
+    pChannel   =  pRtIoSplDvc->pRtIoChan;
+    /* Update all channel  */
+    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+    {
+        /* update the channel if not locked  */
+        if(!(pChannel->cuIsLocked))
+        {
+            pPhyData = (uint16*)(pChannel->pvKerPhyData);
+            pLogData = (uint16*)(pChannel->pvKerData);
+            okChange = 0;
+            /* if value has changed or 1rst cycle */
+            if( *pLogData != *pPhyData || pRtIoSplDvc->luUser)
+            {
+                okChange = 1;
+                printf("holding change");
+            }
+            *pPhyData = *pLogData; /* Logic value = Physic Value */
+
+            if((pChannel->pfnCnvCall) != 0) /* If there is a cnv */
+                pChannel->pfnCnvCall( ISA_IO_DIR_OUTPUT, pPhyData, &iElecData);
+            else
+                iElecData = *pPhyData;
+
+            /* Apply gain and offset  */
+            if (pChannel->luCnvDiv != 0)
+                iElecData = ((iElecData) * (uint16)(pChannel->luCnvMult)
+                             / (uint16)(pChannel->luCnvDiv)) + (uint16)(pChannel->luCnvOfs);
+
+            /* If the variable has changed, we print in the file the new value */
+            if (okChange)
+            {
+                mb_mapping->tab_registers[nbIndex]=iElecData;
+                iCountChange++;
+            }
+        }
+        pChannel++; /* Go to the next channel */
     }
+    pRtIoSplDvc->luUser = 0; /* first call to Write has been done */
+/////
 }
 
 /****************************************************************************
@@ -110,12 +139,12 @@ void evro_tcp_evro_tcp_mts_holdingr_oIosCtl
     void*          pvReserved    /* Reserved */
 )
 {
-    int32*        pPhyData;      /* Physical value */
+    uint16*        pPhyData;      /* Physical value */
     strRtIoChan*  pChannel;
-    int32         iElecData;     /* Electrical value */
+    uint16         iElecData;     /* Electrical value */
     pChannel  =  pRtIoSplDvc->pRtIoChan;
     pChannel += huChanNum;
-    pPhyData  = (int32*)(pChannel->pvKerPhyData);
+    pPhyData  = (uint16*)(pChannel->pvKerPhyData);
 
     switch( cuSubFunct)
     {
@@ -130,8 +159,8 @@ void evro_tcp_evro_tcp_mts_holdingr_oIosCtl
             iElecData = *pPhyData;
         /* Apply gain and offset  */
         if (pChannel->luCnvDiv != 0)
-            iElecData = ((iElecData) * (int32)(pChannel->luCnvMult)
-                         / (int32)(pChannel->luCnvDiv)) + (int32)(pChannel->luCnvOfs);
+            iElecData = ((iElecData) * (uint16)(pChannel->luCnvMult)
+                         / (uint16)(pChannel->luCnvDiv)) + (uint16)(pChannel->luCnvOfs);
 ////
         break;
     }

@@ -182,7 +182,7 @@ void evro_int_evro_int_evro_16dirIosRead
     uint32*              pPhyData;   /* Physical value */
     uint32*              pLogData;   /* Logical Value    */
     uint32               fElecData;
-    uint32             fMult,fDiv,fOffset;
+    float             fMult,fDiv,fOffset;
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
     pChannel   =  pRtIoSplDvc->pRtIoChan;
@@ -197,9 +197,9 @@ void evro_int_evro_int_evro_16dirIosRead
         {
             pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
         }
-        fMult   = *(uint32 *)(&(pChannel->luCnvMult));
-        fDiv    = *(uint32 *)(&(pChannel->luCnvDiv ));
-        fOffset = *(uint32 *)(&(pChannel->luCnvOfs));
+        fMult   = *(float *)(&(pChannel->luCnvMult));
+        fDiv    = *(float *)(&(pChannel->luCnvDiv ));
+        fOffset = *(float *)(&(pChannel->luCnvOfs));
         if (fDiv != 0.0)
             fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
         if( *pPhyData != fElecData) /* If Physic value != Electrical value */

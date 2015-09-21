@@ -174,9 +174,9 @@ void evro_int_evro_int_evro_6aiIosRead
         {
             pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
         }
-        fMult   = *(int16 *)(&(pChannel->luCnvMult));
-        fDiv    = *(int16 *)(&(pChannel->luCnvDiv ));
-        fOffset = *(int16 *)(&(pChannel->luCnvOfs));
+        fMult   = *(float *)(&(pChannel->luCnvMult));
+        fDiv    = *(float *)(&(pChannel->luCnvDiv ));
+        fOffset = *(float *)(&(pChannel->luCnvOfs));
         if (fDiv != 0.0)
             fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
         if( *pPhyData != fElecData) /* If Physic value != Electrical value */

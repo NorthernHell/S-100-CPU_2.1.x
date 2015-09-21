@@ -76,9 +76,9 @@ void _evro_rtus_evro_rtusmodbus_rtu_holding_o_IosWrite
     uint16           nbChannel;
     uint16           nbIndex;
 
-    int32*           pPhyData;  /* Physical value */
-    int32*           pLogData;  /* Logic Value */
-    int32            iElecData; /* Electrical value */
+    uint16*           pPhyData;  /* Physical value */
+    uint16*           pLogData;  /* Logic Value */
+    uint16            iElecData; /* Electrical value */
     int              iCountChange =0, okChange;
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
@@ -89,8 +89,8 @@ void _evro_rtus_evro_rtusmodbus_rtu_holding_o_IosWrite
         /* update the channel if not locked  */
         if(!(pChannel->cuIsLocked))
         {
-            pPhyData = (int32*)(pChannel->pvKerPhyData);
-            pLogData = (int32*)(pChannel->pvKerData);
+            pPhyData = (uint16*)(pChannel->pvKerPhyData);
+            pLogData = (uint16*)(pChannel->pvKerData);
             okChange = 0;
             /* if value has changed or 1rst cycle */
             if( *pLogData != *pPhyData || pRtIoSplDvc->luUser)
@@ -106,8 +106,8 @@ void _evro_rtus_evro_rtusmodbus_rtu_holding_o_IosWrite
 
             /* Apply gain and offset  */
             if (pChannel->luCnvDiv != 0)
-                iElecData = ((iElecData) * (int32)(pChannel->luCnvMult)
-                             / (int32)(pChannel->luCnvDiv)) + (int32)(pChannel->luCnvOfs);
+                iElecData = ((iElecData) * (uint16)(pChannel->luCnvMult)
+                             / (uint16)(pChannel->luCnvDiv)) + (uint16)(pChannel->luCnvOfs);
 
             /* If the variable has changed, we print in the file the new value */
             if (okChange)
@@ -153,12 +153,12 @@ void _evro_rtus_evro_rtusmodbus_rtu_holding_o_IosCtl
                 pfnCnvCall != 0   ==> 'C' conversion to applied
            - Apply just computed electrical value to the actuator
      */
-    int32*        pPhyData;      /* Physical value */
+    uint16*        pPhyData;      /* Physical value */
     strRtIoChan*  pChannel;
-    int32         iElecData;     /* Electrical value */
+    uint16         iElecData;     /* Electrical value */
     pChannel  =  pRtIoSplDvc->pRtIoChan;
     pChannel += huChanNum;
-    pPhyData  = (int32*)(pChannel->pvKerPhyData);
+    pPhyData  = (uint16*)(pChannel->pvKerPhyData);
 
     switch( cuSubFunct)
     {
@@ -173,8 +173,8 @@ void _evro_rtus_evro_rtusmodbus_rtu_holding_o_IosCtl
             iElecData = *pPhyData;
         /* Apply gain and offset  */
         if (pChannel->luCnvDiv != 0)
-            iElecData = ((iElecData) * (int32)(pChannel->luCnvMult)
-                         / (int32)(pChannel->luCnvDiv)) + (int32)(pChannel->luCnvOfs);
+            iElecData = ((iElecData) * (uint16)(pChannel->luCnvMult)
+                         / (uint16)(pChannel->luCnvDiv)) + (uint16)(pChannel->luCnvOfs);
 ////
         break;
     }

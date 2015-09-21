@@ -96,9 +96,9 @@ void _evro_rtus_evro_rtusmodbus_rtu_holding_i_IosRead
     uint16              nbChannel;
     uint16              nbIndex;
 
-    int16*              pPhyData;   /* Physical value */
-    int16*              pLogData;   /* Logical Value    */
-    int16               fElecData;
+    uint16*              pPhyData;   /* Physical value */
+    uint16*              pLogData;   /* Logical Value    */
+    uint16               fElecData;
     float               fMult,fDiv,fOffset;
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
@@ -106,8 +106,8 @@ void _evro_rtus_evro_rtusmodbus_rtu_holding_i_IosRead
     /*  Update all channel */
     for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
     {
-        pPhyData = (int16*)(pChannel->pvKerPhyData);
-        pLogData = (int16*)(pChannel->pvKerData);
+        pPhyData = (uint16*)(pChannel->pvKerPhyData);
+        pLogData = (uint16*)(pChannel->pvKerData);
 
         fElecData=mb_mapping_rtu->tab_registers[nbIndex];
         if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
