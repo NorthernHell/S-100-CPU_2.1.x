@@ -52,7 +52,7 @@ void *modbus_rtu(void*)
     while(1)
     {
 
-        uint8_t query[MODBUS_TCP_MAX_ADU_LENGTH];
+        uint8_t query[500];
         rc = modbus_receive(ctx_rtu, query);
         if (modbus_rtu_rabota == 0)
         {
@@ -163,10 +163,31 @@ typSTATUS _evro_rtus_evro_rtusmodbus_rtu_serverIosOpen
             ctx_rtu = modbus_new_rtu("/dev/ttySAC1", pOemParam->BAUD_RATE, 'O', 8, pOemParam->STOP_BITS);
         };
     };
+	   if (pOemParam->COM_PORT==3)
+    {
+        if (pOemParam->PARITY==0)
+        {
+            ctx_rtu = modbus_new_rtu("/dev/ttySAC2", pOemParam->BAUD_RATE, 'N', 8, pOemParam->STOP_BITS);
+        };
+        if (pOemParam->PARITY==1)
+        {
+            ctx_rtu = modbus_new_rtu("/dev/ttySAC2", pOemParam->BAUD_RATE, 'E', 8, pOemParam->STOP_BITS);
+        };
+        if (pOemParam->PARITY==2)
+        {
+            ctx_rtu = modbus_new_rtu("/dev/ttySAC2", pOemParam->BAUD_RATE, 'O', 8, pOemParam->STOP_BITS);
+        };
+    };
 
     modbus_set_slave(ctx_rtu, pOemParam->SLAVE_ID);
     modbus_connect(ctx_rtu);
     printf("Serial connection started!\n");
+///
+		struct timeval response_timeout;
+		response_timeout.tv_sec = 0;
+		response_timeout.tv_usec = 1;
+modbus_set_byte_timeout(ctx_rtu, &response_timeout);
+///
     mb_mapping_rtu = modbus_mapping_new(0xff, 0xff,0xff, 0xff);
     if (mb_mapping_rtu == NULL)
     {
