@@ -1,17 +1,17 @@
 /**************************************************************************
-File:               evro_int_evro_int_evro_8do.c
+File:               evro_int_evro_int_evro_8ro.c
 Author:             Umputun
 Creation date:      21/07/2012 - 14:25
-Device name:        EVRO_8DO
+Device name:        EVRO_8ro
 ***************************************************************************/
 
 #include <dsys0def.h>
 #include <dios0def.h>
-#include <evro_int_evro_int_evro_8do.h>
+#include <evro_int_evro_int_evro_8ro.h>
 #include "modbus/modbus.h"
 /* OEM Parameters */
 
-typedef struct _tag_strEvro_8do
+typedef struct _tag_strEvro_8ro
 {
     int32  ID;   /* Node ID */
    
@@ -19,7 +19,7 @@ typedef struct _tag_strEvro_8do
 
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8doIosOpen
+function    : evro_int_evro_int_evro_8roIosOpen
 description : Level 1 device Open function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to open
@@ -27,24 +27,23 @@ return value: typSTATUS :  0 if successful, BAD_RET if error
 warning     : Returning with an error stops the kernel resource starting
 ****************************************************************************/
 
-typSTATUS evro_int_evro_int_evro_8doIosOpen
+typSTATUS evro_int_evro_int_evro_8roIosOpen
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
 )
-{
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
-    /*
+{    /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
      * For a simple device it just initializes it.
      */
-    printf("EVRO 8AO init\n");
+    strOemParam* pOemParam;
+    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
+    printf("EVRO 8RO init\n");
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 50000;
+    response_timeout.tv_usec = 20000;
     modbus_set_slave(ctx, pOemParam->ID);
     if (modbus_connect(ctx) == -1)
     {
@@ -54,23 +53,23 @@ typSTATUS evro_int_evro_int_evro_8doIosOpen
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        rc  = modbus_write_registers(ctx, 40000, 1, tab_reg); //write in holding registers(bit mask)
-           if (rc == -1)
+       
+         if (rc == -1)
         {
             pvRtIoDvc->luUser=0;
         }
         else
         {
             pvRtIoDvc->luUser=1;
-        }
+        };
         modbus_close(ctx);
         modbus_free(ctx);
-    }
+    };
     return (0);
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8doIosClose
+function    : evro_int_evro_int_evro_8roIosClose
 description : Level 1 device Close function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to close
@@ -78,16 +77,16 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8doIosClose
+void evro_int_evro_int_evro_8roIosClose
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
 )
 {
-    printf("EVRO 8AO Exit\n");
+    printf("EVRO 8RO Exit\n");
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8doIosWrite
+function    : evro_int_evro_int_evro_8roIosWrite
 description : Simple device Write function
 parameters  :
    (input) void* pvRtIoDvc :  Run time io struct of the device to write
@@ -95,7 +94,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8doIosWrite
+void evro_int_evro_int_evro_8roIosWrite
 (
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
 )
@@ -135,7 +134,8 @@ void evro_int_evro_int_evro_8doIosWrite
     uchar*           pPhyData;      /* Physical value */
     uchar*           pLogData;      /* Logic Value */
     uchar            byElecData;    /* Electrical value ('1' or '0') */
-    uint8_t            sNewMsg[128];
+    uint8_t            sNewMsg[128];// for coil registers bits
+	uint16_t           tab_reg[32];// for holding registers
     int              okChange;      /* indicate one of the channel has changed */
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
@@ -176,14 +176,32 @@ void evro_int_evro_int_evro_8doIosWrite
     sNewMsg[ nbChannel] = 0; /* null char at the end of the string */
     /* If one variable has changed, we print in the file the new values */
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+
+	
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 50000;
+    response_timeout.tv_usec = 20000; //for rtu_server
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_set_slave(ctx, pOemParam->ID);
-    if (modbus_connect(ctx) == -1)
+   
+	//convert data for write in holding registrs 
+	//        uint16_t *tab_reg=new uint16_t[128];
+			tab_reg[0]=0;
+            tab_reg[0] += (uint16_t)(sNewMsg[0] << 0);
+			tab_reg[0] += (uint16_t)(sNewMsg[1] << 1);
+            tab_reg[0] += (uint16_t)(sNewMsg[2] << 2);
+			tab_reg[0] += (uint16_t)(sNewMsg[3] << 3);
+            tab_reg[0] += (uint16_t)(sNewMsg[4] << 4);
+			tab_reg[0] += (uint16_t)(sNewMsg[5] << 5);
+            tab_reg[0] += (uint16_t)(sNewMsg[6] << 6);
+			tab_reg[0] += (uint16_t)(sNewMsg[7] << 7);
+	//end convert data for write in holding registrs 
+			
+	//write
+	
+	if (modbus_connect(ctx) == -1)
     {
         printf("Connexion failed: \n");
         modbus_free(ctx);
@@ -191,22 +209,25 @@ void evro_int_evro_int_evro_8doIosWrite
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        rc  = modbus_write_bits(ctx, 0,nbChannel, sNewMsg);
-        if (rc == -1)
+       // rc  = modbus_write_bits(ctx, 0,nbChannel, sNewMsg); //write in coil registers
+          rc  = modbus_write_registers(ctx, 40000, 1, tab_reg); //write in holding registers(bit mask)
+							//For EVRO_modules adress=40000//
+		
+		if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;
         }
         else
         {
             pRtIoSplDvc->luUser=1;
-        }
+        };
         modbus_close(ctx);
         modbus_free(ctx);
-    }
+    };
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8doIosCtl
+function    : evro_int_evro_int_evro_8roIosCtl
 description : Simple device Control function
 parameters  :
    (input) uchar cuSubFunct :          Sub function parameter.
@@ -217,7 +238,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8doIosCtl
+void evro_int_evro_int_evro_8roIosCtl
 (
     uchar          cuSubFunct,   /* Sub function parameter */
     strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */

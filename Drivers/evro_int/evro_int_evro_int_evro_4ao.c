@@ -1,30 +1,26 @@
 /**************************************************************************
-File:               evro_int_evro_int_evro_8ao.c
+File:               evro_int_evro_int_evro_4ao.c
 Author:             Umputun
 Creation date:      21/07/2012 - 14:25
-Device name:        EVRO_8AO
+Device name:        EVRO_4AO
 ***************************************************************************/
 
 #include <dsys0def.h>
 #include <dios0def.h>
-#include <evro_int_evro_int_evro_8ao.h>
+#include <evro_int_evro_int_evro_4ao.h>
 #include "modbus/modbus.h"
 
 /* OEM Parameters */
 
-typedef struct _tag_strEvro_8ao
+typedef struct _tag_strEvro_4ao
 {
     int32  ID;   /* Node ID */
-    int32  Initial_Value_1;
-    int32  Initial_Value_2;
-    int32  Initial_Value_3;
-    int32  Initial_Value_4;
-    int32  Watchdog;   /* Timer in seconds. 0 = disabled. 1 - 65535 = enabled */
+ 
 } strOemParam;
 
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8aoIosOpen
+function    : evro_int_evro_int_evro_4aoIosOpen
 description : Level 1 device Open function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to open
@@ -32,19 +28,18 @@ return value: typSTATUS :  0 if successful, BAD_RET if error
 warning     : Returning with an error stops the kernel resource starting
 ****************************************************************************/
 
-typSTATUS evro_int_evro_int_evro_8aoIosOpen
+typSTATUS evro_int_evro_int_evro_4aoIosOpen
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
 )
-{
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
-    /*
+{   /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
      * For a simple device it just initializes it.
      */
-    printf("EVRO 8AO init\n");
+    strOemParam* pOemParam;
+    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
+    printf("EVRO 4AO init\n");
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     uint16_t tab_reg[33];
@@ -60,23 +55,8 @@ typSTATUS evro_int_evro_int_evro_8aoIosOpen
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        //
-        tab_reg[0]=pOemParam->Initial_Value_1;
-        tab_reg[1]=pOemParam->Initial_Value_2;
-        tab_reg[2]=pOemParam->Initial_Value_3;
-        tab_reg[3]=pOemParam->Initial_Value_4;
-        tab_reg[4]=pOemParam->Watchdog;
-        //
-        rc = modbus_write_registers(ctx, 5, 5,tab_reg);
-        if (rc == -1)
-        {
-            rc = modbus_write_registers(ctx, 5, 5,tab_reg);
-        };
-        if (rc == -1)
-        {
-            rc = modbus_write_registers(ctx, 5, 5,tab_reg);
-        };
-        if (rc == -1)
+                
+		if (rc == -1)
         {
             pvRtIoDvc->luUser=0;
         }
@@ -91,7 +71,7 @@ typSTATUS evro_int_evro_int_evro_8aoIosOpen
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8aoIosClose
+function    : evro_int_evro_int_evro_4aoIosClose
 description : Level 1 device Close function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to close
@@ -99,16 +79,16 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8aoIosClose
+void evro_int_evro_int_evro_4aoIosClose
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
 )
 {
-    printf("EVRO 8AO Exit\n");
+    printf("EVRO 4AO Exit\n");
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8aoIosWrite
+function    : evro_int_evro_int_evro_4aoIosWrite
 description : Simple device Write function
 parameters  :
    (input) void* pvRtIoDvc :  Run time io struct of the device to write
@@ -116,7 +96,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8aoIosWrite
+void evro_int_evro_int_evro_4aoIosWrite
 (
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
 )
@@ -215,15 +195,8 @@ void evro_int_evro_int_evro_8aoIosWrite
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        rc  = modbus_write_registers(ctx, 1, 4, tab_reg);
-        if (rc == -1)
-        {
-            rc  = modbus_write_registers(ctx, 1, 4, tab_reg);
-        };
-        if (rc == -1)
-        {
-            rc  = modbus_write_registers(ctx, 1, 4, tab_reg);
-        };
+        rc  = modbus_write_registers(ctx, 40000, 4, tab_reg);
+        
         if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;
@@ -238,7 +211,7 @@ void evro_int_evro_int_evro_8aoIosWrite
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8aoIosCtl
+function    : evro_int_evro_int_evro_4aoIosCtl
 description : Simple device Control function
 parameters  :
    (input) uchar cuSubFunct :          Sub function parameter.
@@ -249,7 +222,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8aoIosCtl
+void evro_int_evro_int_evro_4aoIosCtl
 (
     uchar          cuSubFunct,   /* Sub function parameter */
     strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */

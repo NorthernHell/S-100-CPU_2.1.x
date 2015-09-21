@@ -1,24 +1,24 @@
 /**************************************************************************
-File:               evro_int_evro_int_evro_16dir.c
+File:               evro_int_evro_int_evro_temp_info.c
 Author:             Umputun
 Creation date:      21/07/2012 - 14:25
-Device name:        EVRO_16dIR
+Device name:        evro_temp_info
 ***************************************************************************/
 
 #include <dsys0def.h>
 #include <dios0def.h>
-#include <evro_int_evro_int_evro_16dir.h>
+#include <evro_int_evro_int_evro_temp_info.h>
 #include "modbus/modbus.h"
 /* OEM Parameters */
 
-typedef struct _tag_strEvro_16dir
+typedef struct _tag_strEvro_temp_info
 {
-     int32  ID;   /* Node ID */
- } strOemParam;
+   int32  ID;   /* Node ID */    
+} strOemParam;
 
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_16dirIosOpen
+function    : evro_int_evro_int_evro_temp_infoIosOpen
 description : Level 1 device Open function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to open
@@ -26,19 +26,20 @@ return value: typSTATUS :  0 if successful, BAD_RET if error
 warning     : Returning with an error stops the kernel resource starting
 ****************************************************************************/
 
-typSTATUS evro_int_evro_int_evro_16dirIosOpen
+typSTATUS evro_int_evro_int_evro_temp_infoIosOpen
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
 )
 {
-    /*
+     /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
      * For a simple device it just initializes it.
      */
-    strOemParam* pOemParam;
+	 
+	strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
-    printf("EVRO 16DIC init\n");
+	printf("EVRO temp info init\n");
 	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
@@ -53,8 +54,8 @@ typSTATUS evro_int_evro_int_evro_16dirIosOpen
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-      
-        if (rc == -1)
+       
+           if (rc == -1)
         {
             pvRtIoDvc->luUser=0;
         }
@@ -62,15 +63,14 @@ typSTATUS evro_int_evro_int_evro_16dirIosOpen
         {
             pvRtIoDvc->luUser=1;
         };
- 
-		modbus_close(ctx);
+        modbus_close(ctx);
         modbus_free(ctx);
     };
     return (0);
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_16dirIosClose
+function    : evro_int_evro_int_evro_temp_infoIosClose
 description : Level 1 device Close function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to close
@@ -78,16 +78,16 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_16dirIosClose
+void evro_int_evro_int_evro_temp_infoIosClose
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
 )
 {
-    printf("EVRO 16dIC Exit\n");
+    printf("EVRO temp info Exit\n");
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_16dirIosRead
+function    : evro_int_evro_int_evro_temp_infoIosRead
 description : Simple device Read function
 parameters  :
    (input) void* pvRtIoDvc :  Run time io struct of the device to read
@@ -95,7 +95,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_16dirIosRead
+void evro_int_evro_int_evro_temp_infoIosRead
 (
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
@@ -122,9 +122,8 @@ void evro_int_evro_int_evro_16dirIosRead
      * channels are locked.
      */
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
-    uint16_t tab_reg[128];
-    uint32 tab_counters[16];
-    int rc;
+    uint16_t tab_reg[32]; //data array
+	int rc;
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     struct timeval response_timeout;
@@ -139,35 +138,16 @@ void evro_int_evro_int_evro_16dirIosRead
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        //Read counters
-        rc  = modbus_read_registers(ctx, 40001, 32, tab_reg);//read from holding registers
-						//For EVRO modules adress 40000
-        if (rc == -1)
+        rc  = modbus_read_input_registers(ctx, 30030, 1, tab_reg);
+							//For EVRO_modules adress=30000//
+		if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;
         }
         else
         {
             pRtIoSplDvc->luUser=1;
-            //Convert Counters
-			
-			tab_counters[0]=(tab_reg[1]<<16)+tab_reg[0];
-			tab_counters[1]=(tab_reg[3]<<16)+tab_reg[2];
-			tab_counters[2]=(tab_reg[5]<<16)+tab_reg[4];
-			tab_counters[3]=(tab_reg[7]<<16)+tab_reg[6];
-			tab_counters[4]=(tab_reg[9]<<16)+tab_reg[8];
-			tab_counters[5]=(tab_reg[11]<<16)+tab_reg[10];
-			tab_counters[6]=(tab_reg[13]<<16)+tab_reg[12];
-			tab_counters[7]=(tab_reg[15]<<16)+tab_reg[14];
-			tab_counters[8]=(tab_reg[17]<<16)+tab_reg[16];
-			tab_counters[9]=(tab_reg[19]<<16)+tab_reg[18];
-			tab_counters[10]=(tab_reg[21]<<16)+tab_reg[20];
-			tab_counters[11]=(tab_reg[23]<<16)+tab_reg[22];
-			tab_counters[12]=(tab_reg[25]<<16)+tab_reg[24];
-			tab_counters[13]=(tab_reg[27]<<16)+tab_reg[26];
-			tab_counters[14]=(tab_reg[29]<<16)+tab_reg[28];
-			tab_counters[15]=(tab_reg[31]<<16)+tab_reg[30];
-		};
+        };
         modbus_close(ctx);
         modbus_free(ctx);
     };
@@ -176,28 +156,27 @@ void evro_int_evro_int_evro_16dirIosRead
     strDfIoSplDvc*      pStaticDef;
     uint16              nbChannel;
     uint16              nbIndex;
-
-    uint32*              pPhyData;   /* Physical value */
-    uint32*              pLogData;   /* Logical Value    */
-    uint32               fElecData;
-    uint32             fMult,fDiv,fOffset;
+    int16*              pPhyData;   /* Physical value */
+    int16*              pLogData;   /* Logical Value    */
+    int16               fElecData;
+    int16               fMult,fDiv,fOffset;
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
     pChannel   =  pRtIoSplDvc->pRtIoChan;
     /*  Update all channel */
-    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+    for( nbIndex = 0; nbIndex < 1; nbIndex++)
     {
-        pPhyData = (uint32*)(pChannel->pvKerPhyData);
-        pLogData = (uint32*)(pChannel->pvKerData);
+        pPhyData = (int16*)(pChannel->pvKerPhyData);
+        pLogData = (int16*)(pChannel->pvKerData);
 
-        fElecData=tab_counters[nbIndex];
+        fElecData=tab_reg[nbIndex];		// data array
         if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
         {
             pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
         }
-        fMult   = *(uint32 *)(&(pChannel->luCnvMult));
-        fDiv    = *(uint32 *)(&(pChannel->luCnvDiv ));
-        fOffset = *(uint32 *)(&(pChannel->luCnvOfs));
+        fMult   = *(int16 *)(&(pChannel->luCnvMult));
+        fDiv    = *(int16 *)(&(pChannel->luCnvDiv ));
+        fOffset = *(int16 *)(&(pChannel->luCnvOfs));
         if (fDiv != 0.0)
             fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
         if( *pPhyData != fElecData) /* If Physic value != Electrical value */
@@ -208,13 +187,12 @@ void evro_int_evro_int_evro_16dirIosRead
 
         /* update the channel if not locked */
         if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
-
         pChannel++;
     }
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_16dirIosCtl
+function    : evro_int_evro_int_evro_temp_infoIosCtl
 description : Simple device Control function
 parameters  :
    (input) uchar cuSubFunct :          Sub function parameter.
@@ -225,7 +203,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_16dirIosCtl
+void evro_int_evro_int_evro_temp_infoIosCtl
 (
     uchar          cuSubFunct,   /* Sub function parameter */
     strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
@@ -247,6 +225,5 @@ void evro_int_evro_int_evro_16dirIosCtl
      */
 
 }
-
 /* eof ********************************************************************/
 

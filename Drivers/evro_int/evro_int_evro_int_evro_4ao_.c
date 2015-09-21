@@ -1,35 +1,31 @@
 /**************************************************************************
-File:               evro_int_evro_int_evro_8ao_.c
+File:               evro_int_evro_int_evro_4ao_.c
 Author:             umputun
 Creation date:      21/07/2012 - 20:05
-Device name:        EVRO_8AO_
+Device name:        EVRO_4AO_
 ***************************************************************************/
 
 #include <dsys0def.h>
 #include <dios0def.h>
-#include <evro_int_evro_int_evro_8ao_.h>
-#include <evro_int_evro_int_evro_8ao.h>
+#include <evro_int_evro_int_evro_4ao_.h>
+#include <evro_int_evro_int_evro_4ao.h>
 #include <evro_int_evro_int_status_m.h>
 /* OEM Parameters of complex device */
-int modbus8ao1;
+int modbus4ao1;
 
 
 /* OEM Parameters of linked simple devices */
 
-typedef struct _tag_strEvro_8ao
+typedef struct _tag_strEvro_4ao
 {
     int32  ID;   /* Node ID */
-    int32  Initial_Value_1;
-    int32  Initial_Value_2;
-    int32  Initial_Value_3;
-    int32  Initial_Value_4;
-    int32  Watchdog;   /* Timer in seconds. 0 = disabled. 1 - 65535 = enabled */
-} strEvro_8ao;
+   
+} strEvro_4ao;
 
 
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8ao_IosOpen
+function    : evro_int_evro_int_evro_4ao_IosOpen
 description : Level 1 device Open function
 parameters  :
    (input) strRtIoCpxDvc* pvRtIoDvc :  Run time io struct of the device to open
@@ -37,7 +33,7 @@ return value: typSTATUS :  0 if successful, BAD_RET if error
 warning     : Returning with an error stops the kernel resource starting
 ****************************************************************************/
 
-typSTATUS evro_int_evro_int_evro_8ao_IosOpen
+typSTATUS evro_int_evro_int_evro_4ao_IosOpen
 (
     strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to open */
 )
@@ -49,7 +45,7 @@ typSTATUS evro_int_evro_int_evro_8ao_IosOpen
      */
     strRtIoSplDvc* pRtIoSplDvc;
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
-    if (evro_int_evro_int_evro_8aoIosOpen (pRtIoSplDvc) != 0)
+    if (evro_int_evro_int_evro_4aoIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
         return(BAD_RET);
@@ -64,7 +60,7 @@ typSTATUS evro_int_evro_int_evro_8ao_IosOpen
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8ao_IosClose
+function    : evro_int_evro_int_evro_4ao_IosClose
 description : Level 1 device Close function
 parameters  :
    (input) strRtIoCpxDvc* pvRtIoDvc :  Run time io struct of the device to close
@@ -72,20 +68,20 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8ao_IosClose
+void evro_int_evro_int_evro_4ao_IosClose
 (
     strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to close */
 )
 {
     strRtIoSplDvc* pRtIoSplDvc;
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
-    evro_int_evro_int_evro_8aoIosClose (pRtIoSplDvc);
+    evro_int_evro_int_evro_4aoIosClose (pRtIoSplDvc);
     pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     evro_int_evro_int_status_mIosClose(pRtIoSplDvc);
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8ao_evro_8aoIosWrite
+function    : evro_int_evro_int_evro_4ao_evro_4aoIosWrite
 description : Simple device Write function
 parameters  :
    (input) void* pvRtIoDvc :  Run time io struct of the device to write
@@ -93,7 +89,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8ao_evro_8aoIosWrite
+void evro_int_evro_int_evro_4ao_evro_4aoIosWrite
 (
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
 )
@@ -126,12 +122,12 @@ void evro_int_evro_int_evro_8ao_evro_8aoIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
-    evro_int_evro_int_evro_8aoIosWrite(pRtIoSplDvc);
-    modbus8ao1=pRtIoSplDvc->luUser;
+    evro_int_evro_int_evro_4aoIosWrite(pRtIoSplDvc);
+    modbus4ao1=pRtIoSplDvc->luUser;
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8ao_evro_8aoIosCtl
+function    : evro_int_evro_int_evro_4ao_evro_4aoIosCtl
 description : Simple device Control function
 parameters  :
    (input) uchar cuSubFunct :          Sub function parameter.
@@ -142,7 +138,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8ao_evro_8aoIosCtl
+void evro_int_evro_int_evro_4ao_evro_4aoIosCtl
 (
     uchar          cuSubFunct,   /* Sub function parameter */
     strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
@@ -162,11 +158,11 @@ void evro_int_evro_int_evro_8ao_evro_8aoIosCtl
                 pfnCnvCall != 0   ==> 'C' conversion to applied
            - Apply just computed electrical value to the actuator
      */
-    evro_int_evro_int_evro_8aoIosCtl(cuSubFunct,pRtIoSplDvc,huChanNum,pvReserved);
+    evro_int_evro_int_evro_4aoIosCtl(cuSubFunct,pRtIoSplDvc,huChanNum,pvReserved);
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8ao_status_mIosRead
+function    : evro_int_evro_int_evro_4ao_status_mIosRead
 description : Simple device Read function
 parameters  :
    (input) void* pvRtIoDvc :  Run time io struct of the device to read
@@ -174,7 +170,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8ao_status_mIosRead
+void evro_int_evro_int_evro_4ao_status_mIosRead
 (
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
@@ -200,12 +196,12 @@ void evro_int_evro_int_evro_8ao_status_mIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbus8ao1;
+    pRtIoSplDvc->luUser=modbus4ao1;
     evro_int_evro_int_status_mIosRead(pRtIoSplDvc);
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8ao_status_mIosCtl
+function    : evro_int_evro_int_evro_4ao_status_mIosCtl
 description : Simple device Control function
 parameters  :
    (input) uchar cuSubFunct :          Sub function parameter.
@@ -216,7 +212,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8ao_status_mIosCtl
+void evro_int_evro_int_evro_4ao_status_mIosCtl
 (
     uchar          cuSubFunct,   /* Sub function parameter */
     strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */

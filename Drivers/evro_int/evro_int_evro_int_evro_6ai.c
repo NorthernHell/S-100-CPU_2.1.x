@@ -1,56 +1,25 @@
 /**************************************************************************
-File:               evro_int_evro_int_evro_8ai.c
+File:               evro_int_evro_int_evro_6ai.c
 Author:             Umputun
 Creation date:      21/07/2012 - 14:25
-Device name:        EVRO_8AI
+Device name:        EVRO_6AI
 ***************************************************************************/
 
 #include <dsys0def.h>
 #include <dios0def.h>
-#include <evro_int_evro_int_evro_8ai.h>
+#include <evro_int_evro_int_evro_6ai.h>
 #include "modbus/modbus.h"
 /* OEM Parameters */
 
-typedef struct _tag_strEvro_8ai
+typedef struct _tag_strEvro_6ai
 {
     int32  ID;   /* Node ID */
-    int32  Filter_1;
-    int32  Filter_2;
-    int32  Filter_3;
-    int32  Filter_4;
-    int32  Filter_5;
-    int32  Filter_6;
-    int32  Filter_7;
-    int32  Filter_8;
-    int32  Filter_9;
-    int32  Filter_10;
-    int32  Filter_11;
-    int32  Filter_12;
-    int32  Filter_13;
-    int32  Filter_14;
-    int32  Filter_15;
-    int32  Filter_16;
-    int32  Filter_17;
-    int32  Filter_18;
-    int32  Filter_19;
-    int32  Filter_20;
-    int32  Filter_21;
-    int32  Filter_22;
-    int32  Filter_23;
-    int32  Filter_24;
-    int32  Filter_25;
-    int32  Filter_26;
-    int32  Filter_27;
-    int32  Filter_28;
-    int32  Filter_29;
-    int32  Filter_30;
-    int32  Filter_31;
-    int32  Filter_32;
+   
 } strOemParam;
 
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8aiIosOpen
+function    : evro_int_evro_int_evro_6aiIosOpen
 description : Level 1 device Open function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to open
@@ -58,22 +27,21 @@ return value: typSTATUS :  0 if successful, BAD_RET if error
 warning     : Returning with an error stops the kernel resource starting
 ****************************************************************************/
 
-typSTATUS evro_int_evro_int_evro_8aiIosOpen
+typSTATUS evro_int_evro_int_evro_6aiIosOpen
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
 )
 {
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
-    /*
+     /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
      * For a simple device it just initializes it.
      */
+	strOemParam* pOemParam;
+    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
     printf("EVRO 8AI init\n");
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
-    uint16_t tab_reg[33];
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
     response_timeout.tv_usec = 20000;
@@ -86,50 +54,8 @@ typSTATUS evro_int_evro_int_evro_8aiIosOpen
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        //
-        tab_reg[0]=pOemParam->Filter_1;
-        tab_reg[1]=pOemParam->Filter_2;
-        tab_reg[2]=pOemParam->Filter_3;
-        tab_reg[3]=pOemParam->Filter_4;
-        tab_reg[4]=pOemParam->Filter_5;
-        tab_reg[5]=pOemParam->Filter_6;
-        tab_reg[6]=pOemParam->Filter_7;
-        tab_reg[7]=pOemParam->Filter_8;
-        tab_reg[8]=pOemParam->Filter_9;
-        tab_reg[9]=pOemParam->Filter_10;
-        tab_reg[10]=pOemParam->Filter_11;
-        tab_reg[11]=pOemParam->Filter_12;
-        tab_reg[12]=pOemParam->Filter_13;
-        tab_reg[13]=pOemParam->Filter_14;
-        tab_reg[14]=pOemParam->Filter_15;
-        tab_reg[15]=pOemParam->Filter_16;
-        tab_reg[16]=pOemParam->Filter_17;
-        tab_reg[17]=pOemParam->Filter_18;
-        tab_reg[18]=pOemParam->Filter_19;
-        tab_reg[19]=pOemParam->Filter_20;
-        tab_reg[20]=pOemParam->Filter_21;
-        tab_reg[21]=pOemParam->Filter_22;
-        tab_reg[22]=pOemParam->Filter_23;
-        tab_reg[23]=pOemParam->Filter_24;
-        tab_reg[24]=pOemParam->Filter_25;
-        tab_reg[25]=pOemParam->Filter_26;
-        tab_reg[26]=pOemParam->Filter_27;
-        tab_reg[27]=pOemParam->Filter_28;
-        tab_reg[28]=pOemParam->Filter_29;
-        tab_reg[29]=pOemParam->Filter_30;
-        tab_reg[30]=pOemParam->Filter_31;
-        tab_reg[31]=pOemParam->Filter_32;
-        //
-        rc = modbus_write_registers(ctx, 10, 32,tab_reg);
-        if (rc == -1)
-        {
-            rc = modbus_write_registers(ctx, 10, 32,tab_reg);
-        };
-        if (rc == -1)
-        {
-            rc = modbus_write_registers(ctx, 10, 32,tab_reg);
-        };
-        if (rc == -1)
+       
+           if (rc == -1)
         {
             pvRtIoDvc->luUser=0;
         }
@@ -144,7 +70,7 @@ typSTATUS evro_int_evro_int_evro_8aiIosOpen
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8aiIosClose
+function    : evro_int_evro_int_evro_6aiIosClose
 description : Level 1 device Close function
 parameters  :
    (input) strRtIoSplDvc* pvRtIoDvc :  Run time io struct of the device to close
@@ -152,7 +78,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8aiIosClose
+void evro_int_evro_int_evro_6aiIosClose
 (
     strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
 )
@@ -161,7 +87,7 @@ void evro_int_evro_int_evro_8aiIosClose
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8aiIosRead
+function    : evro_int_evro_int_evro_6aiIosRead
 description : Simple device Read function
 parameters  :
    (input) void* pvRtIoDvc :  Run time io struct of the device to read
@@ -169,7 +95,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8aiIosRead
+void evro_int_evro_int_evro_6aiIosRead
 (
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
@@ -196,8 +122,8 @@ void evro_int_evro_int_evro_8aiIosRead
      * channels are locked.
      */
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
-    uint16_t tab_reg[10];
-    int rc;
+    uint16_t tab_reg[32]; //data array
+	int rc;
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     struct timeval response_timeout;
@@ -212,16 +138,9 @@ void evro_int_evro_int_evro_8aiIosRead
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        rc  = modbus_read_registers(ctx, 1, 9, tab_reg);
-        if (rc == -1)
-        {
-            rc  = modbus_read_registers(ctx, 1, 9, tab_reg);
-        };
-        if (rc == -1)
-        {
-            rc  = modbus_read_registers(ctx, 1, 9, tab_reg);
-        };
-        if (rc == -1)
+        rc  = modbus_read_input_registers(ctx, 30019, 6, tab_reg);
+							//For EVRO_modules adress=30000//
+		if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;
         }
@@ -237,7 +156,6 @@ void evro_int_evro_int_evro_8aiIosRead
     strDfIoSplDvc*      pStaticDef;
     uint16              nbChannel;
     uint16              nbIndex;
-
     int16*              pPhyData;   /* Physical value */
     int16*              pLogData;   /* Logical Value    */
     int16               fElecData;
@@ -251,7 +169,7 @@ void evro_int_evro_int_evro_8aiIosRead
         pPhyData = (int16*)(pChannel->pvKerPhyData);
         pLogData = (int16*)(pChannel->pvKerData);
 
-        fElecData=tab_reg[nbIndex];
+        fElecData=tab_reg[nbIndex];		// data array
         if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
         {
             pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
@@ -274,7 +192,7 @@ void evro_int_evro_int_evro_8aiIosRead
 }
 
 /****************************************************************************
-function    : evro_int_evro_int_evro_8aiIosCtl
+function    : evro_int_evro_int_evro_6aiIosCtl
 description : Simple device Control function
 parameters  :
    (input) uchar cuSubFunct :          Sub function parameter.
@@ -285,7 +203,7 @@ return value: None
 warning     :
 ****************************************************************************/
 
-void evro_int_evro_int_evro_8aiIosCtl
+void evro_int_evro_int_evro_6aiIosCtl
 (
     uchar          cuSubFunct,   /* Sub function parameter */
     strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */

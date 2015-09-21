@@ -40,8 +40,6 @@ typSTATUS evro_int_evro_int_evro_8diIosOpen
      * For a simple device it just initializes it.
      */
     printf("EVRO 8DI init\n");
-    
-	/*
 	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
@@ -67,7 +65,7 @@ typSTATUS evro_int_evro_int_evro_8diIosOpen
         };
         modbus_close(ctx);
         modbus_free(ctx);
-    };*/
+    };
 
     return (0);
 }
@@ -150,7 +148,7 @@ void evro_int_evro_int_evro_8diIosRead
         else
         {
             pRtIoSplDvc->luUser=1;
-        }
+        };
         modbus_close(ctx);
         modbus_free(ctx);
     };

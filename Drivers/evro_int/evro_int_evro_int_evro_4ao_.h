@@ -1,31 +1,31 @@
 /**************************************************************************
-File:               evro_int_evro_int_evro_8ao_.h
+File:               evro_int_evro_int_evro_4ao_.h
 Author:             umputun
 Creation date:      21/07/2012 - 20:05
-Device name:        EVRO_8AO_
+Device name:        EVRO_4AO_
 ***************************************************************************/
 
-#ifndef _EVRO_INT_EVRO_INT_EVRO_8AO__H /* nested Headers management */
-#define _EVRO_INT_EVRO_INT_EVRO_8AO__H
+#ifndef _EVRO_INT_EVRO_INT_EVRO_4AO__H /* nested Headers management */
+#define _EVRO_INT_EVRO_INT_EVRO_4AO__H
 
 /* prototypes */
 
-typSTATUS evro_int_evro_int_evro_8ao_IosOpen
+typSTATUS evro_int_evro_int_evro_4ao_IosOpen
    (
    strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to open */
    );
 
-void evro_int_evro_int_evro_8ao_IosClose
+void evro_int_evro_int_evro_4ao_IosClose
    (
    strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to close */
    );
 
-void evro_int_evro_int_evro_8ao_evro_8aoIosWrite
+void evro_int_evro_int_evro_4ao_evro_4aoIosWrite
    (
    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
    );
 
-void evro_int_evro_int_evro_8ao_evro_8aoIosCtl
+void evro_int_evro_int_evro_4ao_evro_4aoIosCtl
    (
    uchar          cuSubFunct,   /* Sub function parameter */
    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
@@ -33,12 +33,12 @@ void evro_int_evro_int_evro_8ao_evro_8aoIosCtl
    void*          pvReserved    /* Reserved */
    );
 
-void evro_int_evro_int_evro_8ao_status_mIosRead
+void evro_int_evro_int_evro_4ao_status_mIosRead
    (
    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
    );
 
-void evro_int_evro_int_evro_8ao_status_mIosCtl
+void evro_int_evro_int_evro_4ao_status_mIosCtl
    (
    uchar          cuSubFunct,   /* Sub function parameter */
    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
@@ -55,7 +55,7 @@ typSTATUS evro_int_evro_int_IosMdf
    void*          pvRtIoDvc     /* Reserved for future extensions */
    );
 
-typSTATUS evro_int_evro_int_evro_8ao_IosMdf
+typSTATUS evro_int_evro_int_evro_4ao_IosMdf
    (
    uchar          cuSubFunc,   /* Sub function switch */
    strRtIoCpxDvc* pRtIoCpxDvc, /* Complex device run time io struct */
@@ -64,7 +64,7 @@ typSTATUS evro_int_evro_int_evro_8ao_IosMdf
    void*          pvOemParam   /* New complex device OEM parameters */
    );
 
-typSTATUS evro_int_evro_int_evro_8ao_evro_8aoIosMdf
+typSTATUS evro_int_evro_int_evro_4ao_evro_4aoIosMdf
    (
    uchar          cuSubFunc,  /* Sub function switch */
    strRtIoSplDvc* pRtIoSplDvc,/* Simple device run time io struct */
@@ -75,7 +75,7 @@ typSTATUS evro_int_evro_int_evro_8ao_evro_8aoIosMdf
    void*          pvOemChan   /* New first channel OEM parameters */
    );
 
-typSTATUS evro_int_evro_int_evro_8ao_status_mIosMdf
+typSTATUS evro_int_evro_int_evro_4ao_status_mIosMdf
    (
    uchar          cuSubFunc,  /* Sub function switch */
    strRtIoSplDvc* pRtIoSplDvc,/* Simple device run time io struct */
@@ -88,7 +88,7 @@ typSTATUS evro_int_evro_int_evro_8ao_status_mIosMdf
 
 
 
-#endif /* _EVRO_INT_EVRO_INT_EVRO_8AO__H */
+#endif /* _EVRO_INT_EVRO_INT_EVRO_4AO__H */
 
 /* eof ********************************************************************/
 
