@@ -65,46 +65,26 @@ void evro_tcp_evro_tcp_mts_holdingr_iIosRead
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-    strRtIoChan*        pChannel;
-    strDfIoSplDvc*      pStaticDef;
-    uint16              nbChannel;
     uint16              nbIndex;
 
-    int16*              pPhyData;   /* Physical value */
-    int16*              pLogData;   /* Logical Value    */
-    int16               fElecData;
-    float               fMult,fDiv,fOffset;
-    pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
-    nbChannel  =  pStaticDef->huNbChan;
-    pChannel   =  pRtIoSplDvc->pRtIoChan;
     /*  Update all channel */
-    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+    for( nbIndex = 0; nbIndex < pRtIoSplDvc->huNbChan; nbIndex++)
     {
-        pPhyData = (int16*)(pChannel->pvKerPhyData);
-        pLogData = (int16*)(pChannel->pvKerData);
-
-        fElecData=mb_mapping->tab_registers[nbIndex];
-        if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
-        {
-            pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
-        }
-        fMult   = *(float *)(&(pChannel->luCnvMult));
-        fDiv    = *(float *)(&(pChannel->luCnvDiv ));
-        fOffset = *(float *)(&(pChannel->luCnvOfs));
-        if (fDiv != 0.0)
-            fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
-        if( *pPhyData != fElecData) /* If Physic value != Electrical value */
-        {
-            *pPhyData = fElecData;
-        }
-
-
-        /* update the channel if not locked */
-        if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
-
-        pChannel++;
+        struct _s_RtIoChan *iochan=pRtIoSplDvc->pRtIoChan+nbIndex;
+    
+        *(float*)iochan->pvKerPhyData = mb_mapping->tab_registers[nbIndex];
+        
+        printf("value ch[%d] = %f\n",nbIndex,*(float*)iochan->pvKerPhyData);
+                
+        if (iochan->cuIsLocked == 0)
+          if (iochan->pfnCnvCall == 0)
+			       *(float*)iochan->pvKerData=(*(float*)iochan->pvKerPhyData * *(float*)(&(iochan->luCnvMult))) / *(float*)(&(iochan->luCnvDiv)) + *(float*)(&(iochan->luCnvOfs));
+		      else
+			       iochan->pfnCnvCall(ISA_IO_DIR_INPUT,(float*)iochan->pvKerPhyData,(float*)iochan->pvKerData);
     }
+    printf("------------------------\n");
 }
+
 
 /****************************************************************************
 function    : evro_tcp_evro_tcp_mts_holdingr_iIosCtl

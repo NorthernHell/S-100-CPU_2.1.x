@@ -66,57 +66,28 @@ void evro_tcp_evro_tcp_mts_holdingr_oIosWrite
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
 )
 {
-////
-    strRtIoChan*     pChannel;
-    strDfIoSplDvc*   pStaticDef;
-    uint16           nbChannel;
     uint16           nbIndex;
-
-    int32*           pPhyData;  /* Physical value */
-    int32*           pLogData;  /* Logic Value */
-    int32            iElecData; /* Electrical value */
-    int              iCountChange =0, okChange;
-    pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
-    nbChannel  =  pStaticDef->huNbChan;
-    pChannel   =  pRtIoSplDvc->pRtIoChan;
+    int              iCountChange =0;
     /* Update all channel  */
-    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+    for (nbIndex=0;nbIndex<pRtIoSplDvc->huNbChan;nbIndex++) /* loop for all input channels */
     {
-        /* update the channel if not locked  */
-        if(!(pChannel->cuIsLocked))
-        {
-            pPhyData = (int32*)(pChannel->pvKerPhyData);
-            pLogData = (int32*)(pChannel->pvKerData);
-            okChange = 0;
-            /* if value has changed or 1rst cycle */
-            if( *pLogData != *pPhyData || pRtIoSplDvc->luUser)
-            {
-                okChange = 1;
-                printf("holding change");
-            }
-            *pPhyData = *pLogData; /* Logic value = Physic Value */
+      struct _s_RtIoChan *iochan=pRtIoSplDvc->pRtIoChan+nbIndex;
 
-            if((pChannel->pfnCnvCall) != 0) /* If there is a cnv */
-                pChannel->pfnCnvCall( ISA_IO_DIR_OUTPUT, pPhyData, &iElecData);
-            else
-                iElecData = *pPhyData;
-
-            /* Apply gain and offset  */
-            if (pChannel->luCnvDiv != 0)
-                iElecData = ((iElecData) * (int32)(pChannel->luCnvMult)
-                             / (int32)(pChannel->luCnvDiv)) + (int32)(pChannel->luCnvOfs);
-
-            /* If the variable has changed, we print in the file the new value */
-            if (okChange)
-            {
-                mb_mapping->tab_registers[nbIndex]=iElecData;
-                iCountChange++;
-            }
-        }
-        pChannel++; /* Go to the next channel */
+      if (iochan->cuIsLocked == 0)
+      {
+        if (iochan->pfnCnvCall == 0)
+	       *(int32*)iochan->pvKerPhyData=(*(int32*)iochan->pvKerData * *(int32*)(&(iochan->luCnvMult))) / *(int32*)(&(iochan->luCnvDiv)) + *(int32*)(&(iochan->luCnvOfs));
+        else
+	       iochan->pfnCnvCall(ISA_IO_DIR_OUTPUT,(int32*)iochan->pvKerData,(int32*)iochan->pvKerPhyData);
+		 // check change
+      if(*(int32*)iochan->pvKerPhyData != *(int32*)(&(iochan->luUser)))
+      { 
+        mb_mapping->tab_registers[nbIndex] = *(int32*)iochan->pvKerPhyData;
+        *(int32*)(&(iochan->luUser))=*(int32*)iochan->pvKerPhyData;
+        iCountChange++;      
+      }
+      }
     }
-    pRtIoSplDvc->luUser = 0; /* first call to Write has been done */
-/////
 }
 
 /****************************************************************************

@@ -1,0 +1,7 @@
+#!/bin/sh
+cp -i libACE.so.5.5.0 /usr/local/lib
+ln -si /usr/local/lib/libACE.so.5.5.0 /usr/local/lib/libACE.so.5
+ln -si /usr/local/lib/libACE.so.5.5.0 /usr/local/lib/libACE.so
+cp -i libjson.so.0.0.1 /usr/local/lib
+ln -si /usr/local/lib/libjson.so.0.0.1 /usr/local/lib/libjson.so.0
+ln -si /usr/local/lib/libjson.so.0.0.1 /usr/local/lib/libjson.so
