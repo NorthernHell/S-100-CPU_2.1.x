@@ -45,7 +45,7 @@ typSTATUS evro_int_evro_int_evro_16doIosOpen
    // uint16_t tab_reg[33];
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 50000;
+    response_timeout.tv_usec = 20000;
     modbus_set_slave(ctx, pOemParam->ID);
     if (modbus_connect(ctx) == -1)
     {
@@ -181,7 +181,7 @@ void evro_int_evro_int_evro_16doIosWrite
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 50000;
+    response_timeout.tv_usec = 20000;
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_set_slave(ctx, pOemParam->ID);
@@ -217,7 +217,7 @@ void evro_int_evro_int_evro_16doIosWrite
         modbus_set_response_timeout(ctx, &response_timeout);
         // rc  = modbus_write_bits(ctx, 0,nbChannel, sNewMsg); //write in coil registers
            rc  = modbus_write_registers(ctx, 40000, 1, tab_reg); //write in holding registers(bit mask)
-								//for EVRO_modules adress=40000//
+								//For EVRO_modules adress=40000//
 		
 		if (rc == -1)
         {

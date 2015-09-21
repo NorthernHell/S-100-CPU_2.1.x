@@ -1,1 +1,0 @@
-functions library for fast work with matrix

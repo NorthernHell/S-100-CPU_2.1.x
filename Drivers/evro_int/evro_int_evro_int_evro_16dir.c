@@ -293,7 +293,7 @@ void evro_int_evro_int_evro_16dirIosRead
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 50000;
+    response_timeout.tv_usec = 20000;
     modbus_set_slave(ctx, pRtIoSplDvc->luUser);
     if (modbus_connect(ctx) == -1)
     {
@@ -304,7 +304,8 @@ void evro_int_evro_int_evro_16dirIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         //Read counters
-        rc  = modbus_read_registers(ctx, 40000, 32, tab_reg);
+        rc  = modbus_read_registers(ctx, 40000, 32, tab_reg);//read from holding registers
+						//For EVRO modules adress 40000
         if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;

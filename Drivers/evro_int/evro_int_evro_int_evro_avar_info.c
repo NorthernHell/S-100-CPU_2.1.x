@@ -132,7 +132,7 @@ void evro_int_evro_int_evro_avar_infoIosRead
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
-    response_timeout.tv_usec = 50000;
+    response_timeout.tv_usec = 20000;
     modbus_set_slave(ctx, pRtIoSplDvc->luUser);
     if (modbus_connect(ctx) == -1)
     {
@@ -143,8 +143,8 @@ void evro_int_evro_int_evro_avar_infoIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         // rc= modbus_read_input_bits(ctx, 10000, 16, tab_reg); read from the input bits registers
-		   rc= modbus_read_registers(ctx, 0, 1, tab_reg); // read from  the input registers(bit mask)
-								//for EVRO_modules adress=30000//
+		   rc= modbus_read_registers(ctx, 30000, 1, tab_reg); // read from  the input registers(bit mask)
+						//for EVRO_modules adress=30000//
 		if (rc == -1)
         {
             pRtIoSplDvc->luUser=0;
