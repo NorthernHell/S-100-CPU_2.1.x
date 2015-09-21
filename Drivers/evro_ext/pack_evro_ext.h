@@ -2,7 +2,7 @@
 File:               pack_evro_ext.h
 Author:             Umputun
 Creation date:      19/07/2012 - 12:59
-POU name:           
+POU name:
 ***************************************************************************/
 
 #ifndef _PACK_EVRO_EXT_H /* nested Headers management */
@@ -16,12 +16,12 @@ POU name:
 #include "evro_ext_evro_ext_modbus_do.h" /* "modbus_do */
 #include "evro_ext_evro_ext_io8tcs.h" /* "io8tcs */
 #include "evro_ext_evro_ext_modbus_di.h" /* "modbus_di */
-#include "evro_ext_evro_ext_io8aii.h" /* "io8aii */
+#include "evro_ext_evro_ext_io8ai.h" /* "io8ai */
 #include "evro_ext_evro_ext_io16do.h" /* "io16do */
 #include "evro_ext_evro_ext_m_ao.h" /* "m_ao */
 #include "evro_ext_evro_ext_m_ai.h" /* "m_ai */
 #include "evro_ext_evro_ext_io16di.h" /* "io16di */
-#include "evro_ext_evro_ext_io_8aii.h" /* "io_8aii */
+#include "evro_ext_evro_ext_io_8ai.h" /* "io_8ai */
 #include "evro_ext_evro_ext_io_8ao.h" /* "io_8ao */
 #include "evro_ext_evro_ext_io_16do.h" /* "io_16do */
 #include "evro_ext_evro_ext_io_16di.h" /* "io_16di */
@@ -30,6 +30,14 @@ POU name:
 #include "evro_ext_evro_ext_io8ao.h" /* "io8ao */
 #include "evro_ext_evro_ext_io_4ro.h" /* "io_4ro */
 #include "evro_ext_evro_ext_io4ro.h" /* "io4ro */
+#include "evro_ext_evro_ext_io_daio.h" /* "io_daio */
+#include "evro_ext_evro_ext_io4di.h" /* "io4di */
+#include "evro_ext_evro_ext_io2do.h" /* "io2do */
+#include "evro_ext_evro_ext_io2rtd.h" /* "io2rtd */
+#include "evro_ext_evro_ext_io2ai.h" /* "io2ai */
+#include "evro_ext_evro_ext_io1ao.h" /* "io1ao */
+#include "evro_ext_evro_ext_io_6rtd.h" /* "io_6rtd */
+#include "evro_ext_evro_ext_io6rtd.h" /* "io6rtd */
 #include "evro_ext_evro_ext_modbusstatus.h" /* "modbusstatus */
 #include "evro_ext_evro_ext_modbus_ao.h" /* "modbus_ao */
 
@@ -67,10 +75,10 @@ ISA_DECLARE_HANDLE("evro_ext_evro_ext_modbus_dim_diIosRead", evro_ext_evro_ext_m
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_modbus_dim_diIosCtl", evro_ext_evro_ext_modbus_dim_diIosCtl) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_modbus_dimodbusstatusIosRead", evro_ext_evro_ext_modbus_dimodbusstatusIosRead) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_modbus_dimodbusstatusIosCtl", evro_ext_evro_ext_modbus_dimodbusstatusIosCtl) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io8aiiIosOpen", evro_ext_evro_ext_io8aiiIosOpen) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io8aiiIosClose", evro_ext_evro_ext_io8aiiIosClose) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io8aiiIosRead", evro_ext_evro_ext_io8aiiIosRead) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io8aiiIosCtl", evro_ext_evro_ext_io8aiiIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io8aiIosOpen", evro_ext_evro_ext_io8aiIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io8aiIosClose", evro_ext_evro_ext_io8aiIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io8aiIosRead", evro_ext_evro_ext_io8aiIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io8aiIosCtl", evro_ext_evro_ext_io8aiIosCtl) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io16doIosOpen", evro_ext_evro_ext_io16doIosOpen) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io16doIosClose", evro_ext_evro_ext_io16doIosClose) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io16doIosWrite", evro_ext_evro_ext_io16doIosWrite) \
@@ -87,12 +95,12 @@ ISA_DECLARE_HANDLE("evro_ext_evro_ext_io16diIosOpen", evro_ext_evro_ext_io16diIo
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io16diIosClose", evro_ext_evro_ext_io16diIosClose) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io16diIosRead", evro_ext_evro_ext_io16diIosRead) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io16diIosCtl", evro_ext_evro_ext_io16diIosCtl) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiiIosOpen", evro_ext_evro_ext_io_8aiiIosOpen) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiiIosClose", evro_ext_evro_ext_io_8aiiIosClose) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiiio8aiiIosRead", evro_ext_evro_ext_io_8aiiio8aiiIosRead) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiiio8aiiIosCtl", evro_ext_evro_ext_io_8aiiio8aiiIosCtl) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiimodbusstatusIosRead", evro_ext_evro_ext_io_8aiimodbusstatusIosRead) \
-ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiimodbusstatusIosCtl", evro_ext_evro_ext_io_8aiimodbusstatusIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiIosOpen", evro_ext_evro_ext_io_8aiIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiIosClose", evro_ext_evro_ext_io_8aiIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiio8aiIosRead", evro_ext_evro_ext_io_8aiio8aiIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aiio8aiIosCtl", evro_ext_evro_ext_io_8aiio8aiIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aimodbusstatusIosRead", evro_ext_evro_ext_io_8aimodbusstatusIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aimodbusstatusIosCtl", evro_ext_evro_ext_io_8aimodbusstatusIosCtl) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aoIosOpen", evro_ext_evro_ext_io_8aoIosOpen) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aoIosClose", evro_ext_evro_ext_io_8aoIosClose) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_8aoio8aoIosWrite", evro_ext_evro_ext_io_8aoio8aoIosWrite) \
@@ -133,6 +141,50 @@ ISA_DECLARE_HANDLE("evro_ext_evro_ext_io4roIosOpen", evro_ext_evro_ext_io4roIosO
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io4roIosClose", evro_ext_evro_ext_io4roIosClose) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io4roIosWrite", evro_ext_evro_ext_io4roIosWrite) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_io4roIosCtl", evro_ext_evro_ext_io4roIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioIosOpen", evro_ext_evro_ext_io_daioIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioIosClose", evro_ext_evro_ext_io_daioIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio4diIosRead", evro_ext_evro_ext_io_daioio4diIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio4diIosCtl", evro_ext_evro_ext_io_daioio4diIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio2doIosWrite", evro_ext_evro_ext_io_daioio2doIosWrite) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio2doIosCtl", evro_ext_evro_ext_io_daioio2doIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio2rtdIosRead", evro_ext_evro_ext_io_daioio2rtdIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio2rtdIosCtl", evro_ext_evro_ext_io_daioio2rtdIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio2aiIosRead", evro_ext_evro_ext_io_daioio2aiIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio2aiIosCtl", evro_ext_evro_ext_io_daioio2aiIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio1aoIosWrite", evro_ext_evro_ext_io_daioio1aoIosWrite) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daioio1aoIosCtl", evro_ext_evro_ext_io_daioio1aoIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daiomodbusstatusIosRead", evro_ext_evro_ext_io_daiomodbusstatusIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_daiomodbusstatusIosCtl", evro_ext_evro_ext_io_daiomodbusstatusIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io4diIosOpen", evro_ext_evro_ext_io4diIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io4diIosClose", evro_ext_evro_ext_io4diIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io4diIosRead", evro_ext_evro_ext_io4diIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io4diIosCtl", evro_ext_evro_ext_io4diIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2doIosOpen", evro_ext_evro_ext_io2doIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2doIosClose", evro_ext_evro_ext_io2doIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2doIosWrite", evro_ext_evro_ext_io2doIosWrite) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2doIosCtl", evro_ext_evro_ext_io2doIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2rtdIosOpen", evro_ext_evro_ext_io2rtdIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2rtdIosClose", evro_ext_evro_ext_io2rtdIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2rtdIosRead", evro_ext_evro_ext_io2rtdIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2rtdIosCtl", evro_ext_evro_ext_io2rtdIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2aiIosOpen", evro_ext_evro_ext_io2aiIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2aiIosClose", evro_ext_evro_ext_io2aiIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2aiIosRead", evro_ext_evro_ext_io2aiIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io2aiIosCtl", evro_ext_evro_ext_io2aiIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io1aoIosOpen", evro_ext_evro_ext_io1aoIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io1aoIosClose", evro_ext_evro_ext_io1aoIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io1aoIosWrite", evro_ext_evro_ext_io1aoIosWrite) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io1aoIosCtl", evro_ext_evro_ext_io4roIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_6rtdIosOpen", evro_ext_evro_ext_io_6rtdIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_6rtdIosClose", evro_ext_evro_ext_io_6rtdIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_6rtdio6rtdIosRead", evro_ext_evro_ext_io_6rtdio6rtdIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_6rtdio6rtdIosCtl", evro_ext_evro_ext_io_6rtdio6rtdIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_6rtdmodbusstatusIosRead", evro_ext_evro_ext_io_6rtdmodbusstatusIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io_6rtdmodbusstatusIosCtl", evro_ext_evro_ext_io_6rtdmodbusstatusIosCtl) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io6rtdIosOpen", evro_ext_evro_ext_io6rtdIosOpen) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io6rtdIosClose", evro_ext_evro_ext_io6rtdIosClose) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io6rtdIosRead", evro_ext_evro_ext_io6rtdIosRead) \
+ISA_DECLARE_HANDLE("evro_ext_evro_ext_io6rtdIosCtl", evro_ext_evro_ext_io6rtdIosCtl) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_modbusstatusIosOpen", evro_ext_evro_ext_modbusstatusIosOpen) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_modbusstatusIosClose", evro_ext_evro_ext_modbusstatusIosClose) \
 ISA_DECLARE_HANDLE("evro_ext_evro_ext_modbusstatusIosRead", evro_ext_evro_ext_modbusstatusIosRead) \

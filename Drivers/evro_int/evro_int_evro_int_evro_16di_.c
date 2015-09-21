@@ -16,17 +16,13 @@ Device name:        EVRO_16dI_
 
 /* OEM Parameters of linked simple devices */
 
-typedef struct _tag_strEvro_16di
+typedef struct _tag_strEvro_16di_
 {
     int32  ID;   /* Node ID */
-  
-} strOemParam;
 
-typedef struct _tag_strEvro_16dir
-{
-    int32  ID;   /* Node ID */
-	
-} strEvro_16dir;
+} strEvro_16di_;
+
+
 
 
 

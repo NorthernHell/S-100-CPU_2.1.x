@@ -10,8 +10,6 @@ Device name:        MTCP_DO
 #include <evro_tcpc_evro_tcpc_mtcp_do.h>
 #include <modbus/modbus.h>
 /* OEM Parameters */
-extern int modbus_tcp_dos;
-
 typedef struct _tag_strMtcp_do
 {
     char   IP[16];
@@ -20,7 +18,7 @@ typedef struct _tag_strMtcp_do
     int32  NR;
     int32  TimeOutu;
     int32  TimeOutsec;
-} strMtcp_do;
+} strOemParam;
 
 
 /****************************************************************************
@@ -34,7 +32,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_tcpc_evro_tcpc_mtcp_doIosOpen
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("MB TCPC DO init\n");
@@ -52,10 +50,11 @@ warning     :
 
 void evro_tcpc_evro_tcpc_mtcp_doIosClose
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-
+    printf("MB TCPC DO Close\n");
+    sleep(1);
 }
 
 /****************************************************************************
@@ -72,7 +71,8 @@ void evro_tcpc_evro_tcpc_mtcp_doIosWrite
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
 )
 {
-
+	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -82,8 +82,6 @@ void evro_tcpc_evro_tcpc_mtcp_doIosWrite
     uchar            byElecData;    /* Electrical value ('1' or '0') */
     uint8_t            sNewMsg[150];
     int              okChange;      /* indicate one of the channel has changed */
-    strMtcp_do* pOemParam;
-    pOemParam=(strMtcp_do*)(pRtIoSplDvc->pvOemParam);
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
     pChannel   =  pRtIoSplDvc->pRtIoChan;
@@ -120,25 +118,31 @@ void evro_tcpc_evro_tcpc_mtcp_doIosWrite
         else            sNewMsg[nbIndex] = 0;
         pChannel++;
     }
+	modbus_t *ctx;
+	int rc;
     sNewMsg[ nbChannel] = 0; /* null char at the end of the string */
     /* If one variable has changed, we print in the file the new values */
-    modbus_t *ctx;
-    int rc;
     struct timeval response_timeout;
-    response_timeout.tv_sec = pOemParam->TimeOutsec;
-    response_timeout.tv_usec = pOemParam->TimeOutu;
-    ctx = modbus_new_tcp(pOemParam->IP, pOemParam->PORT); //connect
+    response_timeout.tv_sec = oemCPar->TimeOutsec;
+    response_timeout.tv_usec = oemCPar->TimeOutu;
+    ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
     if (modbus_connect(ctx) == -1)
     {
         printf("Connexion failed: \n");
-        modbus_tcp_dos=0;
         modbus_free(ctx);
     }
     else
     {
-        modbus_tcp_dos=1;
         modbus_set_response_timeout(ctx, &response_timeout);
-        rc  = modbus_write_bits(ctx, pOemParam->Adress, pOemParam->NR, sNewMsg);
+        rc  = modbus_write_bits(ctx, oemCPar->Adress, oemCPar->NR, sNewMsg);
+		if (rc == -1)
+        {
+            cpxDev->luUser =0;
+        }
+        else
+        {
+            cpxDev->luUser =1;
+        };			
         modbus_close(ctx);
         modbus_free(ctx);
     }
@@ -194,3 +198,5 @@ void evro_tcpc_evro_tcpc_mtcp_doIosCtl
         break;
     }
 }
+/* eof ********************************************************************/
+

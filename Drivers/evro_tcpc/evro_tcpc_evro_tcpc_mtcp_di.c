@@ -20,7 +20,7 @@ typedef struct _tag_strMtcp_di
     int32  NR;
     int32  TimeOutu;
     int32  TimeOutsec;
-} strMtcp_di;
+} strOemParam;
 
 
 /****************************************************************************
@@ -34,7 +34,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_tcpc_evro_tcpc_mtcp_diIosOpen
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("MB TCPC DI init\n");
@@ -52,10 +52,11 @@ warning     :
 
 void evro_tcpc_evro_tcpc_mtcp_diIosClose
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-
+    printf("MB TCPC DI Close\n");
+    sleep(1);
 }
 
 /****************************************************************************
@@ -72,44 +73,47 @@ void evro_tcpc_evro_tcpc_mtcp_diIosRead
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-    strMtcp_di* pOemParam;
-    pOemParam=(strMtcp_di*)(pRtIoSplDvc->pvOemParam);
+	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	
     modbus_t *ctx;
     uint8_t tab_reg[150];
     int rc;
     struct timeval response_timeout;
-    response_timeout.tv_sec = pOemParam->TimeOutsec;
-    response_timeout.tv_usec = pOemParam->TimeOutu;
-    ctx = modbus_new_tcp(pOemParam->IP, pOemParam->PORT); //connect
+    response_timeout.tv_sec = oemCPar->TimeOutsec;
+    response_timeout.tv_usec = oemCPar->TimeOutu;
+    ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
     if (modbus_connect(ctx) == -1)
     {
-        printf("Connexion failed: \n");
-        modbus_tcp_dis=0;
+        printf("Connexion failed (new DI): \n");
         modbus_free(ctx);
     }
     else
     {
-        modbus_tcp_dis=1;
         modbus_set_response_timeout(ctx, &response_timeout);
-        rc  = modbus_read_input_bits(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
-        modbus_close(ctx);
-        modbus_free(ctx);
-    };
-    ////////
-    strRtIoChan*        pChannel;
-    strDfIoSplDvc*      pStaticDef;
-    uint16              nbChannel;
-    uint16              nbIndex;
-
+        rc  = modbus_read_input_bits(ctx, oemCPar->Adress, oemCPar->NR, tab_reg);
+		if (rc == -1)
+        {
+            cpxDev->luUser =0;
+			modbus_close(ctx);
+			modbus_free(ctx);
+        }
+        else
+        {
+		strRtIoChan*        pChannel;
+		strDfIoSplDvc*      pStaticDef;
+		uint16              nbChannel;
+		uint16              nbIndex;
     uchar*              pPhyData;   /* Physical value            */
     uchar*              pLogData;   /* Logical Value               */
     uchar               byElecData; /* Electrical value ('1' or '0') */
-
     pStaticDef = pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  = pStaticDef->huNbChan;
     pChannel   = pRtIoSplDvc->pRtIoChan;
-    /* Update all channels */
-    for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
+            cpxDev->luUser =1;
+			modbus_close(ctx);
+			modbus_free(ctx);
+			/* Update all channels */
+			  for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
     {
         pPhyData = (uchar*)(pChannel->pvKerPhyData);
         pLogData = (uchar*)(pChannel->pvKerData);
@@ -140,7 +144,9 @@ void evro_tcpc_evro_tcpc_mtcp_diIosRead
 
         pChannel++;
     }
-
+        }			
+        
+    }
 }
 
 /****************************************************************************

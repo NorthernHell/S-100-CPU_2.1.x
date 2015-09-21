@@ -12,12 +12,12 @@ Device name:        M_AI
 /* OEM Parameters */
 typedef struct _tag_strM_ai
 {
+    int32  baud_rate;   /* Baud Rate */
+    int32  NCOM;   /* COM port number */
     int32  ID;   /* Device address */
     int32  Adress;   /* address of the first register */
     int32  NR;   /* number of registers */
-	int32  Func;
-    int32  baud_rate;   /* Baud Rate */
-    int32  NCOM;   /* COM port number */
+    int32  Func;  /* functions modbus */
     int32  Parity;   /* 0 - None 1-even 2-odd */
     int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
@@ -34,7 +34,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_ext_evro_ext_m_aiIosOpen
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     /*
@@ -57,7 +57,7 @@ warning     :
 
 void evro_ext_evro_ext_m_aiIosClose
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("MB AI Exit\n");
@@ -98,116 +98,115 @@ void evro_ext_evro_ext_m_aiIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
-	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
-	в составе этого комплесного  */
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     modbus_t *ctx;
     uint16_t tab_reg[150];
     int rc;
     struct timeval response_timeout;
-    response_timeout.tv_sec = pOemParam->TimeOutsec;
-    response_timeout.tv_usec = pOemParam->TimeOutu;
-    if (pOemParam->NCOM==1)
+    response_timeout.tv_sec = oemCPar->TimeOutsec;
+    response_timeout.tv_usec = oemCPar->TimeOutu;
+    if (oemCPar->NCOM==1)
     {
-        if (pOemParam->Parity==0)
+        if (oemCPar->Parity==0)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC0", pOemParam->baud_rate, 'N', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC0", oemCPar->baud_rate, 'N', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==1)
+        if (oemCPar->Parity==1)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC0", pOemParam->baud_rate, 'E', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC0", oemCPar->baud_rate, 'E', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==2)
+        if (oemCPar->Parity==2)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC0", pOemParam->baud_rate, 'O', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC0", oemCPar->baud_rate, 'O', 8, oemCPar->Stop_bits);
         };
     }
-    if (pOemParam->NCOM==2)
+    if (oemCPar->NCOM==2)
     {
-        if (pOemParam->Parity==0)
+        if (oemCPar->Parity==0)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'N', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'N', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==1)
+        if (oemCPar->Parity==1)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'E', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'E', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==2)
+        if (oemCPar->Parity==2)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'O', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'O', 8, oemCPar->Stop_bits);
         };
     }
-    modbus_set_slave(ctx, pOemParam->ID);
+    modbus_set_slave(ctx, oemCPar->ID);
     if (modbus_connect(ctx) == -1)
     {
-		printf("Connexion failed: \n");
+        printf("Connexion failed: \n");
         modbus_free(ctx);
     }
     else
     {
-         modbus_set_response_timeout(ctx, &response_timeout);
-		if (pOemParam->Func == 3)
-		{
-			rc  = modbus_read_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
-		}
-		else
-		{
-			rc  = modbus_read_input_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
-		}
-		
-		if (rc == -1)
+        modbus_set_response_timeout(ctx, &response_timeout);
+        if (oemCPar->Func == 3)
         {
-            cpxDev->luUser =0;
+            rc  = modbus_read_registers(ctx, oemCPar->Adress, oemCPar->NR, tab_reg);
         }
         else
         {
+            rc  = modbus_read_input_registers(ctx, oemCPar->Adress, oemCPar->NR, tab_reg);
+        }
+
+        if (rc == -1)
+        {
+            cpxDev->luUser =0;
+            modbus_close(ctx);
+            modbus_free(ctx);
+        }
+        else
+        {
+            strRtIoChan*        pChannel;
+            strDfIoSplDvc*      pStaticDef;
+            uint16              nbChannel;
+            uint16              nbIndex;
+            int16*              pPhyData;   /* Physical value */
+            int16*              pLogData;   /* Logical Value    */
+            int16               fElecData;
+            int16               fMult,fDiv,fOffset;
+            pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
+            nbChannel  =  pStaticDef->huNbChan;
+            pChannel   =  pRtIoSplDvc->pRtIoChan;
             cpxDev->luUser =1;
-        }
-	modbus_close(ctx);
-    modbus_free(ctx);
-    };
-    
-    //
-    strRtIoChan*        pChannel;
-    strDfIoSplDvc*      pStaticDef;
-    uint16              nbChannel;
-    uint16              nbIndex;
-    int16*              pPhyData;   /* Physical value */
-    int16*              pLogData;   /* Logical Value    */
-    int16               fElecData;
-    int16               fMult,fDiv,fOffset;
-    pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
-    nbChannel  =  pStaticDef->huNbChan;
-    pChannel   =  pRtIoSplDvc->pRtIoChan;
-    /*  Update all channel */
-    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
-    {
-        pPhyData = (int16*)(pChannel->pvKerPhyData);
-        pLogData = (int16*)(pChannel->pvKerData);
+            modbus_close(ctx);
+            modbus_free(ctx);
+            /*  Update all channel */
+            for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+            {
+                pPhyData = (int16*)(pChannel->pvKerPhyData);
+                pLogData = (int16*)(pChannel->pvKerData);
 
-        fElecData=tab_reg[nbIndex];
-        if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
-        {
-            pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
-        }
-        fMult   = *(float *)(&(pChannel->luCnvMult));
-        fDiv    = *(float *)(&(pChannel->luCnvDiv ));
-        fOffset = *(float *)(&(pChannel->luCnvOfs));
-        if (fDiv != 0.0)
-            fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
-        if( *pPhyData != fElecData) /* If Physic value != Electrical value */
-        {
-            *pPhyData = fElecData;
+                fElecData=tab_reg[nbIndex];
+                if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
+                {
+                    pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
+                }
+                fMult   = *(float *)(&(pChannel->luCnvMult));
+                fDiv    = *(float *)(&(pChannel->luCnvDiv ));
+                fOffset = *(float *)(&(pChannel->luCnvOfs));
+                if (fDiv != 0.0)
+                    fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
+                if( *pPhyData != fElecData) /* If Physic value != Electrical value */
+                {
+                    *pPhyData = fElecData;
+                }
+
+
+                /* update the channel if not locked */
+                if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
+
+                pChannel++;
+            }
         }
 
-
-        /* update the channel if not locked */
-        if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
-
-        pChannel++;
     }
+
 }
 
 /****************************************************************************

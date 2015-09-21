@@ -13,14 +13,14 @@ Device name:        IO4RO
 
 typedef struct _tag_strIo4ro
 {
-    int32  baud_rate;
+    int32  baud_rate;   /* Baud Rate */
     int32  NCOM;   /* COM port number */
-    int32  Parity;
-    int32  Stop_bits;
     int32  ID;   /* Device address */
-    int32  TimeOutsec;   /* timeout sec */
+    int32  Parity;   /* 0 - None 1-even 2-odd */
+    int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
-    int32  Wathdog;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
+    int32  TimeOutsec;   /* temeout s */
+    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
 } strOemParam;
 
 /****************************************************************************
@@ -34,11 +34,11 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_ext_evro_ext_io4roIosOpen
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
@@ -48,56 +48,55 @@ typSTATUS evro_ext_evro_ext_io4roIosOpen
     modbus_t *ctx;
     int rc;
     struct timeval response_timeout;
-    response_timeout.tv_sec = pOemParam->TimeOutsec;
-    response_timeout.tv_usec = pOemParam->TimeOutu;
-    if (pOemParam->NCOM==1)
+    response_timeout.tv_sec = oemCPar->TimeOutsec;
+    response_timeout.tv_usec = oemCPar->TimeOutu;
+    if (oemCPar->NCOM==1)
     {
-        if (pOemParam->Parity==0)
+        if (oemCPar->Parity==0)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC0", pOemParam->baud_rate, 'N', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC0", oemCPar->baud_rate, 'N', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==1)
+        if (oemCPar->Parity==1)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC0", pOemParam->baud_rate, 'E', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC0", oemCPar->baud_rate, 'E', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==2)
+        if (oemCPar->Parity==2)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC0", pOemParam->baud_rate, 'O', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC0", oemCPar->baud_rate, 'O', 8, oemCPar->Stop_bits);
         };
     }
-    if (pOemParam->NCOM==2)
+    if (oemCPar->NCOM==2)
     {
-        if (pOemParam->Parity==0)
+        if (oemCPar->Parity==0)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'N', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'N', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==1)
+        if (oemCPar->Parity==1)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'E', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'E', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==2)
+        if (oemCPar->Parity==2)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'O', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'O', 8, oemCPar->Stop_bits);
         };
     }
-    modbus_set_slave(ctx, pOemParam->ID);
+    modbus_set_slave(ctx, oemCPar->ID);
     if (modbus_connect(ctx) == -1)
     {
         printf("Connexion failed: \n");
-        pvRtIoDvc->luUser=0;
         modbus_free(ctx);
     }
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        rc = modbus_write_register(ctx, 100, pOemParam->Wathdog);
+        rc = modbus_write_register(ctx, 100, oemCPar->Watchdog_Timer);
         if (rc == -1)
         {
-            pvRtIoDvc->luUser=0;
+            cpxDev->luUser =0;
         }
         else
         {
-            pvRtIoDvc->luUser=1;
+            cpxDev->luUser =1;
         }
         modbus_close(ctx);
         modbus_free(ctx);
@@ -116,7 +115,7 @@ warning     :
 
 void evro_ext_evro_ext_io4roIosClose
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
 
@@ -136,8 +135,6 @@ void evro_ext_evro_ext_io4roIosWrite
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
 )
 {
-    strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     /*
      * pRtIoSplDvc parameter allows you to access to strRtIoChan structure
      *  of information for each channel.
@@ -166,9 +163,8 @@ void evro_ext_evro_ext_io4roIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
-	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
-	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
-	в составе этого комплесного  */	 
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -218,50 +214,49 @@ void evro_ext_evro_ext_io4roIosWrite
     modbus_t *ctx;
     int rc;
     struct timeval response_timeout;
-    response_timeout.tv_sec = pOemParam->TimeOutsec;
-    response_timeout.tv_usec = pOemParam->TimeOutu;
-    if (pOemParam->NCOM==1)
+    response_timeout.tv_sec = oemCPar->TimeOutsec;
+    response_timeout.tv_usec = oemCPar->TimeOutu;
+    if (oemCPar->NCOM==1)
     {
-        if (pOemParam->Parity==0)
+        if (oemCPar->Parity==0)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC0", pOemParam->baud_rate, 'N', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC0", oemCPar->baud_rate, 'N', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==1)
+        if (oemCPar->Parity==1)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC0", pOemParam->baud_rate, 'E', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC0", oemCPar->baud_rate, 'E', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==2)
+        if (oemCPar->Parity==2)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC0", pOemParam->baud_rate, 'O', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC0", oemCPar->baud_rate, 'O', 8, oemCPar->Stop_bits);
         };
     }
-    if (pOemParam->NCOM==2)
+    if (oemCPar->NCOM==2)
     {
-        if (pOemParam->Parity==0)
+        if (oemCPar->Parity==0)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'N', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'N', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==1)
+        if (oemCPar->Parity==1)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'E', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'E', 8, oemCPar->Stop_bits);
         };
-        if (pOemParam->Parity==2)
+        if (oemCPar->Parity==2)
         {
-            ctx = modbus_new_rtu("/dev/ttySAC1", pOemParam->baud_rate, 'O', 8, pOemParam->Stop_bits);
+            ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'O', 8, oemCPar->Stop_bits);
         };
     }
-    modbus_set_slave(ctx, pOemParam->ID);
+    modbus_set_slave(ctx, oemCPar->ID);
     if (modbus_connect(ctx) == -1)
     {
         printf("Connexion failed: \n");
-        pRtIoSplDvc->luUser=0;
         modbus_free(ctx);
     }
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_write_bits(ctx, 0,nbChannel, tab_reg);
-		if (rc == -1)
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }

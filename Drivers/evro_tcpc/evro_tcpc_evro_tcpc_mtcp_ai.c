@@ -10,7 +10,6 @@ Device name:        MTCP_AI
 #include <evro_tcpc_evro_tcpc_mtcp_ai.h>
 #include <modbus/modbus.h>
 /* OEM Parameters */
-extern int modbus_tcp_ais;
 typedef struct _tag_strMtcp_ai
 {
     char   IP[16];
@@ -20,7 +19,7 @@ typedef struct _tag_strMtcp_ai
     int32  FUNCION;
     int32  TimeOutu;
     int32  TimeOutsec;
-} strMtcp_ai;
+} strOemParam;
 
 /****************************************************************************
 function    : evro_tcpc_evro_tcpc_mtcp_aiIosOpen
@@ -33,7 +32,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_tcpc_evro_tcpc_mtcp_aiIosOpen
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("MB TCPC AI init\n");
@@ -51,7 +50,7 @@ warning     :
 
 void evro_tcpc_evro_tcpc_mtcp_aiIosClose
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("MB TCPC AI Close\n");
@@ -72,42 +71,44 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
+	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	
     modbus_t *ctx;
     uint16_t tab_reg[150];
     int rc;
-    strMtcp_ai* pOemParam;
-    pOemParam=(strMtcp_ai*)(pRtIoSplDvc->pvOemParam);
     struct timeval response_timeout;
-    response_timeout.tv_sec = pOemParam->TimeOutsec;
-    response_timeout.tv_usec = pOemParam->TimeOutu;
-    ctx = modbus_new_tcp(pOemParam->IP, pOemParam->PORT); //connect
+    response_timeout.tv_sec = oemCPar->TimeOutsec;
+    response_timeout.tv_usec = oemCPar->TimeOutu;
+    ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
     if (modbus_connect(ctx) == -1)
     {
-        printf("Connexion failed: \n");
-        modbus_tcp_ais=0;
+        printf("Connexion failed new version: \n");
         modbus_free(ctx);
     }
     else
     {
-        modbus_tcp_ais=1;
         modbus_set_response_timeout(ctx, &response_timeout);
-        if (pOemParam->FUNCION==3)
+        if (oemCPar->FUNCION==3)
         {
-            rc  = modbus_read_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
+            rc  = modbus_read_registers(ctx, oemCPar->Adress, oemCPar->NR, tab_reg);
         }
         else
         {
-            rc  = modbus_read_input_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
+            rc  = modbus_read_input_registers(ctx, oemCPar->Adress, oemCPar->NR, tab_reg);
         };
-        modbus_close(ctx);
+ 		
+		if (rc == -1)
+        {
+            cpxDev->luUser =0;
+			modbus_close(ctx);
         modbus_free(ctx);
-    };
-    //
-    strRtIoChan*        pChannel;
+        }
+        else
+        {
+		 strRtIoChan*        pChannel;
     strDfIoSplDvc*      pStaticDef;
     uint16              nbChannel;
     uint16              nbIndex;
-
     int16*              pPhyData;   /* Physical value */
     int16*              pLogData;   /* Logical Value    */
     int16               fElecData;
@@ -115,12 +116,13 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
     pChannel   =  pRtIoSplDvc->pRtIoChan;
-    /*  Update all channel */
-    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+            cpxDev->luUser =1;
+			modbus_close(ctx);
+        modbus_free(ctx);
+		for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
     {
         pPhyData = (int16*)(pChannel->pvKerPhyData);
         pLogData = (int16*)(pChannel->pvKerData);
-
         fElecData=tab_reg[nbIndex];
         if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
         {
@@ -129,8 +131,9 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
         fMult   = *(float *)(&(pChannel->luCnvMult));
         fDiv    = *(float *)(&(pChannel->luCnvDiv ));
         fOffset = *(float *)(&(pChannel->luCnvOfs));
-        if (fDiv != 0.0)
-            fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
+        if (fDiv != 0.0){
+			 fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
+			}
         if( *pPhyData != fElecData) /* If Physic value != Electrical value */
         {
             *pPhyData = fElecData;
@@ -142,6 +145,12 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
 
         pChannel++;
     }
+        }	
+	
+    }
+
+	
+    
 }
 
 /****************************************************************************

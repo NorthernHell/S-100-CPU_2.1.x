@@ -11,16 +11,16 @@ Device name:        EVRO_8tc_
 #include <evro_int_evro_int_evro_8tc.h>
 #include <evro_int_evro_int_status_m.h>
 /* OEM Parameters of complex device */
-int modbus8tc=1;
+
 
 
 /* OEM Parameters of linked simple devices */
 
-typedef struct _tag_strEvro_8tc
+typedef struct _tag_strEvro_8tc_
 {
     int32  ID;   /* Node ID */
 
-} strEvro_8tc;
+} strEvro_8tc_;
 
 
 
@@ -50,8 +50,8 @@ typSTATUS evro_int_evro_int_evro_8tc_IosOpen
         printf("Error opening\n");
         return(BAD_RET);
     }
-	pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
-   	if (evro_int_evro_int_status_mIosOpen(pRtIoSplDvc) != 0)
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    if (evro_int_evro_int_status_mIosOpen(pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
         return(BAD_RET);
@@ -76,7 +76,7 @@ void evro_int_evro_int_evro_8tc_IosClose
     strRtIoSplDvc* pRtIoSplDvc;
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
     evro_int_evro_int_evro_8tcIosClose (pRtIoSplDvc);
-	pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     evro_int_evro_int_status_mIosClose(pRtIoSplDvc);
 }
 
@@ -116,7 +116,6 @@ void evro_int_evro_int_evro_8tc_evro_8tcIosRead
      * channels are locked.
      */
     evro_int_evro_int_evro_8tcIosRead(pRtIoSplDvc);
-    modbus8tc=pRtIoSplDvc->luUser;
 }
 
 /****************************************************************************
@@ -189,7 +188,7 @@ void evro_int_evro_int_evro_8tc_status_mIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    pRtIoSplDvc->luUser=modbus8tc;
+
     evro_int_evro_int_status_mIosRead(pRtIoSplDvc);
 }
 

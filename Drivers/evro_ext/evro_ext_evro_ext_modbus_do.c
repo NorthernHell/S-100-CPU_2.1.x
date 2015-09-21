@@ -17,18 +17,18 @@ Device name:        Modbus_DO
 
 /* OEM Parameters of linked simple devices */
 
-typedef struct _tag_strM_do
+typedef struct _tag_strModbus_do
 {
+    int32  baud_rate;   /* Baud Rate */
+    int32  NCOM;   /* COM port number */
     int32  ID;   /* Device address */
     int32  Adress;   /* address of the first register */
     int32  NR;   /* number of registers */
-    int32  baud_rate;   /* Baud Rate */
-    int32  NCOM;   /* COM port number */
     int32  Parity;   /* 0 - None 1-even 2-odd */
     int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
     int32  TimeOutsec;   /* temeout s */
-} strM_do;
+} strModbus_do;
 
 
 

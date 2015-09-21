@@ -16,7 +16,7 @@ Device name:        IO8_TCS
 
 /* OEM Parameters of linked simple devices */
 
-typedef struct _tag_strIo8tcs
+typedef struct _tag_strIo8_tcs
 {
     int32  baud_rate;   /* Baud Rate */
     int32  NCOM;   /* COM port number */
@@ -29,7 +29,7 @@ typedef struct _tag_strIo8tcs
     int32  Line_Frequency;   /* Line Frequency */
     int32  CJC_Offset;   /* 100 = zero offset (0.0) */
     int32  Units_Type;   /* 1=°C, 2=°F */
-} strOemParam;
+} strIo8_tcs;
 
 
 

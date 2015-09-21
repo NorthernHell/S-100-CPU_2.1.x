@@ -194,9 +194,9 @@ void evro_ext_evro_ext_io16diIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
-	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
-	в составе этого комплесного  */	 
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых
+	в составе этого комплесного  */
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
     modbus_t *ctx;
@@ -246,62 +246,67 @@ void evro_ext_evro_ext_io16diIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc= modbus_read_input_bits(ctx, 0, 16, tab_reg);
-		if (rc == -1)
+        if (rc == -1)
         {
             cpxDev->luUser =0;
+            modbus_close(ctx);
+            modbus_free(ctx);
         }
         else
         {
+            ////////
+            strRtIoChan*        pChannel;
+            strDfIoSplDvc*      pStaticDef;
+            uint16              nbChannel;
+            uint16              nbIndex;
+
+            uchar*              pPhyData;   /* Physical value            */
+            uchar*              pLogData;   /* Logical Value               */
+            uchar               byElecData; /* Electrical value ('1' or '0') */
+
+            pStaticDef = pRtIoSplDvc->pDfIoSplDvc;
+            nbChannel  = pStaticDef->huNbChan;
+            pChannel   = pRtIoSplDvc->pRtIoChan;
+            /* Update all channels */
             cpxDev->luUser =1;
-        }
-        modbus_close(ctx);
-        modbus_free(ctx);
-    }
-    ////////
-    strRtIoChan*        pChannel;
-    strDfIoSplDvc*      pStaticDef;
-    uint16              nbChannel;
-    uint16              nbIndex;
-
-    uchar*              pPhyData;   /* Physical value            */
-    uchar*              pLogData;   /* Logical Value               */
-    uchar               byElecData; /* Electrical value ('1' or '0') */
-
-    pStaticDef = pRtIoSplDvc->pDfIoSplDvc;
-    nbChannel  = pStaticDef->huNbChan;
-    pChannel   = pRtIoSplDvc->pRtIoChan;
-    /* Update all channels */
-    for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
-    {
-        pPhyData = (uchar*)(pChannel->pvKerPhyData);
-        pLogData = (uchar*)(pChannel->pvKerData);
-        byElecData = tab_reg[nbIndex];
-        if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
-            pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &byElecData, &byElecData);
-
-
-        if((pChannel->luCnvMult) != 1)            /* If the input is reversed */
-        {
-            if( *pPhyData == byElecData) /* If Physic value = Electrical value */
+            modbus_close(ctx);
+            modbus_free(ctx);
+            for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
             {
-                /* printf ("Input value - channel %d has changed\n",nbIndex); */
-                if( byElecData) *pPhyData =0; /* Logic value != Physic value */
-                else            *pPhyData =1;
+                pPhyData = (uchar*)(pChannel->pvKerPhyData);
+                pLogData = (uchar*)(pChannel->pvKerData);
+                byElecData = tab_reg[nbIndex];
+                if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
+                    pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &byElecData, &byElecData);
+
+
+                if((pChannel->luCnvMult) != 1)            /* If the input is reversed */
+                {
+                    if( *pPhyData == byElecData) /* If Physic value = Electrical value */
+                    {
+                        /* printf ("Input value - channel %d has changed\n",nbIndex); */
+                        if( byElecData) *pPhyData =0; /* Logic value != Physic value */
+                        else            *pPhyData =1;
+                    }
+                }
+                else                          /* If the input is direct */
+                {
+                    if( byElecData != *pPhyData)
+                    {
+                        /* printf ("Input value - channel %d has changed\n",nbIndex); */
+                        *pPhyData = byElecData;
+                    }
+                }
+                /* update the channel if not locked */
+                if (!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
+
+                pChannel++;
             }
         }
-        else                          /* If the input is direct */
-        {
-            if( byElecData != *pPhyData)
-            {
-                /* printf ("Input value - channel %d has changed\n",nbIndex); */
-                *pPhyData = byElecData;
-            }
-        }
-        /* update the channel if not locked */
-        if (!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
 
-        pChannel++;
     }
+
+
 
 
 }

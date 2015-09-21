@@ -14,40 +14,40 @@ Device name:        EVRO_modul_info_
 #include <evro_int_evro_int_evro_indicate_info.h>
 #include <evro_int_evro_int_status_m.h>
 /* OEM Parameters of complex device */
-/*typedef struct _tag_strEvro_modul_info_
+typedef struct _tag_strEvro_modul_info_
 {
-    int32  ID;  
-  
-} strOemParam;
-*/
+    int32  ID;
+
+} strEvro_modul_info_;
+
 
 /* OEM Parameters of linked simple devices */
-
+/*
 typedef struct _tag_strEvro_modul_info
 {
-    int32  ID;  
-  
+    int32  ID;
+
 } strOemParam;
 
 typedef struct _tag_strEvro_avar_info
 {
-    int32  ID;  
-	
+    int32  ID;
+
 } strEvro_avar_info;
 
 typedef struct _tag_strEvro_temp_info
 {
-    int32  ID;   
+    int32  ID;
 
 } strEvro_temp_info;
 
 typedef struct _tag_strEvro_indicate_info
 {
-    int32  ID;  
+    int32  ID;
 
 } strEvro_indicate_info;
 
-
+*/
 /****************************************************************************
 function    : evro_int_evro_int_evro_modul_info_IosOpen
 description : Level 1 device Open function
@@ -80,19 +80,19 @@ typSTATUS evro_int_evro_int_evro_modul_info_IosOpen
         printf("Error opening\n");
         return(BAD_RET);
     }
-	 pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     if (evro_int_evro_int_evro_temp_infoIosOpen(pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
         return(BAD_RET);
     }
-	 pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     if (evro_int_evro_int_evro_indicate_infoIosOpen(pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
         return(BAD_RET);
     }
-	pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     if (evro_int_evro_int_status_mIosOpen(pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
@@ -118,13 +118,13 @@ void evro_int_evro_int_evro_modul_info_IosClose
     strRtIoSplDvc* pRtIoSplDvc;
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
     evro_int_evro_int_evro_modul_infoIosClose (pRtIoSplDvc);
- 	pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     evro_int_evro_int_evro_avar_infoIosClose(pRtIoSplDvc);
-	pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     evro_int_evro_int_evro_temp_infoIosClose(pRtIoSplDvc);
-	pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     evro_int_evro_int_evro_indicate_infoIosClose(pRtIoSplDvc);
-	pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     evro_int_evro_int_status_mIosClose(pRtIoSplDvc);
 }
 

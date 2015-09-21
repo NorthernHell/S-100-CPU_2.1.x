@@ -16,7 +16,7 @@ Device name:        IO_16DO
 
 /* OEM Parameters of linked simple devices */
 
-typedef struct _tag_strIo16do
+typedef struct _tag_strIo_16do
 {
     int32  baud_rate;   /* Baud Rate */
     int32  NCOM;   /* COM port number */
@@ -26,7 +26,7 @@ typedef struct _tag_strIo16do
     int32  TimeOutu;   /* timeout mcs */
     int32  TimeOutsec;   /* temeout s */
     int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
-} strIo16do;
+} strIo_16do;
 
 
 

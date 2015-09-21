@@ -8,11 +8,8 @@ Device name:        MODBUS_TCP_CLIENT_DO
 #include <dsys0def.h>
 #include <dios0def.h>
 #include <evro_tcpc_evro_tcpc_modbus_tcp_client_do.h>
-//
 #include <evro_tcpc_evro_tcpc_modbus_tcp_status.h>
 #include <evro_tcpc_evro_tcpc_mtcp_do.h>
-int modbus_tcp_dos =1;
-//
 /* OEM Parameters of complex device */
 
 
@@ -20,7 +17,7 @@ int modbus_tcp_dos =1;
 /* OEM Parameters of linked simple devices */
 
 
-typedef struct _tag_strMtcp_do
+typedef struct _tag_strModbus_tcp_client_do
 {
     char   IP[16];
     int32  PORT;
@@ -28,7 +25,7 @@ typedef struct _tag_strMtcp_do
     int32  NR;
     int32  TimeOutu;
     int32  TimeOutsec;
-} strMtcp_do;
+} strModbus_tcp_client_do;
 
 /****************************************************************************
 function    : evro_tcpc_evro_tcpc_modbus_tcp_client_doIosOpen
@@ -95,7 +92,6 @@ void evro_tcpc_evro_tcpc_modbus_tcp_client_domodbus_tcp_statusIosRead
     strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-    pRtIoSplDvc->luUser=modbus_tcp_dos;
     evro_tcpc_evro_tcpc_modbus_tcp_statusIosRead(pRtIoSplDvc);
 }
 

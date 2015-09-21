@@ -15,11 +15,11 @@ Device name:        EVRO_8ro_
 
 /* OEM Parameters of linked simple devices */
 
-typedef struct _tag_strEvro_8ro
+typedef struct _tag_strEvro_8ro_
 {
     int32  ID;   /* Node ID */
-  
-} strOemParam;
+
+} strEvro_8ro_;
 
 
 
@@ -45,9 +45,6 @@ typSTATUS evro_int_evro_int_evro_8ro_IosOpen
 
     strRtIoSplDvc* pRtIoSplDvc;
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
-	strOemParam* pOemParam;
-    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
-//    id_2=pOemParam->ID;
     if (evro_int_evro_int_evro_8roIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
@@ -126,7 +123,7 @@ void evro_int_evro_int_evro_8ro_evro_8roIosWrite
      *   Then do not forget to update the physical data with the logical data
      */
     evro_int_evro_int_evro_8roIosWrite(pRtIoSplDvc);
- //   modbus8ro=pRtIoSplDvc->luUser;
+//   modbus8ro=pRtIoSplDvc->luUser;
 }
 
 /****************************************************************************

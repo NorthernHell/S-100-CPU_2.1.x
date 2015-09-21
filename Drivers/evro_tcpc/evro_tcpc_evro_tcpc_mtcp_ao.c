@@ -10,8 +10,6 @@ Device name:        MTCP_AO
 #include <evro_tcpc_evro_tcpc_mtcp_ao.h>
 #include <modbus/modbus.h>
 /* OEM Parameters */
-extern int modbus_tcp_aos;
-
 typedef struct _tag_strMtcp_ao
 {
     char   IP[16];
@@ -21,7 +19,7 @@ typedef struct _tag_strMtcp_ao
     int32	FUNCION;
     int32  TimeOutu;
     int32  TimeOutsec;
-} strMtcp_ao;
+} strOemParam;
 /****************************************************************************
 function    : evro_tcpc_evro_tcpc_mtcp_aiIosOpen
 description : Level 1 device Open function
@@ -33,7 +31,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_tcpc_evro_tcpc_mtcp_aoIosOpen
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("MB TCPC AO init\n");
@@ -51,10 +49,11 @@ warning     :
 
 void evro_tcpc_evro_tcpc_mtcp_aoIosClose
 (
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-
+    printf("MB TCPC AO Close\n");
+    sleep(1);
 }
 /****************************************************************************
 function    : evro_tcpc_evro_tcpc_mtcp_aoIosWrite
@@ -83,8 +82,8 @@ void evro_tcpc_evro_tcpc_mtcp_aoIosWrite
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
     pChannel   =  pRtIoSplDvc->pRtIoChan;
-    strMtcp_ao* pOemParam;
-    pOemParam=(strMtcp_ao*)(pRtIoSplDvc->pvOemParam);
+	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	
     /* Update all channel  */
     for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
     {
@@ -125,36 +124,41 @@ void evro_tcpc_evro_tcpc_mtcp_aoIosWrite
     modbus_t *ctx;
     int rc;
     struct timeval response_timeout;
-    response_timeout.tv_sec = pOemParam->TimeOutsec;
-    response_timeout.tv_usec = pOemParam->TimeOutu;
-    ctx = modbus_new_tcp(pOemParam->IP, pOemParam->PORT); //connect
+    response_timeout.tv_sec = oemCPar->TimeOutsec;
+    response_timeout.tv_usec = oemCPar->TimeOutu;
+    ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
     if (modbus_connect(ctx) == -1)
     {
         printf("Connexion failed: \n");
-        modbus_tcp_aos=0;
         modbus_free(ctx);
     }
     else
     {
-        modbus_tcp_aos=1;
         modbus_set_response_timeout(ctx, &response_timeout);
-        if (pOemParam->FUNCION!=6)
+        if (oemCPar->FUNCION!=6)
         {
-            rc  = modbus_write_registers(ctx, pOemParam->Adress, pOemParam->NR, tab_reg);
+            rc  = modbus_write_registers(ctx, oemCPar->Adress, oemCPar->NR, tab_reg);
         }
         else
         {
             int i;
-            for (i=0; i<pOemParam->NR; i++)
+            for (i=0; i<oemCPar->NR; i++)
             {
-                rc =modbus_write_register(ctx, pOemParam->Adress+i,tab_reg[i]);
+                rc =modbus_write_register(ctx, oemCPar->Adress+i,tab_reg[i]);
                 if (rc==-1)
                 {
                     break;
-                    modbus_tcp_aos=0;
                 }
             }
         }
+		if (rc == -1)
+        {
+            cpxDev->luUser =0;
+        }
+        else
+        {
+            cpxDev->luUser =1;
+        };			
         modbus_close(ctx);
         modbus_free(ctx);
     };

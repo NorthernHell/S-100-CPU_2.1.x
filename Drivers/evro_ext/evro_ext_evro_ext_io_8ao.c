@@ -17,17 +17,17 @@ Device name:        IO_8AO
 
 /* OEM Parameters of linked simple devices */
 
-typedef struct _tag_strIo8ao
+typedef struct _tag_strIo_8ao
 {
-    int32  baud_rate;
+    int32  baud_rate;   /* Baud Rate */
     int32  NCOM;   /* COM port number */
-    int32  Parity;
-    int32  Stop_bits;
     int32  ID;   /* Device address */
-    int32  TimeOutsec;   /* timeout sec */
+    int32  Parity;   /* 0 - None 1-even 2-odd */
+    int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
-    int32  Wathdog;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
-} strIo8ao;
+    int32  TimeOutsec;   /* temeout s */
+    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
+} strIo_8ao;
 
 
 
