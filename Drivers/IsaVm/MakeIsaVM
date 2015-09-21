@@ -1,0 +1,2 @@
+#!/bin/sh
+make clean all 2>err.log
