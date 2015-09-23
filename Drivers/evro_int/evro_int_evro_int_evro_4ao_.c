@@ -19,7 +19,7 @@ Device name:        EVRO_4AO_
 typedef struct _tag_strEvro_4ao_
 {
     int32  ID;   /* Node ID */
-   
+
 } strEvro_4ao_;
 
 

@@ -19,7 +19,7 @@ int modbus8ro=1;
 typedef struct _tag_strEvro_8ro
 {
     int32  ID;   /* Node ID */
-  
+
 } strEvro_8ro;
 
 

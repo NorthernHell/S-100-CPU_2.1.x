@@ -11,40 +11,40 @@ Device name:        IO_16DI
 /* prototypes */
 
 typSTATUS evro_ext_evro_ext_io_16diIosOpen
-   (
-   strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to open */
-   );
+(
+    strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to open */
+);
 
 void evro_ext_evro_ext_io_16diIosClose
-   (
-   strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to close */
-   );
+(
+    strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to close */
+);
 
 void evro_ext_evro_ext_io_16diio16diIosRead
-   (
-   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
-   );
+(
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+);
 
 void evro_ext_evro_ext_io_16diio16diIosCtl
-   (
-   uchar          cuSubFunct,   /* Sub function parameter */
-   strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
-   uint16         huChanNum,    /* Channel number if any */
-   void*          pvReserved    /* Reserved */
-   );
+(
+    uchar          cuSubFunct,   /* Sub function parameter */
+    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
+    uint16         huChanNum,    /* Channel number if any */
+    void*          pvReserved    /* Reserved */
+);
 
 void evro_ext_evro_ext_io_16dimodbusstatusIosRead
-   (
-   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
-   );
+(
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+);
 
 void evro_ext_evro_ext_io_16dimodbusstatusIosCtl
-   (
-   uchar          cuSubFunct,   /* Sub function parameter */
-   strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
-   uint16         huChanNum,    /* Channel number if any */
-   void*          pvReserved    /* Reserved */
-   );
+(
+    uchar          cuSubFunct,   /* Sub function parameter */
+    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
+    uint16         huChanNum,    /* Channel number if any */
+    void*          pvReserved    /* Reserved */
+);
 
 
 
