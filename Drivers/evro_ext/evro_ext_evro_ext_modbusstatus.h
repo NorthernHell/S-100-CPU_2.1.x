@@ -12,27 +12,27 @@ Device name:        modbusstatus
 
 
 typSTATUS evro_ext_evro_ext_modbusstatusIosOpen
-(
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
-);
+   (
+   strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
+   );
 
 void evro_ext_evro_ext_modbusstatusIosClose
-(
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
-);
+   (
+   strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
+   );
 
 void evro_ext_evro_ext_modbusstatusIosRead
-(
-    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
-);
+   (
+   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+   );
 
 void evro_ext_evro_ext_modbusstatusIosCtl
-(
-    uchar          cuSubFunct,   /* Sub function parameter */
-    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
-    uint16         huChanNum,    /* Channel number if any */
-    void*          pvReserved    /* Reserved */
-);
+   (
+   uchar          cuSubFunct,   /* Sub function parameter */
+   strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
+   uint16         huChanNum,    /* Channel number if any */
+   void*          pvReserved    /* Reserved */
+   );
 
 
 #endif /* _EVRO_EXT_EVRO_EXT_MODBUSSTATUS_H */
