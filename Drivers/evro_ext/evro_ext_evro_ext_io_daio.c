@@ -29,11 +29,11 @@ typedef struct _tag_strIo_daio
     int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
     int32  TimeOutsec;   /* temeout s */
-    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */
+    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */	
     int32  RTD_type;   /* typ termopary */
     int32  Line_Frequency;   /* Line Frequency */
     int32  Units_Type;   /* 1=°C, 2=°F */
-    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
+    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */	
 } strIo_daio;
 
 
@@ -64,30 +64,30 @@ typSTATUS evro_ext_evro_ext_io_daioIosOpen
         printf("Error opening\n");
         return(BAD_RET);
     }
-    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);	
     if (evro_ext_evro_ext_io2doIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
         return(BAD_RET);
     }
-    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);	
     if (evro_ext_evro_ext_io2rtdIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
         return(BAD_RET);
     }
-    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);	
     if (evro_ext_evro_ext_io2aiIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
         return(BAD_RET);
     }
-    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);	
     if (evro_ext_evro_ext_io1aoIosOpen (pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
         return(BAD_RET);
-    }
+    }	
     pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     if (evro_ext_evro_ext_modbusstatusIosOpen(pRtIoSplDvc) != 0)
     {
@@ -122,7 +122,7 @@ void evro_ext_evro_ext_io_daioIosClose
     evro_ext_evro_ext_io2aiIosClose (pRtIoSplDvc);
     pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     evro_ext_evro_ext_io1aoIosClose (pRtIoSplDvc);
-    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);	
     evro_ext_evro_ext_modbusstatusIosClose(pRtIoSplDvc);
 }
 
