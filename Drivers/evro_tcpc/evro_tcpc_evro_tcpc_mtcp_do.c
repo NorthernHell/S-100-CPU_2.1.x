@@ -18,6 +18,7 @@ typedef struct _tag_strMtcp_do
     int32  NR;
     int32  TimeOutu;
     int32  TimeOutsec;
+    int32  count;     
 } strOemParam;
 
 
@@ -34,7 +35,9 @@ typSTATUS evro_tcpc_evro_tcpc_mtcp_doIosOpen
 (
   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
-{
+{   strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam; 
+    oemCPar->count=1000;
     printf("MB TCPC DO init\n");
     return (0);
 }
@@ -80,7 +83,7 @@ void evro_tcpc_evro_tcpc_mtcp_doIosWrite
     uchar*           pPhyData;      /* Physical value */
     uchar*           pLogData;      /* Logic Value */
     uchar            byElecData;    /* Electrical value ('1' or '0') */
-    uint8_t            sNewMsg[150];
+    uint8_t          sNewMsg[150];
     int              okChange;      /* indicate one of the channel has changed */
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
@@ -119,15 +122,19 @@ void evro_tcpc_evro_tcpc_mtcp_doIosWrite
         pChannel++;
     }
 	modbus_t *ctx;
-	int rc;
+    int rc;    
+	int mc;
     sNewMsg[ nbChannel] = 0; /* null char at the end of the string */
     /* If one variable has changed, we print in the file the new values */
     struct timeval response_timeout;
     response_timeout.tv_sec = oemCPar->TimeOutsec;
     response_timeout.tv_usec = oemCPar->TimeOutu;
     ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
-    if (modbus_connect(ctx) == -1)
-    {
+    if(oemCPar->count<1000)oemCPar->count=oemCPar->count+1;
+    if (oemCPar->count>=1000) {mc =  modbus_connect(ctx);} 
+
+    if (mc == -1)
+    {   oemCPar->count=0;
         printf("Connexion failed: \n");
         modbus_free(ctx);
     }
