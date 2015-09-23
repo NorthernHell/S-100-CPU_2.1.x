@@ -177,12 +177,9 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
                 printf("fElecData %d\n", fElecData );
 
             }
-        }	
-	
-    }
 
-	
-    
+        }	
+    }
 }
 
 /****************************************************************************
