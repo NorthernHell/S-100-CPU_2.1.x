@@ -103,6 +103,7 @@ void evro_ext_evro_ext_m_aiIosRead
     modbus_t *ctx;
     uint16_t tab_reg[150];
     int rc;
+    int mc;   
     struct timeval response_timeout;
     response_timeout.tv_sec = oemCPar->TimeOutsec;
     response_timeout.tv_usec = oemCPar->TimeOutu;
@@ -136,14 +137,19 @@ void evro_ext_evro_ext_m_aiIosRead
             ctx = modbus_new_rtu("/dev/ttySAC1", oemCPar->baud_rate, 'O', 8, oemCPar->Stop_bits);
         };
     }
+
+
     modbus_set_slave(ctx, oemCPar->ID);
-    if (modbus_connect(ctx) == -1)
+    mc =  modbus_connect(ctx); 
+    
+    if (mc == -1)
     {
         printf("Connexion failed: \n");
         modbus_free(ctx);
     }
     else
     {
+        printf("Connection good: %d\n", mc);
         modbus_set_response_timeout(ctx, &response_timeout);
         if (oemCPar->Func == 3)
         {

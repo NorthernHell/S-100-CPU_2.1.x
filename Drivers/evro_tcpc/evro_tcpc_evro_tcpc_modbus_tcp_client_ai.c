@@ -26,6 +26,7 @@ typedef struct _tag_strModbus_tcp_client_ai
     int32  FUNCION;
     int32  TimeOutu;
     int32  TimeOutsec;
+    int32  count;
 } strModbus_tcp_client_ai;
 
 
