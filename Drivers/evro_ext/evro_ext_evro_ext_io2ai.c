@@ -20,15 +20,15 @@ typedef struct _tag_strIo2ai
     int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
     int32  TimeOutsec;   /* temeout s */
-    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */	
+    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */
     int32  RTD_type_ch1;   /* typ termopary */
-    int32  RTD_type_ch2;   /* typ termopary */	
+    int32  RTD_type_ch2;   /* typ termopary */
     int32  AI_type_ch1;   /* typ termopary */
-    int32  AI_type_ch2;   /* typ termopary */		
-    int32  AO_type;   /* typ termopary */		
+    int32  AI_type_ch2;   /* typ termopary */
+    int32  AO_type;   /* typ termopary */
     int32  Line_Frequency;   /* Line Frequency */
     int32  Units_Type;   /* 1=°C, 2=°F */
-    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */	
+    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
 } strOemParam;
 
 
@@ -43,7 +43,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_ext_evro_ext_io2aiIosOpen
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     /*
@@ -51,10 +51,10 @@ typSTATUS evro_ext_evro_ext_io2aiIosOpen
      * simple devices and perform corressponding initializations.
      * For a simple device it just initializes it.
      */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	 
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     printf("io2ai init\n");
-	
+
     modbus_t *ctx;
     int rc;
     struct timeval response_timeout;
@@ -108,8 +108,8 @@ typSTATUS evro_ext_evro_ext_io2aiIosOpen
         {
             cpxDev->luUser =1;
         };
-		
-		modbus_set_response_timeout(ctx, &response_timeout);
+
+        modbus_set_response_timeout(ctx, &response_timeout);
         rc = modbus_write_register(ctx, 106, oemCPar->AI_type_ch1);
         if (rc == -1)
         {
@@ -122,7 +122,7 @@ typSTATUS evro_ext_evro_ext_io2aiIosOpen
         modbus_close(ctx);
         modbus_free(ctx);
     }
-    return (0);	
+    return (0);
 }
 
 /****************************************************************************
@@ -136,7 +136,7 @@ warning     :
 
 void evro_ext_evro_ext_io2aiIosClose
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("io2ai exit\n");
@@ -177,12 +177,12 @@ void evro_ext_evro_ext_io2aiIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     modbus_t *ctx;
     uint16_t tab_reg[10];
     int rc;
-     struct timeval response_timeout;
+    struct timeval response_timeout;
     response_timeout.tv_sec = oemCPar->TimeOutsec;
     response_timeout.tv_usec = oemCPar->TimeOutu;
 
@@ -226,57 +226,60 @@ void evro_ext_evro_ext_io2aiIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_read_registers(ctx, 5, 2, tab_reg);
- 		if (rc == -1)
+        modbus_close(ctx);
+        modbus_free(ctx);
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }
         else
         {
+            strRtIoChan*        pChannel;
+            strDfIoSplDvc*      pStaticDef;
+            uint16              nbChannel;
+            uint16              nbIndex;
+
+            int16*              pPhyData;   /* Physical value */
+            int16*              pLogData;   /* Logical Value    */
+            int16               fElecData;
+            float               fMult,fDiv,fOffset;
+            pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
+            nbChannel  =  pStaticDef->huNbChan;
+            pChannel   =  pRtIoSplDvc->pRtIoChan;
             cpxDev->luUser =1;
+            for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+            {
+                pPhyData = (int16*)(pChannel->pvKerPhyData);
+                pLogData = (int16*)(pChannel->pvKerData);
+
+                fElecData=tab_reg[nbIndex];
+                if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
+                {
+                    pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
+                }
+                fMult   = *(float *)(&(pChannel->luCnvMult));
+                fDiv    = *(float *)(&(pChannel->luCnvDiv ));
+                fOffset = *(float *)(&(pChannel->luCnvOfs));
+                if (fDiv != 0.0)
+                    fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
+                if( *pPhyData != fElecData) /* If Physic value != Electrical value */
+                {
+                    *pPhyData = fElecData;
+                }
+
+
+                /* update the channel if not locked */
+                if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
+
+                pChannel++;
+            }
         }
-        modbus_close(ctx);
-        modbus_free(ctx);
+
     }
     //
-    strRtIoChan*        pChannel;
-    strDfIoSplDvc*      pStaticDef;
-    uint16              nbChannel;
-    uint16              nbIndex;
 
-    int16*              pPhyData;   /* Physical value */
-    int16*              pLogData;   /* Logical Value    */
-    int16               fElecData;
-    float               fMult,fDiv,fOffset;
-    pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
-    nbChannel  =  pStaticDef->huNbChan;
-    pChannel   =  pRtIoSplDvc->pRtIoChan;
     /*  Update all channel */
-    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
-    {
-        pPhyData = (int16*)(pChannel->pvKerPhyData);
-        pLogData = (int16*)(pChannel->pvKerData);
 
-        fElecData=tab_reg[nbIndex];
-        if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
-        {
-            pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
-        }
-        fMult   = *(float *)(&(pChannel->luCnvMult));
-        fDiv    = *(float *)(&(pChannel->luCnvDiv ));
-        fOffset = *(float *)(&(pChannel->luCnvOfs));
-        if (fDiv != 0.0)
-            fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
-        if( *pPhyData != fElecData) /* If Physic value != Electrical value */
-        {
-            *pPhyData = fElecData;
-        }
-
-
-        /* update the channel if not locked */
-        if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
-
-        pChannel++;
-    }
 }
 
 /****************************************************************************

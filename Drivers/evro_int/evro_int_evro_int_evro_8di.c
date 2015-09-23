@@ -14,7 +14,7 @@ Device name:        EVRO_8DI
 typedef struct _tag_strEvro_8di
 {
     int32  ID;   /* Node ID */
-   
+
 } strOemParam;
 
 
@@ -40,7 +40,7 @@ typSTATUS evro_int_evro_int_evro_8diIosOpen
      * For a simple device it just initializes it.
      */
     printf("EVRO 8DI init\n");
-	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
@@ -54,8 +54,8 @@ typSTATUS evro_int_evro_int_evro_8diIosOpen
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-       
-           if (rc == -1)
+
+        if (rc == -1)
         {
             pvRtIoDvc->luUser=0;
         }
@@ -137,7 +137,7 @@ void evro_int_evro_int_evro_8diIosRead
         printf("Connexion failed: \n");
         modbus_free(ctx);
     }
-  else
+    else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc= modbus_read_input_bits(ctx, 10000, 16, tab_reg);

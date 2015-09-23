@@ -20,15 +20,15 @@ typedef struct _tag_strIo2do
     int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
     int32  TimeOutsec;   /* temeout s */
-    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */	
+    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */
     int32  RTD_type_ch1;   /* typ termopary */
-    int32  RTD_type_ch2;   /* typ termopary */	
+    int32  RTD_type_ch2;   /* typ termopary */
     int32  AI_type_ch1;   /* typ termopary */
-    int32  AI_type_ch2;   /* typ termopary */		
-    int32  AO_type;   /* typ termopary */		
+    int32  AI_type_ch2;   /* typ termopary */
+    int32  AO_type;   /* typ termopary */
     int32  Line_Frequency;   /* Line Frequency */
     int32  Units_Type;   /* 1=°C, 2=°F */
-    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */	
+    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
 } strOemParam;
 /****************************************************************************
 function    : evro_ext_evro_ext_io2doIosOpen
@@ -41,11 +41,11 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_ext_evro_ext_io2doIosOpen
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
@@ -122,7 +122,7 @@ warning     :
 
 void evro_ext_evro_ext_io2doIosClose
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("IO2do Exit\n");
@@ -170,8 +170,8 @@ void evro_ext_evro_ext_io2doIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	 
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -264,7 +264,7 @@ void evro_ext_evro_ext_io2doIosWrite
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_write_bits(ctx, 16, nbChannel, sNewMsg);
- 		if (rc == -1)
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }

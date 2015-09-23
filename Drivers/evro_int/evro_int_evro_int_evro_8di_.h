@@ -11,53 +11,53 @@ Device name:        EVRO_8DI_
 /* prototypes */
 
 typSTATUS evro_int_evro_int_evro_8di_IosOpen
-   (
-   strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to open */
-   );
+(
+    strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to open */
+);
 
 void evro_int_evro_int_evro_8di_IosClose
-   (
-   strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to close */
-   );
+(
+    strRtIoCpxDvc* pvRtIoDvc /* Run time io struct of the device to close */
+);
 
 void evro_int_evro_int_evro_8di_evro_8diIosRead
-   (
-   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
-   );
+(
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+);
 
 void evro_int_evro_int_evro_8di_evro_8diIosCtl
-   (
-   uchar          cuSubFunct,   /* Sub function parameter */
-   strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
-   uint16         huChanNum,    /* Channel number if any */
-   void*          pvReserved    /* Reserved */
-   );
+(
+    uchar          cuSubFunct,   /* Sub function parameter */
+    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
+    uint16         huChanNum,    /* Channel number if any */
+    void*          pvReserved    /* Reserved */
+);
 
 void evro_int_evro_int_evro_8di_evro_8dirIosRead
-   (
-   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
-   );
+(
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+);
 
 void evro_int_evro_int_evro_8di_evro_8dirIosCtl
-   (
-   uchar          cuSubFunct,   /* Sub function parameter */
-   strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
-   uint16         huChanNum,    /* Channel number if any */
-   void*          pvReserved    /* Reserved */
-   );
+(
+    uchar          cuSubFunct,   /* Sub function parameter */
+    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
+    uint16         huChanNum,    /* Channel number if any */
+    void*          pvReserved    /* Reserved */
+);
 
 void evro_int_evro_int_evro_8di_status_mIosRead
-   (
-   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
-   );
+(
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+);
 
 void evro_int_evro_int_evro_8di_status_mIosCtl
-   (
-   uchar          cuSubFunct,   /* Sub function parameter */
-   strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
-   uint16         huChanNum,    /* Channel number if any */
-   void*          pvReserved    /* Reserved */
-   );
+(
+    uchar          cuSubFunct,   /* Sub function parameter */
+    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
+    uint16         huChanNum,    /* Channel number if any */
+    void*          pvReserved    /* Reserved */
+);
 
 #endif /* _EVRO_INT_EVRO_INT_EVRO_8DI__H */
 
