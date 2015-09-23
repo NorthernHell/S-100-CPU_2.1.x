@@ -84,7 +84,7 @@ void evro_tcpc_evro_tcpc_mtcp_diIosRead
     ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
     if (modbus_connect(ctx) == -1)
     {
-        printf("Connexion failed: \n");
+        printf("Connexion failed (new DI): \n");
         modbus_free(ctx);
     }
     else
@@ -94,29 +94,26 @@ void evro_tcpc_evro_tcpc_mtcp_diIosRead
 		if (rc == -1)
         {
             cpxDev->luUser =0;
+			modbus_close(ctx);
+			modbus_free(ctx);
         }
         else
         {
-            cpxDev->luUser =1;
-        };			
-        modbus_close(ctx);
-        modbus_free(ctx);
-    };
-    ////////
-    strRtIoChan*        pChannel;
-    strDfIoSplDvc*      pStaticDef;
-    uint16              nbChannel;
-    uint16              nbIndex;
-
+		strRtIoChan*        pChannel;
+		strDfIoSplDvc*      pStaticDef;
+		uint16              nbChannel;
+		uint16              nbIndex;
     uchar*              pPhyData;   /* Physical value            */
     uchar*              pLogData;   /* Logical Value               */
     uchar               byElecData; /* Electrical value ('1' or '0') */
-
     pStaticDef = pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  = pStaticDef->huNbChan;
     pChannel   = pRtIoSplDvc->pRtIoChan;
-    /* Update all channels */
-    for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
+            cpxDev->luUser =1;
+			modbus_close(ctx);
+			modbus_free(ctx);
+			/* Update all channels */
+			  for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
     {
         pPhyData = (uchar*)(pChannel->pvKerPhyData);
         pLogData = (uchar*)(pChannel->pvKerData);
@@ -147,7 +144,9 @@ void evro_tcpc_evro_tcpc_mtcp_diIosRead
 
         pChannel++;
     }
-
+        }			
+        
+    }
 }
 
 /****************************************************************************

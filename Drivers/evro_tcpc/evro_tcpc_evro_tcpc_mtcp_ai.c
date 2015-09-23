@@ -82,7 +82,7 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
     ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
     if (modbus_connect(ctx) == -1)
     {
-        printf("Connexion failed: \n");
+        printf("Connexion failed new version: \n");
         modbus_free(ctx);
     }
     else
@@ -100,16 +100,12 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
 		if (rc == -1)
         {
             cpxDev->luUser =0;
+			modbus_close(ctx);
+        modbus_free(ctx);
         }
         else
         {
-            cpxDev->luUser =1;
-        };		
-        modbus_close(ctx);
-        modbus_free(ctx);
-    };
-    //
-    strRtIoChan*        pChannel;
+		 strRtIoChan*        pChannel;
     strDfIoSplDvc*      pStaticDef;
     uint16              nbChannel;
     uint16              nbIndex;
@@ -120,12 +116,13 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
     pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
     nbChannel  =  pStaticDef->huNbChan;
     pChannel   =  pRtIoSplDvc->pRtIoChan;
-    /*  Update all channel */
-    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+            cpxDev->luUser =1;
+			modbus_close(ctx);
+        modbus_free(ctx);
+		for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
     {
         pPhyData = (int16*)(pChannel->pvKerPhyData);
         pLogData = (int16*)(pChannel->pvKerData);
-
         fElecData=tab_reg[nbIndex];
         if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
         {
@@ -134,8 +131,9 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
         fMult   = *(float *)(&(pChannel->luCnvMult));
         fDiv    = *(float *)(&(pChannel->luCnvDiv ));
         fOffset = *(float *)(&(pChannel->luCnvOfs));
-        if (fDiv != 0.0)
-            fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
+        if (fDiv != 0.0){
+			 fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
+			}
         if( *pPhyData != fElecData) /* If Physic value != Electrical value */
         {
             *pPhyData = fElecData;
@@ -147,6 +145,12 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
 
         pChannel++;
     }
+        }	
+	
+    }
+
+	
+    
 }
 
 /****************************************************************************

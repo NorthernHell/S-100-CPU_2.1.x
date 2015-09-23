@@ -20,15 +20,15 @@ typedef struct _tag_strIo2rtd
     int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
     int32  TimeOutsec;   /* temeout s */
-    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */	
+    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */
     int32  RTD_type_ch1;   /* typ termopary */
-    int32  RTD_type_ch2;   /* typ termopary */	
+    int32  RTD_type_ch2;   /* typ termopary */
     int32  AI_type_ch1;   /* typ termopary */
-    int32  AI_type_ch2;   /* typ termopary */		
-    int32  AO_type;   /* typ termopary */		
+    int32  AI_type_ch2;   /* typ termopary */
+    int32  AO_type;   /* typ termopary */
     int32  Line_Frequency;   /* Line Frequency */
     int32  Units_Type;   /* 1=°C, 2=°F */
-    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */	
+    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
 } strOemParam;
 /****************************************************************************
 function    : evro_ext_evro_ext_io2rtdIosOpen
@@ -41,7 +41,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_ext_evro_ext_io2rtdIosOpen
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     /*
@@ -50,8 +50,8 @@ typSTATUS evro_ext_evro_ext_io2rtdIosOpen
      * For a simple device it just initializes it.
      */
 
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     printf("IO2rtd init\n");
     modbus_t *ctx;
     int rc;
@@ -106,8 +106,8 @@ typSTATUS evro_ext_evro_ext_io2rtdIosOpen
         {
             cpxDev->luUser =1;
         };
-		
-		modbus_set_response_timeout(ctx, &response_timeout);
+
+        modbus_set_response_timeout(ctx, &response_timeout);
         rc = modbus_write_register(ctx, 104, oemCPar->RTD_type_ch2);
         if (rc == -1)
         {
@@ -117,8 +117,8 @@ typSTATUS evro_ext_evro_ext_io2rtdIosOpen
         {
             cpxDev->luUser =1;
         };
-		
-        rc = modbus_write_register(ctx, 101, oemCPar->Line_Frequency);
+
+        rc = modbus_write_register(ctx, 108, oemCPar->Line_Frequency);
         if (rc == -1)
         {
             cpxDev->luUser =0;
@@ -127,8 +127,8 @@ typSTATUS evro_ext_evro_ext_io2rtdIosOpen
         {
             cpxDev->luUser =1;
         };
-      
-        rc = modbus_write_register(ctx, 102, oemCPar->Units_Type);
+
+        rc = modbus_write_register(ctx, 109, oemCPar->Units_Type);
         if (rc == -1)
         {
             cpxDev->luUser =0;
@@ -154,7 +154,7 @@ warning     :
 
 void evro_ext_evro_ext_io2rtdIosClose
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("io2rtd exit\n");
@@ -196,8 +196,8 @@ void evro_ext_evro_ext_io2rtdIosRead
      * channels are locked.
      */
     //
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     strRtIoChan*        pChannel;
     strDfIoSplDvc*      pStaticDef;
     uint16              nbChannel;
@@ -212,7 +212,7 @@ void evro_ext_evro_ext_io2rtdIosRead
     modbus_t *ctx;
     uint16_t tab_reg[32];
     int rc;
-     struct timeval response_timeout;
+    struct timeval response_timeout;
     response_timeout.tv_sec = oemCPar->TimeOutsec;
     response_timeout.tv_usec = oemCPar->TimeOutu;
 
@@ -256,45 +256,47 @@ void evro_ext_evro_ext_io2rtdIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_read_registers(ctx, 3, 2, tab_reg);
-		if (rc == -1)
+        modbus_close(ctx);
+        modbus_free(ctx);
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }
         else
         {
             cpxDev->luUser =1;
+            for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
+            {
+                pPhyData = (int16*)(pChannel->pvKerPhyData);
+                pLogData = (int16*)(pChannel->pvKerData);
+
+                fElecData=tab_reg[nbIndex];
+                if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
+                {
+                    pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
+                }
+                fMult   = *(float *)(&(pChannel->luCnvMult));
+                fDiv    = *(float *)(&(pChannel->luCnvDiv ));
+                fOffset = *(float *)(&(pChannel->luCnvOfs));
+                if (fDiv != 0.0)
+                    fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
+                if( *pPhyData != fElecData) /* If Physic value != Electrical value */
+                {
+                    *pPhyData = fElecData;
+                }
+
+
+                /* update the channel if not locked */
+                if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
+
+                pChannel++;
+            }
         }
-        modbus_close(ctx);
-        modbus_free(ctx);
+
     }
 
     /*  Update all channel */
-    for( nbIndex = 0; nbIndex < nbChannel; nbIndex++)
-    {
-        pPhyData = (int16*)(pChannel->pvKerPhyData);
-        pLogData = (int16*)(pChannel->pvKerData);
 
-        fElecData=tab_reg[nbIndex];
-        if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
-        {
-            pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
-        }
-        fMult   = *(float *)(&(pChannel->luCnvMult));
-        fDiv    = *(float *)(&(pChannel->luCnvDiv ));
-        fOffset = *(float *)(&(pChannel->luCnvOfs));
-        if (fDiv != 0.0)
-            fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
-        if( *pPhyData != fElecData) /* If Physic value != Electrical value */
-        {
-            *pPhyData = fElecData;
-        }
-
-
-        /* update the channel if not locked */
-        if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
-
-        pChannel++;
-    }
 }
 
 /****************************************************************************
