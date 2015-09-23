@@ -19,7 +19,7 @@ Device name:        EVRO_16do_
 typedef struct _tag_strEvro_16do_
 {
     int32  ID;   /* Node ID */
-
+  
 } strEvro_16do_;
 
 
