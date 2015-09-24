@@ -5,7 +5,7 @@ Type=BOOL
 Direction=Output
 LowerChannel=1
 UpperChannel=256
-HiddenMemberOfComplexDevice=0
+HiddenMemberOfComplexDevice=1
 [end]
 
 [device] MODBUS_RTU_INP_BITS_
@@ -15,7 +15,7 @@ Type=BOOL
 Direction=Output
 LowerChannel=1
 UpperChannel=256
-HiddenMemberOfComplexDevice=0
+HiddenMemberOfComplexDevice=1
 [end]
 
 [device] MODBUS_RTU_COIL_I_
@@ -25,37 +25,37 @@ Type=BOOL
 Direction=Input
 LowerChannel=1
 UpperChannel=256
-HiddenMemberOfComplexDevice=0
+HiddenMemberOfComplexDevice=1
 [end]
 
 [device] MODBUS_RTU_INP_REG_
 PackageName=_evro_RTUS_
 DriverName=evro_RTUS
-Type=UINT
+Type=INT
 Direction=Output
 LowerChannel=1
 UpperChannel=256
-HiddenMemberOfComplexDevice=0
+HiddenMemberOfComplexDevice=1
 [end]
 
 [device] MODBUS_RTU_HOLDING_O_
 PackageName=_evro_RTUS_
 DriverName=evro_RTUS
-Type=UINT
+Type=INT
 Direction=Output
 LowerChannel=1
 UpperChannel=256
-HiddenMemberOfComplexDevice=0
+HiddenMemberOfComplexDevice=1
 [end]
 
 [device] MODBUS_RTU_HOLDING_I_
 PackageName=_evro_RTUS_
 DriverName=evro_RTUS
-Type=UINT
+Type=INT
 Direction=Input
 LowerChannel=1
 UpperChannel=256
-HiddenMemberOfComplexDevice=0
+HiddenMemberOfComplexDevice=1
 [end]
 
 [complex] MODBUS_RTU_SERVER

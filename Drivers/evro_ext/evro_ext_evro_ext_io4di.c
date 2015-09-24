@@ -20,15 +20,15 @@ typedef struct _tag_strIo4di
     int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
     int32  TimeOutsec;   /* temeout s */
-    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */
+    int32  Input_Filter;   /* 0 = Disable, >0 = Enable. (x10ms) */	
     int32  RTD_type_ch1;   /* typ termopary */
-    int32  RTD_type_ch2;   /* typ termopary */
+    int32  RTD_type_ch2;   /* typ termopary */	
     int32  AI_type_ch1;   /* typ termopary */
-    int32  AI_type_ch2;   /* typ termopary */
-    int32  AO_type;   /* typ termopary */
+    int32  AI_type_ch2;   /* typ termopary */		
+    int32  AO_type;   /* typ termopary */		
     int32  Line_Frequency;   /* Line Frequency */
     int32  Units_Type;   /* 1=°C, 2=°F */
-    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */
+    int32  Watchdog_Timer;   /* Timer in seconds. 0 = disabled. 1 - 255 = enabled. */	
 } strOemParam;
 
 
@@ -44,7 +44,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_ext_evro_ext_io4diIosOpen
 (
-    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
 )
 {
     /*
@@ -52,8 +52,8 @@ typSTATUS evro_ext_evro_ext_io4diIosOpen
      * simple devices and perform corressponding initializations.
      * For a simple device it just initializes it.
      */
-    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
@@ -61,7 +61,7 @@ typSTATUS evro_ext_evro_ext_io4diIosOpen
      */
     printf("IO4di init\n");
     modbus_t *ctx;
-    int rc;
+	int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = oemCPar->TimeOutsec;
     response_timeout.tv_usec = oemCPar->TimeOutu;
@@ -105,7 +105,7 @@ typSTATUS evro_ext_evro_ext_io4diIosOpen
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc = modbus_write_register(ctx, 102, oemCPar->Input_Filter);
-        if (rc == -1)
+		if (rc == -1)
         {
             cpxDev->luUser =0;
         }
@@ -130,7 +130,7 @@ warning     :
 
 void evro_ext_evro_ext_io4diIosClose
 (
-    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
 )
 {
     printf("IO4di Close\n");
@@ -171,8 +171,8 @@ void evro_ext_evro_ext_io4diIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	 
     modbus_t *ctx;
     uint8_t tab_reg[32];
     int rc;
@@ -219,65 +219,62 @@ void evro_ext_evro_ext_io4diIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc= modbus_read_input_bits(ctx, 0, 4, tab_reg);
-        modbus_close(ctx);
-        modbus_free(ctx);
-        if (rc == -1)
+		if (rc == -1)
         {
             cpxDev->luUser =0;
         }
         else
         {
-            strRtIoChan*        pChannel;
-            strDfIoSplDvc*      pStaticDef;
-            uint16              nbChannel;
-            uint16              nbIndex;
-
-            uchar*              pPhyData;   /* Physical value            */
-            uchar*              pLogData;   /* Logical Value               */
-            uchar               byElecData; /* Electrical value ('1' or '0') */
-
-            pStaticDef = pRtIoSplDvc->pDfIoSplDvc;
-            nbChannel  = pStaticDef->huNbChan;
-            pChannel   = pRtIoSplDvc->pRtIoChan;
             cpxDev->luUser =1;
-            for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
-            {
-                pPhyData = (uchar*)(pChannel->pvKerPhyData);
-                pLogData = (uchar*)(pChannel->pvKerData);
-                byElecData = tab_reg[nbIndex];
-                if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
-                    pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &byElecData, &byElecData);
-
-
-                if((pChannel->luCnvMult) != 1)            /* If the input is reversed */
-                {
-                    if( *pPhyData == byElecData) /* If Physic value = Electrical value */
-                    {
-                        /* printf ("Input value - channel %d has changed\n",nbIndex); */
-                        if( byElecData) *pPhyData =0; /* Logic value != Physic value */
-                        else            *pPhyData =1;
-                    }
-                }
-                else                          /* If the input is direct */
-                {
-                    if( byElecData != *pPhyData)
-                    {
-                        /* printf ("Input value - channel %d has changed\n",nbIndex); */
-                        *pPhyData = byElecData;
-                    }
-                }
-                /* update the channel if not locked */
-                if (!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
-
-                pChannel++;
-            }
         }
-
+        modbus_close(ctx);
+        modbus_free(ctx);
     }
     ////////
+    strRtIoChan*        pChannel;
+    strDfIoSplDvc*      pStaticDef;
+    uint16              nbChannel;
+    uint16              nbIndex;
 
+    uchar*              pPhyData;   /* Physical value            */
+    uchar*              pLogData;   /* Logical Value               */
+    uchar               byElecData; /* Electrical value ('1' or '0') */
+
+    pStaticDef = pRtIoSplDvc->pDfIoSplDvc;
+    nbChannel  = pStaticDef->huNbChan;
+    pChannel   = pRtIoSplDvc->pRtIoChan;
     /* Update all channels */
+    for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
+    {
+        pPhyData = (uchar*)(pChannel->pvKerPhyData);
+        pLogData = (uchar*)(pChannel->pvKerData);
+        byElecData = tab_reg[nbIndex];
+        if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
+            pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &byElecData, &byElecData);
 
+
+        if((pChannel->luCnvMult) != 1)            /* If the input is reversed */
+        {
+            if( *pPhyData == byElecData) /* If Physic value = Electrical value */
+            {
+                /* printf ("Input value - channel %d has changed\n",nbIndex); */
+                if( byElecData) *pPhyData =0; /* Logic value != Physic value */
+                else            *pPhyData =1;
+            }
+        }
+        else                          /* If the input is direct */
+        {
+            if( byElecData != *pPhyData)
+            {
+                /* printf ("Input value - channel %d has changed\n",nbIndex); */
+                *pPhyData = byElecData;
+            }
+        }
+        /* update the channel if not locked */
+        if (!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
+
+        pChannel++;
+    }
 
 
 }

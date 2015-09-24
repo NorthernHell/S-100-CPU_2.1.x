@@ -14,8 +14,8 @@ Modifications: (who / date / description)
   
 ***************************************************************************/
 #include <dsys0def.h>
-#include <dipl0pro.h>
-#include <Packages.h>
+#include "dipl0pro.h"
+#include "Packages.h"
 
 /* constants **************************************************************/
 #define ISA_DECLARE_PACKNAME(PackName) /* Reserved for extensions */

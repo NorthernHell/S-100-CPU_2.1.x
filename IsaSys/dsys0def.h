@@ -26,6 +26,10 @@ EDS/27-Jul-2000/
    Changed default value of ISA_ER_BASE from 0x00000001UL to 0xAAAA0000UL
 
 ---4.12 Released---
+VMO/12-June-2002/ SFC function block
+   Defined ITGTDEF_SFCFBL.
+
+---4.13 Released---
 COL/22-Nov-2001/ Error report.
    Defined ITGTDEF_WARNING and added error identifier structure.
 VMO/26-Mar-2002/ IOs online modification
@@ -38,6 +42,8 @@ FG/20-Aug-2002/
 ---5.00 Released---
 OL/02-Feb-2005/ New data type
    Add TIC code for INT, LINT, USINT, USINT, UDINT, ULINT, LREAL and DATE.
+OL/15-Mar-2005/ New data type
+   WIN32-TGT_L target creation from NT-TARGET_L. Modify ISA_ALIGN=8.
 
 ---5.01 Released---
 FT/24-Feb-2006/ RFS-5192
@@ -46,6 +52,12 @@ FT/24-Feb-2006/ RFS-5192
 ---5.22 Released---
 FT/18-Dec-2008/ RFS-6874
    Macro SMP_HSD_COPYQ for 64 bits copy.
+
+EN/16-Apr-2009/ RFS-7549
+   Macro ITGTDEF_OPTIMIZED_TIC
+EN/21-Apr-2009/ RFS-7569
+   Macro ITGTDEF_TIC_OUTPUT
+
 ***************************************************************************/
 #ifndef _DSYS0DEF_H  /* nested Headers management */
 #define _DSYS0DEF_H
@@ -56,8 +68,10 @@ FT/18-Dec-2008/ RFS-6874
 #ifndef __WATCOMC__
 
 #include <ace/ACE.h>
+#include <ace/OS.h>
 #include <ace/Mem_Map.h>
 #include <ace/SString.h>
+#include <ace/Process.h>
 #include <ace/Process_Semaphore.h>
 #include "ace/OS_NS_errno.h"
 #include "ace/OS_NS_fcntl.h"
@@ -181,7 +195,8 @@ extern char  _tcISA_SYS_TMPPATH[ISA_PRJPATH_SIZE];       // windows temp directo
 #if (!(defined ACE_WIN32) && (!defined WINCE))
 typedef int 		ACE_PID_T;
 #else
-typedef PROCESS_INFORMATION ACE_PID_T;
+typedef ACE_Process* ACE_PID_T;
+typedef PROCESS_INFORMATION PROCINFO;
 #endif
 
 typedef time_t 		ACE_TIME_T;
@@ -208,21 +223,28 @@ typedef char            char_t;
 typedef unsigned char   uchar;
 typedef short           int16;
 typedef unsigned short  uint16;
+#if defined(__LP64__) || defined(_LP64)
+typedef int             int32;
+typedef unsigned int    uint32;
+#else
 typedef long            int32;
 typedef unsigned long   uint32;
+#endif /* defined(__LP64__) || defined(_LP64) */
 #ifndef __WATCOMC__
   typedef ACE_TIME_T  date;
 #else
   typedef time_t      date;
 #endif
 
-typedef int  typSTATUS;
+typedef int32  typSTATUS;
 typedef uint32  typERRNO;
+typedef struct timeval  psTime_t;
 
 /******* ISaGRAF definitions *******/
 #include <dsys0tgt.h>
 
 /* constants **************************************************************/
+
 
 /* Invalid Socket Address */
 #define ISA_INADDR_NONE INADDR_NONE
@@ -355,7 +377,7 @@ typedef uint32  typERRNO;
 #ifdef ITGTDEF_SFCEVOCHECK
 #undef  ITGTDEF_SFCEVOCHECK
 #error "You must define ITGTDEF_SFCFUNCTIONS in dsys0def.h before using ITGTDEF_SFCEVOCHECK"
- #endif
+#endif
 #endif
 /* RFS6522 END */
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
@@ -392,7 +414,7 @@ typedef uint32  typERRNO;
 *               hours, the macro is undefined.
 */
 /******************************************************************************/
-#undef ITGTDEF_NOMODULOCLK
+#define ITGTDEF_NOMODULOCLK
 
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
 /*! \addtogroup   CompileConditional Compile-time Conditionals
@@ -423,17 +445,6 @@ typedef uint32  typERRNO;
 */
 /******************************************************************************/
 #define ITGTDEF_WARNING
-
-/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
-/*! \addtogroup   CompileConditional Compile-time Conditionals
-* \addtogroup     TargetFeatures Target Features
-* \ingroup        CompileConditional
-*******************************************************************************
-* \n\b Name:    ITGTDEF_IOCHANOEM
-* \n\b Usage:   Enables channel's OEM parameters
-*/
-/******************************************************************************/
-#define ITGTDEF_IOCHANOEM
 
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
 /*! \addtogroup   CompileConditional Compile-time Conditionals
@@ -488,7 +499,6 @@ typedef uint32  typERRNO;
 #error "You must define ITGTDEF_SFCFUNCTIONS in dsys0def.h before undefining ITGTDEF_NOSFC"
 #undef ITGTDEF_NOSFC
 #endif
-
 #endif
 /* RFS6522 END */
 
@@ -513,7 +523,11 @@ typedef uint32  typERRNO;
 *               file must be included in the virtual machine project.
 */
 /******************************************************************************/
-#define  ITGTDEF_NOKERMAIN
+#ifdef ITGTDEF_MONOTASK
+#undef  ITGTDEF_NOKERMAIN
+#else
+#define ITGTDEF_NOKERMAIN
+#endif
 
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
 /*! \addtogroup   CompileConditional Compile-time Conditionals
@@ -536,17 +550,6 @@ typedef uint32  typERRNO;
 */
 /******************************************************************************/
 #define ITGTDEF_BINDIMPROVE2
-
-/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
-/*! \addtogroup   CompileConditional Compile-time Conditionals
-* \addtogroup     TargetFeatures Target Features
-* \ingroup        CompileConditional
-*******************************************************************************
-* \n\b Name:    ITGTDEF_INT64
-* \n\b Usage:   Enables LINT and ULINT IEC type.
-*/
-/******************************************************************************/
-#define ITGTDEF_INT64
 
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
 /*! \addtogroup   CompileConditional Compile-time Conditionals
@@ -684,7 +687,7 @@ typedef uint32  typERRNO;
 * \n\b Usage:   Check if control loop is stuck into an infinite loop
 */
 /******************************************************************************/
-#define ITGTDEF_CHECK_LOOP
+#undef ITGTDEF_CHECK_LOOP
 
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
 /*! \addtogroup   CompileConditional Compile-time Conditionals
@@ -718,8 +721,88 @@ typedef uint32  typERRNO;
 */
 /******************************************************************************/
 #undef ITGTDEF_IEC61850_SRV
+#undef ITGTDEF_IEC61850_SRV_SCO
+#undef ITGTDEF_IEC61850_SRV_TMW
 
-/******* Features verifications *******/
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    DEBUG_SRV61850
+* \n\b Usage:   Help debugging the IEC61850 server.
+*/
+/******************************************************************************/
+#ifdef ITGTDEF_IEC61850_SRV
+#define DEBUG_SRV61850
+#endif
+
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ITGTDEF_SFC_PROG_ACT_GROUPING
+* \n\b Usage:   Grouping actions in SFC programs and bug fixes in the SFC engine
+*/
+/******************************************************************************/
+#define ITGTDEF_SFC_PROG_ACT_GROUPING
+#if (defined ITGTDEF_SFC_PROG_ACT_GROUPING) && (!defined ITGTDEF_SFCFUNCTIONS)
+#error "You must define ITGTDEF_SFCFUNCTIONS in dsys0def.h before defining ITGTDEF_SFC_PROG_ACT_GROUPING"
+#endif
+
+/* RFS 8359 begin */
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ITGTDEF_RT_OPTIMIZE_CODE
+* \n\b Usage:   Enables the TIC code run-time optimization
+*/
+/******************************************************************************/
+#if !defined(__LP64__) && !defined(_LP64) && !defined(_MSC_VER)
+#define ITGTDEF_RT_OPTIMIZE_CODE
+#endif
+
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ITGTDEF_OPTIMIZE_USF_FBL_CALL
+* \n\b Usage:   Enables the optimization of standard funcs/FBs calling
+*/
+/******************************************************************************/
+#define ITGTDEF_OPTIMIZE_USF_FBL_CALL
+
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ITGTDEF_OPTIMIZE_USF_FBL
+* \n\b Usage:   Optimize standard functions and function blocks execution
+*/
+/******************************************************************************/
+#define ITGTDEF_OPTIMIZE_USF_FBL
+/* RFS 8359 end */
+
+/* RFS 8458 begin */
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ITGTDEF_OPT_CODE_MED_AS_LRG
+* \n\b Usage:   Enables the TIC code run-time optimization by converting
+*               medium model code (uint16) to the large model code (uint32)
+*               and patching it
+*/
+/******************************************************************************/
+#undef ITGTDEF_OPT_CODE_MED_AS_LRG
+/* RFS 8458 end */
+
 #ifdef ACE_BIG_ENDIAN
     #define MOTOROLA
 #else
@@ -735,6 +818,7 @@ typedef uint32  typERRNO;
 #endif
 
 #define ISA_TMM_L
+/******* Features verifications *******/
 
 #if ((!defined INTEL) && (!defined MOTOROLA)) || \
     ((defined INTEL)  && (defined MOTOROLA) )
@@ -756,27 +840,44 @@ typedef uint32  typERRNO;
 #ifdef ITGTDEF_FAILOVER
 #undef ITGTDEF_EVAL_TIMER_WITH_CURRENT_TIME
 #undef ITGTDEF_INTERRUPT
-#undef ITGTDEF_FAILOVER_DEBUG            /* Debug traces of failover mechanism */
+#undef ITGTDEF_FAILOVER_DEBUG             /* Debug traces of failover mechanism */
 #undef ITGTDEF_FAILOVER_FORCE_CPU_RELEASE /* Force the release of the CPU control during failover */
 #undef ITGTDEF_FAILOVER_SERIAL_HEARTBEAT  /* undef to use socket port instead of serial port */
 #define ITGTDEF_FAILOVER_TCP_DATALINK     /* define to use TCP sockets for data link instead of IXL */
 #define ITGTDEF_HOTRESTART                /* Required for failover */  
-#define ITGTDEF_KERSYM                    /* Required for failover */ 
+#define ITGTDEF_KERSYM                    /* Required for failover */
+#define ITGTDEF_FAILOVER_WRITE_SYNC       /* Improved IXL write sync between active and standby */
+#if (defined ITGTDEF_CURRENT_ISA_DATE)
+#undef ITGTDEF_CURRENT_ISA_DATE
+#error ("ITGTDEF_CURRENT_ISA_DATE may cause the failover to continuously synchronize at each cycle because of different time base between systems")
+#endif
+#ifdef ITGTDEF_NET_INSTANCES
+#error ("Network instances feature (ITGTDEF_NET_INSTANCES) is not supported on a Failover system")
+#endif
+#ifdef ITGTDEF_KVB
+#define ITGTDEF_FAILOVER_KVB              /* support of HSD and ETCP bindings */
+#endif
 #endif
 
 #if (!defined ITGTDEF_MODIF) /* RFS8362 */
 #undef ITGTDEF_ENH_ONLINE_CHANGE
 #endif
 
-/* Miscellaneous standard functions */
-#define ITGTDEF_LOCK_UNLOCK_CPU
-
-/* Possible bitfield values for the ISA_SYSVA_FAILOVER_ERROR_CODE system variable */
-#ifdef ITGTDEF_FAILOVER
-#define ISA_SYSVA_FAILOVER_ERROR_CODE_NO_ERROR              0x00000000U
-#define ISA_SYSVA_FAILOVER_ERROR_CODE_HEARTBEAT_FAILURE     0x00000001U
-#define ISA_SYSVA_FAILOVER_ERROR_CODE_DATALINK_FAILURE      0x00000002U
+#if defined(ITGTDEF_OPT_CODE_MED_AS_LRG) && !defined(ISA_TMM_M)
+#error ("Run-time of TIC code optimization (ITGTDEF_OPT_CODE_MED_AS_LRG) is only supported on the Medium memory model (ISA_TMM_M).")
 #endif
+#if defined(ITGTDEF_OPT_CODE_MED_AS_LRG) && !defined(ITGTDEF_RT_OPTIMIZE_CODE)
+#error ("ITGTDEF_RT_OPTIMIZE_CODE needs to be defined when ITGTDEF_OPT_CODE_MED_AS_LRG is defined");
+#endif
+#if defined(ITGTDEF_RT_OPTIMIZE_CODE) && defined(ITGTDEF_ABORT_CURRENT_CYCLE)
+#error ("Defining ITGTDEF_ABORT_CURRENT_CYCLE with ITGTDEF_RT_OPTIMIZE_CODE needs special consideration; please properly review its usage.");
+#endif
+
+/* RFS8650 begin */
+#ifdef ITGTDEF_OPT_CODE_MED_AS_LRG
+#error ("Feature ITGTDEF_OPT_CODE_MED_AS_LRG is not yet supported")
+#endif
+/* RFS8650 end */
 
 #ifdef ITGTDEF_IEC61850_SRV
 #define ISA_RESTART_IEC61850        0x2255
@@ -797,6 +898,8 @@ typedef uint32  typERRNO;
 #define ITGT_TRACE_SYSRTN        0x00000080
 
 #define ITGT_TRACE_SYSSEMCREATE  0x00000100
+
+#define WM_RESTART_TASK        (WM_USER+128)
 
 /******* I/Os TIC Output Reference *******/
 #define BOOL_IOREF(va,luOffset)
@@ -867,12 +970,12 @@ typedef uint32  typERRNO;
 #endif
 
 /* Bytes copy */
-#define BT(a,i)     (((uchar*)(void *)a)[i])
+#define BT(a,i)     (((uchar*)(void *)(a))[(i)])
 #define MOVS(d,s) {BT(d,0)=BT(s,0);BT(d,1)=BT(s,1);}
 #define MOVL(d,s) {BT(d,0)=BT(s,0);BT(d,1)=BT(s,1);BT(d,2)=BT(s,2);BT(d,3)=BT(s,3);}
 #define MOVQ(d,s) {BT(d,0)=BT(s,0);BT(d,1)=BT(s,1);BT(d,2)=BT(s,2);BT(d,3)=BT(s,3); \
                    BT(d,4)=BT(s,4);BT(d,5)=BT(s,5);BT(d,6)=BT(s,6);BT(d,7)=BT(s,7);}
-
+					
 #ifdef INTEL
 
 #define COPYS(d,s) {BT(d,0)=BT(s,1);BT(d,1)=BT(s,0);}
@@ -882,7 +985,7 @@ typedef uint32  typERRNO;
 #else
 #define COPYS(d,s) {BT(d,0)=BT(s,0);BT(d,1)=BT(s,1);}
 #define COPYL(d,s) {BT(d,0)=BT(s,0);BT(d,1)=BT(s,1);BT(d,2)=BT(s,2);BT(d,3)=BT(s,3);}
-#define COPYQ(d,s) {BT(d,0)=BT(s,0);BT(d,1)=BT(s,1);BT(d,2)=BT(s,2);BT(d,3)=BT(s,3);     \
+#define COPYQ(d,s) {BT(d,0)=BT(s,0);BT(d,1)=BT(s,1);BT(d,2)=BT(s,2);BT(d,3)=BT(s,3); \
                     BT(d,4)=BT(s,4);BT(d,5)=BT(s,5);BT(d,6)=BT(s,6);BT(d,7)=BT(s,7);}
 #endif
 
@@ -896,10 +999,10 @@ typedef uint32  typERRNO;
  *    Take into acount alignement pbms (if system has no alignment
  *      restriction you can simply make copy through pointer with cast
  */
-#if (defined ARM_LINUX) || (defined MOTOROLA)
-	#define SMP_HSD_COPYS(d,s)      COPYS((d),(s))
-	#define SMP_HSD_COPYL(d,s)      COPYL((d),(s))
-  #define SMP_HSD_COPYQ(d,s)      COPYQ((d),(s))
+#if (defined _ARM_) || (defined ARM_LINUX) || (defined MOTOROLA)
+#define SMP_HSD_COPYS(d,s)      COPYS((d),(s))
+#define SMP_HSD_COPYL(d,s)      COPYL((d),(s))
+#define SMP_HSD_COPYQ(d,s)      COPYQ((d),(s)) 
 #else
 #define SMP_HSD_COPYS(d,s)      (*((uint16*)(d))) = (*((uint16*)(s)))
 #define SMP_HSD_COPYL(d,s)      (*((uint32*)(d))) = (*((uint32*)(s)))
@@ -1098,7 +1201,6 @@ union semun
 typedef void* typSEM_ID;
  
 /**************************** DOXYGEN STRUCTURE ***************************/
-
 /* Message queue identifier */
 typedef struct
 {
@@ -1163,31 +1265,6 @@ typedef typPFN_ThrdFnc typPfnThrdFnc;
 /* Priority identifier */
 typedef uint32 typPRIO_ID;
 
-typedef struct  
-{
-   char tcDownloadIP[16];                             /* Usual ETCP IP parameter for download/debug */
-
-   /* All parameters below are extended from the usual ETCP */
-
-   char tcFailoverPrimaryIP[16];                      /* Failover primary IP */
-   char tcFailoverSecondaryIP[16];                    /* Failover secondary IP */
-
-   char tcFailoverDatalinkPrimaryIP[16];              /* IP address to use for the data link */
-   char tcFailoverDatalinkSecondaryIP[16];            /* IP address to use for the data link */
-
-   uchar cuFailoverIsEnabled;                         /* Bool flag to activate (or not) the failover */
-
-   uint32 luFailoverHeartbeatTimeoutMs;               /* Heartbeat timeout of the failover */
-   uint32 luFailoverHeartbeatDeactivationTimeMs;      /* Heartbeat deactivation time when heartbeat link is bad */
-#ifdef ITGTDEF_FAILOVER_SERIAL_HEARTBEAT
-   char tcFailoverHeartbeatPort[16];                  /* Serial port: COM1, COM2 etc ... */
-   uint32 luFailoverHeartbeatBaudRate;                /* Port speed: 1200, 2400, 9600 etc ... */
-   char cFailoverHeartbeatParity;                     /* Parity: N, E, O */
-   uint16 huFailoverHeartbeatStopBits;                /* 1, 2 */
-   char tcFailoverHeartbeatFlowControl[16];           /* ON, OFF */
-#endif
-} sEtcpExtendedOem;
-
 #include <ace/TTY_IO.h>
 
 typedef struct
@@ -1199,82 +1276,6 @@ typedef struct
 //typedef int typSOC_ID;
 typedef ACE_HANDLE typSOC_ID;
 typedef struct sockaddr_in typSOC_ADD;
-
-/***************************************************************/
-/* DEFINITIONS FROM ISACMG MOVED HERE BECAUSE NEEDED BY ISASYS */
-/* FOR PRIORITY MANAGEMENT ROUTINES                            */
-/***************************************************************/
-/**************************** DOXYGEN STRUCTURE ***************************/
-/* Information on kernel task */
-typedef struct _s_CmgTskKer
-{
-   uint16         huTskNum;      /*!< Task number */
-   typTSK_ID      TskId;         /*!< System task information */
-   struct _s_CmgTskKer* pNext;   /*!< Naxt task in the list */
-}strCmgTskKer;
-
-/**************************** DOXYGEN STRUCTURE ***************************/
-/* Information on miscellaneous task */
-typedef struct _s_CmgTskMis
-{
-   uint16         huTskNum;      /*!< Task number */
-   typTSK_ID      TskId;         /*!< System task information */
-   struct _s_CmgTskMis* pNext;   /*!< Next task in the list */
-}strCmgTskMis;
-
-/**************************** DOXYGEN STRUCTURE ***************************/
-/* Header of configuration manager space */
-typedef struct
-{
-#ifdef ITGTDEF_FAILOVER
-   uchar             cuFailoverIsActiveKernel;     /*!< TRUE if the kernel is ACTIVE in a FAILOVER system */
-   uchar             cuFailoverIsPrimaryKernel;    /*!< TRUE if this is the primary kernel of a Failover system */
-   uchar             cuFailoverTwoActivesDetected; /*!< TRUE if the active kernel detected another active kernel through the data link of a Failover system */
-   uint32            luLastHeartbeatSyncTimeMs;    /*!< Last standby heartbeat sync time for statistics */
-   sEtcpExtendedOem  EtcpExtendedOem;              /*!< Communication parameters */
-#endif
-   uchar          cuSimul;       /*!< TRUE if simulation */
-   uchar          cuDebug;       /*!< TRUE if debug */
-
-   /* Start mode */
-   uint16         huStgMode;     /*!< Starting mode */
-
-   /* Kernel task */
-   uint16         huTskKerNbr;   /*!< Max nbr of kernel tasks on one config */
-   strCmgTskKer*  pTskKerRun;    /*!< List of running kernel task */
-   strCmgTskKer*  pTskKerFree;   /*!< List of free place for new kernel task */
-
-   /* Miscellaneous task */
-   uint16         huTskMisNbr;   /*!< Max nbr of other tasks on one config */
-   strCmgTskMis*  pTskMisRun;    /*!< List of running miscellaneous task */
-   strCmgTskMis*  pTskMisFree;   /*!< List of free place for new other task */
-
-   /* Array to store number */
-   uint16         huArraySize;   /*!< Maximum number that can be stored */
-   uint16*        phuArrayNum;   /*!< Array to store number */
-
-   uchar*         pcuBuffer;     /*!< Buffer */
-   uint32         luBufferLn;    /*!< Buffer length */
-} strCmgHeader;
-
-/**************************** DOXYGEN STRUCTURE ***************************/
-/* Heartbeat on a serial port */
-#ifdef ITGTDEF_FAILOVER
-typedef struct
-{
-   uchar          cuRun;            /*!< Flag to stop/start the heartbeat thread */
-   uchar          cuStopped;        /*!< Flag to determine if the heartbeat thread has stopped or not */
-   strCmgHeader*  pCmgHdr;          /*!< Pointer to CMG data space to update active/standby status of the machine */
-#ifdef ITGTDEF_FAILOVER_SERIAL_HEARTBEAT
-   typRSICOM_ID   RsiComId;         /*!< Handle to the COM port used by the heartbeat thread */
-#else
-   typSOC_ID      SocketSndId;      /*!< Handle to the socket used by the heartbeat thread to send */
-   typSOC_ADD     SocketSndAddress; /*!< Address for sending */
-   typSOC_ID      SocketRcvId;      /*!< Handle to the socket used by the heartbeat thread to receive */
-   typSOC_ADD     SocketRcvAddress; /*!< Address for receiving */
-#endif
-} typHBT_ID;
-#endif
 
 /**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
@@ -1295,31 +1296,32 @@ typedef struct
    uchar          cuSemExit;  /*!< Exit Semaphore */
 } typTHR_HDL;
 
+/* Terminate current task in case of fatal error (OS dependant) */
+#define END_TASK        exit(0)
+#define END_THREAD      {  pthread_detach(pthread_self()); pthread_exit(NULL); }
+#ifdef ACE_WIN32
+	#define END_THREAD
+#endif
+
+/************************** THREAD MANAGEMENT BEGIN ************************/
 /**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
 {
-   int16   huPriority;        /*!< Thread Priority */
-} typTSK_PRIO;
-
-/* Terminate current task in case of fatal error (OS dependant) */
-#define END_TASK    exit(0)
-
-/************************** THREAD MANAGEMENT BEGIN ************************/
-typedef struct
-{
-   uint32 luPrio;
+   uint32 luPrio;             /*!< Priority value of the interrupt thread */
 } typTHR_PRIO;
 
+/**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
 {
-   char           szName[9];
-   typTHREAD_HDL  pfnThrdFnc;
-   typTHR_PRIO    ThrPrio;
-   void*          pvParam;
-   uchar*         pbRun;
-   
-   typHANDLE      hThread;
-   typTHR_ID	  luThreadId;	  
+   char           szName[9];  /*!< Name of the interrupt thread */
+   typTHREAD_HDL  pfnThrdFnc; /*!< Pointer to the function to be executed by the interrupt thread */
+   typTHR_PRIO    ThrPrio;    /*!< Priority of the interrupt thread */
+   void*          pvParam;    /*!< Pointer to the parameters passed to the interrupt thread */
+   uchar*         pbRun;      /*!< Pointer to the RUN variable monitored by the interrupt thread; Set it to FALSE to stop its execution */
+
+   /* Specific to Linux IRQ example */
+   typHANDLE      hThread;    /*!< Handle of the interrupt thread (Specific to Linux IRQ example) */
+   typTHR_ID	  luThreadId;	
 } typINTTHR_HDL;
 /************************** THREAD MANAGEMENT END *************************/
 
@@ -1328,7 +1330,7 @@ typedef struct
 
 #define MAX_NB_INTERRUPTS        4
 
-/* Semaphore used for the user-interrupt implementation in Windows */
+/* Semaphore used for the user-interrupt implementation in Linux */
 #define ISA_BSEM_TSKFIRSTIRQ  0x16  /* First of 32 IRQ semaphores */
 #define ISA_BSEM_TSKLASTIRQ   0x35  /* Last of 32 IRQ semaphores */
 #define ISA_MAXSEMNUM         0x36  /* Maximum semaphore number */
@@ -1343,7 +1345,8 @@ typedef struct
 #include <dsys0df2.h>
 
 #ifdef ITGTDEF_INTERRUPT
-typedef struct  
+/**************************** DOXYGEN STRUCTURE ***************************/
+typedef struct
 {
    uint16      huIrqNum;      /*!< Number of the interrupt */
    uint32      luVa;          /*!< VA of control variable */
@@ -1352,48 +1355,95 @@ typedef struct
    uint16      huPouNum;      /*!< POU number of the interrupt program */
 }typIRQ_HDL;
 
+/**************************** DOXYGEN STRUCTURE ***************************/
+/* Structure used to pass information */
+/* to the trigger thread of user-interrupt threads */
+typedef struct
+{
+   uchar       bRun;          /*!< Run flag to allow stopping the IRQ trigger thread */
+   uint16      huSlaveNum;    /*!< Value of the associated resource number; 0 in the case of the IRQ trigger thread */
+   void*       pvIrqMng;      /*!< Pointer to the interrupt management table */
+}typIRQTRIG_PARAM;
+
+/**************************** DOXYGEN STRUCTURE ***************************/
 /* Structure used to pass information */
 /* to a thread executing an interrupt program */
 typedef struct
 {
-   uint16      huIrqNum;
-   uint16      huSlaveNum;
-   uint16      huPouNum;
-   uchar       bRun;
-   uint32      luVa;
+   uchar       bRun;          /*!< Run status of the IRQ */
+   uint16      huSlaveNum;    /*!< Resource number associated to this interrupt */
+   uint16      huIrqNum;      /*!< Interrupt identifier */
+   uint16      huPouNum;      /*!< POU number associated to this interrupt */
+   uint32      luVa;          /*!< Variable address of the control structure associated to this interrupt */
 
    /* Function to execute the code */
-   uchar  (*pfnExec)   (ISA_VARINREG typVa*,typVa,typVa,uchar,uchar*,typVa*,strParamVa*); 
+   uint32  (*pfnExec)(
+#ifdef ITGTDEF_OPT_CODE_MED_AS_LRG
+      ISA_VARINREG uint32* mic,
+#else
+      ISA_VARINREG typVa* mic,
+#endif
+      typVa, typVa, uchar, strCallContext*);  /*!< Pointer to the execution function */ /*RFS8500*/
 
    /* Function to retrieve the code to execute */
-   typVa* (*pfnGetCode)(uint16); 
+#ifdef ITGTDEF_OPT_CODE_MED_AS_LRG
+   uint32* (*pfnGetCode)(uint16);   /*!< Pointer to the function to retrieve the POU pointer */
+#else
+   typVa* (*pfnGetCode)(uint16);    /*!< Pointer to the function to retrieve the POU pointer */
+#endif
 
 #ifndef ITGTDEF_SEGMENT
-   void*       BfData;
+   void*       pBfData;       /*!< Pointer to the data space associated to the interrupt */
 #else
-   void**      BfData;
+   void**      pBfData;       /*!< Pointer to the data space associated to the interrupt */
 #endif
+
+#ifdef ITGTDEF_VARLOCK
+   void*       pBfVarLock;    /*!< Pointer to the locked variable state */ /*RFS8500*/
+   void*       pBfVarRefresh; /*!< Pointer to the locked variable value */ /*RFS8500*/
+#endif /*ITGTDEF_VARLOCK && ITGTDEF_THREAD*/
+
    /* Specific to Linux IRQ example */
-   typSEM_ID   hSemaphore;    /*!< Semaphore of the typTHR_HDL task associated to the POU execution */
-   uint32      luIrqPeriod;   /*!< Period for triggering interrupt simulation */
+   typSEM_ID   hSemaphore;    /*!< Semaphore of the typINTTHR_HDL task associated to the POU execution (Specific to Linux IRQ example) */
+   uint32      luIrqPeriod;   /*!< Period for triggering interrupt simulation (Specific to Linux IRQ example) */
+   uchar       bEnabled;      /*!< Determine if the interrupt should be executed or not (Specific to Linux IRQ example) */
 }typIRQ_PARAM;
 
+/**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
 {
    uchar          cuIsUsed;   /*!< Used entry */
    typIRQ_HDL     IrqHdl;     /*!< Interrupt POU */
    typINTTHR_HDL  ThrHdl;     /*!< Thread handler  */
    typIRQ_PARAM   IrqParam;   /*!< IRQ function parameters */
-   uint16         huSlaveNum;           /*!< Resource number */
+   uint16         huSlaveNum; /*!< Resource number */
    /* Specific to Linux IRQ example */
-   typTHR_PRIO    TskPrio;    /*!< Threads priority */
+   typTHR_PRIO    TskPrio;    /*!< Threads priority (Specific to Linux IRQ example) */
+   uint32         luLastExecTime; /*!< Last execution time of the interrupt (Specific to Linux IRQ example) */
 } typIRQ_MNG;
 
 #endif /* ITGTDEF_INTERRUPT */
 
 /**************************** IRQ MANAGEMENT END *************************/
 
-
+/**************************** DOXYGEN STRUCTURE ***************************/
+/* Heartbeat on a serial port */
+#ifdef ITGTDEF_FAILOVER
+typedef struct
+{
+   uchar          cuRun;            /*!< Flag to stop/start the heartbeat thread */
+   uchar          cuStopped;        /*!< Flag to determine if the heartbeat thread has stopped or not */
+   strCmgHeader*  pCmgHdr;          /*!< Pointer to CMG data space to update active/standby status of the machine */
+#ifdef ITGTDEF_FAILOVER_SERIAL_HEARTBEAT
+   typRSICOM_ID   RsiComId;         /*!< Handle to the COM port used by the heartbeat thread */
+#else
+   typSOC_ID      SocketSndId;      /*!< Handle to the socket used by the heartbeat thread to send */
+   typSOC_ADD     SocketSndAddress; /*!< Address for sending */
+   typSOC_ID      SocketRcvId;      /*!< Handle to the socket used by the heartbeat thread to receive */
+   typSOC_ADD     SocketRcvAddress; /*!< Address for receiving */
+#endif
+} typHBT_ID;
+#endif
 
 /* data *******************************************************************/
 

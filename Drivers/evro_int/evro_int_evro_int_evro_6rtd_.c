@@ -50,8 +50,8 @@ typSTATUS evro_int_evro_int_evro_6rtd_IosOpen
         printf("Error opening\n");
         return(BAD_RET);
     }
-    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
-    if (evro_int_evro_int_status_mIosOpen(pRtIoSplDvc) != 0)
+	pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+   	if (evro_int_evro_int_status_mIosOpen(pRtIoSplDvc) != 0)
     {
         printf("Error opening\n");
         return(BAD_RET);
@@ -76,7 +76,7 @@ void evro_int_evro_int_evro_6rtd_IosClose
     strRtIoSplDvc* pRtIoSplDvc;
     pRtIoSplDvc = pvRtIoDvc->pRtIoSplDvc;
     evro_int_evro_int_evro_6rtdIosClose (pRtIoSplDvc);
-    pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
+	pRtIoSplDvc = (strRtIoSplDvc*)(pRtIoSplDvc->pvDrvRtIoDvcNxt);
     evro_int_evro_int_status_mIosClose(pRtIoSplDvc);
 }
 

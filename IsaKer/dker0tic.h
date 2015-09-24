@@ -1053,9 +1053,9 @@ OLA/03-Nov-2005/ RFS 2553: SFC FB cannot share is local variables with its child
 #define TIC_MEM_CPYVAAFF     0x0150   /* memcpy(*a, b, c)  */
 #define TIC_MEM_CPYVA        0x0151   /* memcpy(*a, *b, c) */
 
-#define TIC_OUT_MEM_CPY      0x0152   /* memcpy(a, b ,c)   on ouptut */
-#define TIC_OUT_MEM_CPYVAAFF 0x0153   /* memcpy(*a, b, c)  on ouptut */
-#define TIC_OUT_MEM_CPYVA    0x0154   /* memcpy(*a, *b, c) on ouptut */
+#define TIC_OUT_MEM_CPY      0x0152   /* memcpy(a, b ,c)   on output */
+#define TIC_OUT_MEM_CPYVAAFF 0x0153   /* memcpy(*a, b, c)  on output */
+#define TIC_OUT_MEM_CPYVA    0x0154   /* memcpy(*a, *b, c) on output */
 
 /* Boundary Check */
 #define TIC_BNDCHK_DINT      0x0155   /* check that c belongs to [a b] */
@@ -1089,11 +1089,6 @@ OLA/03-Nov-2005/ RFS 2553: SFC FB cannot share is local variables with its child
 #define TIC_C1B_LGNEG        0x015b   /* if a goto b (long negative jump) */
 #define TIC_C2B_LGPOS        0x015c   /* if not a goto b (long positive jump) */
 #define TIC_C2B_LGNEG        0x015d   /* if not a goto b (long negative jump) */
-
-/* JIT codes */
-
-#define TIC_JIT_NOP			0x0f01	/* empty code */
-#define TIC_JIT_CALL			0x0f02	/* call jit code block */
 
 /*
 * New TIC Code added to optimize LD instructions
@@ -1279,7 +1274,6 @@ OLA/03-Nov-2005/ RFS 2553: SFC FB cannot share is local variables with its child
 #define TIC_A6M_EN         0x0396      /* string   if (i) a [ b ] := c */
 /* RFS 7583 END */
 
-#ifdef ITGTDEF_NEW_ARRAY_AND_FB
 #define TIC_A3VA_PTR       0x0397      /* VA       *a := b                    */
 
 #define TIC_A6VA           0x0398      /* VA       a [ b ] := c               */
@@ -1303,17 +1297,17 @@ OLA/03-Nov-2005/ RFS 2553: SFC FB cannot share is local variables with its child
 
 #define TIC_A3VA           0x03a9      /* va       a := b                     */
 
-#define TIC_STD_FBL_PUSH_CALL          0x03aa   /* TIC_P1 + TIC_STD_FBL_CALL */
-#define TIC_FBL_PUSH_CALL		         0x03ab	/* TIC_P1 + TIC_FBL_CALL */
-#define TIC_A4B_PUSH_CALL		         0x03ac	/* TIC_P1 + TIC_A4B */
-#define TIC_SEQ_A4B_PUSH_CALL		      0x03ad	/* TIC_P1 + TIC_SEQ_A4B */
+#define TIC_STD_FBL_PUSH_CALL       0x03aa   /* TIC_P1 + TIC_STD_FBL_CALL */
+#define TIC_FBL_PUSH_CALL           0x03ab   /* TIC_P1 + TIC_FBL_CALL */
+#define TIC_A4B_PUSH_CALL           0x03ac   /* TIC_P1 + TIC_A4B */
+#define TIC_SEQ_A4B_PUSH_CALL       0x03ad   /* TIC_P1 + TIC_SEQ_A4B */
 
-#define TIC_STD_FBL_PUSH_PAR_CALL      0x03ae   /* TIC_P2 + TIC_STD_FBL_CALL */
-#define TIC_FBL_PUSH_PAR_CALL		      0x03af	/* TIC_P2 + TIC_FBL_CALL */
-#define TIC_A4B_PUSH_PAR_CALL		      0x03b0	/* TIC_P2 + TIC_A4B */
-#define TIC_SEQ_A4B_PUSH_PAR_CALL		0x03b1	/* TIC_P2 + TIC_SEQ_A4B */
+#define TIC_STD_FBL_PUSH_PAR_CALL   0x03ae   /* TIC_P2 + TIC_STD_FBL_CALL */
+#define TIC_FBL_PUSH_PAR_CALL       0x03af   /* TIC_P2 + TIC_FBL_CALL */
+#define TIC_A4B_PUSH_PAR_CALL       0x03b0   /* TIC_P2 + TIC_A4B */
+#define TIC_SEQ_A4B_PUSH_PAR_CALL   0x03b1   /* TIC_P2 + TIC_SEQ_A4B */
 
-#endif
+#define TIC_BKP_STD                 0x03b2   /* Breakpoint in a non-SFC POU */
 
 /* types ******************************************************************/
 

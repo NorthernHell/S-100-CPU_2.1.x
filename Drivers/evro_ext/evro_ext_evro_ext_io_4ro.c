@@ -18,7 +18,7 @@ Device name:        IO_4RO
 
 typedef struct _tag_strIo_4ro
 {
-    int32  baud_rate;   /* Baud Rate */
+	int32  baud_rate;   /* Baud Rate */
     int32  NCOM;   /* COM port number */
     int32  ID;   /* Device address */
     int32  Parity;   /* 0 - None 1-even 2-odd */

@@ -11,37 +11,37 @@ Device name:        M_DO
 /* prototypes */
 
 typSTATUS  evro_ext_evro_ext_IosInit
-(
-    strRtIoDrv* pRtIoDrv /* Run time io struct of the driver to init */
-);
+   (
+   strRtIoDrv* pRtIoDrv /* Run time io struct of the driver to init */
+   );
 
 void evro_ext_evro_ext_IosExit
-(
-    strRtIoDrv* pRtIoDrv /* Run time io struct of the driver to exit */
-);
+   (
+   strRtIoDrv* pRtIoDrv /* Run time io struct of the driver to exit */
+   );
 
 typSTATUS evro_ext_evro_ext_m_doIosOpen
-(
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
-);
+   (
+   strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
+   );
 
 void evro_ext_evro_ext_m_doIosClose
-(
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
-);
+   (
+   strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
+   );
 
 void evro_ext_evro_ext_m_doIosWrite
-(
-    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
-);
+   (
+   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
+   );
 
 void evro_ext_evro_ext_m_doIosCtl
-(
-    uchar          cuSubFunct,   /* Sub function parameter */
-    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
-    uint16         huChanNum,    /* Channel number if any */
-    void*          pvReserved    /* Reserved */
-);
+   (
+   uchar          cuSubFunct,   /* Sub function parameter */
+   strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
+   uint16         huChanNum,    /* Channel number if any */
+   void*          pvReserved    /* Reserved */
+   );
 #endif /* _EVRO_EXT_EVRO_EXT_M_DO_H */
 
 /* eof ********************************************************************/

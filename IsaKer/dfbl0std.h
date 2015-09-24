@@ -227,19 +227,12 @@ extern typSTATUS SFCFblMdfUpdate
    );
 
 /* exported services from module dfbs0evo.c *******************************/
-#ifdef ITGTDEF_INTERRUPT
 extern uchar SFCFblCall
    (
-   strParamVa* pFblInst,   /*In: Instance of function block */ 
-   uchar* pcuCancelCycle,  /*In: Cancel rest of cycle */                              
-   typVa* pVaRetSub        /*In: Return Va from sub program */
+   strParamVa* pFblInst,         /*In: Instance of function block */ 
+   strCallContext* pCallContext  /*In: Context of the calling thread/task*/
+
    );
-#else
-extern uchar SFCFblCall
-   (
-   strParamVa* pFblInst          /*In: Instance of function block */ 
-   );
-#endif /* ITGTDEF_INTERRUPT */
 
 extern void SFCFblInstHotRestart
    (

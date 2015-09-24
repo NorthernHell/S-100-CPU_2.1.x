@@ -52,11 +52,8 @@ RLIST = $(RDIR)/dipl0lnk.o\
 	$(LDIR)/IKvbHsd.o\
 	$(LDIR)/IKvbEtcp.o\
 	$(LDIR)/IsaSys.o\
-	$(LDIR)/ISysSoc.o\
-	$(LDIR)/libJIT.a
-
-#MAP=-Wl,-Map -Wl,IsaVM.map
-MAP=
+	$(LDIR)/ISysSoc.o
+#	$(LDIR)/libJIT.a
 
 all: $(ODIR)/IsaVM
 

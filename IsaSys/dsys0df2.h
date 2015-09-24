@@ -235,7 +235,7 @@ FT/11-Dec-2008/ RFS-7307
 * \b   Option \b name: 	   [APP] stgMode
 * \n\b Description: 	      Resource backup location type for restoration. 
 *                          1: Load from hard support (disk,...)
-* \n\b Possible \b values: 1 (Load from hard support)  - 2 (Promolink)
+* \n\b Possible \b values: 1 (Load from hard support)
 * \n\b Default \b Value:   1
 */
 /******************************************************************************/
@@ -330,11 +330,19 @@ FT/11-Dec-2008/ RFS-7307
 #define CMG_DEF_PARAM_FAILOVER_HEARTBEAT_PORT 6003
 
 /* IEC61850 configuration files names */
-#define ISA_IEC61850_SRV_CFG_FILE "ISAGRAF.CID"
+#ifdef ITGTDEF_IEC61850_SRV_SCO
+#define ISA_IEC61850_SRV_CFG_FILE "isagraf.cid"
+#endif
+#ifdef ITGTDEF_IEC61850_SRV_TMW
+#define ISA_IEC61850_SRV_CFG_FILE "isagraf.icd"
+#endif
 #define ISA_IEC61850_SRV_REF_FILE "ISPADDR"
 
 /* Product version in help command line */
 #define ISA_STRVERS "\nISaGRAF Pro\n"
+
+/* The purpose of this macro definition is to indicate that variable is unused intentionally */
+#define ISA_UNUSED(x) (void)(x)
 
 /* Errors */
 #define ISA_RC_DSYS_NBROFERR  0x02050001UL /* Invalid number of errors */
@@ -354,8 +362,12 @@ FT/11-Dec-2008/ RFS-7307
 #define ISA_RDCC_SFC_CHILD_GSTART   11
 #define ISA_RDCC_CST_INIT_VAL_MDF   12
 
+/* Target versions */
 #define ISA_TARGET_MAJOR_VERSION	5
-#define ISA_TARGET_MINOR_VERSION	30
+#define ISA_TARGET_MINOR_VERSION	41
+
+#define ISA_MAIN_YEARSTR "2014"
+#define ISA_MAIN_BUILDNUMSTR "5.41.24_(01/21/2014)"
 
 /* Determine this target's RDCC */
 #define TARGET_RDCCVERS ISA_RDCC_CST_INIT_VAL_MDF /* RFS8362 */
@@ -389,6 +401,8 @@ FT/11-Dec-2008/ RFS-7307
 #define ISA_COM_TASK_ID      4091
 #define ISA_ECAT_TASK_ID     4090
 #define ISA_HBT_TASK_ID      4089
+#define ISA_CO_TASK_ID       4088
+#define ISA_IEC61850_TASK_ID 4087
 
 #define ISA_WBDBG_TASK_ID    4065
 #define ISA_WBDIP_TASK_ID    4064
@@ -438,12 +452,16 @@ FT/11-Dec-2008/ RFS-7307
 #define ISA_TGTNAME_SIMUL     "SIMULATOR"
 #define ISA_TGTNAME_NT        "NT-TARGET"
 #define ISA_TGTNAME_NT_L      "NT-TARGET_L"
-#define ISA_TGTNAME_WIN32     "WIN32-TGT"   /* For ISaGRAF v5 */
-#define ISA_TGTNAME_WIN32_L   "WIN32-TGT_L" /* For ISaGRAF v5 */
-#define ISA_TGTNAME_WINDOWS   "WINDOWS-TGT"   /* For ISaGRAF v5.2x */
-#define ISA_TGTNAME_WINDOWS_L "WINDOWS-TGT_L" /* For ISaGRAF v5.2x */
+#define ISA_TGTNAME_WIN32     "WIN32-TGT"       /* For ISaGRAF v5 */
+#define ISA_TGTNAME_WIN32_L   "WIN32-TGT_L"     /* For ISaGRAF v5 */
+#define ISA_TGTNAME_WINDOWS   "WINDOWS-TGT"     /* For ISaGRAF v5.2x */
+#define ISA_TGTNAME_WINDOWS_L "WINDOWS-TGT_L"   /* For ISaGRAF v5.2x */
 #define ISA_TGTNAME_WIN530_M  "WINDOWS-V530-M"  /* For ISaGRAF v5.30 */
 #define ISA_TGTNAME_WIN530_L  "WINDOWS-V530-L"  /* For ISaGRAF v5.30 */
+#define ISA_TGTNAME_WIN540_M  "WINDOWS-V540-M"  /* For ISaGRAF v5.40 */
+#define ISA_TGTNAME_WIN540_L  "WINDOWS-V540-L"  /* For ISaGRAF v5.40 */
+#define ISA_TGTNAME_WIN541_M  "WINDOWS-V541-M"  /* For ISaGRAF v5.41 */
+#define ISA_TGTNAME_WIN541_L  "WINDOWS-V541-L"  /* For ISaGRAF v5.41 */
 
 /* I/O Variables direction */
 #define ISA_IO_DIR_INPUT   0  /* Input variable */
@@ -502,6 +520,9 @@ FT/11-Dec-2008/ RFS-7307
 
 /* Memory alignment */
 #define ISA_DO_ALIGN(luSize) (((((luSize)+ISA_ALIGN)-1) /ISA_ALIGN)*ISA_ALIGN)
+
+/* 'C' and IO Functions name max length and case management*/ /* RFS8347 */
+#define _FCTNMMLN 51
 
 /* String variables manipulation */ /* RFS 7741 */
 #define _STRVAADD(va)   ((uchar*)KVA_ADDRESS((va)))
@@ -703,15 +724,21 @@ FT/11-Dec-2008/ RFS-7307
 #define ISA_SPC_RETAIN_A   0x21    /* Retain var. temporary space A */
 #define ISA_SPC_RETAIN_B   0x22    /* Retain var. temporary space B */
 #endif
-#define ISA_SPC_RESSYMBIN_DTA 0x23 /* Resource symbols in binary format used by DTA_SRV (RFS 3314) */
-#define ISA_SPC_IPLTABLE   0x24    /* IPL Function table. Used for Binary searche of IPL Functions */
-#define ISA_SPC_COMINFO    0x25    /* Communication manager data */
-#define ISA_SPC_ECAT_INSHMEM   0x26   /* Space created for ethercat inputs */
-#define ISA_SPC_ECAT_OUTSHMEM  0x27   /* Space created for ethercat outputs */
-#define ISA_SPC_ECAT_STATSHMEM 0x28   /* Space created for ethercat status */
-#define ISA_SPC_RETAIN_YA     0x29 /* Retain var. temporary space A (set Y) RFS8262 */
-#define ISA_SPC_RETAIN_YB     0x30 /* Retain var. temporary space B (set Y) RFS8262 */
-#define ISA_MAXSPCNUM         0x31    /* Maximum space number */
+#define ISA_SPC_RESSYMBIN_DTA  0x23 /* Resource symbols in binary format used by DTA_SRV (RFS 3314) */
+#define ISA_SPC_IPLTABLE       0x24 /* IPL Function table. Used for Binary searche of IPL Functions */
+#define ISA_SPC_COMINFO        0x25 /* Communication manager data */
+#define ISA_SPC_ECAT_INSHMEM   0x26 /* Space created for ethercat inputs */
+#define ISA_SPC_ECAT_OUTSHMEM  0x27 /* Space created for ethercat outputs */
+#define ISA_SPC_ECAT_STATSHMEM 0x28 /* Space created for ethercat status */
+#define ISA_SPC_RETAIN_YA      0x29 /* Retain var. temporary space A (set Y) RFS8262 */
+#define ISA_SPC_RETAIN_YB      0x30 /* Retain var. temporary space B (set Y) RFS8262 */
+#define ISA_SPC_SRV61850       0x31 /* Server 61850 entities managed by the IEC61850 server */
+#if defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG))
+#define ISA_SPC_RESMDFOPT     0x32 /* Space for optimized delta(s) for on line modif */
+#endif /* defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG)) */
+#define ISA_SPC_OPTPOU        0x33 /* Optimized Code space */
+#define ISA_SPC_ISACOM_DRV    0x34 /* Space for IsaCom drivers */
+#define ISA_MAXSPCNUM         0x35 /* Maximum space number */
 
 #define ISA_SPC_RESCODE_SAVE  0x00000001UL
 #define ISA_SPC_RESMDF_SAVE   0x00000002UL
@@ -736,18 +763,23 @@ FT/11-Dec-2008/ RFS-7307
 #define ISA_BSEM_FREE        0x01  /* Ready to be taken */
 
 /* Semaphore Numbers */
-#define ISA_MSEM_KVBHSD       0x01  /* KVB-HSD DTA/INF spc access */
-#define ISA_MSEM_KVBETCPIVS   0x02  /* KVB-ETCP Imported vars spc access */
-#define ISA_MSEM_KVBETCPEVS   0x03  /* KVB-ETCP Exported vars spc access */
-#define ISA_BSEM_TSKSTARTSYNC 0x04  /* Synchronization of task launching */
-#define ISA_MSEM_WNGSH        0x05  /* Warning share module */
-#define ISA_MSEM_IXLAPI       0x06  /* IXL API Semaphore */
-#define ISA_MSEM_LOCK_CPU     0x07  /* Lock the CPU for multi-thread access to global data */
+#define ISA_MSEM_KVBHSD         0x01 /* KVB-HSD DTA/INF spc access */
+#define ISA_MSEM_KVBETCPIVS     0x02 /* KVB-ETCP Imported vars spc access */
+#define ISA_MSEM_KVBETCPEVS     0x03 /* KVB-ETCP Exported vars spc access */
+#define ISA_BSEM_TSKSTARTSYNC   0x04 /* Synchronization of task launching */
+#define ISA_MSEM_WNGSH          0x05 /* Warning share module */
+#define ISA_MSEM_IXLAPI         0x06 /* IXL API Semaphore */
+#define ISA_MSEM_LOCK_CPU       0x07 /* Lock the CPU for multi-thread access to global data */
 #define ISA_BSEM_ECAT_INSHMEM   0x08 /* Ethercat input shared memory access */
 #define ISA_BSEM_ECAT_OUTSHMEM  0x09 /* Ethercat output shared memory access */
 #define ISA_BSEM_ECAT_STATSHMEM 0x0A /* Ethercat status shared memory access */
-#ifndef ISA_MAXSEMNUM               /* Could be defined in dsys0def.h */
-#define ISA_MAXSEMNUM         0x20  /* Maximum semaphore number */
+#define ISA_BSEM_CO             0x0B /* CANopen stack synchronization     */
+#define ISA_MSEM_SRV61850       0x0C /* Access to SRV61850 table */
+#define ISA_BSEM_MBSER_DUPD     0x0D /* Modbus Serial - Data update */
+#define ISA_BSEM_MBTCP_DUPD     0x0E /* Modbus TCP - Data update */
+#define ISA_BSEM_MBSLAVE_DUPD   0x0F /* Modbus Slave - Data update */
+#ifndef ISA_MAXSEMNUM                /* Could be defined in dsys0def.h */
+#define ISA_MAXSEMNUM           0x20 /* Maximum semaphore number */
 #endif
 /*
  * Message queues
@@ -793,8 +825,12 @@ FT/11-Dec-2008/ RFS-7307
 
 /* Basic Values */
 #ifndef _VXW_
+#ifndef TRUE
 #define TRUE      1
+#endif
+#ifndef FALSE
 #define FALSE     0
+#endif
 #endif
 #define BAD_RET   (-1)
 #define GOOD_RET  (0)
@@ -824,10 +860,10 @@ FT/11-Dec-2008/ RFS-7307
 #define ISA_MAX_UINT16   0xffff                    /* 65535 */
 #define ISA_MAX_INT32    2147483647L
 #define ISA_MIN_INT32  (-2147483647L - 1)       /* -2147483648L -> compil warning */
-#define ISA_MAX_UINT32   0xffffffffU             /* 4294967295 */
+#define ISA_MAX_UINT32   0xffffffffUL             /* 4294967295 */
 #define ISA_MAX_INT64    9223372036854775807LL
-#define ISA_MIN_INT64  (-9223372036854775807LL - 1LL)
-#define ISA_MAX_UINT64   0xffffffffffffffffLL     /* 18446744073709551615 */
+#define ISA_MIN_INT64  (-9223372036854775807LL - 1)
+#define ISA_MAX_UINT64   0xffffffffffffffffULL     /* 18446744073709551615 */
 #define ISA_MAX_DOUBLE   1.7976931348623158e+308
 #define ISA_MIN_DOUBLE  -ISA_MAX_DOUBLE
 
@@ -853,24 +889,27 @@ FT/11-Dec-2008/ RFS-7307
 /* Functions name case management */ 
 #define ISA_ISUPPER(c)    ( ((c) >= 'A') && ((c) <= 'Z') )
 #define ISA_ISLOWER(c)    ( ((c) >= 'a') && ((c) <= 'z') )
-#define ISA_TOUPPER(c)    ( ISA_ISLOWER(c) ? ((c) - 'a' + 'A') : (c))
-#define ISA_TOLOWER(c)    ( ISA_ISUPPER(c) ? ((c) - 'A' + 'a') : (c))
+#define ISA_TOUPPER(c)    ( ISA_ISLOWER(c) ? (((c) - 'a') + 'A') : (c))
+#define ISA_TOLOWER(c)    ( ISA_ISUPPER(c) ? (((c) - 'A') + 'a') : (c))
 
 /* Time difference */
 #ifndef ITGTDEF_NOMODULOCLK /* Default uses 24h modulo clock */
-#define ISA_TIMEDIFF(BeginDate, EndDate) ( (ISA_MODULO_TIME+(EndDate)-(BeginDate))\
+#define ISA_TIMEDIFF(BeginDate, EndDate) ( ((ISA_MODULO_TIME+(EndDate))-(BeginDate))\
 					  % ISA_MODULO_TIME )
 #else                       /* Specific to full 32 bit clock (no 24h modulo) */
 /*#define ISA_TIMEDIFF(BeginDate, EndDate) ((EndDate) - (BeginDate))*/
-/* Manage wrap-aroung of the time base */
-#define ISA_TIMEDIFF(BeginDate, EndDate) ((EndDate) >= (BeginDate) ? (EndDate) - (BeginDate) : ISA_TIME_WRAP-(BeginDate)+(EndDate)+1)
+/* Manage wrap-around of the time base */
+#define ISA_TIMEDIFF(BeginDate, EndDate) ((EndDate) >= (BeginDate) ? (EndDate) - (BeginDate) : (ISA_TIME_WRAP-(BeginDate))+(EndDate)+1)
 #endif
+
+#define _ETCP_COMM_OVERHEAD     64
 
 /* IXL com buffer size */
 #ifndef ISA_IXL_BUFCTSSZ
 /* RFS 4248 #define ISA_IXL_BUFCTSSZ  512   Client to server */
 #define ISA_IXL_BUFCTSSZ  16384  /* Client to server */
 #endif
+
 #ifndef ISA_IXL_BUFSTCSZ
 /* RFS 4248 #define ISA_IXL_BUFSTCSZ  1024  Server to client */
 #define ISA_IXL_BUFSTCSZ  32768  /* Server to client */
@@ -887,10 +926,19 @@ FT/11-Dec-2008/ RFS-7307
 #endif
 
 #ifdef ITGTDEF_FAILOVER
-#define _ETCP_COMM_OVERHEAD     64
 #define _IXL_SEND_BUF_SIZE      (ISA_GETMIN(ISA_IXL_BUFSTCSZ, ISA_IXL_BUFCTSSZ) - _ETCP_COMM_OVERHEAD)
 #define _TCP_BUF_SIZE           65535
+
+/* Possible bitfield values for the ISA_SYSVA_FAILOVER_ERROR_CODE system variable */
+#define ISA_SYSVA_FAILOVER_ERROR_CODE_NO_ERROR              0x00000000U
+#define ISA_SYSVA_FAILOVER_ERROR_CODE_HEARTBEAT_FAILURE     0x00000001U
+#define ISA_SYSVA_FAILOVER_ERROR_CODE_DATALINK_FAILURE      0x00000002U
+#define ISA_SYSVA_FAILOVER_ERROR_CODE_SYSTEM_INFO_MISMATCH  0x00000004U
+#define ISA_SYSVA_FAILOVER_ERROR_CODE_CAPABILITIES_MISMATCH 0x00000008U
 #endif /* ITGTDEF_FAILOVER */
+
+/* Default string size */
+#define NSize  15
 
 /* types ******************************************************************/
 
@@ -936,9 +984,9 @@ typedef void (*typPFnIplFct)();
 
 /* 'C' function type */
 #ifdef ITGTDEF_NEW_ARRAY_AND_FB
-typedef void (*typPFnUsfCall) (void*, strParamVa*, uchar, strParamVa*, void*);
+typedef void (*typPFnUsfCall) (void*, strParamVa*, uint16, strParamVa*, void*);
 #else
-typedef void (*typPFnUsfCall) (void*, strParamVa*, uchar, strParamVa*);
+typedef void (*typPFnUsfCall) (void*, strParamVa*, uint16, strParamVa*);
 #endif
 
 /* 'C' function blocks function types */
@@ -1048,9 +1096,123 @@ typedef struct _s_SysWngShItem
 /**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
 {
-   uchar cuIsStarting;
-   uchar cuIsRunning;
-} sThrParams;
+   uchar cuIsStarting;           /*!< Flag to determine is a thead is currently starting */
+   uchar cuIsRunning;            /*!< Flag to determine is a thead is currently running */
+} strThrParams;
+
+/**************************** DOXYGEN STRUCTURE ***************************/
+typedef struct
+{
+   char tcDownloadIP[16];                    /*!< Usual ETCP IP parameter for download/debug */
+
+   /* All parameters below are extended from the usual ETCP */
+
+   char tcFailoverPrimaryIP[16];             /*!< Failover primary IP */
+   char tcFailoverSecondaryIP[16];           /*!< Failover secondary IP */
+
+   char tcFailoverDatalinkPrimaryIP[16];     /*!< IP address to use for the data link */
+   char tcFailoverDatalinkSecondaryIP[16];   /*!< IP address to use for the data link */
+
+   uchar cuFailoverIsEnabled;                /*!< Bool flag to activate (or not) the failover */
+
+   uint32 luFailoverHeartbeatTimeoutMs;      /*!< Heartbeat timeout of the failover */
+   uint32 luFailoverHeartbeatDeactivationTimeMs;/*!< Heartbeat deactivation time when heartbeat link is bad */
+#ifdef ITGTDEF_FAILOVER_SERIAL_HEARTBEAT
+   char tcFailoverHeartbeatPort[16];         /*!< Serial port: COM1, COM2 etc ... */
+   uint32 luFailoverHeartbeatBaudRate;       /*!< Port speed: 1200, 2400, 9600 etc ... */
+   char cFailoverHeartbeatParity;            /*!< Parity: N, E, O */
+   uint16 huFailoverHeartbeatStopBits;       /*!< 1, 2 */
+   char tcFailoverHeartbeatFlowControl[16];  /*!< ON, OFF */
+#endif
+} strEtcpExtendedOem;
+
+/**************************** DOXYGEN STRUCTURE ***************************/
+/* Information on kernel task */
+typedef struct _s_CmgTskKer
+{
+   uint16         huTskNum;      /*!< Task number */
+   typTSK_ID      TskId;         /*!< System task information */
+   struct _s_CmgTskKer* pNext;   /*!< Naxt task in the list */
+}strCmgTskKer;
+
+/**************************** DOXYGEN STRUCTURE ***************************/
+/* Information on miscellaneous task */
+typedef struct _s_CmgTskMis
+{
+   uint16         huTskNum;      /*!< Task number */
+   typTSK_ID      TskId;         /*!< System task information */
+   struct _s_CmgTskMis* pNext;   /*!< Next task in the list */
+}strCmgTskMis;
+
+/**************************** DOXYGEN STRUCTURE ***************************/
+/* Header of configuration manager space */
+typedef struct
+{
+#ifdef ITGTDEF_FAILOVER
+   uchar             cuFailoverIsActiveKernel;     /*!< TRUE if the kernel is ACTIVE in a FAILOVER system */
+   uchar             cuFailoverIsPrimaryKernel;    /*!< TRUE if this is the primary kernel of a Failover system */
+   uchar             cuFailoverTwoActivesDetected; /*!< TRUE if the active kernel detected another active kernel through the data link of a Failover system */
+   uint32            luLastHeartbeatSyncTimeMs;    /*!< Last standby heartbeat sync time for statistics */
+   strEtcpExtendedOem  EtcpExtendedOem;              /*!< Communication parameters */
+#endif
+   uchar          cuSimul;       /*!< TRUE if simulation */
+   uchar          cuDebug;       /*!< TRUE if debug */
+
+   /* Start mode */
+   uint16         huStgMode;     /*!< Starting mode */
+
+   /* Kernel task */
+   uint16         huTskKerNbr;   /*!< Max nbr of kernel tasks on one config */
+   strCmgTskKer*  pTskKerRun;    /*!< List of running kernel task */
+   strCmgTskKer*  pTskKerFree;   /*!< List of free place for new kernel task */
+
+   /* Miscellaneous task */
+   uint16         huTskMisNbr;   /*!< Max nbr of other tasks on one config */
+   strCmgTskMis*  pTskMisRun;    /*!< List of running miscellaneous task */
+   strCmgTskMis*  pTskMisFree;   /*!< List of free place for new other task */
+
+   /* Array to store number */
+   uint16         huArraySize;   /*!< Maximum number that can be stored */
+   uint16*        phuArrayNum;   /*!< Array to store number */
+
+   /* Buffer */
+   uchar*         pcuBuffer;     /*!< Buffer */
+   uint32         luBufferLn;    /*!< Buffer length */
+
+   /* IEC 61850 server control */
+#ifdef ITGTDEF_IEC61850_SRV
+   uchar          bSrv61850Enable;/*!< SRV61850 enable flag */
+#endif
+} strCmgHeader;
+
+/**************************** DOXYGEN STRUCTURE ***************************/
+typedef struct
+{
+   uchar    cuCancelCycle;       /*!< Flag to cancel the loop execution */
+   typVa    VaRetSub;            /*!< Returned VA */
+   strParamVa TbParamVa[ISA_FCALL_MAXPARAM]; /*!< Arrays of parameters */
+#ifndef ITGTDEF_SEGMENT
+   void*    BfData;              /*!< pointer on Kernel Resource Data KRD */
+#else
+   void**   BfData;              /*!< pointer on Kernel Resource Data KRD */
+#endif
+#ifdef ITGTDEF_VARLOCK
+   void*    BfVarLock;           /*!< Pointer on lock flags of resource variables */
+   void*    BfVarRefresh;        /*!< Pointer on kernel refreshed data when variable is locked */
+#endif
+#ifdef ITGTDEF_CHECK_CALL_STACK
+   uint32   luCallStackDepth;    /*!< Calling stack counter */
+#endif
+#ifdef ITGTDEF_CHECK_LOOP
+   uint32   luJumpCount;         /*!< Counter to detect infinite loop */
+#endif
+#ifdef ITGTDEF_DBG
+   typVa    FblInstPushed;       /*!< Fbl instance VA for Push/Pop */ /*RFS8537*/
+#endif
+#ifdef ITGTDEF_CHECK_LOOP
+   uint32   luLastMilliTime;     /*!< Timestamp of the beginning of the cycle */ /*RFS8469*/
+#endif
+} strCallContext; /*RFS8500*/
 
 /* data *******************************************************************/
 

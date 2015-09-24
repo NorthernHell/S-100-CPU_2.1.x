@@ -253,6 +253,13 @@ extern uint64 kerStrStringToULINT
    );             /* Returns: Cast ULINT value */
 #endif /* ITGTDEF_INT64 */
 
+#ifdef ITGTDEF_STRING
+uint32 kerStrStringToTime
+   (
+   typVa  VaSrc
+   );
+#endif
+
 #ifdef ITGTDEF_DOUBLE
 extern real64 kerStrStringToLREAL
    (
@@ -340,7 +347,7 @@ extern void kerUsfCall
    (
    uint16      huUsfNum,      /*In: Library function number */ 
    strParamVa* InParam,       /*In: Input parameters */ 
-   uchar       cuNbInParam,   /*In: Number of input parameters */ 
+   uint16      huNbInParam,   /*In: Number of input parameters */ 
    strParamVa* OutParam       /*In: Output parameter */ 
    );
 
@@ -443,29 +450,24 @@ extern uchar resCodeTypeGet
    (
    typVa PouVa  /* Pou to get info from if any, else 0 */
    );
-#ifdef ITGTDEF_INTERRUPT
-extern uchar ticDec
+
+extern uint32 ticDec
    (
+#ifdef ITGTDEF_OPT_CODE_MED_AS_LRG
+   ISA_VARINREG uint32* mic,
+#else
    ISA_VARINREG typVa* mic,  /* TIC Sequence */ 
+#endif
    typVa PouVa,              /* Pou being executed */
    typVa SfcStpTrsVa,        /* Va of step or transition if Sfc */
    uchar cuCodeType,         /* Type of code to execute */
-   uchar *pcuCancelCycle,    /* Cancel rest of cycle */                              
-   typVa *pVaRetSub,         /* Return Va from sub program */
-   strParamVa *pTbParamVa    /* Function call parameter passing */
+   strCallContext *pCallContext /* Context of the calling thread/task */
    );
-#else
-extern uchar ticDec
-   (
-   ISA_VARINREG typVa* mic,  /* TIC Sequence */ 
-   typVa PouVa,              /* Pou being executed */
-   typVa SfcStpTrsVa,        /* Va of step or transition if sfc */
-   uchar cuCodeType          /* Type of code to execute*/
-   );
-#endif /* ITGTDEF_INTERRUPT */
+
 extern void ticParamVaSet
    (
-   typVa* mic
+   typVa* mic,
+   strCallContext* pCallContext /*RFS 8409*/
    );  
 
 extern void ticCycleStart
@@ -530,6 +532,7 @@ extern typSTATUS kerCltWriteVariablesRemote
    uint16         huNbVar
    );
 
+#ifdef ITGTDEF_MODIF
 extern typSTATUS kerCltDwnMdfNewDltRemote
    (
    uchar cuDltType, 
@@ -555,12 +558,17 @@ extern typSTATUS kerCltDwnMdfDltAcceptRemote
    (
    uint32 luSaveOpt
    );
+#endif /* ITGTDEF_MODIF */
 
 extern typSTATUS kerCltCheckConnectionToRemoteKernel(void);
 
 extern typSTATUS kerCltGetCommStatus(void);
 
 extern uchar kerCltIsDataLinkUp(void);
+
+extern uchar kerCltRemoteSystemMismatch(void);
+
+extern uchar kerCltRemoteCapabilitiesMismatch(void);
 
 extern typSTATUS kerCltStartStopRemoteHeartbeat(uchar cuIsStart);
 
@@ -594,6 +602,9 @@ extern void kerFailoverUpdateSystemVariables
    uchar cuIsActive,
    uint32 luDataSyncTimeMs,
    uint32 luHearbeatSyncTimeMs
+#ifdef ISA_SYSVA_FO_DATASYNCCNT /*RFS8400*/
+ , uint32 luFullDataSyncCounter
+#endif
    );
 
 #endif   /* #ifdef ITGTDEF_FAILOVER */
@@ -655,7 +666,6 @@ extern typSTATUS kFblSfcInstsInitExit
    );
 
 #ifdef ITGTDEF_ENH_ONLINE_CHANGE
-extern void kerEvoMdfInit(void);
 
 extern void kerEvoMdfProcessUpdModifSFC
    (
@@ -681,6 +691,7 @@ extern void kerSfcEngineRestart(void);
 #endif /*ITGTDEF_ENH_ONLINE_CHANGE*/
 
 #ifdef ITGTDEF_ENH_ONLINE_CHANGE
+#ifdef ITGTDEF_SFCFBL
 extern void kerEvoMdfProcessUpdModifSFCFB
    (
    strUpdRestoreSFCFB* pTbUpdRestoreSFCFB
@@ -721,9 +732,15 @@ extern void SFCFblModifStopFB
 (
  strInstInfo *pInstInfo
  );
+#endif /*ITGTDEF_SFCFBL*/
 #endif /*ITGTDEF_ENH_ONLINE_CHANGE*/
 #endif /*ITGTDEF_SFCFUNCTIONS */
 /*RFS6522 END */
+
+
+#ifdef ITGTDEF_ENH_ONLINE_CHANGE
+extern void kerEvoMdfInit(void);
+#endif /*ITGTDEF_ENH_ONLINE_CHANGE*/
 
 #ifdef ITGTDEF_MONOTASK
 #ifdef ITGTDEF_CONF_PASSWORD
@@ -768,8 +785,25 @@ extern typHBT_ID *cmgGetHbtParams(void);
 #ifdef ITGTDEF_INTERRUPT
 /* exported services from module dker0irq.c *******************************/
 extern typSTATUS kerIrqStartManager(void);
+
 extern void kerIrqStopManager(void);
 #endif
 
-#endif /* nested Headers management */ 
+#if defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG))
+/* exported services from module dker0opt.c *******************************/
+extern typSTATUS kerOptInit(void);
+
+extern typSTATUS kerOptExit(void);
+
+extern typSTATUS kerOptParseCode(typVa* mic, uint32 luNbCodes, uint32* pluOptCode);
+
+extern typSTATUS kerOptimizePou(uchar *pcuDtaBase, uint32* pluOptCode);
+
+#ifdef ITGTDEF_OPT_CODE_MED_AS_LRG
+extern typSTATUS kerOptConvertPouToLarge(uchar  *pcuDtaBase);
+#endif /* ITGTDEF_OPT_CODE_MED_AS_LRG */
+
+#endif /* defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG)) */
+
+#endif /* Nested header management */
 /* eof ********************************************************************/

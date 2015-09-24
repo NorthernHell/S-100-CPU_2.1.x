@@ -43,10 +43,11 @@ extern void LNXsysTimeExit(void);
 
 /* exported services from module dsys0sem.c *******************************/
 extern typSTATUS XsysSemBCreate
-   (
-   typSEM_ID* pSemId,         /* Out: Semaphore identifier */
-   char* name,                /* In:  Semaphore name */ 
-   uchar cuInitValue          /* In:  Init value */
+(
+typSEM_ID* pSemId,         /* Out: Semaphore identifier */
+char* name,                /* In:  Semaphore name */
+uchar cuInitValue,          /* In:  Init value */
+uint16 huMaxCount = 0x7fffffff /* In:  Maximum Count */
    );
 
 extern typSTATUS XsysSemMCreate

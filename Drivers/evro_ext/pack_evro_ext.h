@@ -2,7 +2,7 @@
 File:               pack_evro_ext.h
 Author:             Umputun
 Creation date:      19/07/2012 - 12:59
-POU name:
+POU name:           
 ***************************************************************************/
 
 #ifndef _PACK_EVRO_EXT_H /* nested Headers management */

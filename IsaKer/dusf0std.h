@@ -37,7 +37,7 @@ extern void usfStdCall
    (
    uint16      huUsfStdNum,   /*In: Library function number */ 
    strParamVa* InParam,       /*In: Input parameters */ 
-   uchar       cuNbInParam,   /*In: Number of input parameters */ 
+   uint16      huNbInParam,   /*In: Number of input parameters */ 
    strParamVa* OutParam       /*In: Output parameter */ 
    );
 extern void usfLockCpu
@@ -156,6 +156,15 @@ extern void usfShr
    strParamVa* InParam,       /*In: Input parameters */ 
    strParamVa* OutParam       /*In: Output parameter */ 
    );
+
+#ifdef ITGTDEF_FAILOVER
+extern void SetRandSeed
+   (
+   uint32 luRandSeed
+   );
+
+extern uint32 GetRandSeed(void);
+#endif
 
 /* exported services from module dusf0rea.c *******************************/
 extern void usfAbs

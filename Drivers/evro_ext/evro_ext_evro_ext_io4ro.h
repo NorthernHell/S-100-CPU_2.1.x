@@ -12,27 +12,27 @@ Device name:        IO4RO
 
 
 typSTATUS evro_ext_evro_ext_io4roIosOpen
-(
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
-);
+   (
+   strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
+   );
 
 void evro_ext_evro_ext_io4roIosClose
-(
-    strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
-);
+   (
+   strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to close */
+   );
 
 void evro_ext_evro_ext_io4roIosWrite
-(
-    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
-);
+   (
+   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to write */
+   );
 
 void evro_ext_evro_ext_io4roIosCtl
-(
-    uchar          cuSubFunct,   /* Sub function parameter */
-    strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
-    uint16         huChanNum,    /* Channel number if any */
-    void*          pvReserved    /* Reserved */
-);
+   (
+   uchar          cuSubFunct,   /* Sub function parameter */
+   strRtIoSplDvc* pRtIoSplDvc,  /* Rt io struct of the spl dvc to control */
+   uint16         huChanNum,    /* Channel number if any */
+   void*          pvReserved    /* Reserved */
+   );
 
 
 

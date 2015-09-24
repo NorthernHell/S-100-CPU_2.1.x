@@ -159,6 +159,11 @@ extern uchar kmpIxsWrite
    );                        /* Returns: 0 if successful, ISA_RC_XX else */
 #endif
 
+extern uint32 kmpSizeType
+   (
+   uchar cuVaType            /* Type of variable */
+   );
+
 /* exported services from module dkmp0dwn.c *******************************/
 extern uint32 kmpDwnPrepare
    (
@@ -343,6 +348,11 @@ extern uint32 kmpTgtGetIxlBufSz
    uchar*  pcuBufferRcv,   /* Question */ 
    uchar*  pcuBufferSend,  /* Answer */ 
    uint32  luBufAnswMaxLn  /* Max length of answer */ 
+   );
+
+extern void kmpGetCapabilities
+   (
+   uint32* luFlags         /* Capability flags storage */
    );
 
 /* exported services from module dkmp0ios.c *******************************/

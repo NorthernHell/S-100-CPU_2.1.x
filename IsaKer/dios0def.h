@@ -99,7 +99,7 @@ typedef typSTATUS (*typPFnCpxDvcIosMdf)(uchar,
 typedef typSTATUS (*typPFnSplDvcIosMdf)(uchar, 
                                         _ts_RtIoSplDvc*, uint32, 
                                         _ts_DfIoSplDvc*, void*, 
-                                        _ts_DfIoChan*, void*, uint16);
+                                        _ts_DfIoChan*, void*);
 #endif
 
 /*
