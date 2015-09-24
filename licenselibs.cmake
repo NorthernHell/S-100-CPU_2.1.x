@@ -1,0 +1,1 @@
+set (LICENSE_LIBS "")

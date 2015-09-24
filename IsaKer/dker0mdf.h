@@ -28,7 +28,6 @@ VMO/26-Mar-2002/ IOs online modification
 /* Type of action for mdf loading */
 #define ISA_MDF_CREATE    1
 #define ISA_MDF_LOAD      2
-#define ISA_MDF_PROMLINK  3
 
 /* Type of delta(s) */
 #define ISA_MDF_DLTTYP_POU 1
@@ -36,6 +35,11 @@ VMO/26-Mar-2002/ IOs online modification
 #define ISA_MDF_DLTTYP_CNF 3
 #define ISA_MDF_DLTTYP_UPD 4
 #define ISA_MDF_DLTTYP_CRC 5
+
+/* Type of space for mdf */
+/* DON'T CHANGE THE NEXT TWO VALUES, THEY ARE TESTED IN CYCLES */
+#define ISA_MDF_ORIGINAL    0
+#define ISA_MDF_OPTIMIZED   1
 
 
 /* types ******************************************************************/
@@ -96,7 +100,8 @@ extern void mdfExit
 
 extern uint32 mdfSpcSize
    (
-   void* pvMdfSpcAdd  /* In: Addr of allocated space, 0 to just get size */ 
+   void* pvMdfSpcAdd, /* In: Addr of allocated space, 0 to just get size */
+   uchar cuSpcType   /* In: type of space - orig/optimized */
    );                 /* Returns: Size that mdf space must have */
 
 extern typSTATUS mdfLoad
@@ -112,12 +117,14 @@ extern uint16 mdfDltNew
    (
    uchar  cuDltType,  /* In: Type of delta */ 
    uint16 huDltParam, /* In: Delta extra param */ 
-   uint32 luDataSize  /* In: Delta data size */ 
+   uint32 luDataSize, /* In: Delta data size */
+   uchar  cuSpcType   /* In: type of space - orig/optimized */
    );                 /* Returns: New delta identifier, zero if error */
 
 extern void* mdfDltGet
    (
    uint16  huIdNum,   /* In: Delta identifier */ 
+   uchar   cuSpcType, /* In: type of space - orig/optimized */
    uint32* luDataSize /* Out: Delta data size */ 
    );                 /* Returns: Delta data addr, zero if Id not found */
 
@@ -125,7 +132,8 @@ extern void mdfClean(void);
 
 extern typSTATUS mdfRdbCrcAdd
    (
-   uint32 luRdbCrc  /* In: Resource data crc to add */
+   uint32 luRdbCrc,  /* In: Resource data crc to add */
+   uchar  cuSpcType  /* In: type of space - orig/optimized */
    );               /* Returns: 0 if successful, BAD_RET if error */
 
 extern uchar mdfRdbCrcCheck

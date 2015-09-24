@@ -1,40 +1,49 @@
 [structure] DateTime
+Internal=No
+Hidden=No
 [end]
 
 [display] 0
 [field] Day
 Type=DINT
 SingleTextLine=Day
+Hidden=No
 [end]
 
 [field] Month
 Type=DINT
 SingleTextLine=Month
+Hidden=No
 [end]
 
 [field] Year
 Type=DINT
 SingleTextLine=Year
+Hidden=No
 [end]
 
 [field] Hour
 Type=DINT
 SingleTextLine=Hour
+Hidden=No
 [end]
 
 [field] Minute
 Type=DINT
 SingleTextLine=Minute
+Hidden=No
 [end]
 
 [field] Second
 Type=DINT
 SingleTextLine=Second
+Hidden=No
 [end]
 
 [field] Weekday
 Type=DINT
 SingleTextLine=Weekday
+Hidden=No
 [end]
 
 [function] getHiResTime
@@ -67,6 +76,9 @@ SingleTextLine=
 
 ;$$[setList] TDB1
 ;$$+Default
+;$$:DateTime
+;$$:getHiResTime
+;$$:getCurrentTime
 ;$$>Default
 ;$$[end]
 

@@ -13,7 +13,7 @@ Device name:        evro_temp_info
 
 typedef struct _tag_strEvro_temp_info
 {
-    int32  ID;   /* Node ID */
+   int32  ID;   /* Node ID */    
 } strOemParam;
 
 
@@ -29,19 +29,19 @@ warning     : Returning with an error stops the kernel resource starting
 typSTATUS evro_int_evro_int_evro_temp_infoIosOpen
 (
 //   strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
-    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
 )
-{   /*
-    * Basically, for a complex device the driver can browse all
-    * simple devices and perform corressponding initializations.
-    * For a simple device it just initializes it.
-    */
+{    /*
+     * Basically, for a complex device the driver can browse all
+     * simple devices and perform corressponding initializations.
+     * For a simple device it just initializes it.
+     */
 //    strOemParam* pOemParam;
 //    pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
-    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     printf("EVRO tem info init\n");
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
@@ -55,8 +55,8 @@ typSTATUS evro_int_evro_int_evro_temp_infoIosOpen
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-
-        if (rc == -1)
+       
+		if (rc == -1)
         {
             cpxDev->luUser =0;
         }
@@ -83,7 +83,7 @@ warning     :
 void evro_int_evro_int_evro_temp_infoIosClose
 (
 //   strRtIoSplDvc* pvRtIoDvc /* Run time io struct of the device to open */
-    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
+   strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
 )
 {
     printf("EVRO temp info Exit\n");
@@ -124,17 +124,17 @@ void evro_int_evro_int_evro_temp_infoIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser
-	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых
-	в составе этого комплесного  */
-    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
-
-
+	 strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack; /*  cpxDev->luUser 
+	- это и будет поле комплексного, которое будет одинаково и доступно для всех простых 
+	в составе этого комплесного  */	 
+	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	
+	
+	
 //    strOemParam* pOemParam;
-//    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);
+//    pOemParam=(strOemParam*)(pRtIoSplDvc->pvOemParam);	
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     uint16_t tab_reg[32]; //data array
-    int rc;
+	int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
     response_timeout.tv_usec = 20000;
@@ -148,59 +148,56 @@ void evro_int_evro_int_evro_temp_infoIosRead
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_read_input_registers(ctx, 30030, 1, tab_reg);
-        modbus_close(ctx);
-        modbus_free(ctx);
-        //For EVRO_modules adress=30000//
-        if (rc == -1)
+							//For EVRO_modules adress=30000//
+		if (rc == -1)
         {
             cpxDev->luUser =0;
         }
         else
         {
-            strRtIoChan*        pChannel;
-            strDfIoSplDvc*      pStaticDef;
-            uint16              nbChannel;
-            uint16              nbIndex;
-            int16*              pPhyData;   /* Physical value */
-            int16*              pLogData;   /* Logical Value    */
-            int16               fElecData;
-            int16               fMult,fDiv,fOffset;
-            pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
-            nbChannel  =  pStaticDef->huNbChan;
-            pChannel   =  pRtIoSplDvc->pRtIoChan;
             cpxDev->luUser =1;
-            /*  Update all channel */
-            for( nbIndex = 0; nbIndex < 1; nbIndex++)
-            {
-                pPhyData = (int16*)(pChannel->pvKerPhyData);
-                pLogData = (int16*)(pChannel->pvKerData);
+        };
+        modbus_close(ctx);
+        modbus_free(ctx);
+    };
+    //
+    strRtIoChan*        pChannel;
+    strDfIoSplDvc*      pStaticDef;
+    uint16              nbChannel;
+    uint16              nbIndex;
+    int16*              pPhyData;   /* Physical value */
+    int16*              pLogData;   /* Logical Value    */
+    int16               fElecData;
+    int16               fMult,fDiv,fOffset;
+    pStaticDef =  pRtIoSplDvc->pDfIoSplDvc;
+    nbChannel  =  pStaticDef->huNbChan;
+    pChannel   =  pRtIoSplDvc->pRtIoChan;
+    /*  Update all channel */
+    for( nbIndex = 0; nbIndex < 1; nbIndex++)
+    {
+        pPhyData = (int16*)(pChannel->pvKerPhyData);
+        pLogData = (int16*)(pChannel->pvKerData);
 
-                fElecData=tab_reg[nbIndex];		// data array
-                if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
-                {
-                    pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
-                }
-                fMult   = *(int16 *)(&(pChannel->luCnvMult));
-                fDiv    = *(int16 *)(&(pChannel->luCnvDiv ));
-                fOffset = *(int16 *)(&(pChannel->luCnvOfs));
-                if (fDiv != 0.0)
-                    fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
-                if( *pPhyData != fElecData) /* If Physic value != Electrical value */
-                {
-                    *pPhyData = fElecData;
-                }
-
-
-                /* update the channel if not locked */
-                if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
-                pChannel++;
-            }
+        fElecData=tab_reg[nbIndex];		// data array
+        if((pChannel->pfnCnvCall) != 0) /* If there is a conversion */
+        {
+            pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &fElecData, &fElecData);
+        }
+        fMult   = *(int16 *)(&(pChannel->luCnvMult));
+        fDiv    = *(int16 *)(&(pChannel->luCnvDiv ));
+        fOffset = *(int16 *)(&(pChannel->luCnvOfs));
+        if (fDiv != 0.0)
+            fElecData = ((fElecData) * fMult  / fDiv) + fOffset;
+        if( *pPhyData != fElecData) /* If Physic value != Electrical value */
+        {
+            *pPhyData = fElecData;
         }
 
+
+        /* update the channel if not locked */
+        if(!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
+        pChannel++;
     }
-    //
-
-
 }
 
 /****************************************************************************

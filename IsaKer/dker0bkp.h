@@ -48,23 +48,14 @@ extern int16 kerBkpSfcSet
 
 extern void kerBkpSfcRemove
    (
-   typVa StpTrsVa /* In: Va of stp/tra to remove bkp from, 0=all sfc bkp */
+   typVa StpTrsVa    /* In: Va of stp/tra to remove bkp from, 0=all sfc bkp */
    );
 
-#ifdef ITGTDEF_INTERRUPT
 extern uchar kerBkpSfcBreak
    (
-   typVa* TicBkp,          /* In: Breakpoint tic */
-   uchar* pcuCancelCycle,
-   typVa* pVaRetSub,
-   strParamVa* pTbParamVa
-   );                      /* Returns: TRUE if tra bkp already met & recep is true */
-#else
-extern uchar kerBkpSfcBreak
-   (
-   typVa* TicBkp /* In: Breakpoint tic */ 
-   );            /* Returns: TRUE if tra bkp already met & recep is true */
-#endif /* ITGTDEF_INTERRUPT */
+   typVa* TicBkp,    /* In: Breakpoint tic */
+   strCallContext*   /* In: Context of the calling thread/task*/
+   );                /* Returns: TRUE if tra bkp already met & recep is true */
 
 #ifdef ITGTDEF_ENH_ONLINE_CHANGE
 extern void kerBkpSfcBackup(void);

@@ -49,12 +49,17 @@ OL/02-Feb-2005/ New data type
 FT/25-Jan-2007/ New functions for password protection
    MonoTask now has password protection capability
 
+---5.31 Released---
+OO/20-Sept-2012/ RFS 8359
+   Added space ID and address for the space to store MDF for the
+   optimized code
+
 ***************************************************************************/
 #ifndef _DKER0DEF_H   /* nested Headers management */
 #define _DKER0DEF_H
 
 #ifdef ITGTDEF_FAILOVER
-#include <dixl0def.h>
+#include "dixl0def.h"
 #endif
 
 /* constants **************************************************************/
@@ -156,9 +161,7 @@ FT/25-Jan-2007/ New functions for password protection
 
 /* Resource backup location type for restoration */
 #define ISA_BKUP_LOAD     1 /* Load from hard support (disk,...) */
-#define ISA_BKUP_PROMLK   2 /* Link to Prom */
 
-/* PROMLINK UNUSED: removed from dsys0def.h */
 /* Default resource backup location type for restoration */
 #define ISA_BKUP_DEFAULT  ISA_BKUP_LOAD 
 
@@ -204,9 +207,12 @@ FT/25-Jan-2007/ New functions for password protection
 #define ISA_RESMODE_STP_ERR_MAX   -4 /* maximum negative value for stepping errors */
 
 /* Pou status */
-#define ISA_PST_INACTIVE  0x00   /* Inactive */
-#define ISA_PST_ACTIVE    0x01   /* Active   */
-#define ISA_PST_FROZEN    0x02   /* Frozen   */
+#define ISA_PST_INACTIVE        0x00   /* Inactive */
+#define ISA_PST_ACTIVE          0x01   /* Active   */
+#define ISA_PST_FROZEN          0x02   /* Frozen   */
+#ifdef ITGTDEF_SFC_PROG_ACT_GROUPING
+#define ISA_PST_CHILD_LASTCYCLE 0x03   /* Used to allow the child to terminate its cycle before dying. */
+#endif
 /* Pou levels */
 #define ISA_MAXPLEVEL  19 /* Max level hierarchy of a Pou (0=higher level) */
 
@@ -234,6 +240,28 @@ FT/25-Jan-2007/ New functions for password protection
 #define KERINLINE 
 #endif
 
+/* Number of block for kernel private resource data */ /*RFS8406*/
+#define KPVRD_KPVRDPTRS_BLKNBR         0
+#define KPVRD_BLKSEQPTRS_BLKNBR        1
+#define KPVRD_PDF_BLKNBR               2
+#define KPVRD_EXMTRS_BLKNBR            3
+#define KPVRD_CLRTRS_BLKNBR            4
+#define KPVRD_EXMRPACTCU_BLKNBR        5
+#define KPVRD_EXMRPACTLS_BLKNBR        6
+#define KPVRD_ACT_BLKNBR               7
+#define KPVRD_KIOMNG_BLKNBR            8
+#define KPVRD_RTIODVC_BLKNBR           9
+#define KPVRD_RTIOCHAN_BLKNBR         10
+#define KPVRD_KVB_BLKNBR              11
+#define KPVRD_USFMNG_BLKNBR           12
+#define KPVRD_FBLMNG_BLKNBR           13
+#define KPVRD_CNVMNG_BLKNBR           14
+#define KPVRD_MISDTA_BLKNBR           15
+#define KPVRD_DBGDTA_BLKNBR           16
+#define KPVRD_BKPSTPVA_BLKNBR         17 /* Backup of Step va            <----- added for ITGTDEF_ENH_ONLINE_CHANGE */
+#define KPVRD_BKPTRSVA_BLKNBR         18 /* Backup of trans va           <----- added for ITGTDEF_ENH_ONLINE_CHANGE */
+#define KPVRD_BKPSFCFBSTATE_BLKNBR    19 /* Backup of SFC FB state       <----- added for ITGTDEF_ENH_ONLINE_CHANGE_PHASE2 */
+
 /* Number of block for kernel private resource data */
 #define KPVRD_BLKNBR 20 
 
@@ -249,6 +277,8 @@ FT/25-Jan-2007/ New functions for password protection
 #define KERSTEP_INIT                      0
 #define KERSTEP_EXEC_TIC                  1
 #define KERSTEP_WRITE_IOS                 2
+
+#define NB_WRITTEN_VARS                   50 /* The quantity of variables written by ixlWrite that can be synchronized through data link */
 
 /* types ******************************************************************/
 /**************************** DOXYGEN STRUCTURE ***************************/
@@ -268,17 +298,24 @@ typedef struct
    uchar          cuIsCmgDialogStarted;
    uchar          cuIsResConnected;
    uchar          cuIsResDialogStarted;
+#ifndef ITGTDEF_MONOTASK
+   uchar          cuIsIxdConnected;              /* RFS 8572 */
+   uchar          cuIsIxdDialogStarted;          /* RFS 8572 */
+#endif
    typIxlCnxId    IxlCmgCnxId;
    typIxlCnxId    IxlResCnxId;
+#ifndef ITGTDEF_MONOTASK
+   typIxlCnxId    IxlIxdCnxId;                   /* RFS 8572 */
+#endif
 
    uint32         luCommTimeoutMs;
    typIxlId       IxlId;
    char           tcParamETCP[81];
 
    typTHR_HDL     ThrReconnect;
-   sThrParams     ReconnectThrParams;
+   strThrParams   ReconnectThrParams;
    typTHR_HDL     ThrDownload;
-   sThrParams     DownloadThrParams;
+   strThrParams   DownloadThrParams;
 
    uint32         luPathLen;
    char           tcResConfPath[ISA_PRJPATH_SIZE];
@@ -305,10 +342,10 @@ typedef struct
    uchar          cuFailoverStandbyState;       /*!< Execution state of the execution loop of the standby VM */
    uchar          cuFailoverFullDataResync;     /*!< TRUE if the whole data needs to be resynced */
    uint32         luFailoverLastDataSyncTimeMs; /*!< Time consumed by the last data sync */
+#ifdef ISA_SYSVA_FO_DATASYNCCNT
+   uint32         luFailoverFullDataSyncCounter;/*!< Count the quantity of full resync that has been performed on the failover system */
+#endif /*ISA_SYSVA_FO_DATASYNCCNT*/
 #endif   /* #ifdef ITGTDEF_FAILOVER */
-#if 0 /* PROMLINK UNUSED */
-   uchar       cuPromedAppli;    /*!< Set if appli runs in Prom */
-#endif
    uchar       cuKerState;       /*!< Kernel state */
 
    typSPC_ID   ConfId;           /*!< Resource configuration module */
@@ -328,6 +365,9 @@ typedef struct
    uint32*     pluCodeSizes;     /*!< Blocks sizes; 1st pou is at index 1 */
 
    void**      ppvMdfCodeBlks;   /*!< Code of on line modified pous */
+#if defined(ITGTDEF_ENH_ONLINE_CHANGE) && defined(ITGTDEF_SFCFUNCTIONS) && defined (ITGTDEF_SFCFBL)
+   void**      ppvMdfCodeBlksBkp;/*!< Code of on line modified pous for pre-realize check */
+#endif
                                     
    typSPC_ID   DataId;           /*!< Resource data module */
 #ifndef ITGTDEF_SEGMENT                 
@@ -406,6 +446,21 @@ typedef struct
 #endif
 #endif /* ITGTDEF_SFCFUNCTIONS */
 
+#if defined(ITGTDEF_MODIF) && (defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG)))
+   typSPC_ID   OptimMdfId;       /*!< Space for optimized delta(s) for on line modif module */
+   void*       pvOptimMdfAdd;    /*!< Optimized delta(s) for on line modif module address */
+#endif /* defined(ITGTDEF_MODIF) defined(defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG))) */
+
+#if defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG))
+   uint32*     pluOptimPouCrc;   /*!< Actual CRC of optimized POUs (POU 0 is dummy) */
+#endif /* defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG)) */
+
+#ifdef ITGTDEF_OPT_CODE_MED_AS_LRG
+   typSPC_ID   OptPouSpcId;      /*!< Optimized code space ID */
+   void*       pvOptPouSpc;      /*!< Pointer to optimized code space */
+   void**      ppvOptCodeBlks;   /*!< Optimized TIC code */
+   uint32*     pluOptCodeSizes;  /*!< Size of each POU */
+#endif
 } strKsys;
 
 /**************************** DOXYGEN STRUCTURE ***************************/
@@ -490,6 +545,16 @@ typedef struct
    uint32   luTimerInfo;   /*!< Step activation date OR activity duration */
 } strSfcFbStepBackup;
 #endif
+
+#ifdef ITGTDEF_FAILOVER_WRITE_SYNC
+/**************************** DOXYGEN STRUCTURE ***************************/
+typedef struct
+{
+   typIxlVa Va;            /*!< VA of the variable */
+   uchar    cuVaType;      /*!< Type of the variable */
+   uint32   luNbrOfElmt;   /*!< Quantity of element in the array */
+}strWrittenVars;
+#endif /*ITGTDEF_FAILOVER_WRITE_SYNC*/
 
 /* data *******************************************************************/
 #ifndef ITGTDEF_NO_GLOBALS /*globals dynamically allocated*/

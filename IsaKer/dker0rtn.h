@@ -28,7 +28,17 @@ ED/18-Dec-2006
 /* constants **************************************************************/
 
 /* types ******************************************************************/
-
+#ifdef ITGTDEF_ENH_ONLINE_CHANGE /* RFS8382 */
+typedef struct
+{
+   void* apvRtnSpace[2];            /*!< Retain space pointers */
+   uint32 luRtnSpaceSize;           /*!< Size of the retain spaces */
+   uint32 luRtnSpaceSizeInUse;      /*!< Size of the space actually in use */
+   typSPC_ID apRtnSpaceId[2];       /*!< Retain space identifiers */
+   char acFilename[ISA_PRJPATH_SIZE];  /*!< Backup memory location */
+   uchar acuRtnSpaceNum[2];         /*!< Retain space numbers */
+} strRtnSpcSet;
+#endif /* ITGTDEF_ENH_ONLINE_CHANGE */
 /* data *******************************************************************/
 
 /* exported services from module drtn0cus.c *******************************/
@@ -59,7 +69,6 @@ extern typSTATUS kerRtnMdfInit(void);
 extern typSTATUS kerSetNewRtnMem(strDefRtn* pDefRtn);
 extern uint32 kerComputeRtnSpcSize(strDefRtn* pDefRtn, strDefRtnBlk* pRtnBlks);
 extern uint32 kerRtnSpcSize(void);
-extern uint32 kerRtnSpcSizeInUse(void);
 extern typSTATUS kerCreateNewRtnSpc(uint32 luCurRtnSize, uint32 luNewRtnSize);
 #endif /* ITGTDEF_ENH_ONLINE_CHANGE */
 

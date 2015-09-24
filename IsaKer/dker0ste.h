@@ -61,6 +61,9 @@ typedef struct _s_strSteAct
    typVa* pSteTicSeq;     /*!< TIC sequence */
    typVa  StepVa;         /*!< Step variable the action belongs to */
    typVa  PouVa;          /*!< Pou variable the action belongs to */
+#ifdef ITGTDEF_SFC_PROG_ACT_GROUPING
+   uchar  cuProgActDone;  /*!< TRUE if (SFC program) action was executed */
+#endif
 } strSteAct;
 
 /* data *******************************************************************/
@@ -135,8 +138,23 @@ extern KERINLINE void actEndPut
    (
    typVa StepVa
    );
+#ifdef ITGTDEF_SFC_PROG_ACT_GROUPING
+extern void actExec
+   (
+   uint16 huPouNum,
+   uchar cuSfcPouLevel
+   );
 
+extern void actDeactiveExec
+   (
+   uint16 huPouNum,
+   uchar cuSfcPouLevel
+   );
+
+extern void actResetLists(void);
+#else
 extern void actExec(void);
+#endif
 
 #endif /* nested Headers management */
 /* eof ********************************************************************/

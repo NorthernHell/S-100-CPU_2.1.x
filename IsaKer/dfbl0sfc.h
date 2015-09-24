@@ -25,7 +25,6 @@ OLA/03-Nov-2005/ RFS 2553: SFC FB cannot share is local variables with its child
 
 /* constants **************************************************************/
 #define ISA_SFC_FBL_DESC_RSRVD_BIT_IS_ECC   0x1   /* RFS 5070 */
-#define ISA_SFC_FBL_MAX_LOOP_ECC            10    /* RFS 5070 */
 
 /* types ******************************************************************/
 
@@ -34,6 +33,25 @@ OLA/03-Nov-2005/ RFS 2553: SFC FB cannot share is local variables with its child
    Structures used in SFC function block space
 
 ***********************************************************************************/
+
+/* TFS 8201 + 10729 BEGIN */
+/**************************** DOXYGEN STRUCTURE ***************************/
+typedef struct _s_ExtraStpInstInfo
+{
+   uchar cuStepExecOnPrevIter;   /*!< TRUE if the step code was executed on the previous ECC iteration */
+   uchar cuStepExec;             /*!< TRUE if the step code was executed */
+   uchar cuArmAlign[2];
+} sExtraStpInstInfo;
+
+/**************************** DOXYGEN STRUCTURE ***************************/
+typedef struct _s_ExtraTraInstInfo
+{
+   uchar cuTransEval;   /*!< TRUE if the transition code was executed */
+   uchar cuTransValue;  /*!< Transition code value (TRUE/FALSE) */
+   uchar cuArmAlign[2];
+} sExtraTraInstInfo;
+/* TFS 8201 + 10729 END */
+
 /**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
 {
@@ -57,18 +75,22 @@ typedef struct
 /**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
 {
-   typVa       InstVa;           /*!< Instance VA in run time database */
-   uint16      huPouNum;         /*!< Pou Num the instance refers to */
-   uint16      huReserved;       /*!< Reserved */
+   typVa       InstVa;              /*!< Instance VA in run time database */
+   uint16      huPouNum;            /*!< Pou Num the instance refers to */
+   uint16      huReserved;          /*!< Reserved */
 
-   uint32      luExmTrsInitOfs;  /*!< Offset to examined transition */
-   uint32      luClrTrsInitOfs;  /*!< Offset to cleared transition */
-   uint32      luExmRepActCOfs;  /*!< Offset to repetitive action current cycle */
-   uint32      luExmRepActLOfs;  /*!< Offset to repetitive action last cycle */
+   /* TFS 8201 + 10729 BEGIN */
+   uint32      luExtraStpInfoOfs;   /*!< Offset step extra info array */
+   uint32      luExtraTraInfoOfs;   /*!< Offset transition extra info array */
+   /* TFS 8201 + 10729 END */
+   uint32      luExmTrsInitOfs;     /*!< Offset to examined transition */
+   uint32      luClrTrsInitOfs;     /*!< Offset to cleared transition */
+   uint32      luExmRepActCOfs;     /*!< Offset to repetitive action current cycle */
+   uint32      luExmRepActLOfs;     /*!< Offset to repetitive action last cycle */
    
-   uint32      luSfcChildOfs;    /*!< Offset to list of SFC child */
+   uint32      luSfcChildOfs;       /*!< Offset to list of SFC child */
 
-   uint32      luSteActOfs;      /*!< Offset to step action arrays */
+   uint32      luSteActOfs;         /*!< Offset to step action arrays */
 
 } strSfcInstActiv;
 
@@ -81,7 +103,7 @@ typedef struct
 /**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
 {
-   typVa*   pExmTrsInit;	      /*!< Transition examination management block */
+   typVa*   pExmTrsInit;         /*!< Transition examination management block */
    typVa*   pExmTrs;             /*!< Transition to examine */
    typVa*   pValTrs;             /*!< Valid transitions */
    typVa*   pClrTrsInit;         /*!< Transition clearing management block */
@@ -96,7 +118,7 @@ typedef struct
       
    uchar    cuStatus;            /*!< Instance status - Active, inactive or frozen */
    uchar    cuReserved1;         /*!< Reserved (RFS 5070: bit 0 set indicates SFC FB is a basic IEC 61499 FB i.e. an ECC) */
-   uchar    cuMaxLoopEcc;        /*!< Reserved (RFS 5070: counter for max loops in ECC) */
+   uchar    cuLoopEcc;           /*!< Reserved (RFS 5070: flag to loop the ECC) */
 #ifdef ITGTDEF_ENH_ONLINE_CHANGE
    uchar    cuRestored;          /*!< Non zero if instance is restored during online change */
 #else
@@ -126,7 +148,7 @@ typedef struct _s_SteInstInfo
    uchar  cuLevel;        /*!< Pou level the step belongs to */
    uchar  cuXStatus;      /*!< Step extra status info */
    typVa* pBegTicSeq;     /*!< Begin action TIC sequence */
-   typVa* pRepTicSeq;     /*!< Repetitve action TIC sequence */
+   typVa* pRepTicSeq;     /*!< Repetitive action TIC sequence */
    typVa* pEndTicSeq;     /*!< End action TIC sequence */
 
    uint32* pluPrevTraListOfs; /*!< Offset to list of transition predecessors */
@@ -161,7 +183,7 @@ extern void evoSfcInstStartExt
    (
    typVa,      /* SFC function block instance VA */
    strParamVa*,/* function block instance's parameters list */
-   uchar       /* Number of parameters */
+   uint16      /* Number of parameters */
    );
 
 void evoSfcInstKill
@@ -183,7 +205,7 @@ void evoSfcInstReStartExt
    (
    typVa,      /* SFC function block instance VA */
    strParamVa*,/* function block instance's parameters list */
-   uchar       /* Number of parameters */
+   uint16      /* Number of parameters */
    );
 
 uchar evoSfcInstStatusGet

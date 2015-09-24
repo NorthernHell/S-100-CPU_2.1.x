@@ -442,17 +442,12 @@ JFO/04-Jul-2001/ Improve download.
 ?THR: Cannot terminate thread.
 */
 
-#ifdef ITGTDEF_IEC61850_SRV
-#define ISA_ER_TSK_IEC61850_RESTART       (ISA_ER_BASE + 0x0075)
+#define ISA_ER_TSK_RESTART                (ISA_ER_BASE + 0x0075)
 /* Description error:
-?THR: 61850 Server Restarting.
+?THR: Cannot restart a task.
 */
 
-#define ISA_ER_TSK_IEC61850_STOP		  (ISA_ER_BASE + 0x0076)
-/* Description error:
-?THR: 61850 Server stopping.
-*/
-#endif
+
 
 /**************************************************************************
 
