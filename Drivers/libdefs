@@ -1,5 +1,0 @@
-include ../Drivers/evro_tcpc/libdefs.inc
-include ../Drivers/evro_rtus/libdefs.inc
-include ../Drivers/evro_tcp/libdefs.inc
-include ../Drivers/evro_ext/libdefs.inc
-DRVLIB=$(LDIR)/libevro_tcpc.a $(LDIR)/libevro_rtus.a $(LDIR)/libevro_tcp.a $(LDIR)/libevro_ext.a $(LDIR)/libevro_int.a $(LDIR)/libfastarr.a $(LDIR)/libfastmatrix.a $(LDIR)/libfda_alarm.a $(LDIR)/libfda_serv.a $(LDIR)/libfir.a $(LDIR)/libiir.a $(LDIR)/libisaafb.a $(LDIR)/libisaser.a $(LDIR)/libiset.a $(LDIR)/libnewtype.a $(LDIR)/librtlog.a $(LDIR)/librtsched.a $(LDIR)/libsymlib.a $(LDIR)/libsys.a $(LDIR)/libtime.a 

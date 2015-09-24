@@ -44,7 +44,11 @@ extern void blkSet
    typVa* pBlkTicSeq  /* In: Block Tic Sequence */ 
    );
 
+#ifdef ITGTDEF_OPT_CODE_MED_AS_LRG
+extern KERINLINE uint32* blkGet
+#else
 extern KERINLINE typVa* blkGet
+#endif /*ITGTDEF_OPT_CODE_MED_AS_LRG*/
    (
    uint16 huBlkNum    /* In: Block Number */ 
    );

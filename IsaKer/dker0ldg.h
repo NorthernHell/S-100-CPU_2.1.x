@@ -24,7 +24,6 @@ EDS/25-Aug-2000/ Allow adding of variables in MDF
 /* constants **************************************************************/
 #define ISA_LDG_SPCCREATE    1
 #define ISA_LDG_SPCLOAD      2
-#define ISA_LDG_SPCPROMLINK  3
 
 /* types ******************************************************************/
 
@@ -114,6 +113,11 @@ extern void ldgKpvRDTbGet
    );
 
 extern void ldgRCleanUp(void);
+
+extern void ldgPouMdfBackupRestore
+   (
+   uchar cuIsBackup
+   );
 
 #endif /* nested Headers management */ 
 /* eof ********************************************************************/

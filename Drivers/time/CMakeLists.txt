@@ -1,0 +1,5 @@
+set (drvname ${CURDRV})
+add_library (${drvname} STATIC IMPORTED GLOBAL)
+set_target_properties (${drvname} PROPERTIES IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/Lib/${CMAKE_STATIC_LIBRARY_PREFX}${drvname}${CMAKE_STATIC_LIBRARY_SUFFIX}")
+include (${CMAKE_CURRENT_SOURCE_DIR}/libdefs.cmake OPTIONAL)
+set (DRVLIB ${DRVLIB} "${libdefs}" PARENT_SCOPE)

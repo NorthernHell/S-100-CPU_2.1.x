@@ -1,7 +1,7 @@
 /**************************************************************************
 File:               dsys0pro
 Author:             ICS Triplex ISaGRAF Inc.
-Creation date:      26-May-1998
+Creation date:      03-December-2010
 ***************************************************************************
 Attached documents: 
 
@@ -83,10 +83,10 @@ extern ISASYSDLL uchar dsysLoopBreak
    uchar    cuAutomaticReset     /* In: Reset break event if TRUE */
    );
 
-#ifdef ITGTDEF_IEC61850_SRV
-extern ISASYSDLL uchar dsysLoopIEC61850Restart(void);
-extern ISASYSDLL uchar dsysLoopIEC61850Stop(void);
-#endif
+extern ISASYSDLL uchar dsysLoopRestart
+   (
+   uchar    cuAutomaticReset     /* In: Reset restart event if TRUE */
+   );
 
 extern ISASYSDLL char* dsysPathNameGet
    (
@@ -144,7 +144,7 @@ extern ISASYSDLL int32 dsysArgGet
    const char*    psParamName,      /* In: Parameter's name */
    void*    pvBuffer,         /* Out: Buffer where store data */
    uint32   luLnOfBuffer,     /* In: Length of the buffer */
-   uint32   luDfValue,        /* In: Default value */
+   uint32	luDfValue,        /* In: Default value */
    uchar    cuIndex           /* In: Index of the data to get */
    );
 
@@ -154,6 +154,12 @@ extern ISASYSDLL void dsysArgOwnerNumSet
    );
 
 extern ISASYSDLL char* dsysArgIniFileNameGet(void);
+
+extern ISASYSDLL char** convertArgs
+	(
+	int argc,          /*In: Number of arguments*/
+	ACE_TCHAR** argv  /*In: Array of arguments using ACE_TCHAR*/
+	);
 
 /* exported services from module dsys0spc.c *******************************/
 extern ISASYSDLL void* dsysSpcCreate
@@ -243,38 +249,6 @@ extern ISASYSDLL void* dsysMultiSpcLoad
    uint16      huBlockNbr,          /* In:  Number of blocks */
    uint32      pluSize[],           /* In:  Size of each block */
    void*       ppvBlockAddresses[]  /* In:  Address of each block */
-   );
-
-extern ISASYSDLL void* dsysSpcPromLink 
-   (
-   typSPC_ID*  pSpcId,              /* Out: Space identifier */
-   uint16      huOwnerNum,          /* In : Owner number */
-   uchar       cuSpaceNum,          /* In : Space number */
-   uint32*     pluSize              /* Out: Size of memory block */
-   )  ; 
-
-extern ISASYSDLL typSTATUS dsysSpcPromUnlink 
-   (
-   typSPC_ID*  pSpcId,              /* In : Space identifier */
-   void*       pvSpcAddress         /* In : Address of space */
-   );
-
-extern ISASYSDLL void* dsysMultiSpcPromLink 
-   (
-   typSPC_ID*  pSpcId,              /* Out: Space identifier */
-   uint16      huOwnerNum,          /* In:  Owner number */
-   uchar       cuSpaceNum,          /* In:  Space number */
-   uint16      huBlockNbr,          /* In:  Number of blocks */
-   uint32      pluSize[],           /* In:  Size of each block */
-   void*       ppvBlockAddresses[]  /* Out: Address of each block */
-   ); 
-
-extern ISASYSDLL typSTATUS dsysMultiSpcPromUnlink
-   (
-   typSPC_ID*  pSpcId,              /* In : Space identifier */
-   uint16      huBlockNbr,          /* In : Number of blocks */
-   uint32      pluSize[],           /* In : Size of each block */
-   void*       ppvBlockAddresses[]  /* In : Address of each block */
    );
 
 /* exported services from module dsys0dsa.c *******************************/
@@ -422,7 +396,7 @@ extern ISASYSDLL void dsysFctErrnoPrint
    ); 
 
 /* Semaphores, Message Queues and Notification only for Multi-Task OR Mono-Task with HSD */
-#if (!defined ITGTDEF_MONOTASK) || ((defined ITGTDEF_MONOTASK) && (defined ITGTDEF_HSD))
+#if (!defined ITGTDEF_MONOTASK) || ((defined ITGTDEF_MONOTASK) && (defined ITGTDEF_HSD)) || (defined ITGTDEF_INTERRUPT)
 
 /* exported services from module dsys0sem.c *******************************/
 extern ISASYSDLL typSTATUS dsysSemBCreate
@@ -581,7 +555,7 @@ extern ISASYSDLL typSTATUS dsysNotifSignal
    typNTFSGN_ID*  pNtfSgnId   /* In: Notif signal identifier */
    );
 
-#endif /* (!defined ITGTDEF_MONOTASK) || ((defined ITGTDEF_MONOTASK) && (defined ITGTDEF_HSD)) */
+#endif /* (!defined ITGTDEF_MONOTASK) || ((defined ITGTDEF_MONOTASK) && (defined ITGTDEF_HSD)) || (defined ITGTDEF_INTERRUPT) */
 
 /* exported services from module dsys0wng.c *******************************/
 extern ISASYSDLL void dsysWngNbModify
@@ -601,13 +575,6 @@ extern ISASYSDLL void dsysWngXSet
    uint32 luArg,     /* Argument Number */ 
    uchar  cuCmd      /* Command */ 
    );
-
-extern ISASYSDLL void dsysCmptWngSet   
-   (
-   char*  psCmptNm,  /*In: Component name */
-   uint16 huNum,     /*In: Warning number */ 
-   uint32 luArg      /*In: Argument number */ 
-   ); 
 
 extern ISASYSDLL void dsysWngGet   
    (
@@ -928,6 +895,11 @@ extern ISASYSDLL typSTATUS dsysIntThrExit
    typINTTHR_HDL *pThrHdl     /* In: Thread ID */
    );
 
+extern ISASYSDLL typSTATUS dsysIntThrCheckExit /*RFS8498*/
+   (
+   typINTTHR_HDL *pThrHdl     /* In: Thread ID */
+   );
+
 extern ISASYSDLL typSTATUS dsysIntThrSetPrio
    (
    typINTTHR_HDL* pThrHdl     /* In: Structure to get the Thread Handle */
@@ -938,8 +910,13 @@ extern ISASYSDLL typSTATUS dsysIntThrSetPrio
 extern ISASYSDLL typSTATUS dsysTskCreate
    (
    typTSK_ID*  pTskId,     /* Out: Task identifier */
-   char*       psTskName,  /* In: Name of task to start */
-   char**      ppsArgv     /* In: Pointer to parameters list (0 terminator)*/
+   ACE_TCHAR*       psTskName,  /* In: Name of task to start */
+   ACE_TCHAR**      ppsArgv     /* In: Pointer to parameters list (0 terminator)*/
+   );
+
+extern ISASYSDLL typSTATUS dsysTskRestart
+   (
+   typTSK_ID*  pTskId      /* In:: Task identifier */
    );
 
 extern ISASYSDLL typSTATUS dsysTskTerminate
@@ -982,26 +959,26 @@ extern ISASYSDLL int32 dsysPriGetThreadPrio
 #ifdef ITGTDEF_FAILOVER
 extern typSTATUS dsysHbtCreate
    (
-   typHBT_ID *pHbtId
+   typHBT_ID*  pHbtId
    );
 
 extern typSTATUS dsysHbtDelete
    (
-   typHBT_ID *pHbtId
+   typHBT_ID*  pHbtId
    );
-
+   
 extern typSTATUS dsysHbtRead
    (
-   typHBT_ID *pHbtId,
-   uint32 luTimeoutMs,
-   uint32 *pluLastHeartbeatSyncTimeMs
+   typHBT_ID*  pHbtId,
+   int32       ldTimeoutMs,
+   uint32*     pluLastHeartbeatSyncTimeMs
    );
 
 extern typSTATUS dsysHbtWrite
    (
-   typHBT_ID *pHbtId
+   typHBT_ID*  pHbtId
    );
 #endif
 #endif   /* nested Headers management */
-
+   
 /* eof ********************************************************************/

@@ -23,7 +23,7 @@ ISANDTDLL void sqrt_lrealUsfCall
    (
    void*       pvBfData,     /* In: Data */
    strParamVa* InParam,      /* In: Input parameters */
-   uchar       cuNbInParam,  /* In: Number of input parameters */
+   uint16      huNbInParam,  /* In: Number of input parameters */
 #ifdef ITGTDEF_NEW_ARRAY_AND_FB
    strParamVa* OutParam,     /* In: Output parameter */
    void*       pvAdi         /* In: Pointer to ADI table */

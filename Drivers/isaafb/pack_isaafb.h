@@ -26,6 +26,7 @@ Modifications: (who / date / description)
 #include "gettimestruct.h" /* "get_time_struct */
 #include "trackandhold.h" /* "trackandhold */
 #include "leadlagcontroller.h" /* "leadlagcontroller */
+#include "leadlagbacontroller.h" /* "leadlagbacontroller */
 #include "characterizer.h" /* "characterizer */
 #include "setpriority.h" /* "set_priority */
 #include "scaler.h" /* "scaler */
@@ -43,6 +44,7 @@ Modifications: (who / date / description)
 #include "batchtotalizer.h" /* "batchtotalizer */
 #include "flipflop.h" /* "flipflop */
 #include "biascalibration.h" /* "biascalibration */
+#include "pid_al.h" /* "pid_al */
 
 /* package definition */
 
@@ -89,6 +91,11 @@ ISA_DECLARE_HANDLE("leadlagcontrollerFblClassExit", leadlagcontrollerFblClassExi
 ISA_DECLARE_HANDLE("leadlagcontrollerFblInstInit", leadlagcontrollerFblInstInit) \
 ISA_DECLARE_HANDLE("leadlagcontrollerFblInstExit", leadlagcontrollerFblInstExit) \
 ISA_DECLARE_HANDLE("leadlagcontrollerFblCall", leadlagcontrollerFblCall) \
+ISA_DECLARE_HANDLE("leadlagbacontrollerFblClassInit", leadlagbacontrollerFblClassInit) \
+ISA_DECLARE_HANDLE("leadlagbacontrollerFblClassExit", leadlagbacontrollerFblClassExit) \
+ISA_DECLARE_HANDLE("leadlagbacontrollerFblInstInit", leadlagbacontrollerFblInstInit) \
+ISA_DECLARE_HANDLE("leadlagbacontrollerFblInstExit", leadlagbacontrollerFblInstExit) \
+ISA_DECLARE_HANDLE("leadlagbacontrollerFblCall", leadlagbacontrollerFblCall) \
 ISA_DECLARE_HANDLE("characterizerFblClassInit", characterizerFblClassInit) \
 ISA_DECLARE_HANDLE("characterizerFblClassExit", characterizerFblClassExit) \
 ISA_DECLARE_HANDLE("characterizerFblInstInit", characterizerFblInstInit) \
@@ -169,7 +176,12 @@ ISA_DECLARE_HANDLE("biascalibrationFblClassInit", biascalibrationFblClassInit) \
 ISA_DECLARE_HANDLE("biascalibrationFblClassExit", biascalibrationFblClassExit) \
 ISA_DECLARE_HANDLE("biascalibrationFblInstInit", biascalibrationFblInstInit) \
 ISA_DECLARE_HANDLE("biascalibrationFblInstExit", biascalibrationFblInstExit) \
-ISA_DECLARE_HANDLE("biascalibrationFblCall", biascalibrationFblCall)
+ISA_DECLARE_HANDLE("biascalibrationFblCall", biascalibrationFblCall) \
+ISA_DECLARE_HANDLE("pid_alFblClassInit", pid_alFblClassInit) \
+ISA_DECLARE_HANDLE("pid_alFblClassExit", pid_alFblClassExit) \
+ISA_DECLARE_HANDLE("pid_alFblInstInit", pid_alFblInstInit) \
+ISA_DECLARE_HANDLE("pid_alFblInstExit", pid_alFblInstExit) \
+ISA_DECLARE_HANDLE("pid_alFblCall", pid_alFblCall)
 
 #endif /* _ISAAFB_PACKAGE_H */
 

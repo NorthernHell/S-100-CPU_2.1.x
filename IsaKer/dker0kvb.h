@@ -78,7 +78,12 @@ extern void kerKvbMdfSetInfoSize
    );
 extern uint32 kerKvbMdfKeepInfoSizeBeforeExit(void);
 #endif
-
-
+#ifdef ITGTDEF_FAILOVER_KVB
+extern uint32 kerKvbUpdateFailoverCrcWithKvbValues
+   (
+   strKvbCons* pKvbHsdCons, 
+   strKvbCons* pKvbEtcpCons
+   );
+#endif /* ITGTDEF_FAILOVER_KVB */
 #endif  /* nested Headers management */
 /* eof ********************************************************************/

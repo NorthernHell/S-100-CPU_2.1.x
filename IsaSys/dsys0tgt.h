@@ -60,7 +60,7 @@ manually.
 * \addtogroup     TargetFeatures Target Features
 * \ingroup        CompileConditional
 *******************************************************************************
-* \n\b Name:    ALIGN
+* \n\b Name:    ISA_ALIGN
 * \n\b Usage:   Definition of the maximum alignement value
 */
 /******************************************************************************/
@@ -885,22 +885,22 @@ manually.
 * \addtogroup     TargetFeatures Target Features
 * \ingroup        CompileConditional
 *******************************************************************************
-* \n\b Name:    ITGTDEF_CURRENT_ISA_DATE
-* \n\b Usage:   Target supports standard function: CURRENT_ISA_DATE.
+* \n\b Name:    ITGTDEF_SUBDATEDATE
+* \n\b Usage:   Target supports standard function: SUBDATEDATE.
 */
 /******************************************************************************/
-#define ITGTDEF_CURRENT_ISA_DATE
+#define ITGTDEF_SUBDATEDATE
 
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
 /*! \addtogroup   CompileConditional Compile-time Conditionals
 * \addtogroup     TargetFeatures Target Features
 * \ingroup        CompileConditional
 *******************************************************************************
-* \n\b Name:    ITGTDEF_SUBDATEDATE
-* \n\b Usage:   Target supports standard function: SUBDATEDATE.
+* \n\b Name:    ITGTDEF_LOCK_UNLOCK_CPU
+* \n\b Usage:   Target supports standard function: LOCK_CPU and UNLOCK_CPU
 */
 /******************************************************************************/
-#define ITGTDEF_SUBDATEDATE
+#define ITGTDEF_LOCK_UNLOCK_CPU
 
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
 /*! \addtogroup   CompileConditional Compile-time Conditionals
@@ -1098,7 +1098,7 @@ manually.
 * \n\b Usage:   Target supports standard function block: SEMA.
 */
 /******************************************************************************/
-#define ITGTDEF_SEMA
+#undef ITGTDEF_SEMA
 
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
 /*! \addtogroup   CompileConditional Compile-time Conditionals
@@ -1143,17 +1143,6 @@ manually.
 */
 /******************************************************************************/
 #define ITGTDEF_NEW_ARRAY_AND_FB
-
-/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
-/*! \addtogroup   CompileConditional Compile-time Conditionals
-* \addtogroup     TargetFeatures Target Features
-* \ingroup        CompileConditional
-*******************************************************************************
-* \n\b Name:    ITGTDEF_INTERRUPT
-* \n\b Usage:   Target supports user interrupts
-*/
-/******************************************************************************/
-#define ITGTDEF_INTERRUPT
 
 /******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
 /*! \addtogroup   CompileConditional Compile-time Conditionals
@@ -1380,15 +1369,101 @@ manually.
 * \addtogroup     TargetFeatures Target Features
 * \ingroup        CompileConditional
 *******************************************************************************
+* \n\b Name:    ITGTDEF_IOCHANOEM
+* \n\b Usage:   Enables channel's OEM parameters
+*/
+/******************************************************************************/
+#define ITGTDEF_IOCHANOEM
+
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ISA_MEMORY_QUANTUM
+* \n\b Usage:   Target memory quantum
+*/
+/******************************************************************************/
+#define ISA_MEMORY_QUANTUM 1
+
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ISA_MAX_BLOCK_SIZE
+* \n\b Usage:   Target maximum memory block size
+*/
+/******************************************************************************/
+#define ISA_MAX_BLOCK_SIZE 0XFFFFFFFF
+
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ITGTDEF_INTERRUPT
+* \n\b Usage:   Target supports user interrupts
+*/
+/******************************************************************************/
+//#define ITGTDEF_INTERRUPT
+
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
 * \n\b Name:    ITGTDEF_FAILOVER
 * \n\b Usage:   Enables Failover Manager task.
 */
 /******************************************************************************/
-#undef ITGTDEF_FAILOVER
+//#undef ITGTDEF_FAILOVER
+
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ITGTDEF_CURRENT_ISA_DATE
+* \n\b Usage:   Target supports standard function: CURRENT_ISA_DATE.
+*/
+/******************************************************************************/
+//#define ITGTDEF_CURRENT_ISA_DATE
+
+/******************** DOXYGEN COMPILE-TIME CONDITIONAL *************************/
+/*! \addtogroup   CompileConditional Compile-time Conditionals
+* \addtogroup     TargetFeatures Target Features
+* \ingroup        CompileConditional
+*******************************************************************************
+* \n\b Name:    ITGTDEF_NET_INSTANCES
+* \n\b Usage:   Target supports network instances
+*/
+/******************************************************************************/
+//#define ITGTDEF_NET_INSTANCES
 
 /**************************************************************************
 Extended Parameters Structure
 **************************************************************************/
+#ifdef ITGTDEF_FAILOVER
+
+typedef struct _strResXParam
+{
+   int32  FailoverDatalinkTimeoutMs;   /* Timeout of the FAILOVER data link */
+} typResXParam;
+
+/**************************************************************************
+User System Variables
+**************************************************************************/
+
+#define ISA_SYSVA_FO_ISENABLE 0X180   /* Determines if failover is enabled */
+#define ISA_SYSVA_FO_ERRCODE 0X184   /* Failover error code */
+#define ISA_SYSVA_FO_ISPRIMARY 0X188   /* Determines if communication is done with primary controller */
+#define ISA_SYSVA_FO_ISACTIVE 0X18C   /* Determines if communication is done with active controller */
+#define ISA_SYSVA_FO_DATASYNCTIME 0X190   /* Data synchronization time */
+#define ISA_SYSVA_FO_HBEATSYNCTIME 0X194   /* Heartbeat synchronization time */
+#define ISA_SYSVA_FO_DATASYNCCNT 0X198   /* Counter of full data synchronization */
+
+#endif /* ITGTDEF_FAILOVER */
 
 #endif /* _DSYS0TGT_H */
 

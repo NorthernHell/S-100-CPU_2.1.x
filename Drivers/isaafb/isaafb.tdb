@@ -1,39 +1,50 @@
 [array] RESERVED_AE_CONTEXT
+Internal=No
+Hidden=No
 SingleTextLine=Reserved AE context
 Type=SINT
 Dimension=[1..88]
 [end]
 
 [structure] GAIN_PID
+Internal=No
+Hidden=No
 [end]
 
 [display] 0
 [field] DirectActing
 Type=BOOL
 SingleTextLine=''
+Hidden=No
 [end]
 
 [field] ProportionalGain
 Type=REAL
 SingleTextLine=''
+Hidden=No
 [end]
 
 [field] TimeIntegral
 Type=REAL
 SingleTextLine=''
+Hidden=No
 [end]
 
 [field] TimeDerivative
 Type=REAL
 SingleTextLine=''
+Hidden=No
 [end]
 
 [field] DerivativeGain
 Type=REAL
 SingleTextLine=''
+Hidden=No
 [end]
 
 [structure] TIMESPEC
+Internal=No
+Hidden=No
 SingleTextLine=structured type representing the time the process value of an I/O channel was last updated
 [end]
 
@@ -41,14 +52,18 @@ SingleTextLine=structured type representing the time the process value of an I/O
 [field] Sec
 Type=DINT
 SingleTextLine=Number of seconds; elapsed since 1970/01/01 00:00:00:000; in the timestamp of the process value (TIME)
+Hidden=No
 [end]
 
 [field] Nsec
 Type=DINT
 SingleTextLine=Number of nanoseconds in the timestamp of the process value; from the beginning of the second indicated by Sec (TIME)
+Hidden=No
 [end]
 
 [structure] COND_P_BOOL
+Internal=No
+Hidden=No
 SingleTextLine=Alarm condition input parameters
 [end]
 
@@ -56,49 +71,60 @@ SingleTextLine=Alarm condition input parameters
 [field] state
 Type=DINT
 SingleTextLine=bit 0=active/inactive; bit 1=enable/disable; bit 2=ack/no ack
+Hidden=No
 [end]
 
 [field] activeTime
 Type=TIMESPEC
 SingleTextLine=Condition active start time
+Hidden=No
 [end]
 
 [field] inactiveTime
 Type=TIMESPEC
 SingleTextLine=Condition inactive start time
+Hidden=No
 [end]
 
 [field] ackTime
 Type=TIMESPEC
 SingleTextLine=Acknowledge time
+Hidden=No
 [end]
 
 [field] timeout
 Type=DINT
 SingleTextLine=Timeout value
+Hidden=No
 [end]
 
 [field] enable
 Type=BOOL
 SingleTextLine=Condition enable
+Hidden=No
 [end]
 
 [field] acknowledge
 Type=BOOL
 SingleTextLine=Acknowledgement
+Hidden=No
 [end]
 
 [field] mode
 Type=SINT
 SingleTextLine=0=0->1 active; 2=1->0 active; 3=0->1 or 1->0 active
+Hidden=No
 [end]
 
 [field] reserved
 Type=RESERVED_AE_CONTEXT
 SingleTextLine=Context
+Hidden=No
 [end]
 
 [structure] ERROR
+Internal=No
+Hidden=No
 SingleTextLine=structured type indicating if an error occurred regarding the I/O channel
 [end]
 
@@ -106,14 +132,18 @@ SingleTextLine=structured type indicating if an error occurred regarding the I/O
 [field] Layer
 Type=DINT
 SingleTextLine=layer of the error (DINT)
+Hidden=No
 [end]
 
 [field] Number
 Type=DINT
 SingleTextLine=number of the error (DINT)
+Hidden=No
 [end]
 
 [structure] QUALITY
+Internal=No
+Hidden=No
 SingleTextLine=Structured type indicating how good the process value of an I/O channel is
 [end]
 
@@ -121,9 +151,12 @@ SingleTextLine=Structured type indicating how good the process value of an I/O c
 [field] Value
 Type=SINT
 SingleTextLine=Number of the quality (SINT)
+Hidden=No
 [end]
 
 [structure] COND_P_DINT
+Internal=No
+Hidden=No
 SingleTextLine=Alarm condition input parameters
 [end]
 
@@ -131,69 +164,84 @@ SingleTextLine=Alarm condition input parameters
 [field] state
 Type=DINT
 SingleTextLine=bit 0=active/inactive; bit 1=enable/disable; bit 2=ack/no ack
+Hidden=No
 [end]
 
 [field] activeTime
 Type=TIMESPEC
 SingleTextLine=Condition active start time
+Hidden=No
 [end]
 
 [field] inactiveTime
 Type=TIMESPEC
 SingleTextLine=Condition inactive start time
+Hidden=No
 [end]
 
 [field] ackTime
 Type=TIMESPEC
 SingleTextLine=Acknowledge time
+Hidden=No
 [end]
 
 [field] timeout
 Type=DINT
 SingleTextLine=Timeout value
+Hidden=No
 [end]
 
 [field] enable
 Type=BOOL
 SingleTextLine=Condition enable
+Hidden=No
 [end]
 
 [field] acknowledge
 Type=BOOL
 SingleTextLine=Acknowledgement
+Hidden=No
 [end]
 
 [field] level
 Type=DINT
 SingleTextLine=Level comparaison (limits) SetPoint (deviation) Value comparaison (Rate of Change)
+Hidden=No
 [end]
 
 [field] hysteresis
 Type=DINT
 SingleTextLine=Hysteresis value
+Hidden=No
 [end]
 
 [field] deadband
 Type=DINT
 SingleTextLine=Deadband value
+Hidden=No
 [end]
 
 [field] period
 Type=DINT
 SingleTextLine=Rate of Change period value
+Hidden=No
 [end]
 
 [field] deviation
 Type=DINT
 SingleTextLine=Deviation value
+Hidden=No
 [end]
 
 [field] reserved
 Type=RESERVED_AE_CONTEXT
 SingleTextLine=Context
+Hidden=No
 [end]
 
 [structure] EVENT_P_BOOL
+Internal=No
+Hidden=No
 SingleTextLine=Alarm condition input parameters
 [end]
 
@@ -201,19 +249,24 @@ SingleTextLine=Alarm condition input parameters
 [field] enable
 Type=BOOL
 SingleTextLine=Condition enable
+Hidden=No
 [end]
 
 [field] mode
 Type=SINT
 SingleTextLine=Deadband value
+Hidden=No
 [end]
 
 [field] reserved
 Type=RESERVED_AE_CONTEXT
 SingleTextLine=Context
+Hidden=No
 [end]
 
 [structure] EVENT_P_DINT
+Internal=No
+Hidden=No
 SingleTextLine=Alarm condition input parameters
 [end]
 
@@ -221,43 +274,55 @@ SingleTextLine=Alarm condition input parameters
 [field] enable
 Type=BOOL
 SingleTextLine=Condition enable
+Hidden=No
 [end]
 
 [field] deadband
 Type=DINT
 SingleTextLine=deadband value
+Hidden=No
 [end]
 
 [field] reserved
 Type=RESERVED_AE_CONTEXT
 SingleTextLine=Context
+Hidden=No
 [end]
 
 [structure] AT_PARAM
+Internal=No
+Hidden=No
 [end]
 
 [display] 0
 [field] Load
 Type=REAL
+Hidden=No
 [end]
 
 [field] Deviation
 Type=REAL
+Hidden=No
 [end]
 
 [field] Step
 Type=REAL
+Hidden=No
 [end]
 
 [field] ATDynaSet
 Type=REAL
+Hidden=No
 [end]
 
 [field] ATReset
 Type=BOOL
+Hidden=No
 [end]
 
 [structure] COND_P_REAL
+Internal=No
+Hidden=No
 SingleTextLine=Alarm condition input parameters
 [end]
 
@@ -265,69 +330,84 @@ SingleTextLine=Alarm condition input parameters
 [field] state
 Type=DINT
 SingleTextLine=bit 0=active/inactive; bit 1=enable/disable; bit 2=ack/no ack
+Hidden=No
 [end]
 
 [field] activeTime
 Type=TIMESPEC
 SingleTextLine=Condition active start time
+Hidden=No
 [end]
 
 [field] inactiveTime
 Type=TIMESPEC
 SingleTextLine=Condition inactive start time
+Hidden=No
 [end]
 
 [field] ackTime
 Type=TIMESPEC
 SingleTextLine=Acknowledge time
+Hidden=No
 [end]
 
 [field] timeout
 Type=DINT
 SingleTextLine=Timeout value
+Hidden=No
 [end]
 
 [field] enable
 Type=BOOL
 SingleTextLine=Condition enable
+Hidden=No
 [end]
 
 [field] acknowledge
 Type=BOOL
 SingleTextLine=Acknowledgement
+Hidden=No
 [end]
 
 [field] level
 Type=REAL
 SingleTextLine=Level comparaison (limits) SetPoint (deviation) Value comparaison (Rate of Change)
+Hidden=No
 [end]
 
 [field] hysteresis
 Type=REAL
 SingleTextLine=Hysteresis value
+Hidden=No
 [end]
 
 [field] deadband
 Type=REAL
 SingleTextLine=Deadband value
+Hidden=No
 [end]
 
 [field] period
 Type=DINT
 SingleTextLine=Rate of Change period value
+Hidden=No
 [end]
 
 [field] deviation
 Type=REAL
 SingleTextLine=Deviation value
+Hidden=No
 [end]
 
 [field] reserved
 Type=RESERVED_AE_CONTEXT
 SingleTextLine=Context
+Hidden=No
 [end]
 
 [structure] EVENT_P_REAL
+Internal=No
+Hidden=No
 SingleTextLine=Alarm condition input parameters
 [end]
 
@@ -335,120 +415,150 @@ SingleTextLine=Alarm condition input parameters
 [field] enable
 Type=BOOL
 SingleTextLine=Condition enable
+Hidden=No
 [end]
 
 [field] deadband
 Type=REAL
 SingleTextLine=deadband value
+Hidden=No
 [end]
 
 [field] reserved
 Type=RESERVED_AE_CONTEXT
 SingleTextLine=Context
+Hidden=No
 [end]
 
 [structure] ALARM_SETTING
+Internal=No
+Hidden=No
 [end]
 
 [display] 1
 [field] HighLimit
 Type=REAL
+Hidden=No
 [end]
 
 [field] HighAlarm
 Type=REAL
+Hidden=No
 [end]
 
 [field] HighWarning
 Type=REAL
+Hidden=No
 [end]
 
 [field] LowWarning
 Type=REAL
+Hidden=No
 [end]
 
 [field] LowAlarm
 Type=REAL
+Hidden=No
 [end]
 
 [field] LowLimit
 Type=REAL
+Hidden=No
 [end]
 
 [field] DeadBand
 Type=REAL
+Hidden=No
 [end]
 
 [field] HighDeviation
 Type=REAL
+Hidden=No
 [end]
 
 [field] LowDeviation
 Type=REAL
+Hidden=No
 [end]
 
 [field] RateOfChangePeriod
 Type=REAL
+Hidden=No
 [end]
 
 [field] RateOfChangeUp
 Type=REAL
+Hidden=No
 [end]
 
 [field] RateOfChangeDown
 Type=REAL
+Hidden=No
 [end]
 
 [field] DelayInTime
 Type=REAL
+Hidden=No
 [end]
 
 [field] DelayOutTime
 Type=REAL
+Hidden=No
 [end]
 
 [field] HighLimitEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] HighAlarmEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] HighWarningEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] LowWarningEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] LowAlarmEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] LowLimitEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] HighDeviationEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] LowDeviationEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] RateOfChangeUpEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] RateOfChangeDownEnable
 Type=BOOL
+Hidden=No
 [end]
 
 [field] RingBack
 Type=BOOL
+Hidden=No
 [end]
 
 [function] GET_TIME_STRING
@@ -1256,6 +1366,84 @@ ShortName=RDRC
 SingleTextLine=Reserved parameter for RATIOCALIBRATION
 [end]
 
+[functionBlock] LEADLAGBACONTROLLER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.leadlagbacontroller
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=Input signal
+[end]
+
+[pOUParam] TimeLead
+Direction=Input
+Type=REAL
+ShortName=Lead
+SingleTextLine=Time constant for lead controller, in seconds
+[end]
+
+[pOUParam] A
+Direction=Input
+Type=REAL
+ShortName=A
+SingleTextLine=Gain for lead controller (a > 1 and a x b = 1)
+[end]
+
+[pOUParam] TimeLag
+Direction=Input
+Type=REAL
+ShortName=Lag
+SingleTextLine=Time constant for lag controller, in seconds
+[end]
+
+[pOUParam] B
+Direction=Input
+Type=REAL
+ShortName=B
+SingleTextLine=Gain for lag controller (b < 1 and a x b = 1)
+[end]
+
+[pOUParam] Enable
+Direction=Input
+Type=BOOL
+ShortName=ENB
+SingleTextLine=Enables the LEADLAGCONTROLLER. If set to FALSE, Output = 0.0
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=Mode used to handle the various types of errors
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=LEADLAGBACONTROLLER output
+[end]
+
+[pOUParam] Status
+Direction=Output
+Type=DINT
+ShortName=STAT
+SingleTextLine=LEADLAGCONTROLLER Status
+[end]
+
+[pOUParam] RESERVED_LEADLAGBACONTROLLER
+Direction=Local
+Type=SINT
+Dimension=[1..36]
+ShortName=RDLL
+SingleTextLine=Reserved parameter for LEADLAGBACONTROLLER
+[end]
+
 [functionBlock] DIGITALALARM
 Help=[Context2]Coll_ISa5_rtm.prt_stb.digitalalarm
 GroupName=Alarms Management
@@ -1672,9 +1860,156 @@ SingleTextLine=
 [pOUParam] RESERVED_RATELIMITER
 Direction=Local
 Type=SINT
-Dimension=[1..12]
+Dimension=[1..16]
 ShortName=RDRL
 SingleTextLine=Reserved parameter for RATELIMITER
+[end]
+
+[functionBlock] PID_AL
+Help=[Context2]Coll_ISa5_rtm.prt_stb.pid_al
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Auto
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=TRUE: auto, FALSE: manual mode
+[end]
+
+[pOUParam] Pv
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Process output variable
+[end]
+
+[pOUParam] Sp
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Set point value
+[end]
+
+[pOUParam] X0
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Adjustment value: In manual mode, output pid regulator equal to X0
+[end]
+
+[pOUParam] Kp
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Proportionality constant
+[end]
+
+[pOUParam] Ti
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Integral time constant
+[end]
+
+[pOUParam] Td
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=derivative time constant
+[end]
+
+[pOUParam] Ts
+Direction=Input
+Type=TIME
+ShortName=
+SingleTextLine=Sampling period
+[end]
+
+[pOUParam] Xmin
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Minimal possible value
+[end]
+
+[pOUParam] Xmax
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Maximum possible value
+[end]
+
+[pOUParam] Xout
+Direction=Output
+Type=REAL
+ShortName=
+SingleTextLine=Command
+[end]
+
+[pOUParam] Iterm
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] OldIterm
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] Memerror
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] Old_date
+Direction=Local
+Type=UDINT
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] Old_auto
+Direction=Local
+Type=BOOL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] old_sp
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] old_kp
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] old_ti
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] old_td
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
 [end]
 
 [functionBlock] SIGNALSELECTOR

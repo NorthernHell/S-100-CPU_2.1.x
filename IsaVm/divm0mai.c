@@ -24,6 +24,8 @@ Modifications: (who / date / description)
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "ace/High_Res_Timer.h"
 #ifdef TDB_ENABLED
     #include <bzlib.h>
 #endif
@@ -65,7 +67,9 @@ int ACE_TMAIN//main
    int   argc,      /* In: Number of arguments */ 
    ACE_TCHAR* argv[]     /* In: Array of arguments */  
    )  
-{
+{	
+    char** charargv = convertArgs(argc, argv);
+    
 	ACE_OS::sleep( 1);  // for debug 
 	
 	uint32 log_mode=0; // default LM_ERROR level, no file
@@ -74,7 +78,7 @@ int ACE_TMAIN//main
 						// 3 - LM_TRACE level in file
 
   /* Initialize arguments management */
- 	XsysArgInit(argc, argv);
+ 	XsysArgInit(argc, charargv);
 	
  	if (dsysArgGet(ISA_ARG_GET_INFO,0,"logMode",0,0,0,0) != BAD_RET)
    	{
@@ -168,7 +172,7 @@ int ACE_TMAIN//main
   }
 #endif
 	if (log_mode > 5){
-		isam.init("ISA_VM",true); // messaging in file "ISA_VM.log"
+		isam.init(ACE_TEXT("ISA_VM"), true); // messaging in file "ISA_VM.log"
 	}
 	if (log_mode == 1 || log_mode == 7){
 		isam.setLevel(LM_WARNING); // next messaging level
@@ -183,16 +187,15 @@ int ACE_TMAIN//main
 	}else{
 		isam.setLevel(LM_ERROR); // min messaging level
 	}
-
 #ifdef WINCE
 //	::MessageBoxW(0,L"IsaVM",L"111",MB_OK);
 	CeSetThreadQuantum(GetCurrentThread(),1); // set thread quantum to 1ms
 	if (argc>1)
-	 return( dkerMain(argc-1, &argv[1]) );
+	 return( dkerMain(argc-1, &charargv[1]) );
 	else
-	 return( dkerMain(argc, argv) );
+	 return( dkerMain(argc, charargv) );
 #else
-   return( dkerMain(argc, argv) );
+   return( dkerMain(argc, charargv) );
 #endif
 }
 

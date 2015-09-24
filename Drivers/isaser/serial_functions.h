@@ -29,7 +29,7 @@ Modifications: (who / date / description)
 #define MAX_BACKLOG						5
 #define MAX_TCPADDRESS					16
 
-#define LAST_ERRNO						(errno)
+#define LAST_ERRNO						(ACE_OS::last_error())
 
 /* types ******************************************************************/
 typedef struct
@@ -117,6 +117,17 @@ typSTATUS ipCommClose
 	SERIAL_PACK_HANDLE serial_pack_handle
 	);
 
+/* RFS 8714 begin */
+void * GetIsaSerPointer
+   (
+   int32 ldIdx
+   );
+
+int32 FreeIsaSerPointer
+   (
+   int32 ldIdx
+   );
+/* RFS 8714 end */
 
 #endif /* _FBP_SERIAL_FUNCTIONS_H_ */
 

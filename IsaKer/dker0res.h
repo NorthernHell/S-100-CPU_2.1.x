@@ -342,7 +342,7 @@ typedef struct
 {
    typVa   NbIoVa;            /*!< Number of IO variables */
    uint16  huDfIoChanOfs;     /*!< Offset to the definition of channels */
-   uint16  huDfIoChanOemOfs;  /*!< Offset to the OEM param of channels */
+   uint32  luDfIoChanOemOfs;  /*!< Offset to the OEM param of channels */
 } strDfIoChanH;
 
 /**************************** DOXYGEN STRUCTURE ***************************/
@@ -907,6 +907,10 @@ extern uint16 resDefMaxNbPous(void);
 extern void *resDefGetConf(void);
 extern uint32 resDefSfcFbBackupSize(void);
 extern void resDefRtnSet(void* pvConfAdd); /* RFS8262 */
+#endif
+
+#ifdef ITGTDEF_SFC_PROG_ACT_GROUPING
+extern strDefHieSfc* resDefHieSfcExt(void);
 #endif
 
 #endif /* nested Headers management */ 

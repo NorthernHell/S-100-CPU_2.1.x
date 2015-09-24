@@ -1,5 +1,5 @@
 [target] ACE-TARGET_L
-SingleTextLine=Ace Target V5.30
+SingleTextLine=Ace Target V5.41
 Code=TIC code
 Code=Structured C source code
 Model=Large
@@ -55,12 +55,15 @@ FeatureMultiResources=Yes
 FeatureOnline=Yes
 FeatureRetain=Yes
 FeatureMicroCycTime=No
-FeatureIntrpt=Yes
 FeatureArInpRf=Yes
 FeatureBigPous=Yes
-FeatureNetworkInst=No
 FeatureSfcPrio=Yes
 FeatureComplexSubVarConnectedToIoChan=Yes
+FeatureIoChanOemParam=Yes
+
+FeatureIntrpt=No
+FeatureNetworkInst=No
+SfuCURRENT_ISA_DATE=No
 LanguageFBD=Yes
 LanguageIL=Yes
 Language61499=Yes
@@ -84,6 +87,7 @@ DataTypeUINT=Yes
 DataTypeULINT=Yes
 DataTypeUSINT=Yes
 DataTypeSAFEBOOL=No
+DataTypeANY_ELEMENTARY=No
 SfuABS=Yes
 SfuCOS=Yes
 SfuACOS=Yes
@@ -109,10 +113,9 @@ SfuSHL=Yes
 SfuSHR=Yes
 SfuROL=Yes
 SfuROR=Yes
-SfuCURRENT_ISA_DATE=Yes
 SfuSUB_DATE_DATE=Yes
-SfuLOCK_CPU=No
-SfuUNLOCK_CPU=No
+SfuLOCK_CPU=Yes
+SfuUNLOCK_CPU=Yes
 SfuASCII=Yes
 SfuCHAR=Yes
 SfuDELETE=Yes
@@ -128,6 +131,7 @@ SfuOR_MASK=Yes
 SfuNOT_MASK=Yes
 SfuXOR_MASK=Yes
 SfbLIM_ALRM=Yes
+
 SfbSR=Yes
 SfbRS=Yes
 SfbR_TRIG=Yes
@@ -144,33 +148,10 @@ SfbDERIVATE=Yes
 SfbINTEGRAL=Yes
 SfbHYSTER=Yes
 SfbSTACKINT=Yes
-SfbSEMA=Yes
+SfbSEMA=No
 SfbTON=Yes
 SfbTOF=Yes
 SfbTP=Yes
-[end]
-
-[function] cprint_str
-GroupName=JIT
-Type=BOOL
-[end]
-
-[pOUParam] message
-Direction=Input
-Type=STRING
-StringLength=255
-ShortName=
-SingleTextLine=
-[end]
-
-[function] compile_end
-GroupName=JIT
-Type=BOOL
-[end]
-
-[function] compile_begin
-GroupName=JIT
-Type=BOOL
 [end]
 
 [network] ISARSI
@@ -256,56 +237,167 @@ Default=10000
 SingleTextLine=Maximum allowed time (in ms) to transport a variable
 [end]
 
-[interrupts] Interrupts
+$$[$desc] ISARSI
+$$<standard Remote Serial Interface link
+$$<It can be used to dialog through a point to point serial link
+$$<between the workbench and one configuration.
+$$<CAN NOT BE USED FOR BINDING.
+$$<
+$$<Just connect the configuration to the network in the Hardware view and
+$$<fill the network parameters with settings corresponding to the PC where the workbench is currently running.
+$$[end]
+
+$$[$desc] HSD
+$$<HSD: Host System Driver
+$$<standard driver used for binbing between 2 resources local to a configuration.
+$$[end]
+
+$$[$desc] ETCP
+$$<ETCP: Enhanced TCP/IP driver
+$$<standard driver that uses TCP/IP protocol.
+$$<It is used for communication between Workbench and targets (IXL).
+$$<It is also used for binding between two configurations.
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[resParam] FailoverDatalinkTimeoutMs
+Format=LONG
+Access=USER DEFINED
+Default=2000
+SingleTextLine=Timeout of the FAILOVER data link
 [end]
-[interrupt] MyTimerIRQ_0
+
+[connectParam] FailoverPrimaryIP
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=IP address of the primary FAILOVER controller
+[end]
+
+[connectParam] FailoverSecondaryIP
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=IP address of the secondary FAILOVER controller
+[end]
+
+[connectParam] FailoverDatalinkPrimaryIP
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=Default parameter of the FAILOVER data link IXL driver for the primary controller
+[end]
+
+[connectParam] FailoverDatalinkSecondaryIP
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=Default parameter of the FAILOVER data link IXL driver for the secondary controller
+[end]
+
+[connectParam] EnableFailover
+Format=BOOLEAN
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=FALSE
+SingleTextLine=Enable the FAILOVER mechanism
+[end]
+
+[connectParam] FailoverHeartbeatTimeoutMs
+Format=LONG
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=2000
+SingleTextLine=Timeout of the FAILOVER heartbeat
+[end]
+
+[connectParam] FailoverHeartbeatDeactivationTimeMs
+Format=LONG
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=10000
+SingleTextLine=Heartbeat deactivation time when heartbeat link is bad.
+[end]
+
+[resNetParam] TimeOut
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=Maximum allowed time (in ms) to transport a variable
+[end]
+
+[userSysVars] UserSystemVariables
+[end]
+
+[userSysVar] SYSVA_FO_ISENABLE
+Type=BOOL
+SingleTextLine=Determines if failover is enabled
+VA=384
+ReadOnly=Yes
+[end]
+
+[userSysVar] SYSVA_FO_ERRCODE
 Type=UDINT
-SingleTextLine=Timer Interrupt definition
-Num=0
+SingleTextLine=Failover error code
+VA=388
+ReadOnly=Yes
 [end]
 
-[interrupt] MyTimerIRQ_1
+[userSysVar] SYSVA_FO_ISPRIMARY
+Type=BOOL
+SingleTextLine=Determines if communication is done with primary controller
+VA=392
+ReadOnly=Yes
+[end]
+
+[userSysVar] SYSVA_FO_ISACTIVE
+Type=BOOL
+SingleTextLine=Determines if communication is done with active controller
+VA=396
+ReadOnly=Yes
+[end]
+
+[userSysVar] SYSVA_FO_DATASYNCTIME
 Type=UDINT
-SingleTextLine=Timer Interrupt definition
-Num=1
+SingleTextLine=Data synchronization time
+VA=400
+ReadOnly=Yes
 [end]
 
-[interrupt] MyTimerIRQ_2
+[userSysVar] SYSVA_FO_HBEATSYNCTIME
 Type=UDINT
-SingleTextLine=Timer Interrupt definition
-Num=2
+SingleTextLine=Heartbeat synchronization time
+VA=404
+ReadOnly=Yes
 [end]
 
-[interrupt] MyTimerIRQ_3
+[userSysVar] SYSVA_FO_DATASYNCCNT
 Type=UDINT
-SingleTextLine=Timer Interrupt definition
-Num=3
+SingleTextLine=Counter of full data synchronization
+VA=408
+ReadOnly=Yes
+InitValue=0
 [end]
-
-;$$[$desc] ISARSI
-;$$<standard Remote Serial Interface link
-;$$<It can be used to dialog through a point to point serial link
-;$$<between the workbench and one configuration.
-;$$<CAN NOT BE USED FOR BINDING.
-;$$<
-;$$<Just connect the configuration to the network in the Hardware view and
-;$$<fill the network parameters with settings corresponding to the PC where the workbench is currently running.
-;$$[end]
-
-;$$[$desc] HSD
-;$$<HSD: Host System Driver
-;$$<standard driver used for binbing between 2 resources local to a configuration.
-;$$[end]
-
-;$$[$desc] ETCP
-;$$<ETCP: Enhanced TCP/IP driver
-;$$<standard driver that uses TCP/IP protocol.
-;$$<It is used for communication between Workbench and targets (IXL).
-;$$<It is also used for binding between two configurations.
-;$$[end]
-
-;$$[setList] TDB1
-;$$+Default
-;$$>Default
-;$$[end]
 

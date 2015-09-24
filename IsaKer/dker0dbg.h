@@ -39,7 +39,6 @@ typedef struct
    uint32 luStepID;                       /*!< Step identifier */
 }strSteppingInfoVar;
 
-
 /**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
 {
@@ -52,10 +51,10 @@ typedef struct
 /**************************** DOXYGEN STRUCTURE ***************************/
 typedef struct
 {
-   uchar             cuEnabled;           /*!< Whether steb by step is enabled */
+   uchar             cuEnabled;           /*!< Whether step by step is enabled */
    uint16            huNbPOU;             /*!< number of POU */
    uint16            huNbCyclicPOUBeforeSfc;/*!< number of Cyclic programs before SFC POU */
-   uint16            huNbCyclicPOUAfterSfc; /*!< number of Cyclic programs executed efter SFC POU */
+   uint16            huNbCyclicPOUAfterSfc; /*!< number of Cyclic programs executed after SFC POU */
    uint16            huNbSfcMainPOU;      /*!< number main SFC POU */
 	
    uint16            huNbBreakPoints;     /*!< number of currently installed breakpoints*/
@@ -107,13 +106,21 @@ extern typSTATUS kerDbgPouInit(uint16 huPouNum);
 extern char kerDbgOnStep
    (
    uint16   huPouNum,      /* In: Number of the POU */ 
+#if defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG))
+   uint32*  mic,           /* TIC Sequence. NULL if end of POU */ 
+#else
    typVa*   mic,           /* TIC Sequence. NULL if end of POU */ 
+#endif
    typVa    SfcStpTrsVa,   /* Va of step or transition if sfc */
    uchar    cuCodeType,    /* Type of code to execute */
-   strParamVa* FblInst,    /* function block instance */
-   uchar    cuException,   /* non zero if it is an exception that occured (div by zero and other)*/
+   typVa*   pFblInst,      /* function block instance */
+   uchar    cuException,   /* non zero if it is an exception that occurred (div by zero and other)*/
                            /* ISA_DBG_EXCEPT_xxx codes */
+#if defined(ITGTDEF_RT_OPTIMIZE_CODE) && (defined(ISA_TMM_L) || defined (ITGTDEF_OPT_CODE_MED_AS_LRG))
+   uint32*  pTic           /* in/out: pointer to current tic code */
+#else
    typVa* pTic             /* in/out: pointer to current tic code */ 
+#endif
    );
 
 extern void kerDbgCallStackPushPop(
@@ -121,7 +128,7 @@ extern void kerDbgCallStackPushPop(
    uint16   huPouNum,      /* Program Number:1 to N. If 0, returns list for all POUs*/
    typVa    SfcStpTrsVa,   /* VA of SFC step or transition if any */
    uint32   luCodeType,    /* type of code being stepped (cyclic/P0 step/ )*/
-   strParamVa *FblInst     /* VA of of the function block instance if any */
+   typVa*   pFblInst       /* VA of of the function block instance if any */
    );
 
 extern void kerDbgCycleStart(void);

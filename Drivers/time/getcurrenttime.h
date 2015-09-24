@@ -31,7 +31,12 @@ void getcurrenttimeFblInstExit
 void getcurrenttimeFblCall
    (
    void* pvBfData, /* In: Data */
+#ifdef ITGTDEF_NEW_ARRAY_AND_FB
+   strParamVa* FblInst, /* In: Function Block instance */
+   void* pvAdi          /* In: Pointer to ADI table */
+#else
    strParamVa* FblInst /* In: Function Block instance */
+#endif /* ITGTDEF_NEW_ARRAY_AND_FB */
    );
 
 #endif /* _GETCURRTIME_H */

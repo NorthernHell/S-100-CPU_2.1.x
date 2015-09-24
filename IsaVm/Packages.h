@@ -17,7 +17,7 @@ Modifications: (who / date / description)
 #ifndef _PACKAGES_H /* nested Headers management */
 #define _PACKAGES_H
 
-#include <../Jit/compile.h>
+#define ISA_DECLARE_COMPILE
 
 /****** TO DO: Include here your packages declaration file ******/
 

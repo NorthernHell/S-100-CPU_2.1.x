@@ -7,7 +7,7 @@ Description:        This is a generated file containing the build number
 
 ***************************************************************************/
 
-#define ISA_YEARSTR "2012"
-#define ISA_KER_BUILDNUMSTR "2012.5.30.500_(120518)"
+#define ISA_YEARSTR           ISA_MAIN_YEARSTR
+#define ISA_KER_BUILDNUMSTR   ISA_MAIN_BUILDNUMSTR
 
 /* eof ********************************************************************/

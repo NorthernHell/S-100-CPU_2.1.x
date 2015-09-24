@@ -14,7 +14,7 @@ Device name:        EVRO_8DO
 typedef struct _tag_strEvro_8do
 {
     int32  ID;   /* Node ID */
-
+   
 } strOemParam;
 
 
@@ -55,7 +55,7 @@ typSTATUS evro_int_evro_int_evro_8doIosOpen
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_write_registers(ctx, 40000, 1, tab_reg); //write in holding registers(bit mask)
-        if (rc == -1)
+           if (rc == -1)
         {
             pvRtIoDvc->luUser=0;
         }

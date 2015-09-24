@@ -34,7 +34,7 @@ extern void kerHookKerStart(void);
 #define ISA_KERHOOK_KERSTOP() 
 #else
 extern void kerHookKerStop(void);
-#define ISA_KERHOOK_KERSTOP() kerHookKerStart()
+#define ISA_KERHOOK_KERSTOP() kerHookKerStop()
 #endif
 
 /* Resource start hook */
