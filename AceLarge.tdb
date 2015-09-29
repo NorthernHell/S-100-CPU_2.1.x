@@ -61,9 +61,9 @@ FeatureSfcPrio=Yes
 FeatureComplexSubVarConnectedToIoChan=Yes
 FeatureIoChanOemParam=Yes
 
-FeatureIntrpt=No
-FeatureNetworkInst=No
-SfuCURRENT_ISA_DATE=No
+FeatureIntrpt=Yes
+FeatureNetworkInst=Yes
+SfuCURRENT_ISA_DATE=Yes
 LanguageFBD=Yes
 LanguageIL=Yes
 Language61499=Yes
@@ -264,142 +264,402 @@ $$+Default
 $$>Default
 $$[end]
 
-[resParam] FailoverDatalinkTimeoutMs
-Format=LONG
-Access=USER DEFINED
-Default=2000
-SingleTextLine=Timeout of the FAILOVER data link
+[interrupts] Interrupts
+[end]
+[interrupt] MyTimerIRQ_0
+Type=UDINT
+SingleTextLine=Timer Interrupt definition
+Num=0
 [end]
 
-[connectParam] FailoverPrimaryIP
-Format=STRING
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=127.0.0.1
-SingleTextLine=IP address of the primary FAILOVER controller
+[interrupt] MyTimerIRQ_1
+Type=UDINT
+SingleTextLine=Timer Interrupt definition
+Num=1
 [end]
 
-[connectParam] FailoverSecondaryIP
-Format=STRING
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=127.0.0.1
-SingleTextLine=IP address of the secondary FAILOVER controller
+[interrupt] MyTimerIRQ_2
+Type=UDINT
+SingleTextLine=Timer Interrupt definition
+Num=2
 [end]
 
-[connectParam] FailoverDatalinkPrimaryIP
-Format=STRING
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=127.0.0.1
-SingleTextLine=Default parameter of the FAILOVER data link IXL driver for the primary controller
+[interrupt] MyTimerIRQ_3
+Type=UDINT
+SingleTextLine=Timer Interrupt definition
+Num=3
 [end]
 
-[connectParam] FailoverDatalinkSecondaryIP
-Format=STRING
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=127.0.0.1
-SingleTextLine=Default parameter of the FAILOVER data link IXL driver for the secondary controller
+[structure] St_Handle
 [end]
 
-[connectParam] EnableFailover
-Format=BOOLEAN
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=FALSE
-SingleTextLine=Enable the FAILOVER mechanism
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
 [end]
 
-[connectParam] FailoverHeartbeatTimeoutMs
-Format=LONG
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=2000
-SingleTextLine=Timeout of the FAILOVER heartbeat
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
 [end]
 
-[connectParam] FailoverHeartbeatDeactivationTimeMs
-Format=LONG
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=10000
-SingleTextLine=Heartbeat deactivation time when heartbeat link is bad.
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
 [end]
 
-[resNetParam] TimeOut
-Format=LONG
-Access=USER DEFINED
-Default=10000
-SingleTextLine=Maximum allowed time (in ms) to transport a variable
-[end]
-
-[userSysVars] UserSystemVariables
-[end]
-
-[userSysVar] SYSVA_FO_ISENABLE
+[field] error
 Type=BOOL
-SingleTextLine=Determines if failover is enabled
-VA=384
-ReadOnly=Yes
+SingleTextLine=TRUE if error in last operathion
 [end]
 
-[userSysVar] SYSVA_FO_ERRCODE
-Type=UDINT
-SingleTextLine=Failover error code
-VA=388
-ReadOnly=Yes
+[function] Fast_array_dot
+SingleTextLine=scalar multiply of a fast arraies
+GroupName=FastArray
+Type=LREAL
+ShortName=res
 [end]
 
-[userSysVar] SYSVA_FO_ISPRIMARY
+[pOUParam] handleA
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_array_range
+SingleTextLine=linear range of a fast array
+GroupName=FastArray
 Type=BOOL
-SingleTextLine=Determines if communication is done with primary controller
-VA=392
-ReadOnly=Yes
+ShortName=res
 [end]
 
-[userSysVar] SYSVA_FO_ISACTIVE
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] firstData
+Direction=Input
+Type=LREAL
+ShortName=dat1
+SingleTextLine=
+[end]
+
+[pOUParam] lastData
+Direction=Input
+Type=LREAL
+ShortName=dat2
+SingleTextLine=
+[end]
+
+[function] Fast_array_create
+SingleTextLine=Creation of a fast array
+GroupName=FastArray
 Type=BOOL
-SingleTextLine=Determines if communication is done with active controller
-VA=396
-ReadOnly=Yes
+ShortName=res
 [end]
 
-[userSysVar] SYSVA_FO_DATASYNCTIME
-Type=UDINT
-SingleTextLine=Data synchronization time
-VA=400
-ReadOnly=Yes
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
 [end]
 
-[userSysVar] SYSVA_FO_HBEATSYNCTIME
-Type=UDINT
-SingleTextLine=Heartbeat synchronization time
-VA=404
-ReadOnly=Yes
+[pOUParam] NameArr
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NArr
+SingleTextLine=The Name of ISaGRAF's Array
 [end]
 
-[userSysVar] SYSVA_FO_DATASYNCCNT
-Type=UDINT
-SingleTextLine=Counter of full data synchronization
-VA=408
-ReadOnly=Yes
-InitValue=0
+[function] FastLibInit
+GroupName=FastArray
+Type=BOOL
+ShortName=2
 [end]
+
+[function] Fast_array_add
+SingleTextLine=summa of a fast arraies
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleSum
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=arraySum=arrayA + arrayB
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_array_min
+SingleTextLine=Find of of min  value
+GroupName=FastArray
+Type=LREAL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[function] Fast_array_max
+SingleTextLine=Find of of max  value
+GroupName=FastArray
+Type=LREAL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[function] Fast_array_cumulsum
+SingleTextLine=cumulative sum of elements of fast array
+GroupName=FastArray
+Type=LREAL
+ShortName=Res
+[end]
+
+[pOUParam] ConsumArr
+Direction=Input
+Type=St_Handle
+ShortName=Arr
+SingleTextLine=The summing Array
+[end]
+
+[function] Fast_array_mul
+SingleTextLine=multiply of a fast arraies
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleRes
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=arrayRes=arrayA  x arrayB
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_array_fill
+SingleTextLine=Filling of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] dataTofill
+Direction=Input
+Type=LREAL
+ShortName=data
+SingleTextLine=
+[end]
+
+[function] Fast_array_zeroes
+SingleTextLine=Zeroing of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[function] Fast_array_copy
+SingleTextLine=Copying of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=Res
+[end]
+
+[pOUParam] ConsumArr
+Direction=Input
+Type=St_Handle
+ShortName=CArr
+SingleTextLine=The consuming Array
+[end]
+
+[pOUParam] ProducArray
+Direction=Input
+Type=St_Handle
+ShortName=PArr
+SingleTextLine=The producing Array
+[end]
+
+[function] Fast_array_scale
+SingleTextLine=Miltply of a fast array on koefficient
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] koeff
+Direction=Input
+Type=LREAL
+ShortName=koef
+SingleTextLine=
+[end]
+
+[function] Fast_array_spectrum
+SingleTextLine=power spectrum of  fast array
+GroupName=FastArray
+Type=UDINT
+ShortName=res
+[end]
+
+[pOUParam] handleData
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleSpectrum
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+$$[$desc] Fast_array_dot
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_range
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_create
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_add
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_min
+$$<Find and return minimal value of array items
+$$<
+$$[end]
+
+$$[$desc] Fast_array_max
+$$<Find and return maximal value of array items
+$$<
+$$<
+$$[end]
+
+$$[$desc] Fast_array_cumulsum
+$$<The Copying of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_mul
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_fill
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_zeroes
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_copy
+$$<The Copying of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_scale
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_spectrum
+$$<calculate  the power spectrum of dataarray
+$$<return number of garmonics or 0 (if error)
+$$<
+$$<
+$$[end]
+
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
 
 [structure] Mt_Handle
 [end]
@@ -1094,6 +1354,342 @@ Access=USER DEFINED
 Default=0
 SingleTextLine=Parameter -t for fda_serv utility. If 0 fda_serv works in blocking mode
 [end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[structure] FIR_Handle
+[end]
+
+[display] 0
+[field] FirPtr
+Type=ULINT
+SingleTextLine=The Address of Matrix [2,N] with FIR coeffs in Matrix[1]
+[end]
+
+[field] Range
+Type=DINT
+SingleTextLine=The FIR dimension (N)
+[end]
+
+[field] DataCounter
+Type=DINT
+SingleTextLine=counter data have being filter
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[structure] St_Handle
+[end]
+
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
+[end]
+
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
+[end]
+
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[function] FIR_vector
+GroupName=FIR
+Type=BOOL
+ShortName=4
+[end]
+
+[pOUParam] FirHandle
+Direction=Input
+Type=FIR_Handle
+ShortName=1
+SingleTextLine=handler FIR object
+[end]
+
+[pOUParam] Source
+Direction=Input
+Type=St_Handle
+ShortName=2
+SingleTextLine=data array for filtering
+[end]
+
+[pOUParam] Dest
+Direction=Input
+Type=St_Handle
+ShortName=3
+SingleTextLine=
+[end]
+
+[function] FIRf
+GroupName=FIR
+Type=REAL
+ShortName=3
+[end]
+
+[pOUParam] FirHandle
+Direction=Input
+Type=FIR_Handle
+ShortName=1
+SingleTextLine=handler FIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=REAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+[function] FIR_create
+SingleTextLine=Creation of a FIR object
+GroupName=FIR
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleFir
+Direction=Input
+Type=FIR_Handle
+ShortName=Hand
+SingleTextLine=handler of FIR Object
+[end]
+
+[pOUParam] NameCoeff
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NArr
+SingleTextLine=The Name of ISaGRAF's Array with FIR coeffs
+[end]
+
+[function] FIR
+GroupName=FIR
+Type=LREAL
+ShortName=3
+[end]
+
+[pOUParam] FirHandle
+Direction=Input
+Type=FIR_Handle
+ShortName=1
+SingleTextLine=handler FIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=LREAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+$$[$desc] FIR_vector
+$$<Data filtering from array Source and store in array Dest
+$$[end]
+
+$$[$desc] FIRf
+$$<Data filtering point by point
+$$[end]
+
+$$[$desc] FIR_create
+$$<The Creation of a FIR object
+$$<from Isagraf Matrix with dimension [2,N]
+$$<N - FIR degree
+$$<Matrix [1] -  FIR coeffs "b"
+$$<Matrix[2] - reserved system data (internal FIR stack )
+$$<
+$$<
+$$<
+$$<
+$$[end]
+
+$$[$desc] FIR
+$$<Data filtering point by point
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[structure] IIR_Handle
+[end]
+
+[display] 0
+[field] IIrPtr
+Type=ULINT
+SingleTextLine=The Address of Matrix [4,N] with IIR coeffs in Matrix[1],Matrix[2]
+[end]
+
+[field] Range
+Type=DINT
+SingleTextLine=The IIR dimension (N)
+[end]
+
+[field] DataCounter
+Type=DINT
+SingleTextLine=counter data have being filter
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[structure] St_Handle
+[end]
+
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
+[end]
+
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
+[end]
+
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[function] IIRf
+GroupName=IIR
+Type=REAL
+ShortName=3
+[end]
+
+[pOUParam] IirHandle
+Direction=Input
+Type=IIR_Handle
+ShortName=1
+SingleTextLine=handler IIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=REAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+[function] IIR_create
+SingleTextLine=Creation of a IIR object
+GroupName=IIR
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleIir
+Direction=Input
+Type=IIR_Handle
+ShortName=Hand
+SingleTextLine=handler of IIR Object
+[end]
+
+[pOUParam] NameCoeff
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NArr
+SingleTextLine=The Name of ISaGRAF's Array with IIR coeffs
+[end]
+
+[function] IIR
+GroupName=IIR
+Type=LREAL
+ShortName=3
+[end]
+
+[pOUParam] IirHandle
+Direction=Input
+Type=IIR_Handle
+ShortName=1
+SingleTextLine=handler IIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=LREAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+[function] IIR_vector
+GroupName=FIR
+Type=BOOL
+ShortName=4
+[end]
+
+[pOUParam] IIrHandle
+Direction=Input
+Type=IIR_Handle
+ShortName=1
+SingleTextLine=handler IIR object
+[end]
+
+[pOUParam] Source
+Direction=Input
+Type=St_Handle
+ShortName=2
+SingleTextLine=data array for filtering
+[end]
+
+[pOUParam] Dest
+Direction=Input
+Type=St_Handle
+ShortName=3
+SingleTextLine=
+[end]
+
+$$[$desc] IIRf
+$$<Data filtering point by point
+$$[end]
+
+$$[$desc] IIR_create
+$$<The Creation of a IIR object
+$$<from Isagraf Matrix with dimension [3,N]
+$$<N - FIR degree
+$$<Matrix [1] -  FIR coeffs "b"
+$$<Matrix [2] -  FIR coeffs "a"
+$$<Matrix[3] - reserved system data (internal IIR stack )
+$$<Matrix[4] - reserved system data (internal IIR stack )
+$$<
+$$<
+$$<
+$$<
+$$<
+$$<
+$$[end]
+
+$$[$desc] IIR
+$$<Data filtering point by point
+$$[end]
+
+$$[$desc] IIR_vector
+$$<Data filtering from array Source and store in array Dest
+$$[end]
 
 $$[setList] TDB1
 $$+Default
@@ -5218,713 +5814,6 @@ $$+Default
 $$:DateTime
 $$:getHiResTime
 $$:getCurrentTime
-$$>Default
-$$[end]
-
-[structure] FIR_Handle
-[end]
-
-[display] 0
-[field] FirPtr
-Type=ULINT
-SingleTextLine=The Address of Matrix [2,N] with FIR coeffs in Matrix[1]
-[end]
-
-[field] Range
-Type=DINT
-SingleTextLine=The FIR dimension (N)
-[end]
-
-[field] DataCounter
-Type=DINT
-SingleTextLine=counter data have being filter
-[end]
-
-[field] error
-Type=BOOL
-SingleTextLine=TRUE if error in last operathion
-[end]
-
-[structure] St_Handle
-[end]
-
-[display] 0
-[field] AddrArray
-Type=ULINT
-SingleTextLine=The Address of Array
-[end]
-
-[field] TypeArray
-Type=SINT
-SingleTextLine=The Type of Array
-[end]
-
-[field] SizeArray
-Type=DINT
-SingleTextLine=The Size of Array
-[end]
-
-[field] error
-Type=BOOL
-SingleTextLine=TRUE if error in last operathion
-[end]
-
-[function] FIR_vector
-GroupName=FIR
-Type=BOOL
-ShortName=4
-[end]
-
-[pOUParam] FirHandle
-Direction=Input
-Type=FIR_Handle
-ShortName=1
-SingleTextLine=handler FIR object
-[end]
-
-[pOUParam] Source
-Direction=Input
-Type=St_Handle
-ShortName=2
-SingleTextLine=data array for filtering
-[end]
-
-[pOUParam] Dest
-Direction=Input
-Type=St_Handle
-ShortName=3
-SingleTextLine=
-[end]
-
-[function] FIRf
-GroupName=FIR
-Type=REAL
-ShortName=3
-[end]
-
-[pOUParam] FirHandle
-Direction=Input
-Type=FIR_Handle
-ShortName=1
-SingleTextLine=handler FIR object
-[end]
-
-[pOUParam] V
-Direction=Input
-Type=REAL
-ShortName=2
-SingleTextLine=data point for filtering
-[end]
-
-[function] FIR_create
-SingleTextLine=Creation of a FIR object
-GroupName=FIR
-Type=BOOL
-ShortName=res
-[end]
-
-[pOUParam] HandleFir
-Direction=Input
-Type=FIR_Handle
-ShortName=Hand
-SingleTextLine=handler of FIR Object
-[end]
-
-[pOUParam] NameCoeff
-Direction=Input
-Type=STRING
-StringLength=255
-ShortName=NArr
-SingleTextLine=The Name of ISaGRAF's Array with FIR coeffs
-[end]
-
-[function] FIR
-GroupName=FIR
-Type=LREAL
-ShortName=3
-[end]
-
-[pOUParam] FirHandle
-Direction=Input
-Type=FIR_Handle
-ShortName=1
-SingleTextLine=handler FIR object
-[end]
-
-[pOUParam] V
-Direction=Input
-Type=LREAL
-ShortName=2
-SingleTextLine=data point for filtering
-[end]
-
-$$[$desc] FIR_vector
-$$<Data filtering from array Source and store in array Dest
-$$[end]
-
-$$[$desc] FIRf
-$$<Data filtering point by point
-$$[end]
-
-$$[$desc] FIR_create
-$$<The Creation of a FIR object
-$$<from Isagraf Matrix with dimension [2,N]
-$$<N - FIR degree
-$$<Matrix [1] -  FIR coeffs "b"
-$$<Matrix[2] - reserved system data (internal FIR stack )
-$$<
-$$<
-$$<
-$$<
-$$[end]
-
-$$[$desc] FIR
-$$<Data filtering point by point
-$$[end]
-
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
-
-[structure] IIR_Handle
-[end]
-
-[display] 0
-[field] IIrPtr
-Type=ULINT
-SingleTextLine=The Address of Matrix [4,N] with IIR coeffs in Matrix[1],Matrix[2]
-[end]
-
-[field] Range
-Type=DINT
-SingleTextLine=The IIR dimension (N)
-[end]
-
-[field] DataCounter
-Type=DINT
-SingleTextLine=counter data have being filter
-[end]
-
-[field] error
-Type=BOOL
-SingleTextLine=TRUE if error in last operathion
-[end]
-
-[structure] St_Handle
-[end]
-
-[display] 0
-[field] AddrArray
-Type=ULINT
-SingleTextLine=The Address of Array
-[end]
-
-[field] TypeArray
-Type=SINT
-SingleTextLine=The Type of Array
-[end]
-
-[field] SizeArray
-Type=DINT
-SingleTextLine=The Size of Array
-[end]
-
-[field] error
-Type=BOOL
-SingleTextLine=TRUE if error in last operathion
-[end]
-
-[function] IIRf
-GroupName=IIR
-Type=REAL
-ShortName=3
-[end]
-
-[pOUParam] IirHandle
-Direction=Input
-Type=IIR_Handle
-ShortName=1
-SingleTextLine=handler IIR object
-[end]
-
-[pOUParam] V
-Direction=Input
-Type=REAL
-ShortName=2
-SingleTextLine=data point for filtering
-[end]
-
-[function] IIR_create
-SingleTextLine=Creation of a IIR object
-GroupName=IIR
-Type=BOOL
-ShortName=res
-[end]
-
-[pOUParam] HandleIir
-Direction=Input
-Type=IIR_Handle
-ShortName=Hand
-SingleTextLine=handler of IIR Object
-[end]
-
-[pOUParam] NameCoeff
-Direction=Input
-Type=STRING
-StringLength=255
-ShortName=NArr
-SingleTextLine=The Name of ISaGRAF's Array with IIR coeffs
-[end]
-
-[function] IIR
-GroupName=IIR
-Type=LREAL
-ShortName=3
-[end]
-
-[pOUParam] IirHandle
-Direction=Input
-Type=IIR_Handle
-ShortName=1
-SingleTextLine=handler IIR object
-[end]
-
-[pOUParam] V
-Direction=Input
-Type=LREAL
-ShortName=2
-SingleTextLine=data point for filtering
-[end]
-
-[function] IIR_vector
-GroupName=FIR
-Type=BOOL
-ShortName=4
-[end]
-
-[pOUParam] IIrHandle
-Direction=Input
-Type=IIR_Handle
-ShortName=1
-SingleTextLine=handler IIR object
-[end]
-
-[pOUParam] Source
-Direction=Input
-Type=St_Handle
-ShortName=2
-SingleTextLine=data array for filtering
-[end]
-
-[pOUParam] Dest
-Direction=Input
-Type=St_Handle
-ShortName=3
-SingleTextLine=
-[end]
-
-$$[$desc] IIRf
-$$<Data filtering point by point
-$$[end]
-
-$$[$desc] IIR_create
-$$<The Creation of a IIR object
-$$<from Isagraf Matrix with dimension [3,N]
-$$<N - FIR degree
-$$<Matrix [1] -  FIR coeffs "b"
-$$<Matrix [2] -  FIR coeffs "a"
-$$<Matrix[3] - reserved system data (internal IIR stack )
-$$<Matrix[4] - reserved system data (internal IIR stack )
-$$<
-$$<
-$$<
-$$<
-$$<
-$$<
-$$[end]
-
-$$[$desc] IIR
-$$<Data filtering point by point
-$$[end]
-
-$$[$desc] IIR_vector
-$$<Data filtering from array Source and store in array Dest
-$$[end]
-
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
-
-[structure] St_Handle
-[end]
-
-[display] 0
-[field] AddrArray
-Type=ULINT
-SingleTextLine=The Address of Array
-[end]
-
-[field] TypeArray
-Type=SINT
-SingleTextLine=The Type of Array
-[end]
-
-[field] SizeArray
-Type=DINT
-SingleTextLine=The Size of Array
-[end]
-
-[field] error
-Type=BOOL
-SingleTextLine=TRUE if error in last operathion
-[end]
-
-[function] Fast_array_dot
-SingleTextLine=scalar multiply of a fast arraies
-GroupName=FastArray
-Type=LREAL
-ShortName=res
-[end]
-
-[pOUParam] handleA
-Direction=Input
-Type=St_Handle
-ShortName=hA
-SingleTextLine=
-[end]
-
-[pOUParam] handleB
-Direction=Input
-Type=St_Handle
-ShortName=hB
-SingleTextLine=
-[end]
-
-[function] Fast_array_range
-SingleTextLine=linear range of a fast array
-GroupName=FastArray
-Type=BOOL
-ShortName=res
-[end]
-
-[pOUParam] HandleArray
-Direction=Input
-Type=St_Handle
-ShortName=Hand
-SingleTextLine=handler of Fast Array
-[end]
-
-[pOUParam] firstData
-Direction=Input
-Type=LREAL
-ShortName=dat1
-SingleTextLine=
-[end]
-
-[pOUParam] lastData
-Direction=Input
-Type=LREAL
-ShortName=dat2
-SingleTextLine=
-[end]
-
-[function] Fast_array_create
-SingleTextLine=Creation of a fast array
-GroupName=FastArray
-Type=BOOL
-ShortName=res
-[end]
-
-[pOUParam] HandleArray
-Direction=Input
-Type=St_Handle
-ShortName=Hand
-SingleTextLine=handler of Fast Array
-[end]
-
-[pOUParam] NameArr
-Direction=Input
-Type=STRING
-StringLength=255
-ShortName=NArr
-SingleTextLine=The Name of ISaGRAF's Array
-[end]
-
-[function] FastLibInit
-GroupName=FastArray
-Type=BOOL
-ShortName=2
-[end]
-
-[function] Fast_array_add
-SingleTextLine=summa of a fast arraies
-GroupName=FastArray
-Type=BOOL
-ShortName=res
-[end]
-
-[pOUParam] handleSum
-Direction=Input
-Type=St_Handle
-ShortName=Hand
-SingleTextLine=arraySum=arrayA + arrayB
-[end]
-
-[pOUParam] handleA
-Direction=Input
-Type=St_Handle
-ShortName=hA
-SingleTextLine=
-[end]
-
-[pOUParam] handleB
-Direction=Input
-Type=St_Handle
-ShortName=hB
-SingleTextLine=
-[end]
-
-[function] Fast_array_min
-SingleTextLine=Find of of min  value
-GroupName=FastArray
-Type=LREAL
-ShortName=res
-[end]
-
-[pOUParam] HandleArray
-Direction=Input
-Type=St_Handle
-ShortName=Hand
-SingleTextLine=handler of Fast Array
-[end]
-
-[function] Fast_array_max
-SingleTextLine=Find of of max  value
-GroupName=FastArray
-Type=LREAL
-ShortName=res
-[end]
-
-[pOUParam] HandleArray
-Direction=Input
-Type=St_Handle
-ShortName=Hand
-SingleTextLine=handler of Fast Array
-[end]
-
-[function] Fast_array_cumulsum
-SingleTextLine=cumulative sum of elements of fast array
-GroupName=FastArray
-Type=LREAL
-ShortName=Res
-[end]
-
-[pOUParam] ConsumArr
-Direction=Input
-Type=St_Handle
-ShortName=Arr
-SingleTextLine=The summing Array
-[end]
-
-[function] Fast_array_mul
-SingleTextLine=multiply of a fast arraies
-GroupName=FastArray
-Type=BOOL
-ShortName=res
-[end]
-
-[pOUParam] handleRes
-Direction=Input
-Type=St_Handle
-ShortName=Hand
-SingleTextLine=arrayRes=arrayA  x arrayB
-[end]
-
-[pOUParam] handleA
-Direction=Input
-Type=St_Handle
-ShortName=hA
-SingleTextLine=
-[end]
-
-[pOUParam] handleB
-Direction=Input
-Type=St_Handle
-ShortName=hB
-SingleTextLine=
-[end]
-
-[function] Fast_array_fill
-SingleTextLine=Filling of a fast array
-GroupName=FastArray
-Type=BOOL
-ShortName=res
-[end]
-
-[pOUParam] HandleArray
-Direction=Input
-Type=St_Handle
-ShortName=Hand
-SingleTextLine=handler of Fast Array
-[end]
-
-[pOUParam] dataTofill
-Direction=Input
-Type=LREAL
-ShortName=data
-SingleTextLine=
-[end]
-
-[function] Fast_array_zeroes
-SingleTextLine=Zeroing of a fast array
-GroupName=FastArray
-Type=BOOL
-ShortName=res
-[end]
-
-[pOUParam] HandleArray
-Direction=Input
-Type=St_Handle
-ShortName=Hand
-SingleTextLine=handler of Fast Array
-[end]
-
-[function] Fast_array_copy
-SingleTextLine=Copying of a fast array
-GroupName=FastArray
-Type=BOOL
-ShortName=Res
-[end]
-
-[pOUParam] ConsumArr
-Direction=Input
-Type=St_Handle
-ShortName=CArr
-SingleTextLine=The consuming Array
-[end]
-
-[pOUParam] ProducArray
-Direction=Input
-Type=St_Handle
-ShortName=PArr
-SingleTextLine=The producing Array
-[end]
-
-[function] Fast_array_scale
-SingleTextLine=Miltply of a fast array on koefficient
-GroupName=FastArray
-Type=BOOL
-ShortName=res
-[end]
-
-[pOUParam] HandleArray
-Direction=Input
-Type=St_Handle
-ShortName=Hand
-SingleTextLine=handler of Fast Array
-[end]
-
-[pOUParam] koeff
-Direction=Input
-Type=LREAL
-ShortName=koef
-SingleTextLine=
-[end]
-
-[function] Fast_array_spectrum
-SingleTextLine=power spectrum of  fast array
-GroupName=FastArray
-Type=UDINT
-ShortName=res
-[end]
-
-[pOUParam] handleData
-Direction=Input
-Type=St_Handle
-ShortName=hA
-SingleTextLine=
-[end]
-
-[pOUParam] handleSpectrum
-Direction=Input
-Type=St_Handle
-ShortName=hB
-SingleTextLine=
-[end]
-
-$$[$desc] Fast_array_dot
-$$<The Creation of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_range
-$$<The Creation of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_create
-$$<The Creation of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_add
-$$<The Creation of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_min
-$$<Find and return minimal value of array items
-$$<
-$$[end]
-
-$$[$desc] Fast_array_max
-$$<Find and return maximal value of array items
-$$<
-$$<
-$$[end]
-
-$$[$desc] Fast_array_cumulsum
-$$<The Copying of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_mul
-$$<The Creation of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_fill
-$$<The Creation of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_zeroes
-$$<The Creation of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_copy
-$$<The Copying of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_scale
-$$<The Creation of a fast array
-$$<
-$$[end]
-
-$$[$desc] Fast_array_spectrum
-$$<calculate  the power spectrum of dataarray
-$$<return number of garmonics or 0 (if error)
-$$<
-$$<
-$$[end]
-
-
-$$[setList] TDB1
-$$+Default
 $$>Default
 $$[end]
 

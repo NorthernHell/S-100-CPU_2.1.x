@@ -1,0 +1,6 @@
+/root/iodk/merk/iodk3_WI/FW_IODK3_WI/Drivers/evro_int/CMakeFiles/evro_int.dir
+/root/iodk/merk/iodk3_WI/FW_IODK3_WI/IsaVm/CMakeFiles/IsaVM.dir
+/root/iodk/merk/iodk3_WI/FW_IODK3_WI/Drivers/evro_tcp/CMakeFiles/evro_tcp.dir
+/root/iodk/merk/iodk3_WI/FW_IODK3_WI/Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir
+/root/iodk/merk/iodk3_WI/FW_IODK3_WI/Drivers/evro_rtus/CMakeFiles/evro_rtus.dir
+/root/iodk/merk/iodk3_WI/FW_IODK3_WI/Drivers/evro_ext/CMakeFiles/evro_ext.dir
