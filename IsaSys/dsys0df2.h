@@ -522,7 +522,7 @@ FT/11-Dec-2008/ RFS-7307
 #define ISA_DO_ALIGN(luSize) (((((luSize)+ISA_ALIGN)-1) /ISA_ALIGN)*ISA_ALIGN)
 
 /* 'C' and IO Functions name max length and case management*/ /* RFS8347 */
-#define _FCTNMMLN 51
+#define _FCTNMMLN 101
 
 /* String variables manipulation */ /* RFS 7741 */
 #define _STRVAADD(va)   ((uchar*)KVA_ADDRESS((va)))

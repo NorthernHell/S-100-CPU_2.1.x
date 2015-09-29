@@ -61,9 +61,9 @@ FeatureSfcPrio=Yes
 FeatureComplexSubVarConnectedToIoChan=Yes
 FeatureIoChanOemParam=Yes
 
-FeatureIntrpt=No
-FeatureNetworkInst=No
-SfuCURRENT_ISA_DATE=No
+FeatureIntrpt=Yes
+FeatureNetworkInst=Yes
+SfuCURRENT_ISA_DATE=Yes
 LanguageFBD=Yes
 LanguageIL=Yes
 Language61499=Yes
@@ -264,140 +264,29 @@ $$+Default
 $$>Default
 $$[end]
 
-[resParam] FailoverDatalinkTimeoutMs
-Format=LONG
-Access=USER DEFINED
-Default=2000
-SingleTextLine=Timeout of the FAILOVER data link
+[interrupts] Interrupts
 [end]
-
-[connectParam] FailoverPrimaryIP
-Format=STRING
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=127.0.0.1
-SingleTextLine=IP address of the primary FAILOVER controller
-[end]
-
-[connectParam] FailoverSecondaryIP
-Format=STRING
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=127.0.0.1
-SingleTextLine=IP address of the secondary FAILOVER controller
-[end]
-
-[connectParam] FailoverDatalinkPrimaryIP
-Format=STRING
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=127.0.0.1
-SingleTextLine=Default parameter of the FAILOVER data link IXL driver for the primary controller
-[end]
-
-[connectParam] FailoverDatalinkSecondaryIP
-Format=STRING
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=127.0.0.1
-SingleTextLine=Default parameter of the FAILOVER data link IXL driver for the secondary controller
-[end]
-
-[connectParam] EnableFailover
-Format=BOOLEAN
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=FALSE
-SingleTextLine=Enable the FAILOVER mechanism
-[end]
-
-[connectParam] FailoverHeartbeatTimeoutMs
-Format=LONG
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=2000
-SingleTextLine=Timeout of the FAILOVER heartbeat
-[end]
-
-[connectParam] FailoverHeartbeatDeactivationTimeMs
-Format=LONG
-Access=USER DEFINED
-ParaDefinedOncePerConf=No
-ParaValueUniqueForConf=No
-ParaValueUniqueForNetInst=No
-Default=10000
-SingleTextLine=Heartbeat deactivation time when heartbeat link is bad.
-[end]
-
-[resNetParam] TimeOut
-Format=LONG
-Access=USER DEFINED
-Default=10000
-SingleTextLine=Maximum allowed time (in ms) to transport a variable
-[end]
-
-[userSysVars] UserSystemVariables
-[end]
-
-[userSysVar] SYSVA_FO_ISENABLE
-Type=BOOL
-SingleTextLine=Determines if failover is enabled
-VA=384
-ReadOnly=Yes
-[end]
-
-[userSysVar] SYSVA_FO_ERRCODE
+[interrupt] MyTimerIRQ_0
 Type=UDINT
-SingleTextLine=Failover error code
-VA=388
-ReadOnly=Yes
+SingleTextLine=Timer Interrupt definition
+Num=0
 [end]
 
-[userSysVar] SYSVA_FO_ISPRIMARY
-Type=BOOL
-SingleTextLine=Determines if communication is done with primary controller
-VA=392
-ReadOnly=Yes
-[end]
-
-[userSysVar] SYSVA_FO_ISACTIVE
-Type=BOOL
-SingleTextLine=Determines if communication is done with active controller
-VA=396
-ReadOnly=Yes
-[end]
-
-[userSysVar] SYSVA_FO_DATASYNCTIME
+[interrupt] MyTimerIRQ_1
 Type=UDINT
-SingleTextLine=Data synchronization time
-VA=400
-ReadOnly=Yes
+SingleTextLine=Timer Interrupt definition
+Num=1
 [end]
 
-[userSysVar] SYSVA_FO_HBEATSYNCTIME
+[interrupt] MyTimerIRQ_2
 Type=UDINT
-SingleTextLine=Heartbeat synchronization time
-VA=404
-ReadOnly=Yes
+SingleTextLine=Timer Interrupt definition
+Num=2
 [end]
 
-[userSysVar] SYSVA_FO_DATASYNCCNT
+[interrupt] MyTimerIRQ_3
 Type=UDINT
-SingleTextLine=Counter of full data synchronization
-VA=408
-ReadOnly=Yes
-InitValue=0
+SingleTextLine=Timer Interrupt definition
+Num=3
 [end]
 
