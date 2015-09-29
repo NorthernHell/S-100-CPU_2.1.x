@@ -1,0 +1,8461 @@
+[target] ACE-TARGET_L
+SingleTextLine=Ace Target V5.41
+Code=TIC code
+Code=Structured C source code
+Model=Large
+IsIsagraf3=No
+IsEnhancedTarget=Yes
+ByteOrder=LH
+MaxBlockSize=0
+AlignNumber=4
+StrictAlign=No
+Quantum=1
+UCHARSize=1
+UINT16Size=2
+UINT32Size=4
+PointerSize=4
+EolChar=10
+MaxPara=128
+MaxCallStackDepth=0
+MaxPouSize=200000
+UserData=Yes
+NewBindConsUpd=No
+ResNbr=8
+FirstVa=1024
+SM=32768
+SysVarZZZZ=0
+SysVarResName=4
+SysVarCycleDate=264
+SysVarCycycTime=268
+SysVarCyCurrent=272
+SysVarCyMaximum=276
+SysVarCyOverFlow=280
+SysVarScanCnt=284
+SysVarCycleCnt=288
+SysVarResMode=292
+SysVarCCExec=293
+SysVarKVBPerr=294
+SysVarKVBCErr=295
+SysVarWNGNum=296
+SysVarWNGarg=300
+SysVarWNGCMPTNM=304
+SysVarWNGCMD=315
+SysVarBFDATASZE=352
+SysVarKPVRDTBPTRS=356
+SysVarSLAVENUM=360
+SysVarCYCTIMEBASE=364
+SysVarMICROCYCLEDATE=368
+SysVarMICROTCYCYCTIME=372
+SysVarMICROTCYCURRENT=376
+SysVarMICROTCYMAXIMUM=380
+FeaturePassword=Yes
+FeatureOptCode=Yes
+FeatureBinding=Yes
+FeatureMultiResources=Yes
+FeatureOnline=Yes
+FeatureRetain=Yes
+FeatureMicroCycTime=No
+FeatureArInpRf=Yes
+FeatureBigPous=Yes
+FeatureSfcPrio=Yes
+FeatureComplexSubVarConnectedToIoChan=Yes
+FeatureIoChanOemParam=Yes
+
+FeatureIntrpt=Yes
+FeatureNetworkInst=Yes
+SfuCURRENT_ISA_DATE=Yes
+LanguageFBD=Yes
+LanguageIL=Yes
+Language61499=Yes
+LanguageLD=Yes
+LanguageSFC=Yes
+LanguageST=Yes
+LanguageFC=Yes
+LanguageSAMA=Yes
+DataTypeBOOL=Yes
+DataTypeDATE=Yes
+DataTypeDINT=Yes
+DataTypeINT=Yes
+DataTypeLINT=Yes
+DataTypeLREAL=Yes
+DataTypeREAL=Yes
+DataTypeSINT=Yes
+DataTypeSTRING=Yes
+DataTypeTIME=Yes
+DataTypeUDINT=Yes
+DataTypeUINT=Yes
+DataTypeULINT=Yes
+DataTypeUSINT=Yes
+DataTypeSAFEBOOL=No
+DataTypeANY_ELEMENTARY=No
+SfuABS=Yes
+SfuCOS=Yes
+SfuACOS=Yes
+SfuSIN=Yes
+SfuASIN=Yes
+SfuTAN=Yes
+SfuATAN=Yes
+SfuEXPT=Yes
+SfuPOW=Yes
+SfuLOG=Yes
+SfuSQRT=Yes
+SfuMOD=Yes
+SfuTRUNC=Yes
+SfuRAND=Yes
+SfuODD=Yes
+SfuMIN=Yes
+SfuMAX=Yes
+SfuLIMIT=Yes
+SfuSEL=Yes
+SfuMUX4=Yes
+SfuMUX8=Yes
+SfuSHL=Yes
+SfuSHR=Yes
+SfuROL=Yes
+SfuROR=Yes
+SfuSUB_DATE_DATE=Yes
+SfuLOCK_CPU=Yes
+SfuUNLOCK_CPU=Yes
+SfuASCII=Yes
+SfuCHAR=Yes
+SfuDELETE=Yes
+SfuFIND=Yes
+SfuINSERT=Yes
+SfuLEFT=Yes
+SfuMID=Yes
+SfuMLEN=Yes
+SfuREPLACE=Yes
+SfuRIGHT=Yes
+SfuAND_MASK=Yes
+SfuOR_MASK=Yes
+SfuNOT_MASK=Yes
+SfuXOR_MASK=Yes
+SfbLIM_ALRM=Yes
+
+SfbSR=Yes
+SfbRS=Yes
+SfbR_TRIG=Yes
+SfbF_TRIG=Yes
+SfbCTD=Yes
+SfbCTU=Yes
+SfbCTUD=Yes
+SfbCMP=Yes
+SfbAVERAGE=Yes
+SfbCOMMUNICATION=Yes
+SfbBLINK=Yes
+SfbSIG_GEN=Yes
+SfbDERIVATE=Yes
+SfbINTEGRAL=Yes
+SfbHYSTER=Yes
+SfbSTACKINT=Yes
+SfbSEMA=No
+SfbTON=Yes
+SfbTOF=Yes
+SfbTP=Yes
+[end]
+
+[network] ISARSI
+SingleTextLine=Standard Remote Serial Interface link
+DistributedNet=Yes
+LocalNet=No
+OnlyUsedForBinding=No
+AllowWorkbenchConnection=Yes
+[end]
+
+[netParam] Port
+Format=STRING
+Access=USER DEFINED
+Default=COM1
+SingleTextLine=Workbench communication port
+[end]
+
+[netParam] BaudRate
+Format=LONG
+Access=USER DEFINED
+Default=19200
+SingleTextLine=Data transfer baud rate
+[end]
+
+[netParam] Parity
+Format=CHARACTER
+Access=USER DEFINED
+Default=N
+SingleTextLine=N: None, E: Even, O: Odd
+[end]
+
+[netParam] StopBit
+Format=WORD
+Access=USER DEFINED
+Default=1
+SingleTextLine=1 or 2 Stop bits
+[end]
+
+[netParam] HardwareFlowControl
+Format=BOOLEAN
+Access=USER DEFINED
+Default=FALSE
+SingleTextLine=TRUE when using hardware flow control
+[end]
+
+[network] HSD
+SingleTextLine=Host System Driver for local binding
+DistributedNet=No
+LocalNet=Yes
+OnlyUsedForBinding=No
+AllowWorkbenchConnection=No
+[end]
+
+[resNetParam] ValidityTime
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Produced Variables validity time.
+[end]
+
+[network] ETCP
+SingleTextLine=protocol based on TCP/IP
+DistributedNet=Yes
+LocalNet=No
+OnlyUsedForBinding=No
+AllowWorkbenchConnection=Yes
+[end]
+
+[connectParam] IPAddress
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=IP address or Computer name
+[end]
+
+[resNetParam] TimeOut
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=Maximum allowed time (in ms) to transport a variable
+[end]
+
+$$[$desc] ISARSI
+$$<standard Remote Serial Interface link
+$$<It can be used to dialog through a point to point serial link
+$$<between the workbench and one configuration.
+$$<CAN NOT BE USED FOR BINDING.
+$$<
+$$<Just connect the configuration to the network in the Hardware view and
+$$<fill the network parameters with settings corresponding to the PC where the workbench is currently running.
+$$[end]
+
+$$[$desc] HSD
+$$<HSD: Host System Driver
+$$<standard driver used for binbing between 2 resources local to a configuration.
+$$[end]
+
+$$[$desc] ETCP
+$$<ETCP: Enhanced TCP/IP driver
+$$<standard driver that uses TCP/IP protocol.
+$$<It is used for communication between Workbench and targets (IXL).
+$$<It is also used for binding between two configurations.
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[interrupts] Interrupts
+[end]
+[interrupt] MyTimerIRQ_0
+Type=UDINT
+SingleTextLine=Timer Interrupt definition
+Num=0
+[end]
+
+[interrupt] MyTimerIRQ_1
+Type=UDINT
+SingleTextLine=Timer Interrupt definition
+Num=1
+[end]
+
+[interrupt] MyTimerIRQ_2
+Type=UDINT
+SingleTextLine=Timer Interrupt definition
+Num=2
+[end]
+
+[interrupt] MyTimerIRQ_3
+Type=UDINT
+SingleTextLine=Timer Interrupt definition
+Num=3
+[end]
+
+[device] MTCP_AI
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MTCP_DO
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MODBUS_TCP_STATUS
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=0
+[end]
+
+[device] MTCP_DI
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MTCP_AO
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=INT
+Direction=Output
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=1
+[end]
+
+[complex] MODBUS_TCP_CLIENT_AI
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_AI,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] Func
+Format=LONG
+Access=USER DEFINED
+Default=4
+SingleTextLine=Modbus function 3-read holding registers 4-read input registers
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[complex] MODBUS_TCP_CLIENT_DO
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_DO,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[complex] MODBUS_TCP_CLIENT_DI
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_DI,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[complex] MODBUS_TCP_CLIENT_AO
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_AO,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] Func
+Format=LONG
+Access=USER DEFINED
+Default=16
+SingleTextLine=modbus function number (16 or 6)
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+$$[setList] TDB1
+$$+Default
+$$:MODBUS_TCP_STATUS&evro_tcpc_evro_tcpc_
+$$>Default
+$$[end]
+
+[device] MODBUS_RTU_COIL_O_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MODBUS_RTU_INP_BITS_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MODBUS_RTU_COIL_I_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MODBUS_RTU_INP_REG_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=INT
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MODBUS_RTU_HOLDING_O_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=INT
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MODBUS_RTU_HOLDING_I_
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[complex] MODBUS_RTU_SERVER
+PackageName=_evro_RTUS_
+DriverName=evro_RTUS
+Devices=MODBUS_RTU_COIL_I_,MODBUS_RTU_COIL_O_,MODBUS_RTU_HOLDING_I_,MODBUS_RTU_HOLDING_O_,MODBUS_RTU_INP_BITS_,MODBUS_RTU_INP_REG_
+ComplexOption=3
+[end]
+
+[deviceParam] SLAVE_ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] COM_PORT
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number(1(2))
+[end]
+
+[deviceParam] BAUD_RATE
+Format=LONG
+Access=USER DEFINED
+Default=9600
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] PARITY
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] STOP_BITS
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+$$[$desc] MODBUS_RTU_SERVER&_evro_RTUS_evro_RTUS
+$$<MODBUS_RTU_SERVER
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$:MODBUS_RTU_COIL_O_&_evro_RTUS_evro_RTUS
+$$:MODBUS_RTU_INP_BITS_&_evro_RTUS_evro_RTUS
+$$:MODBUS_RTU_COIL_I_&_evro_RTUS_evro_RTUS
+$$:MODBUS_RTU_SERVER&_evro_RTUS_evro_RTUS
+$$:MODBUS_RTU_HOLDING_O_&_evro_RTUS_evro_RTUS
+$$:MODBUS_RTU_INP_REG_&_evro_RTUS_evro_RTUS
+$$:MODBUS_RTU_HOLDING_I_&_evro_RTUS_evro_RTUS
+$$>Default
+$$[end]
+
+[device] MTS_HOLDINGR_I
+PackageName=evro_TCP
+DriverName=_evro_TCP_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MTS_INP_BITS
+PackageName=evro_TCP
+DriverName=_evro_TCP_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MTS_INP_REG
+PackageName=evro_TCP
+DriverName=_evro_TCP_
+Type=INT
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MTS_COIL_O
+PackageName=evro_TCP
+DriverName=_evro_TCP_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MTS_COIL_I
+PackageName=evro_TCP
+DriverName=_evro_TCP_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MTS_HOLDINGR_O
+PackageName=evro_TCP
+DriverName=_evro_TCP_
+Type=INT
+Direction=Output
+LowerChannel=1
+UpperChannel=256
+HiddenMemberOfComplexDevice=1
+[end]
+
+[complex] MODBUS_TCP_SERVER
+PackageName=evro_TCP
+DriverName=_evro_TCP_
+Devices=MTS_COIL_I,MTS_COIL_O,MTS_HOLDINGR_I,MTS_HOLDINGR_O,MTS_INP_BITS,MTS_INP_REG
+ComplexOption=3
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Port for modbus server
+[end]
+
+$$[$desc] MTS_HOLDINGR_I&evro_TCP_evro_TCP_
+$$<Holding registers READ
+$$[end]
+
+$$[$desc] MODBUS_TCP_SERVER&evro_TCP_evro_TCP_
+$$<Modbus TCP server
+$$[end]
+
+$$[$desc] MTS_INP_BITS&evro_TCP_evro_TCP_
+$$<INPUT BITS WRITE
+$$[end]
+
+$$[$desc] MTS_INP_REG&evro_TCP_evro_TCP_
+$$<INPUT REGISTERS WRITE
+$$[end]
+
+$$[$desc] MTS_COIL_O&evro_TCP_evro_TCP_
+$$<Coil registers write
+$$[end]
+
+$$[$desc] MTS_COIL_I&evro_TCP_evro_TCP_
+$$<COIL registers read
+$$[end]
+
+$$[$desc] MTS_HOLDINGR_O&evro_TCP_evro_TCP_
+$$<HOLDING registers WRITE
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$:MTS_HOLDINGR_I&evro_TCP_evro_TCP_
+$$:MODBUS_TCP_SERVER&evro_TCP_evro_TCP_
+$$:MTS_INP_BITS&evro_TCP_evro_TCP_
+$$:MTS_INP_REG&evro_TCP_evro_TCP_
+$$:MTS_COIL_O&evro_TCP_evro_TCP_
+$$:MTS_COIL_I&evro_TCP_evro_TCP_
+$$:MTS_HOLDINGR_O&evro_TCP_evro_TCP_
+$$>Default
+$$[end]
+
+[device] IO2DO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=2
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO8TCS
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=9
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO1AO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=INT
+Direction=Output
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO16DO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] M_AO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=INT
+Direction=Output
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] M_AI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO16DI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO4DI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=4
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] M_DO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] M_DI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=128
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO8AO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=INT
+Direction=Output
+LowerChannel=1
+UpperChannel=8
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO8AI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=8
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO6RTD
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=7
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO4RO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=4
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO2RTD
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=2
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO8DO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=8
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO8DI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=8
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] modbusstatus
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO2AI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=2
+HiddenMemberOfComplexDevice=1
+[end]
+
+[complex] Modbus_AI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=M_AI
+ComplexOption=3
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] Func
+Format=LONG
+Access=USER DEFINED
+Default=4
+SingleTextLine=Modbus function 3-read holding registers 4-read input registers
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bit`s
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[complex] IO_6RTD
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] RTD_type
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1 - Pt100, 2 - Ni120, 3 - Pt1000, 4 - Ni1000-DIN, 5 - Ni1000-Landys&Gyr, 6 - Ohms(10-400), 7 - Ohms(100-4000)
+[end]
+
+[deviceParam] Line_Frequency
+Format=LONG
+Access=USER DEFINED
+Default=50
+SingleTextLine=Line Frequency
+[end]
+
+[deviceParam] Units_Type
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1=°C, 2=°F
+[end]
+
+[complex] Modbus_DO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=M_DO
+ComplexOption=3
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bit`s
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[complex] Modbus_DI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=M_DI
+ComplexOption=3
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bit`s
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[complex] IO_DAIO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] Input_Filter
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 = Disable, >0 = Enable. (x10ms)
+[end]
+
+[deviceParam] RTD_type_ch1
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1 - Pt100, 2 - Ni120, 3 - Pt1000, 4 - Ni1000-DIN, 5 - Ni1000-Landys&Gyr, 6 - Ohms(10-400), 7 - Ohms(100-4000)
+[end]
+
+[deviceParam] RTD_type_ch2
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1 - Pt100, 2 - Ni120, 3 - Pt1000, 4 - Ni1000-DIN, 5 - Ni1000-Landys&Gyr, 6 - Ohms(10-400), 7 - Ohms(100-4000)
+[end]
+
+[deviceParam] AI_type_ch1
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1 - 0-4095(I), 2 - 0-20000mA 3 - +/-20000, 4 - 0-4095(V), 5 - 0-10000V, 6 - +/-10000V, 7 - 0-1000V, 8 - +/-1000V
+[end]
+
+[deviceParam] AI_type_ch2
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1 - 0-4095(I), 2 - 0-20000mA 3 - +/-20000, 4 - 0-4095(V), 5 - 0-10000V, 6 - +/-10000V, 7 - 0-1000V, 8 - +/-1000V
+[end]
+
+[deviceParam] AO_type
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1 - 0-4095(I), 2 - 0-4095(V)
+[end]
+
+[deviceParam] Line_Frequency
+Format=LONG
+Access=USER DEFINED
+Default=50
+SingleTextLine=Line Frequency: 50 or 60
+[end]
+
+[deviceParam] Units_Type
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1=°C, 2=°F
+[end]
+
+[deviceParam] Watchdog_Timer
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
+[end]
+
+[complex] IO_8DIO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] Input_Filter
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 = Disable, >0 = Enable. (x10ms)
+[end]
+
+[deviceParam] Watchdog_Timer
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
+[end]
+
+[complex] IO_8TCS
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] TC_type
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=typ termopary
+[end]
+
+[deviceParam] Line_Frequency
+Format=LONG
+Access=USER DEFINED
+Default=50
+SingleTextLine=Line Frequency: 50 or 60
+[end]
+
+[deviceParam] CJC_Offset
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=100 = zero offset (0.0)
+[end]
+
+[deviceParam] Units_Type
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1=°C, 2=°F
+[end]
+
+[complex] IO_8AO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] Watchdog_Timer
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
+[end]
+
+[complex] IO_16DO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] Watchdog_Timer
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
+[end]
+
+[complex] IO_16DI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] Input_Filter
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 = Disable, >0 = Enable. (x10ms)
+[end]
+
+[complex] IO_8AI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[complex] IO_4RO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] Watchdog_Timer
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
+[end]
+
+[complex] Modbus_AO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=M_AO
+ComplexOption=3
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] Func
+Format=LONG
+Access=USER DEFINED
+Default=16
+SingleTextLine=Modbus function number (16 or 6)
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bit`s
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+$$[$desc] Modbus_AI&evro_ext_evro_ext_
+$$<Модуль аналогового ввода (универсальный)
+$$<127 каналов максимум, тип канала INT16,
+$$<поддерживаемые Modbus функции: 04 - read Holdind registers(0x03), 03 - read input redisters(0x04)
+$$[end]
+
+$$[$desc] IO_6RTD&evro_ext_evro_ext_
+$$<Модуль аналогового ввода (термометр сопротивления) IO-6RTD
+$$<6 каналов, Pt100, Ni120, Pt1000, Ni1000, Ni1000LG& Ohms, RS-485 (Modbus RTU 115200 бит/с), индикация
+$$[end]
+
+$$[$desc] Modbus_DO&evro_ext_evro_ext_
+$$<Модуль дискретного вывода (универсальный)
+$$<127 каналов максимум, тип канала BOOL,
+$$<поддерживаемые Modbus функции: 15 - force multiple coils
+$$[end]
+
+$$[$desc] Modbus_DI&evro_ext_evro_ext_
+$$<Модуль дискретного ввода (универсальный)
+$$<127 каналов максимум, тип канала BOOL,
+$$<поддерживаемые Modbus функции: 02 - read input status (0x01)
+$$[end]
+
+$$[$desc] IO_DAIO&evro_ext_evro_ext_
+$$<Модуль аналогового и дискретного ввода-вывода IO-DAIO, комбинированный модуль
+$$<2 вх. термометров сопротивления, 2 аналоговых токовых входа 0(4) - 20mA / 0(2) – 10В,
+$$<1 аналоговый токовый выход 0(4) - 20mA / 0(2) – 10В, 4 дискретных входа, 2 дискретных выхода
+$$<
+$$[end]
+
+$$[$desc] IO_8DIO&evro_ext_evro_ext_
+$$<Модуль дискретного ввода-вывода IO-8DIO
+$$<8 каналов дискретного ввода / 8 каналов дискретного вывода,
+$$<RS-485 (Modbus RTU 115200 бит/с)
+$$<
+$$<
+$$[end]
+
+$$[$desc] IO_8TCS&evro_ext_evro_ext_
+$$<Модуль аналогового ввода (термопара) IO-8TC	, модуль аналогового ввода изолированного (термопара) IO-8TCS,
+$$<8 каналов без гальванической развязязки или гальванически развязанных в зависимости от типа модуля
+$$<J, K, T, E, N, B, S, R, C, D, G, mV, RS-485 (Modbus RTU 115200 бит/с), индикация
+$$[end]
+
+$$[$desc] IO_8AO&evro_ext_evro_ext_
+$$<Модуль аналогового вывода (ток) IO-8AOI, модуль аналогового вывода (напряжение) IO-8AOV
+$$<8 каналов (ток/напряжение), RS-485 (Modbus RTU 115200 бит/с), индикация
+$$[end]
+
+$$[$desc] IO_16DO&evro_ext_evro_ext_
+$$<Модуль дискретного вывода IO-16DO
+$$<16 каналов, RS-485 (Modbus RTU 115200 бит/с), индикация, до 0,1 А на канал
+$$[end]
+
+$$[$desc] IO_16DI&evro_ext_evro_ext_
+$$<Модуль дискретного ввода IO-16DI
+$$<16 каналов, RS-485 (Modbus RTU 115200 бит/с), индикация, механические контакты/биполярные ключи
+$$[end]
+
+$$[$desc] IO_8AI&evro_ext_evro_ext_
+$$<Модуль аналогового ввода (напряжение) IO-8AIV, модуль аналогового ввода изолированного (напряжение) IO-8AIVS,
+$$<модуль аналогового ввода (ток) IO-8AII, модуль аналогового ввода изолированного (ток) IO-8AIIS,
+$$<8 каналов изоляция взависимости от типа модуля, RS-485 (Modbus RTU 115200 бит/с)
+$$[end]
+
+$$[$desc] IO_4RO&evro_ext_evro_ext_
+$$<Модуль релейного вывода IO-4RO
+$$<4 канала, RS-485 (Modbus RTU 115200 бит/с), индикация, до 1 А на канал
+$$[end]
+
+$$[$desc] modbusstatus&evro_ext_evro_ext_
+$$<Статус связи (есть/нет) с модулем расширения
+$$[end]
+
+$$[$desc] Modbus_AO&evro_ext_evro_ext_
+$$<Модуль аналогового вывода (универсальный)
+$$<127 каналов максимум, тип канала INT16,
+$$<поддерживаемые Modbus функции: 16 - preset multiple regs, 06 - preset single register
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[device] EVRO_4AO
+PackageName=evro_int
+DriverName=_evro_int_
+Type=INT
+Direction=Output
+LowerChannel=1
+UpperChannel=4
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_indicate_info
+PackageName=evro_int
+DriverName=_evro_int_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] status_m
+PackageName=evro_int
+DriverName=_evro_int_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_6RTD
+PackageName=evro_int
+DriverName=_evro_int_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=6
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_8RO
+PackageName=evro_int
+DriverName=_evro_int_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=8
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_avar_info
+PackageName=evro_int
+DriverName=_evro_int_
+Type=UINT
+Direction=Input
+LowerChannel=1
+UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_6AI
+PackageName=evro_int
+DriverName=_evro_int_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=6
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_8DIR
+PackageName=evro_int
+DriverName=_evro_int_
+Type=UDINT
+Direction=Input
+LowerChannel=1
+UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[deviceParam] Counter_1
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=
+[end]
+
+[deviceParam] Counter_2
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=
+[end]
+
+[deviceParam] Counter_3
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=
+[end]
+
+[deviceParam] Counter_4
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=
+[end]
+
+[deviceParam] Counter_5
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=
+[end]
+
+[deviceParam] Counter_6
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=
+[end]
+
+[deviceParam] Counter_7
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=
+[end]
+
+[deviceParam] Counter_8
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=
+[end]
+
+[deviceParam] CCounter_1
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Capture Counter
+[end]
+
+[deviceParam] CCounter_2
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Capture Counter
+[end]
+
+[deviceParam] CCounter_3
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Capture Counter
+[end]
+
+[deviceParam] CCounter_4
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Capture Counter
+[end]
+
+[deviceParam] CCounter_5
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Capture Counter
+[end]
+
+[deviceParam] CCounter_6
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Capture Counter
+[end]
+
+[deviceParam] CCounter_7
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Capture Counter
+[end]
+
+[deviceParam] CCounter_8
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Capture Counter
+[end]
+
+[deviceParam] Counter_Capture
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Bit1 = 1 to Capture Counter1, Bit2 = 1 to
+[end]
+
+[deviceParam] Counter_Mode
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0=Disable, 1=Up Counting
+[end]
+
+[deviceParam] Capture_Zero
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 = Disabled, bit1 = auto zero counter 1.
+[end]
+
+[device] EVRO_temp_info
+PackageName=evro_int
+DriverName=_evro_int_
+Type=UINT
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_8AO
+PackageName=evro_int
+DriverName=_evro_int_
+Type=UINT
+Direction=Output
+LowerChannel=1
+UpperChannel=4
+HiddenMemberOfComplexDevice=1
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[deviceParam] Initial_Value_1
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_2
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_3
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_4
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Watchdog
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 65535 = enabled
+[end]
+
+[device] EVRO_8AI
+PackageName=evro_int
+DriverName=_evro_int_
+Type=UINT
+Direction=Input
+LowerChannel=1
+UpperChannel=9
+HiddenMemberOfComplexDevice=1
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[deviceParam] Filter_1
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_2
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_3
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_4
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_5
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_6
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_7
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_8
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_9
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_10
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_11
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_12
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_13
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_14
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_15
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_16
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_17
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_18
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_19
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_20
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_21
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_22
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_23
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_24
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_25
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_26
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_27
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_28
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_29
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_30
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_31
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Filter_32
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[device] EVRO_modul_info
+PackageName=evro_int
+DriverName=_evro_int_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_16DO
+PackageName=evro_int
+DriverName=_evro_int_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_16DI
+PackageName=evro_int
+DriverName=_evro_int_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_8DO
+PackageName=evro_int
+DriverName=_evro_int_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=8
+HiddenMemberOfComplexDevice=1
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[deviceParam] Initial_Value_1
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_2
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_3
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_4
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_5
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_6
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_7
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_8
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Watchdog
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 65535 = enabled.
+[end]
+
+[device] EVRO_8TC
+PackageName=evro_int
+DriverName=_evro_int_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=8
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_8DI
+PackageName=evro_int
+DriverName=_evro_int_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=8
+HiddenMemberOfComplexDevice=1
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[deviceParam] IMP_Offset_1
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Digital imput offset
+[end]
+
+[deviceParam] IMP_Offset_2
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Digital imput offset
+[end]
+
+[deviceParam] IMP_Offset_3
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Digital imput offset
+[end]
+
+[deviceParam] IMP_Offset_4
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Digital imput offset
+[end]
+
+[deviceParam] IMP_Offset_5
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Digital imput offset
+[end]
+
+[deviceParam] IMP_Offset_6
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Digital imput offset
+[end]
+
+[deviceParam] IMP_Offset_7
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Digital imput offset
+[end]
+
+[deviceParam] IMP_Offset_8
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Digital imput offset
+[end]
+
+[deviceParam] Input_filter
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 = Disable, >0 = Enable. (x10ms)
+[end]
+
+[device] EVRO_16DIR
+PackageName=evro_int
+DriverName=_evro_int_
+Type=UDINT
+Direction=Input
+LowerChannel=1
+UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[complex] EVRO_6RTD_
+PackageName=evro_int
+DriverName=_evro_int_
+Devices=EVRO_6RTD,status_m
+ComplexOption=3
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[complex] EVRO_6AI_
+PackageName=evro_int
+DriverName=_evro_int_
+Devices=EVRO_6AI,status_m
+ComplexOption=3
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[complex] EVRO_8RO_
+PackageName=evro_int
+DriverName=_evro_int_
+Devices=EVRO_8RO,status_m
+ComplexOption=3
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[complex] EVRO_modul_info_
+PackageName=evro_int
+DriverName=_evro_int_
+Devices=EVRO_modul_info,EVRO_avar_info,EVRO_indicate_info,status_m
+ComplexOption=3
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[complex] EVRO_16DI_
+PackageName=evro_int
+DriverName=_evro_int_
+Devices=EVRO_16DI,status_m
+ComplexOption=3
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[complex] EVRO_8TC_
+PackageName=evro_int
+DriverName=_evro_int_
+Devices=EVRO_8TC,status_m
+ComplexOption=3
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[complex] EVRO_4AO_
+PackageName=evro_int
+DriverName=_evro_int_
+Devices=EVRO_4AO,status_m
+ComplexOption=1
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[complex] EVRO_16DO_
+PackageName=evro_int
+DriverName=_evro_int_
+Devices=EVRO_16DO,status_m
+ComplexOption=3
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+$$[$desc] EVRO_6RTD_&evro_int_evro_int_
+$$<Модуль термосопротивлений S-100-RTD6
+$$<6 каналов гальванически развязанных,  RS-485 (Modbus RTU 230400 бит/с), время опроса канала <150 мс,
+$$<свободное конфигурирование Pt50, Pt100, 50П, 100П, 50М, 100М, 100Н, R-Ом, диагностика работы, абсолютная погрешность <0,3 С
+$$[end]
+
+$$[$desc] EVRO_indicate_info&evro_int_evro_int_
+$$<Х.3.0 - Индикация канала 01, Х.3.1 - Индикация канала 02, Х.3.2 - Индикация канала 03, Х.3.3 - Индикация канала 04.,
+$$<Х.3.4 - Индикация канала 05, Х.3.5 - Индикация канала 06, Х.3.6 - Индикация канала 07, Х.3.7 - Индикация канала 08.
+$$[end]
+
+$$[$desc] EVRO_6AI_&evro_int_evro_int_
+$$<Модуль аналогового ввода S-100-АI6
+$$<6 каналов гальванически развязанных, 4-20 мА (0-10 В), RS-485 (Modbus RTU 230400 бит/с), время опроса канала <8 мс,
+$$<свободное конфигурирование, диагностика работы, приведенная погрешность <0,25, активный/пассивный.
+$$[end]
+
+$$[$desc] EVRO_8RO_&evro_int_evro_int_
+$$<Модуль релейного вывода S-100-RО8
+$$<8 каналов, RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <20 мс,
+$$<свободное конфигурирование, диагностика работы, до 4А на канал (до 2А на канал – все включены)
+$$[end]
+
+$$[$desc] EVRO_avar_info&evro_int_evro_int_
+$$<Х.1.0 - Ошибка канала 01, Х.1.1 - Ошибка канала 02, Х.1.2 - Ошибка канала 03, Х.1.3 - Ошибка канала 04.,
+$$<Х.1.4 - Ошибка канала 05, Х.1.5 - Ошибка канала 06, Х.1.6 - Ошибка канала 07, Х.1.7 - Ошибка канала 08.
+$$[end]
+
+$$[$desc] EVRO_modul_info_&evro_int_evro_int_
+$$<Виртуальный драйвер диагностики
+$$<поддерживает все модули S-100-XXXX серии (HARD), состоит из следующих простых устройств:
+$$<1) Общие ошибки.  2) Поканальные ошибки. 3) Температура процессора. 4) Светодиодная индикация.
+$$[end]
+
+$$[$desc] EVRO_temp_info&evro_int_evro_int_
+$$<Х.2.0 - Температура процессора.
+$$[end]
+
+$$[$desc] EVRO_16DI_&evro_int_evro_int_
+$$<Модуль дискретного ввода S-100-DI16
+$$<16 каналов (гальванически развязанны 2 группы по 8 каналов), RS-485 (Modbus RTU 230400 бит/с), время опроса канала  – от 0,1 мс,
+$$<режим счетчика до 4 кГц, свободное конфигурирование, диагностика работы, механические контакты/биполярные, полевые ключи
+$$[end]
+
+$$[$desc] EVRO_8TC_&evro_int_evro_int_
+$$<Модуль термопарный S-100-TC8
+$$<8 каналов гальванически развязанных,R,S,B,T,L,J,K,E,N,A-1,A-2,A-3 RS-485 (Modbus RTU 230400 бит/с), время опроса канала <150 мс,
+$$<свободное конфигурирование, диагностика работы, абсолютная погрешность <0,3 С, термокомпенсация «холодных» концов
+$$[end]
+
+$$[$desc] EVRO_modul_info&evro_int_evro_int_
+$$<Х.0.0 - Перегрев канала,	             Х.0.1 - Авария канала,  Х.0.2 - Превышена t модуля,             Х.0.3 - Изменены настр. польз.,
+$$<Х.0.4 - Ошибка памяти процессора, Х.0.5 - резерв,               Х.0.6 - Ошибки данных на приеме,    Х.0.7 - Ошибка CRC,
+$$<Х.0.8 - Был широковещ. запрос,       Х.0.9 - Был перерыв питания.
+$$[end]
+
+$$[$desc] EVRO_4AO_&evro_int_evro_int_
+$$<Модуль аналогового вывода S-100-АО4
+$$<4 канала гальванически развязанных, 4-20 мА (0-10 В), RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <500 мс,
+$$<свободное конфигурирование, диагностика работы, приведенная погрешность не более 0,25
+$$[end]
+
+$$[$desc] EVRO_16DO_&evro_int_evro_int_
+$$<Модуль дискретного вывода S-100-DО16
+$$<16 каналов (гальванически развязанны 2 группы по 8 каналов), RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <10 мс,
+$$<свободное конфигурирование, диагностика работы, до 2А на канал (до 4А на группу)
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$:status_m&evro_int_evro_int_
+$$:EVRO_8DIR&evro_int_evro_int_
+$$:EVRO_8AO&evro_int_evro_int_
+$$:EVRO_8AI&evro_int_evro_int_
+$$:EVRO_8DO&evro_int_evro_int_
+$$:EVRO_8DI&evro_int_evro_int_
+$$>Default
+$$[end]
+
+[structure] St_Handle
+[end]
+
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
+[end]
+
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
+[end]
+
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[function] Fast_array_dot
+SingleTextLine=scalar multiply of a fast arraies
+GroupName=FastArray
+Type=LREAL
+ShortName=res
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_array_range
+SingleTextLine=linear range of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] firstData
+Direction=Input
+Type=LREAL
+ShortName=dat1
+SingleTextLine=
+[end]
+
+[pOUParam] lastData
+Direction=Input
+Type=LREAL
+ShortName=dat2
+SingleTextLine=
+[end]
+
+[function] Fast_array_create
+SingleTextLine=Creation of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] NameArr
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NArr
+SingleTextLine=The Name of ISaGRAF's Array
+[end]
+
+[function] FastLibInit
+GroupName=FastArray
+Type=BOOL
+ShortName=2
+[end]
+
+[function] Fast_array_add
+SingleTextLine=summa of a fast arraies
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleSum
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=arraySum=arrayA + arrayB
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_array_min
+SingleTextLine=Find of of min  value
+GroupName=FastArray
+Type=LREAL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[function] Fast_array_max
+SingleTextLine=Find of of max  value
+GroupName=FastArray
+Type=LREAL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[function] Fast_array_cumulsum
+SingleTextLine=cumulative sum of elements of fast array
+GroupName=FastArray
+Type=LREAL
+ShortName=Res
+[end]
+
+[pOUParam] ConsumArr
+Direction=Input
+Type=St_Handle
+ShortName=Arr
+SingleTextLine=The summing Array
+[end]
+
+[function] Fast_array_mul
+SingleTextLine=multiply of a fast arraies
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleRes
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=arrayRes=arrayA  x arrayB
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_array_fill
+SingleTextLine=Filling of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] dataTofill
+Direction=Input
+Type=LREAL
+ShortName=data
+SingleTextLine=
+[end]
+
+[function] Fast_array_zeroes
+SingleTextLine=Zeroing of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[function] Fast_array_copy
+SingleTextLine=Copying of a fast array
+GroupName=FastArray
+Type=BOOL
+ShortName=Res
+[end]
+
+[pOUParam] ConsumArr
+Direction=Input
+Type=St_Handle
+ShortName=CArr
+SingleTextLine=The consuming Array
+[end]
+
+[pOUParam] ProducArray
+Direction=Input
+Type=St_Handle
+ShortName=PArr
+SingleTextLine=The producing Array
+[end]
+
+[function] Fast_array_scale
+SingleTextLine=Miltply of a fast array on koefficient
+GroupName=FastArray
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleArray
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Array
+[end]
+
+[pOUParam] koeff
+Direction=Input
+Type=LREAL
+ShortName=koef
+SingleTextLine=
+[end]
+
+[function] Fast_array_spectrum
+SingleTextLine=power spectrum of  fast array
+GroupName=FastArray
+Type=UDINT
+ShortName=res
+[end]
+
+[pOUParam] handleData
+Direction=Input
+Type=St_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleSpectrum
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+$$[$desc] Fast_array_dot
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_range
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_create
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_add
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_min
+$$<Find and return minimal value of array items
+$$<
+$$[end]
+
+$$[$desc] Fast_array_max
+$$<Find and return maximal value of array items
+$$<
+$$<
+$$[end]
+
+$$[$desc] Fast_array_cumulsum
+$$<The Copying of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_mul
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_fill
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_zeroes
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_copy
+$$<The Copying of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_scale
+$$<The Creation of a fast array
+$$<
+$$[end]
+
+$$[$desc] Fast_array_spectrum
+$$<calculate  the power spectrum of dataarray
+$$<return number of garmonics or 0 (if error)
+$$<
+$$<
+$$[end]
+
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[structure] Mt_Handle
+[end]
+
+[display] 0
+[field] AddrMatrix
+Type=ULINT
+SingleTextLine=The Address of Matrix
+[end]
+
+[field] TypeMatrix
+Type=SINT
+SingleTextLine=The Type of Matrix
+[end]
+
+[field] DimensionOfMatrix1
+Type=DINT
+SingleTextLine=The First Dimension Of Matrix
+[end]
+
+[field] DimensionOfMatrix2
+Type=DINT
+SingleTextLine=The Second Dimension Of Matrix
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[structure] St_Handle
+[end]
+
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
+[end]
+
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
+[end]
+
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[function] Fast_matrix_fill
+SingleTextLine=Filling of a fast matrix
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Matrix
+[end]
+
+[pOUParam] dataTofill
+Direction=Input
+Type=LREAL
+ShortName=data
+SingleTextLine=
+[end]
+
+[function] Fast_matrix_copy
+SingleTextLine=Copying of a fast matrix
+GroupName=FastMatrix
+Type=BOOL
+ShortName=Res
+[end]
+
+[pOUParam] ConsumMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=CMtx
+SingleTextLine=The consuming Matrix
+[end]
+
+[pOUParam] ProducMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=PMtx
+SingleTextLine=The producing Matrix
+[end]
+
+[function] Fast_matrix_on_vec
+SingleTextLine=multiply of a fast matrix on vector-array
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=Mt_Handle
+ShortName=hA
+SingleTextLine=Matrix A
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=St_Handle
+ShortName=hB
+SingleTextLine=Vector B (fast array)
+[end]
+
+[pOUParam] handleRes
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=matrixA  x arrayB = arrayRes
+[end]
+
+[function] Fast_matrix_zeroes
+SingleTextLine=Zeroing of a fast matrix
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Matrix
+[end]
+
+[function] Fast_matrix_scale
+SingleTextLine=Miltply of a fast matrix on koefficient
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Matrix
+[end]
+
+[pOUParam] koeff
+Direction=Input
+Type=LREAL
+ShortName=koef
+SingleTextLine=
+[end]
+
+[function] Fast_matrix_add
+SingleTextLine=summa of a fast matrixes
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleSum
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=matrixSum=matrixA + matrixB
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=Mt_Handle
+ShortName=hA
+SingleTextLine=
+[end]
+
+[pOUParam] handleB
+Direction=Input
+Type=Mt_Handle
+ShortName=hB
+SingleTextLine=
+[end]
+
+[function] Fast_matrix_create
+SingleTextLine=Creation of a fast matrix
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleMatrix
+Direction=Input
+Type=Mt_Handle
+ShortName=Hand
+SingleTextLine=handler of Fast Matrix ( range 2)
+[end]
+
+[pOUParam] NameMatrix
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NMtx
+SingleTextLine=The Name of ISaGRAF's Array [1..N, 1..M]
+[end]
+
+[function] Fast_matrix_linsolve
+SingleTextLine=Solve of linear equations system
+GroupName=FastMatrix
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] handleA
+Direction=Input
+Type=Mt_Handle
+ShortName=hA
+SingleTextLine=Matrix A
+[end]
+
+[pOUParam] handleX
+Direction=Input
+Type=St_Handle
+ShortName=hX
+SingleTextLine=Vector X (fast array) - unknown vector
+[end]
+
+[pOUParam] handleRes
+Direction=Input
+Type=St_Handle
+ShortName=Hand
+SingleTextLine=matrixA  x arrayX = arrayRes
+[end]
+
+$$[$desc] Fast_matrix_fill
+$$<Fill matrix any value
+$$<
+$$<
+$$[end]
+
+$$[$desc] Fast_matrix_copy
+$$<The Copying of a fast matrix
+$$<
+$$<
+$$[end]
+
+$$[$desc] Fast_matrix_on_vec
+$$<MatA * VecB = VecRes
+$$<
+$$[end]
+
+$$[$desc] Fast_matrix_zeroes
+$$<The Creation of a fast matrix
+$$<
+$$<
+$$[end]
+
+$$[$desc] Fast_matrix_scale
+$$<Multiply matrix on any value
+$$[end]
+
+$$[$desc] Fast_matrix_add
+$$<The Summa of a fast matrixes
+$$<
+$$<
+$$[end]
+
+$$[$desc] Fast_matrix_create
+$$<The Creation of a fast matrix
+$$<
+$$[end]
+
+$$[$desc] Fast_matrix_linsolve
+$$<find unknown vector X for linear system
+$$<MatA have dimensions [1..N,1..N]
+$$<Vecs have dimensions [1..N]
+$$<MatA * VecX = VecRes
+$$<
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[function] alarm_ulint
+SingleTextLine=send ULINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=ULINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_lint
+SingleTextLine=send LINT varaible to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=LINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_lreal
+SingleTextLine=send LREAL variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=LREAL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_resend
+SingleTextLine=obsolete
+GroupName=FDA alarm
+Type=DINT
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_int
+SingleTextLine=send INTvariable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=INT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_bool
+SingleTextLine=send BOOL variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_send
+SingleTextLine=obsolete
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_string
+SingleTextLine=send STRING variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_udint
+SingleTextLine=send UDINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=UDINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_dint
+SingleTextLine=send DINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=DINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_uint
+SingleTextLine=send UINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=UINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_usint
+SingleTextLine=send USINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=USINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_sint
+SingleTextLine=send SINT variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=SINT
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_real
+SingleTextLine=send REAL variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_time
+SingleTextLine=send TIME variable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=TIME
+ShortName=
+SingleTextLine=
+[end]
+
+[function] alarm_date
+SingleTextLine=send DATEvariable to FDA-OPC
+GroupName=FDA alarm
+Type=BOOL
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=DATE
+ShortName=
+SingleTextLine=
+[end]
+
+[device] send
+PackageName=rt
+DriverName=alarm
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] status
+PackageName=rt
+DriverName=alarm
+Type=DINT
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[complex] Alarm
+PackageName=rt
+DriverName=alarm
+SingleTextLine=FDA alarm
+Devices=send,status
+ComplexOption=1
+[end]
+
+[deviceParam] IP_address
+Format=STRING
+Access=USER DEFINED
+Default=None
+SingleTextLine=IP address of computer with FDA-OPC
+[end]
+
+[deviceParam] Port
+Format=WORD
+Access=USER DEFINED
+Default=1520
+SingleTextLine=UDP port on computer with FDA-OPC for alarm receive
+[end]
+
+$$[$desc] alarm_ulint
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_lint
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_lreal
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_resend
+$$<return value:
+$$<0  - if answer was received
+$$<1  - if if answer wasn't received and new alarm send
+$$<-1  -if error
+$$[end]
+
+$$[$desc] alarm_int
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_bool
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_send
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_string
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_udint
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_dint
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_uint
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_usint
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_sint
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_real
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_time
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[$desc] alarm_date
+$$<return value:
+$$<1 - if ok
+$$<0 - if error
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$:alarm_ulint
+$$:alarm_lint
+$$:Alarm&rtalarm
+$$:alarm_lreal
+$$:alarm_resend
+$$:alarm_int
+$$:alarm_bool
+$$:alarm_send
+$$:alarm_string
+$$:alarm_udint
+$$:alarm_dint
+$$:alarm_uint
+$$:alarm_usint
+$$:alarm_sint
+$$:send&rtalarm
+$$:status&rtalarm
+$$:alarm_real
+$$:alarm_time
+$$:alarm_date
+$$>Default
+$$[end]
+
+[complex] FDA_serv
+PackageName=rt
+DriverName=serv
+Devices=
+ComplexOption=1
+[end]
+
+[deviceParam] in_size
+Format=LONG
+Access=USER DEFINED
+Default=60000
+SingleTextLine=Size of UDP input buffer (pameter -i for fda_serv utility)
+[end]
+
+[deviceParam] port
+Format=WORD
+Access=USER DEFINED
+Default=1510
+SingleTextLine=UDP port (parameter -p for fda_serv utility)
+[end]
+
+[deviceParam] out_size
+Format=LONG
+Access=USER DEFINED
+Default=60000
+SingleTextLine=Size of UDP output buffer (pameter -s for fda_serv utility)
+[end]
+
+[deviceParam] timeout
+Format=WORD
+Access=USER DEFINED
+Default=0
+SingleTextLine=Parameter -t for fda_serv utility. If 0 fda_serv works in blocking mode
+[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[structure] FIR_Handle
+[end]
+
+[display] 0
+[field] FirPtr
+Type=ULINT
+SingleTextLine=The Address of Matrix [2,N] with FIR coeffs in Matrix[1]
+[end]
+
+[field] Range
+Type=DINT
+SingleTextLine=The FIR dimension (N)
+[end]
+
+[field] DataCounter
+Type=DINT
+SingleTextLine=counter data have being filter
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[structure] St_Handle
+[end]
+
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
+[end]
+
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
+[end]
+
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[function] FIR_vector
+GroupName=FIR
+Type=BOOL
+ShortName=4
+[end]
+
+[pOUParam] FirHandle
+Direction=Input
+Type=FIR_Handle
+ShortName=1
+SingleTextLine=handler FIR object
+[end]
+
+[pOUParam] Source
+Direction=Input
+Type=St_Handle
+ShortName=2
+SingleTextLine=data array for filtering
+[end]
+
+[pOUParam] Dest
+Direction=Input
+Type=St_Handle
+ShortName=3
+SingleTextLine=
+[end]
+
+[function] FIRf
+GroupName=FIR
+Type=REAL
+ShortName=3
+[end]
+
+[pOUParam] FirHandle
+Direction=Input
+Type=FIR_Handle
+ShortName=1
+SingleTextLine=handler FIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=REAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+[function] FIR_create
+SingleTextLine=Creation of a FIR object
+GroupName=FIR
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleFir
+Direction=Input
+Type=FIR_Handle
+ShortName=Hand
+SingleTextLine=handler of FIR Object
+[end]
+
+[pOUParam] NameCoeff
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NArr
+SingleTextLine=The Name of ISaGRAF's Array with FIR coeffs
+[end]
+
+[function] FIR
+GroupName=FIR
+Type=LREAL
+ShortName=3
+[end]
+
+[pOUParam] FirHandle
+Direction=Input
+Type=FIR_Handle
+ShortName=1
+SingleTextLine=handler FIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=LREAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+$$[$desc] FIR_vector
+$$<Data filtering from array Source and store in array Dest
+$$[end]
+
+$$[$desc] FIRf
+$$<Data filtering point by point
+$$[end]
+
+$$[$desc] FIR_create
+$$<The Creation of a FIR object
+$$<from Isagraf Matrix with dimension [2,N]
+$$<N - FIR degree
+$$<Matrix [1] -  FIR coeffs "b"
+$$<Matrix[2] - reserved system data (internal FIR stack )
+$$<
+$$<
+$$<
+$$<
+$$[end]
+
+$$[$desc] FIR
+$$<Data filtering point by point
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[structure] IIR_Handle
+[end]
+
+[display] 0
+[field] IIrPtr
+Type=ULINT
+SingleTextLine=The Address of Matrix [4,N] with IIR coeffs in Matrix[1],Matrix[2]
+[end]
+
+[field] Range
+Type=DINT
+SingleTextLine=The IIR dimension (N)
+[end]
+
+[field] DataCounter
+Type=DINT
+SingleTextLine=counter data have being filter
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[structure] St_Handle
+[end]
+
+[display] 0
+[field] AddrArray
+Type=ULINT
+SingleTextLine=The Address of Array
+[end]
+
+[field] TypeArray
+Type=SINT
+SingleTextLine=The Type of Array
+[end]
+
+[field] SizeArray
+Type=DINT
+SingleTextLine=The Size of Array
+[end]
+
+[field] error
+Type=BOOL
+SingleTextLine=TRUE if error in last operathion
+[end]
+
+[function] IIRf
+GroupName=IIR
+Type=REAL
+ShortName=3
+[end]
+
+[pOUParam] IirHandle
+Direction=Input
+Type=IIR_Handle
+ShortName=1
+SingleTextLine=handler IIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=REAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+[function] IIR_create
+SingleTextLine=Creation of a IIR object
+GroupName=IIR
+Type=BOOL
+ShortName=res
+[end]
+
+[pOUParam] HandleIir
+Direction=Input
+Type=IIR_Handle
+ShortName=Hand
+SingleTextLine=handler of IIR Object
+[end]
+
+[pOUParam] NameCoeff
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NArr
+SingleTextLine=The Name of ISaGRAF's Array with IIR coeffs
+[end]
+
+[function] IIR
+GroupName=IIR
+Type=LREAL
+ShortName=3
+[end]
+
+[pOUParam] IirHandle
+Direction=Input
+Type=IIR_Handle
+ShortName=1
+SingleTextLine=handler IIR object
+[end]
+
+[pOUParam] V
+Direction=Input
+Type=LREAL
+ShortName=2
+SingleTextLine=data point for filtering
+[end]
+
+[function] IIR_vector
+GroupName=FIR
+Type=BOOL
+ShortName=4
+[end]
+
+[pOUParam] IIrHandle
+Direction=Input
+Type=IIR_Handle
+ShortName=1
+SingleTextLine=handler IIR object
+[end]
+
+[pOUParam] Source
+Direction=Input
+Type=St_Handle
+ShortName=2
+SingleTextLine=data array for filtering
+[end]
+
+[pOUParam] Dest
+Direction=Input
+Type=St_Handle
+ShortName=3
+SingleTextLine=
+[end]
+
+$$[$desc] IIRf
+$$<Data filtering point by point
+$$[end]
+
+$$[$desc] IIR_create
+$$<The Creation of a IIR object
+$$<from Isagraf Matrix with dimension [3,N]
+$$<N - FIR degree
+$$<Matrix [1] -  FIR coeffs "b"
+$$<Matrix [2] -  FIR coeffs "a"
+$$<Matrix[3] - reserved system data (internal IIR stack )
+$$<Matrix[4] - reserved system data (internal IIR stack )
+$$<
+$$<
+$$<
+$$<
+$$<
+$$<
+$$[end]
+
+$$[$desc] IIR
+$$<Data filtering point by point
+$$[end]
+
+$$[$desc] IIR_vector
+$$<Data filtering from array Source and store in array Dest
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[array] RESERVED_AE_CONTEXT
+Internal=No
+Hidden=No
+SingleTextLine=Reserved AE context
+Type=SINT
+Dimension=[1..88]
+[end]
+
+[structure] GAIN_PID
+Internal=No
+Hidden=No
+[end]
+
+[display] 0
+[field] DirectActing
+Type=BOOL
+SingleTextLine=''
+Hidden=No
+[end]
+
+[field] ProportionalGain
+Type=REAL
+SingleTextLine=''
+Hidden=No
+[end]
+
+[field] TimeIntegral
+Type=REAL
+SingleTextLine=''
+Hidden=No
+[end]
+
+[field] TimeDerivative
+Type=REAL
+SingleTextLine=''
+Hidden=No
+[end]
+
+[field] DerivativeGain
+Type=REAL
+SingleTextLine=''
+Hidden=No
+[end]
+
+[structure] TIMESPEC
+Internal=No
+Hidden=No
+SingleTextLine=structured type representing the time the process value of an I/O channel was last updated
+[end]
+
+[display] 0
+[field] Sec
+Type=DINT
+SingleTextLine=Number of seconds elapsed since 1970/01/01 00:00:00:000 in the timestamp of the process value (TIME)
+Hidden=No
+[end]
+
+[field] Nsec
+Type=DINT
+SingleTextLine=Number of nanoseconds in the timestamp of the process value from the beginning of the second indicated by Sec (TIME)
+Hidden=No
+[end]
+
+[structure] COND_P_BOOL
+Internal=No
+Hidden=No
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] state
+Type=DINT
+SingleTextLine=bit 0=active/inactive bit 1=enable/disable bit 2=ack/no ack
+Hidden=No
+[end]
+
+[field] activeTime
+Type=TIMESPEC
+SingleTextLine=Condition active start time
+Hidden=No
+[end]
+
+[field] inactiveTime
+Type=TIMESPEC
+SingleTextLine=Condition inactive start time
+Hidden=No
+[end]
+
+[field] ackTime
+Type=TIMESPEC
+SingleTextLine=Acknowledge time
+Hidden=No
+[end]
+
+[field] timeout
+Type=DINT
+SingleTextLine=Timeout value
+Hidden=No
+[end]
+
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+Hidden=No
+[end]
+
+[field] acknowledge
+Type=BOOL
+SingleTextLine=Acknowledgement
+Hidden=No
+[end]
+
+[field] mode
+Type=SINT
+SingleTextLine=0=0->1 active 2=1->0 active 3=0->1 or 1->0 active
+Hidden=No
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+Hidden=No
+[end]
+
+[structure] ERROR
+Internal=No
+Hidden=No
+SingleTextLine=structured type indicating if an error occurred regarding the I/O channel
+[end]
+
+[display] 1
+[field] Layer
+Type=DINT
+SingleTextLine=layer of the error (DINT)
+Hidden=No
+[end]
+
+[field] Number
+Type=DINT
+SingleTextLine=number of the error (DINT)
+Hidden=No
+[end]
+
+[structure] QUALITY
+Internal=No
+Hidden=No
+SingleTextLine=Structured type indicating how good the process value of an I/O channel is
+[end]
+
+[display] 0
+[field] Value
+Type=SINT
+SingleTextLine=Number of the quality (SINT)
+Hidden=No
+[end]
+
+[structure] COND_P_DINT
+Internal=No
+Hidden=No
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] state
+Type=DINT
+SingleTextLine=bit 0=active/inactive bit 1=enable/disable bit 2=ack/no ack
+Hidden=No
+[end]
+
+[field] activeTime
+Type=TIMESPEC
+SingleTextLine=Condition active start time
+Hidden=No
+[end]
+
+[field] inactiveTime
+Type=TIMESPEC
+SingleTextLine=Condition inactive start time
+Hidden=No
+[end]
+
+[field] ackTime
+Type=TIMESPEC
+SingleTextLine=Acknowledge time
+Hidden=No
+[end]
+
+[field] timeout
+Type=DINT
+SingleTextLine=Timeout value
+Hidden=No
+[end]
+
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+Hidden=No
+[end]
+
+[field] acknowledge
+Type=BOOL
+SingleTextLine=Acknowledgement
+Hidden=No
+[end]
+
+[field] level
+Type=DINT
+SingleTextLine=Level comparaison (limits) SetPoint (deviation) Value comparaison (Rate of Change)
+Hidden=No
+[end]
+
+[field] hysteresis
+Type=DINT
+SingleTextLine=Hysteresis value
+Hidden=No
+[end]
+
+[field] deadband
+Type=DINT
+SingleTextLine=Deadband value
+Hidden=No
+[end]
+
+[field] period
+Type=DINT
+SingleTextLine=Rate of Change period value
+Hidden=No
+[end]
+
+[field] deviation
+Type=DINT
+SingleTextLine=Deviation value
+Hidden=No
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+Hidden=No
+[end]
+
+[structure] EVENT_P_BOOL
+Internal=No
+Hidden=No
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+Hidden=No
+[end]
+
+[field] mode
+Type=SINT
+SingleTextLine=Deadband value
+Hidden=No
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+Hidden=No
+[end]
+
+[structure] EVENT_P_DINT
+Internal=No
+Hidden=No
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+Hidden=No
+[end]
+
+[field] deadband
+Type=DINT
+SingleTextLine=deadband value
+Hidden=No
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+Hidden=No
+[end]
+
+[structure] AT_PARAM
+Internal=No
+Hidden=No
+[end]
+
+[display] 0
+[field] Load
+Type=REAL
+Hidden=No
+[end]
+
+[field] Deviation
+Type=REAL
+Hidden=No
+[end]
+
+[field] Step
+Type=REAL
+Hidden=No
+[end]
+
+[field] ATDynaSet
+Type=REAL
+Hidden=No
+[end]
+
+[field] ATReset
+Type=BOOL
+Hidden=No
+[end]
+
+[structure] COND_P_REAL
+Internal=No
+Hidden=No
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] state
+Type=DINT
+SingleTextLine=bit 0=active/inactive bit 1=enable/disable bit 2=ack/no ack
+Hidden=No
+[end]
+
+[field] activeTime
+Type=TIMESPEC
+SingleTextLine=Condition active start time
+Hidden=No
+[end]
+
+[field] inactiveTime
+Type=TIMESPEC
+SingleTextLine=Condition inactive start time
+Hidden=No
+[end]
+
+[field] ackTime
+Type=TIMESPEC
+SingleTextLine=Acknowledge time
+Hidden=No
+[end]
+
+[field] timeout
+Type=DINT
+SingleTextLine=Timeout value
+Hidden=No
+[end]
+
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+Hidden=No
+[end]
+
+[field] acknowledge
+Type=BOOL
+SingleTextLine=Acknowledgement
+Hidden=No
+[end]
+
+[field] level
+Type=REAL
+SingleTextLine=Level comparaison (limits) SetPoint (deviation) Value comparaison (Rate of Change)
+Hidden=No
+[end]
+
+[field] hysteresis
+Type=REAL
+SingleTextLine=Hysteresis value
+Hidden=No
+[end]
+
+[field] deadband
+Type=REAL
+SingleTextLine=Deadband value
+Hidden=No
+[end]
+
+[field] period
+Type=DINT
+SingleTextLine=Rate of Change period value
+Hidden=No
+[end]
+
+[field] deviation
+Type=REAL
+SingleTextLine=Deviation value
+Hidden=No
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+Hidden=No
+[end]
+
+[structure] EVENT_P_REAL
+Internal=No
+Hidden=No
+SingleTextLine=Alarm condition input parameters
+[end]
+
+[display] 0
+[field] enable
+Type=BOOL
+SingleTextLine=Condition enable
+Hidden=No
+[end]
+
+[field] deadband
+Type=REAL
+SingleTextLine=deadband value
+Hidden=No
+[end]
+
+[field] reserved
+Type=RESERVED_AE_CONTEXT
+SingleTextLine=Context
+Hidden=No
+[end]
+
+[structure] ALARM_SETTING
+Internal=No
+Hidden=No
+[end]
+
+[display] 1
+[field] HighLimit
+Type=REAL
+Hidden=No
+[end]
+
+[field] HighAlarm
+Type=REAL
+Hidden=No
+[end]
+
+[field] HighWarning
+Type=REAL
+Hidden=No
+[end]
+
+[field] LowWarning
+Type=REAL
+Hidden=No
+[end]
+
+[field] LowAlarm
+Type=REAL
+Hidden=No
+[end]
+
+[field] LowLimit
+Type=REAL
+Hidden=No
+[end]
+
+[field] DeadBand
+Type=REAL
+Hidden=No
+[end]
+
+[field] HighDeviation
+Type=REAL
+Hidden=No
+[end]
+
+[field] LowDeviation
+Type=REAL
+Hidden=No
+[end]
+
+[field] RateOfChangePeriod
+Type=REAL
+Hidden=No
+[end]
+
+[field] RateOfChangeUp
+Type=REAL
+Hidden=No
+[end]
+
+[field] RateOfChangeDown
+Type=REAL
+Hidden=No
+[end]
+
+[field] DelayInTime
+Type=REAL
+Hidden=No
+[end]
+
+[field] DelayOutTime
+Type=REAL
+Hidden=No
+[end]
+
+[field] HighLimitEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] HighAlarmEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] HighWarningEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] LowWarningEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] LowAlarmEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] LowLimitEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] HighDeviationEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] LowDeviationEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] RateOfChangeUpEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] RateOfChangeDownEnable
+Type=BOOL
+Hidden=No
+[end]
+
+[field] RingBack
+Type=BOOL
+Hidden=No
+[end]
+
+[function] GET_TIME_STRING
+SingleTextLine=Get time in string format YYYY/MM/DD HH:MM:SS MMM
+Help=[Context2]Coll_ISa5_rtm.prt_std.get_time_string
+GroupName=String Manipulation
+Type=STRING
+StringLength=255
+ShortName=OUT
+[end]
+
+[pOUParam] SEC
+Direction=Input
+Type=DINT
+ShortName=SEC
+SingleTextLine=Number of second since 1970/01/01
+[end]
+
+[pOUParam] NSEC
+Direction=Input
+Type=DINT
+ShortName=NSEC
+SingleTextLine=Number of nano second in current second
+[end]
+
+[function] SET_PRIORITY
+Help=[Context2]Coll_ISa5_rtm.prt_std.set_priority
+GroupName=Process Control
+Type=SINT
+ShortName=Q
+[end]
+
+[pOUParam] INPUT
+Direction=Input
+Type=SINT
+ShortName=IN
+SingleTextLine=New priority for the virtual machine.
+[end]
+
+[functionBlock] MATRIX
+SingleTextLine=Matrix functions package
+Help=[Context2]Coll_ISa5_rtm.prt_stb.function_blocks
+GroupName=Arithmetic Operations
+InitInstance=No
+Is1499=No
+[end]
+
+[pOUParam] OPERATION
+Direction=Input
+Type=DINT
+ShortName=OP
+SingleTextLine=Operation selector
+[end]
+
+[pOUParam] MATRIX_1
+Direction=Input
+Type=DINT
+ShortName=MAT1
+SingleTextLine=General purpose input matrix #1
+[end]
+
+[pOUParam] MATRIX_2
+Direction=Input
+Type=DINT
+ShortName=MAT2
+SingleTextLine=General purpose input matrix #2
+[end]
+
+[pOUParam] MATRIX_3
+Direction=Input
+Type=DINT
+ShortName=MAT3
+SingleTextLine=General purpose input matrix #3
+[end]
+
+[pOUParam] INDEX_1
+Direction=Input
+Type=DINT
+ShortName=IDX1
+SingleTextLine=General purpose input index #1
+[end]
+
+[pOUParam] INDEX_2
+Direction=Input
+Type=DINT
+ShortName=IDX2
+SingleTextLine=General purpose input index #2
+[end]
+
+[pOUParam] IN_INTEGER_VALUE
+Direction=Input
+Type=DINT
+ShortName=INT
+SingleTextLine=General purpose INTEGER input container
+[end]
+
+[pOUParam] IN_FLOAT_VALUE
+Direction=Input
+Type=REAL
+ShortName=FLT
+SingleTextLine=General purpose FLOAT input container
+[end]
+
+[pOUParam] ERROR_CODE
+Direction=Output
+Type=DINT
+ShortName=ERR
+SingleTextLine=Last operation's error code
+[end]
+
+[pOUParam] MATRIX_RESULT
+Direction=Output
+Type=DINT
+ShortName=RES
+SingleTextLine=Resulting matrix
+[end]
+
+[pOUParam] MATRIX_TYPE
+Direction=Output
+Type=DINT
+ShortName=TYPE
+SingleTextLine=Matrix type
+[end]
+
+[pOUParam] MATRIX_ROWS
+Direction=Output
+Type=DINT
+ShortName=ROWS
+SingleTextLine=Matrix rows count
+[end]
+
+[pOUParam] MATRIX_COLS
+Direction=Output
+Type=DINT
+ShortName=COLS
+SingleTextLine=matrix cols count
+[end]
+
+[pOUParam] OUT_INTEGER_VALUE
+Direction=Output
+Type=DINT
+ShortName=INTG
+SingleTextLine=General purpose INTEGER output container
+[end]
+
+[pOUParam] OUT_FLOAT_VALUE
+Direction=Output
+Type=REAL
+ShortName=FLT
+SingleTextLine=General purpose FLOAT output container
+[end]
+
+[functionBlock] NOW
+SingleTextLine=Get current system time
+Help=[Context2]Coll_ISa5_rtm.prt_stb.now
+GroupName=Time Operations
+InitInstance=No
+Is1499=No
+[end]
+
+[pOUParam] SEC
+Direction=Output
+Type=DINT
+ShortName=SEC
+SingleTextLine=Number of second since 1970/01/01
+[end]
+
+[pOUParam] NSEC
+Direction=Output
+Type=DINT
+ShortName=NSEC
+SingleTextLine=Number of nano second in current second
+[end]
+
+[functionBlock] IPIDCONTROLLER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.ipidcontroller
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Process
+Direction=Input
+Type=REAL
+ShortName=P
+SingleTextLine=Process Value
+[end]
+
+[pOUParam] SetPoint
+Direction=Input
+Type=REAL
+ShortName=SP
+SingleTextLine=Set Point
+[end]
+
+[pOUParam] FeedBack
+Direction=Input
+Type=REAL
+ShortName=FB
+SingleTextLine=FeedBack
+[end]
+
+[pOUParam] Auto
+Direction=Input
+Type=BOOL
+ShortName=AUTO
+SingleTextLine=
+[end]
+
+[pOUParam] Initialize
+Direction=Input
+Type=BOOL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] Gains
+Direction=Input
+Type=GAIN_PID
+ShortName=GNS
+SingleTextLine=
+[end]
+
+[pOUParam] AutoTune
+Direction=Input
+Type=BOOL
+ShortName=ATUN
+SingleTextLine=
+[end]
+
+[pOUParam] ATParameters
+Direction=Input
+Type=AT_PARAM
+ShortName=ATPA
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] AbsoluteError
+Direction=Output
+Type=REAL
+ShortName=AERR
+SingleTextLine=
+[end]
+
+[pOUParam] ATWarning
+Direction=Output
+Type=DINT
+ShortName=ATW
+SingleTextLine=
+[end]
+
+[pOUParam] OutGains
+Direction=Output
+Type=GAIN_PID
+ShortName=OGNS
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_IPIDCONTROLLER
+Direction=Local
+Type=SINT
+Dimension=[1..184]
+ShortName=RDIC
+SingleTextLine=Reserved parameter for IPIDCONTROLLER
+[end]
+
+[functionBlock] SETPOINT
+Help=[Context2]Coll_ISa5_rtm.prt_stb.setpoint
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] TrackVariable
+Direction=Input
+Type=REAL
+ShortName=TV
+SingleTextLine=
+[end]
+
+[pOUParam] TargetSetpoint
+Direction=Input
+Type=REAL
+ShortName=TS
+SingleTextLine=
+[end]
+
+[pOUParam] RampRate
+Direction=Input
+Type=REAL
+ShortName=RR
+SingleTextLine=
+[end]
+
+[pOUParam] RampTime
+Direction=Input
+Type=REAL
+ShortName=RT
+SingleTextLine=
+[end]
+
+[pOUParam] Command
+Direction=Input
+Type=DINT
+ShortName=CMD
+SingleTextLine=
+[end]
+
+[pOUParam] PulseUp
+Direction=Input
+Type=BOOL
+ShortName=PU
+SingleTextLine=
+[end]
+
+[pOUParam] PulseDown
+Direction=Input
+Type=BOOL
+ShortName=PD
+SingleTextLine=
+[end]
+
+[pOUParam] PulseRate
+Direction=Input
+Type=DINT
+ShortName=PR
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_SETPOINT
+Direction=Local
+Type=SINT
+Dimension=[1..40]
+ShortName=RDSP
+SingleTextLine=Reserved parameter for SETPOINT
+[end]
+
+[functionBlock] GET_TIME_STRUCT
+SingleTextLine=Get time structure
+Help=[Context2]Coll_ISa5_rtm.prt_stb.get_time_struct
+GroupName=Time Operations
+InitInstance=No
+Is1499=No
+[end]
+
+[pOUParam] SEC
+Direction=Input
+Type=DINT
+ShortName=SEC
+SingleTextLine=Number of second since 1970/01/01
+[end]
+
+[pOUParam] NSEC
+Direction=Input
+Type=DINT
+ShortName=NSEC
+SingleTextLine=Number of nano second in current second
+[end]
+
+[pOUParam] YEAR
+Direction=Output
+Type=DINT
+ShortName=YEAR
+SingleTextLine=Year
+[end]
+
+[pOUParam] MONTH
+Direction=Output
+Type=DINT
+ShortName=MON.
+SingleTextLine=Month
+[end]
+
+[pOUParam] DAY
+Direction=Output
+Type=DINT
+ShortName=DAY
+SingleTextLine=Day
+[end]
+
+[pOUParam] HOUR
+Direction=Output
+Type=DINT
+ShortName=HOUR
+SingleTextLine=Hour
+[end]
+
+[pOUParam] MINUTE
+Direction=Output
+Type=DINT
+ShortName=MIN
+SingleTextLine=Minute
+[end]
+
+[pOUParam] SECOND
+Direction=Output
+Type=DINT
+ShortName=SEC
+SingleTextLine=Second
+[end]
+
+[pOUParam] MSEC
+Direction=Output
+Type=DINT
+ShortName=MSEC
+SingleTextLine=Millisecond
+[end]
+
+[functionBlock] RATIO
+Help=[Context2]Coll_ISa5_rtm.prt_stb.ratio
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputE
+Direction=Input
+Type=REAL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] Ratio
+Direction=Input
+Type=REAL
+ShortName=RAT
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] CHARACTERIZER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.characterizer
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] X0_10
+Direction=Input
+Type=REAL
+Dimension=[0..10]
+ShortName=X
+SingleTextLine=
+[end]
+
+[pOUParam] Y0_10
+Direction=Input
+Type=REAL
+Dimension=[0..10]
+ShortName=Y
+SingleTextLine=
+[end]
+
+[pOUParam] __ADI_X0_10
+Direction=Hidden
+Type=UINT
+InitValue=0
+ShortName=_ADI
+SingleTextLine=ADI hidden parameter for <X0_10> array input
+[end]
+
+[pOUParam] __ADI_Y0_10
+Direction=Hidden
+Type=UINT
+InitValue=0
+ShortName=_ADI
+SingleTextLine=ADI hidden parameter for <Y0_10> array input
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] LEADLAGCONTROLLER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.leadlagcontroller
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] TimeLead
+Direction=Input
+Type=REAL
+ShortName=Lead
+SingleTextLine=
+[end]
+
+[pOUParam] A
+Direction=Input
+Type=REAL
+ShortName=A
+SingleTextLine=
+[end]
+
+[pOUParam] TimeLag
+Direction=Input
+Type=REAL
+ShortName=Lag
+SingleTextLine=
+[end]
+
+[pOUParam] B
+Direction=Input
+Type=REAL
+ShortName=B
+SingleTextLine=
+[end]
+
+[pOUParam] Enable
+Direction=Input
+Type=BOOL
+ShortName=ENB
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] Status
+Direction=Output
+Type=DINT
+ShortName=STAT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_LEADLAGCONTROLLER
+Direction=Local
+Type=SINT
+Dimension=[1..36]
+ShortName=RDLL
+SingleTextLine=Reserved parameter for LEADLAGCONTROLLER
+[end]
+
+[functionBlock] TRACKANDHOLD
+Help=[Context2]Coll_ISa5_rtm.prt_stb.trackandhold
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Initial
+Direction=Input
+Type=REAL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] TrackVariable
+Direction=Input
+Type=REAL
+ShortName=TV
+SingleTextLine=
+[end]
+
+[pOUParam] TrackCommand
+Direction=Input
+Type=BOOL
+ShortName=TC
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_TRACKANDHOLD
+Direction=Local
+Type=SINT
+Dimension=[1..4]
+ShortName=RDTH
+SingleTextLine=Reserved parameter for TRACKANDHOLD
+[end]
+
+[functionBlock] BIAS
+Help=[Context2]Coll_ISa5_rtm.prt_stb.bias
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputE
+Direction=Input
+Type=REAL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] Bias
+Direction=Input
+Type=REAL
+ShortName=BIAS
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] SCALER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.scaler
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] InputMin
+Direction=Input
+Type=REAL
+ShortName=IMIN
+SingleTextLine=
+[end]
+
+[pOUParam] InputMax
+Direction=Input
+Type=REAL
+ShortName=IMAX
+SingleTextLine=
+[end]
+
+[pOUParam] OutputMin
+Direction=Input
+Type=REAL
+ShortName=OMIN
+SingleTextLine=
+[end]
+
+[pOUParam] OutputMax
+Direction=Input
+Type=REAL
+ShortName=OMAX
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] RATIOCALIBRATION
+Help=[Context2]Coll_ISa5_rtm.prt_stb.ratiocalibration
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputE
+Direction=Input
+Type=REAL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] Initial
+Direction=Input
+Type=REAL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] HighLimit
+Direction=Input
+Type=REAL
+ShortName=HLIM
+SingleTextLine=
+[end]
+
+[pOUParam] LowLimit
+Direction=Input
+Type=REAL
+ShortName=LLIM
+SingleTextLine=
+[end]
+
+[pOUParam] TrackVariable
+Direction=Input
+Type=REAL
+ShortName=TV
+SingleTextLine=
+[end]
+
+[pOUParam] TrackCommand
+Direction=Input
+Type=BOOL
+ShortName=TC
+SingleTextLine=
+[end]
+
+[pOUParam] Ratio
+Direction=Output
+Type=REAL
+ShortName=RAT
+SingleTextLine=
+[end]
+
+[pOUParam] TrackOutput
+Direction=Output
+Type=REAL
+ShortName=TO
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_RATIOCALIBRATION
+Direction=Local
+Type=SINT
+Dimension=[1..8]
+ShortName=RDRC
+SingleTextLine=Reserved parameter for RATIOCALIBRATION
+[end]
+
+[functionBlock] LEADLAGBACONTROLLER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.leadlagbacontroller
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=Input signal
+[end]
+
+[pOUParam] TimeLead
+Direction=Input
+Type=REAL
+ShortName=Lead
+SingleTextLine=Time constant for lead controller, in seconds
+[end]
+
+[pOUParam] A
+Direction=Input
+Type=REAL
+ShortName=A
+SingleTextLine=Gain for lead controller (a > 1 and a x b = 1)
+[end]
+
+[pOUParam] TimeLag
+Direction=Input
+Type=REAL
+ShortName=Lag
+SingleTextLine=Time constant for lag controller, in seconds
+[end]
+
+[pOUParam] B
+Direction=Input
+Type=REAL
+ShortName=B
+SingleTextLine=Gain for lag controller (b < 1 and a x b = 1)
+[end]
+
+[pOUParam] Enable
+Direction=Input
+Type=BOOL
+ShortName=ENB
+SingleTextLine=Enables the LEADLAGCONTROLLER. If set to FALSE, Output = 0.0
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=Mode used to handle the various types of errors
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=LEADLAGBACONTROLLER output
+[end]
+
+[pOUParam] Status
+Direction=Output
+Type=DINT
+ShortName=STAT
+SingleTextLine=LEADLAGCONTROLLER Status
+[end]
+
+[pOUParam] RESERVED_LEADLAGBACONTROLLER
+Direction=Local
+Type=SINT
+Dimension=[1..36]
+ShortName=RDLL
+SingleTextLine=Reserved parameter for LEADLAGBACONTROLLER
+[end]
+
+[functionBlock] DIGITALALARM
+Help=[Context2]Coll_ISa5_rtm.prt_stb.digitalalarm
+GroupName=Alarms Management
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=BOOL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] OutputEnable
+Direction=Input
+Type=BOOL
+ShortName=ENB
+SingleTextLine=
+[end]
+
+[pOUParam] Acknowledge
+Direction=Input
+Type=BOOL
+ShortName=ACK
+SingleTextLine=
+[end]
+
+[pOUParam] Mode
+Direction=Input
+Type=DINT
+ShortName=MODE
+SingleTextLine=
+[end]
+
+[pOUParam] RingBack
+Direction=Input
+Type=BOOL
+ShortName=RB
+SingleTextLine=
+[end]
+
+[pOUParam] Period
+Direction=Input
+Type=REAL
+ShortName=PER
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=DINT
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_DIGITALALARM
+Direction=Local
+Type=SINT
+Dimension=[1..32]
+ShortName=RDDA
+SingleTextLine=Reserved parameter for DIGITALALARM
+[end]
+
+[functionBlock] TRANSFERSWITCH
+Help=[Context2]Coll_ISa5_rtm.prt_stb.transferswitch
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputB
+Direction=Input
+Type=REAL
+ShortName=INB
+SingleTextLine=
+[end]
+
+[pOUParam] Command
+Direction=Input
+Type=BOOL
+ShortName=CMD
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] ANALOGALARM
+Help=[Context2]Coll_ISa5_rtm.prt_stb.analogalarm
+GroupName=Alarms Management
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputB
+Direction=Input
+Type=REAL
+ShortName=INB
+SingleTextLine=
+[end]
+
+[pOUParam] OutputEnable
+Direction=Input
+Type=BOOL
+Dimension=[0..2]
+ShortName=ENB
+SingleTextLine=
+[end]
+
+[pOUParam] Acknowledge
+Direction=Input
+Type=BOOL
+Dimension=[0..2]
+ShortName=ACK
+SingleTextLine=
+[end]
+
+[pOUParam] AlarmSetting
+Direction=Input
+Type=ALARM_SETTING
+ShortName=SET
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] __ADI_OutputEnable
+Direction=Hidden
+Type=UINT
+InitValue=0
+ShortName=_ADI
+SingleTextLine=ADI hidden parameter for <OutputEnable> array input
+[end]
+
+[pOUParam] __ADI_Acknowledge
+Direction=Hidden
+Type=UINT
+InitValue=0
+ShortName=_ADI
+SingleTextLine=ADI hidden parameter for <Acknowledge> array input
+[end]
+
+[pOUParam] OutputA
+Direction=Output
+Type=DINT
+ShortName=OUTA
+SingleTextLine=
+[end]
+
+[pOUParam] OutputB
+Direction=Output
+Type=DINT
+ShortName=OUTB
+SingleTextLine=
+[end]
+
+[pOUParam] OutputC
+Direction=Output
+Type=DINT
+ShortName=OUTC
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_ANALOGALARM
+Direction=Local
+Type=SINT
+Dimension=[1..252]
+ShortName=RDAA
+SingleTextLine=Reserved parameter for ANALOGALARM
+[end]
+
+[functionBlock] BATCHSWITCH
+Help=[Context2]Coll_ISa5_rtm.prt_stb.batchswitch
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] HighLimit
+Direction=Input
+Type=REAL
+ShortName=HLIM
+SingleTextLine=
+[end]
+
+[pOUParam] LowLimit
+Direction=Input
+Type=REAL
+ShortName=LLIM
+SingleTextLine=
+[end]
+
+[pOUParam] PreLoad
+Direction=Input
+Type=REAL
+ShortName=PREL
+SingleTextLine=
+[end]
+
+[pOUParam] Gain
+Direction=Input
+Type=REAL
+ShortName=GAIN
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] COMPARATOR
+Help=[Context2]Coll_ISa5_rtm.prt_stb.comparator
+GroupName=Comparator Operations
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] LimitValue
+Direction=Input
+Type=REAL
+ShortName=LIM
+SingleTextLine=
+[end]
+
+[pOUParam] DeadBand
+Direction=Input
+Type=REAL
+ShortName=DB
+SingleTextLine=
+[end]
+
+[pOUParam] DirectActing
+Direction=Input
+Type=BOOL
+ShortName=DIR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=BOOL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_COMPARATOR
+Direction=Local
+Type=SINT
+Dimension=[1..4]
+ShortName=RDCP
+SingleTextLine=Reserved parameter for COMPARATOR
+[end]
+
+[functionBlock] LIMITER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.limiter
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] HighLimit
+Direction=Input
+Type=REAL
+ShortName=HLIM
+SingleTextLine=
+[end]
+
+[pOUParam] LowLimit
+Direction=Input
+Type=REAL
+ShortName=LLIM
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] HighStatus
+Direction=Output
+Type=BOOL
+ShortName=HSTS
+SingleTextLine=
+[end]
+
+[pOUParam] LowStatus
+Direction=Output
+Type=BOOL
+ShortName=LSTS
+SingleTextLine=
+[end]
+
+[functionBlock] RATELIMITER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.ratelimiter
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] UpRate
+Direction=Input
+Type=REAL
+ShortName=UP
+SingleTextLine=
+[end]
+
+[pOUParam] DownRate
+Direction=Input
+Type=REAL
+ShortName=DOWN
+SingleTextLine=
+[end]
+
+[pOUParam] Enable
+Direction=Input
+Type=BOOL
+ShortName=ENB
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RaisingLimit
+Direction=Output
+Type=BOOL
+ShortName=RL
+SingleTextLine=
+[end]
+
+[pOUParam] FallingLimit
+Direction=Output
+Type=BOOL
+ShortName=FL
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_RATELIMITER
+Direction=Local
+Type=SINT
+Dimension=[1..16]
+ShortName=RDRL
+SingleTextLine=Reserved parameter for RATELIMITER
+[end]
+
+[functionBlock] PID_AL
+Help=[Context2]Coll_ISa5_rtm.prt_stb.pid_al
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Auto
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=TRUE: auto, FALSE: manual mode
+[end]
+
+[pOUParam] Pv
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Process output variable
+[end]
+
+[pOUParam] Sp
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Set point value
+[end]
+
+[pOUParam] X0
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Adjustment value: In manual mode, output pid regulator equal to X0
+[end]
+
+[pOUParam] Kp
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Proportionality constant
+[end]
+
+[pOUParam] Ti
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Integral time constant
+[end]
+
+[pOUParam] Td
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=derivative time constant
+[end]
+
+[pOUParam] Ts
+Direction=Input
+Type=TIME
+ShortName=
+SingleTextLine=Sampling period
+[end]
+
+[pOUParam] Xmin
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Minimal possible value
+[end]
+
+[pOUParam] Xmax
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=Maximum possible value
+[end]
+
+[pOUParam] Xout
+Direction=Output
+Type=REAL
+ShortName=
+SingleTextLine=Command
+[end]
+
+[pOUParam] Iterm
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] OldIterm
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] Memerror
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] Old_date
+Direction=Local
+Type=UDINT
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] Old_auto
+Direction=Local
+Type=BOOL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] old_sp
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] old_kp
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] old_ti
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[pOUParam] old_td
+Direction=Local
+Type=REAL
+ShortName=
+SingleTextLine=For internal use by FB instance
+[end]
+
+[functionBlock] SIGNALSELECTOR
+Help=[Context2]Coll_ISa5_rtm.prt_stb.signal_selector
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputB
+Direction=Input
+Type=REAL
+ShortName=INB
+SingleTextLine=
+[end]
+
+[pOUParam] InputC
+Direction=Input
+Type=REAL
+ShortName=INC
+SingleTextLine=
+[end]
+
+[pOUParam] Selector
+Direction=Input
+Type=BOOL
+ShortName=SEL
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=REAL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[functionBlock] BATCHTOTALIZER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.batchtotalizer
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Input
+Direction=Input
+Type=REAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] InitialValue
+Direction=Input
+Type=REAL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] Preset1
+Direction=Input
+Type=REAL
+ShortName=PRE1
+SingleTextLine=
+[end]
+
+[pOUParam] Preset2
+Direction=Input
+Type=REAL
+ShortName=PRE2
+SingleTextLine=
+[end]
+
+[pOUParam] ZeroDropOut
+Direction=Input
+Type=REAL
+ShortName=ZERO
+SingleTextLine=
+[end]
+
+[pOUParam] PulseScaling
+Direction=Input
+Type=REAL
+ShortName=PSCL
+SingleTextLine=
+[end]
+
+[pOUParam] TimeBase
+Direction=Input
+Type=DINT
+ShortName=TBAS
+SingleTextLine=
+[end]
+
+[pOUParam] Stop
+Direction=Input
+Type=BOOL
+ShortName=STOP
+SingleTextLine=
+[end]
+
+[pOUParam] Reset
+Direction=Input
+Type=BOOL
+ShortName=RST
+SingleTextLine=
+[end]
+
+[pOUParam] DirectActing
+Direction=Input
+Type=BOOL
+ShortName=DA
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Total
+Direction=Output
+Type=REAL
+ShortName=TOT
+SingleTextLine=
+[end]
+
+[pOUParam] Alarm1
+Direction=Output
+Type=BOOL
+ShortName=ALM1
+SingleTextLine=
+[end]
+
+[pOUParam] Alarm2
+Direction=Output
+Type=BOOL
+ShortName=ALM2
+SingleTextLine=
+[end]
+
+[pOUParam] Pulse
+Direction=Output
+Type=BOOL
+ShortName=PULS
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_BATCHTOTALIZER
+Direction=Local
+Type=SINT
+Dimension=[1..16]
+ShortName=RDBT
+SingleTextLine=Reserved parameter for BATCHTOTALIZER
+[end]
+
+[functionBlock] RETENTIVEONTIMER
+Help=[Context2]Coll_ISa5_rtm.prt_stb.retentiveontimer
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputOn
+Direction=Input
+Type=BOOL
+ShortName=INO
+SingleTextLine=
+[end]
+
+[pOUParam] InputEnable
+Direction=Input
+Type=BOOL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] DelayTime
+Direction=Input
+Type=REAL
+ShortName=DTIM
+SingleTextLine=
+[end]
+
+[pOUParam] ErrorMode
+Direction=Input
+Type=DINT
+ShortName=ERR
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=BOOL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] OutputNot
+Direction=Output
+Type=BOOL
+ShortName=ONOT
+SingleTextLine=
+[end]
+
+[pOUParam] ElapseTime
+Direction=Output
+Type=REAL
+ShortName=ETIM
+SingleTextLine=
+[end]
+
+[pOUParam] RemainingTime
+Direction=Output
+Type=REAL
+ShortName=RTIM
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_RETENTIVEONTIMER
+Direction=Local
+Type=SINT
+Dimension=[1..8]
+ShortName=RDRT
+SingleTextLine=Reserved parameter for RETENTIVEONTIMER
+[end]
+
+[functionBlock] BIASCALIBRATION
+Help=[Context2]Coll_ISa5_rtm.prt_stb.biascalibration
+GroupName=Process Control
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] InputA
+Direction=Input
+Type=REAL
+ShortName=INA
+SingleTextLine=
+[end]
+
+[pOUParam] InputE
+Direction=Input
+Type=REAL
+ShortName=INE
+SingleTextLine=
+[end]
+
+[pOUParam] Initial
+Direction=Input
+Type=REAL
+ShortName=INIT
+SingleTextLine=
+[end]
+
+[pOUParam] HighLimit
+Direction=Input
+Type=REAL
+ShortName=HLIM
+SingleTextLine=
+[end]
+
+[pOUParam] LowLimit
+Direction=Input
+Type=REAL
+ShortName=LLIM
+SingleTextLine=
+[end]
+
+[pOUParam] TrackVariable
+Direction=Input
+Type=REAL
+ShortName=TV
+SingleTextLine=
+[end]
+
+[pOUParam] TrackCommand
+Direction=Input
+Type=BOOL
+ShortName=TC
+SingleTextLine=
+[end]
+
+[pOUParam] Bias
+Direction=Output
+Type=REAL
+ShortName=BIAS
+SingleTextLine=
+[end]
+
+[pOUParam] TrackOutput
+Direction=Output
+Type=REAL
+ShortName=TO
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_BIASCALIBRATION
+Direction=Local
+Type=SINT
+Dimension=[1..8]
+ShortName=RDBC
+SingleTextLine=Reserved parameter for BIASCALIBRATION
+[end]
+
+[functionBlock] FLIPFLOP
+Help=[Context2]Coll_ISa5_rtm.prt_stb.flipflop
+GroupName=Boolean Operations
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] Set
+Direction=Input
+Type=BOOL
+ShortName=SET
+SingleTextLine=
+[end]
+
+[pOUParam] Reset
+Direction=Input
+Type=BOOL
+ShortName=RES
+SingleTextLine=
+[end]
+
+[pOUParam] Output
+Direction=Output
+Type=BOOL
+ShortName=OUT
+SingleTextLine=
+[end]
+
+[pOUParam] RESERVED_FLIPFLOP
+Direction=Local
+Type=SINT
+Dimension=[1..8]
+ShortName=RDFF
+SingleTextLine=Reserved parameter for FLIPFLOP
+[end]
+
+[function] ISA_SERIAL_SET
+SingleTextLine=Sets the paramaters of a communication link
+Help=[Context]4568
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] ARG1
+Direction=Input
+Type=DINT
+ShortName=ARG1
+SingleTextLine=For PCP_SER: handshake
+[end]
+
+[pOUParam] ARG2
+Direction=Input
+Type=DINT
+ShortName=ARG2
+SingleTextLine=For PCP_SER: baud rate
+[end]
+
+[pOUParam] ARG3
+Direction=Input
+Type=DINT
+ShortName=ARG3
+SingleTextLine=For PCP_SER: number of stop bits
+[end]
+
+[pOUParam] ARG4
+Direction=Input
+Type=STRING
+StringLength=8
+ShortName=ARG4
+SingleTextLine=For PCP_SER: parity
+[end]
+
+[function] ISA_SERIAL_RECEIVE
+SingleTextLine=Receives data from the communication link
+Help=[Context]4566
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] DATA
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=DATA
+SingleTextLine=Receive information
+[end]
+
+[pOUParam] LENGTH
+Direction=Input
+Type=DINT
+ShortName=LGTH
+SingleTextLine=Length of the data in bytes
+[end]
+
+[pOUParam] TIMEOUT
+Direction=Input
+Type=DINT
+ShortName=TIMO
+SingleTextLine=Maximum of seconds during which a receive block occurs
+[end]
+
+[function] ISA_SERIAL_OPEN
+SingleTextLine=Open a communication link
+Help=[Context]4565
+GroupName=Communications
+Type=DINT
+ShortName=RES
+[end]
+
+[pOUParam] SERVER
+Direction=Input
+Type=STRING
+StringLength=7
+ShortName=SERV
+SingleTextLine=Administrator used: PCP_SER or PCP_IP
+[end]
+
+[pOUParam] PORT
+Direction=Input
+Type=STRING
+StringLength=16
+ShortName=PORT
+SingleTextLine=For PCP_SER: name of the serial device. FOR PCP_IP: IP port number of the server
+[end]
+
+[function] ISA_SERIAL_SEND
+SingleTextLine=Function send data on the communication link
+Help=[Context]4567
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] DATA
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=DATA
+SingleTextLine=Information to be transmitted
+[end]
+
+[pOUParam] LENGTH
+Direction=Input
+Type=DINT
+ShortName=LGTH
+SingleTextLine=Length of the data in bytes
+[end]
+
+[function] ISA_SERIAL_DISCONNECT
+SingleTextLine=Disconnect the communication link
+Help=[Context]4564
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] FLUSH
+Direction=Input
+Type=STRING
+StringLength=5
+ShortName=FLSH
+SingleTextLine=Indicates whether the data transmission must be completed before stopping the communication
+[end]
+
+[function] ISA_SERIAL_STATUS
+SingleTextLine=Return a series of communication statuses
+Help=[Context]4569
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] STAT1
+Direction=Input
+Type=DINT
+ShortName=ST1
+SingleTextLine=For PCP_SER and PCP_IP: Error number
+[end]
+
+[pOUParam] STAT2
+Direction=Input
+Type=DINT
+ShortName=ST2
+SingleTextLine=For PCP_SER: Number of receive characters. For PCP_IP: Port number of the client or server
+[end]
+
+[pOUParam] STAT3
+Direction=Input
+Type=DINT
+ShortName=ST3
+SingleTextLine=For PCP_SER: CD control bit. For PCP_IP:not used
+[end]
+
+[pOUParam] STAT4
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=ST4
+SingleTextLine=For PCP_SER: Not used. For PCP_IP: Address of the client or server
+[end]
+
+[function] ISA_SERIAL_CLOSE
+SingleTextLine=Closes the communication port
+Help=[Context]4562
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[function] ISA_SERIAL_CONNECT
+SingleTextLine=function performs a physical connection
+Help=[Context]4563
+GroupName=Communications
+Type=DINT
+ShortName=ERR
+[end]
+
+[pOUParam] HANDLE
+Direction=Input
+Type=DINT
+ShortName=HDLE
+SingleTextLine=Handle of the communication link
+[end]
+
+[pOUParam] MODE
+Direction=Input
+Type=STRING
+StringLength=6
+ShortName=MODE
+SingleTextLine=Connection mode: SERVER or CLIENT
+[end]
+
+[pOUParam] BUFFER
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=BUFF
+SingleTextLine=Needed information for the connection mode and protocol
+[end]
+
+[function] setSave
+SingleTextLine=записать значения уставок
+GroupName=ISET
+Type=DINT
+[end]
+
+[pOUParam] filename
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=FILE
+SingleTextLine=file name
+[end]
+
+[function] setRegName
+SingleTextLine=зарегистрировать переменную для использования в качестве уставки
+GroupName=ISET
+Type=DINT
+[end]
+
+[pOUParam] Name
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=NAME
+SingleTextLine=Name of a variable
+[end]
+
+[function] setRead
+SingleTextLine=считать значения уставок
+GroupName=ISET
+Type=DINT
+[end]
+
+[pOUParam] filename
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=FILE
+SingleTextLine=File name
+[end]
+
+$$[setList] TDB1
+$$+Default
+$$:setSave
+$$:setRegName
+$$:setRead
+$$>Default
+$$[end]
+
+[function] OR_MASK_DWORD
+SingleTextLine=DWORD OR bit-to-bit mask
+Help=[Context]4075
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Must have DWORD fomat
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=DWORD
+ShortName=MSK
+SingleTextLine=Must have DWORD format
+[end]
+
+[function] ROR_WORD
+SingleTextLine=Make the bits of a WORD rotate to the right
+Help=[Context]4086
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Any WORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] XOR_MASK_DWORD
+SingleTextLine=DWORD exclusive OR bit-to-bit mask
+Help=[Context]4100
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Must have DWORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=DWORD
+ShortName=MSK
+SingleTextLine=Must have DWORD format
+[end]
+
+[function] ROR_DWORD
+SingleTextLine=Make the bits of a DWORD rotate to the right
+Help=[Context]4084
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Any DWORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] SHR_WORD
+SingleTextLine=Make the bits of a WORD shift to the right
+Help=[Context]4094
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Any WORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] AND_MASK_LWORD
+SingleTextLine=LWORD AND bit-to-bit mask
+Help=[Context]4063
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Must have LWORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=LWORD
+ShortName=MSK
+SingleTextLine=Must have LWORD format
+[end]
+
+[function] EXPT_LREAL
+SingleTextLine=Exponent
+Help=[Context]4068
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any signed LREAL value
+[end]
+
+[pOUParam] EXP
+Direction=Input
+Type=DINT
+ShortName=EXP
+SingleTextLine=Integer exponent
+[end]
+
+[function] NOT_MASK_DWORD
+SingleTextLine=DWORD bit-to-bit negation mask
+Help=[Context]4071
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Must have DWORD format
+[end]
+
+[function] ROL_BYTE
+SingleTextLine=Make the bits of a BYTE rotate to the left
+Help=[Context]4079
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Any BYTE value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] SHL_DWORD
+SingleTextLine=Make the bits of a DWORD shift to the left
+Help=[Context]4088
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Any DWORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] TAN_LREAL
+SingleTextLine=Tangent
+Help=[Context]4097
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Cannot be equal to PI/2 modulo PI
+[end]
+
+[function] ATAN_LREAL
+SingleTextLine=Arc tangent
+Help=[Context]4066
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any LREAL value
+[end]
+
+[function] OR_MASK_BYTE
+SingleTextLine=BYTE OR bit-to-bit mask
+Help=[Context]4074
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Must have BYTE fomat
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=BYTE
+ShortName=MSK
+SingleTextLine=Must have BYTE format
+[end]
+
+[function] SIN_LREAL
+SingleTextLine=Sine
+Help=[Context]4095
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any LREAL value
+[end]
+
+[function] AND_MASK_BYTE
+SingleTextLine=BYTE AND bit-to-bit mask
+Help=[Context]4061
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Must have BYTE format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=BYTE
+ShortName=MSK
+SingleTextLine=Must have BYTE format
+[end]
+
+[function] ASIN_LREAL
+SingleTextLine=Arc sine
+Help=[Context]4065
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Must be in set [-1.0 .. +1.0]
+[end]
+
+[function] SHL_BYTE
+SingleTextLine=Make the bits of a BYTE shift to the left
+Help=[Context]4087
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Any BYTE value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] POW_LREAL
+SingleTextLine=Power calculation
+Help=[Context]4078
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=
+[end]
+
+[pOUParam] EXP
+Direction=Input
+Type=LREAL
+ShortName=EXP
+SingleTextLine=Power (exponent)
+[end]
+
+[function] ROL_LWORD
+SingleTextLine=Make the bits of a LWORD rotate to the left
+Help=[Context]4081
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Any LWORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] ROL_WORD
+SingleTextLine=Make the bits of a WORD rotate to the left
+Help=[Context]4082
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Any WORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] SHR_DWORD
+SingleTextLine=Make the bits of a DWORD shift to the right
+Help=[Context]4092
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Any DWORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] OR_MASK_WORD
+SingleTextLine=WORD OR bit-to-bit mask
+Help=[Context]4077
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Must have WORD fomat
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=WORD
+ShortName=MSK
+SingleTextLine=Must have WORD format
+[end]
+
+[function] SQRT_LREAL
+SingleTextLine=Square root
+Help=[Context]4096
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Must be greater or equal to zero
+[end]
+
+[function] AND_MASK_WORD
+SingleTextLine=WORD AND bit-to-bit mask
+Help=[Context]4064
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Must have WORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=WORD
+ShortName=MSK
+SingleTextLine=Must have WORD format
+[end]
+
+[function] LOG_LREAL
+SingleTextLine=Logarithm
+Help=[Context]4069
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Must be greater than zero
+[end]
+
+[function] OR_MASK_LWORD
+SingleTextLine=LWORD OR bit-to-bit mask
+Help=[Context]4076
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Must have WORD fomat
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=LWORD
+ShortName=MSK
+SingleTextLine=Must have LWORD format
+[end]
+
+[function] SHL_WORD
+SingleTextLine=Make the bits of a WORD shift to the left
+Help=[Context]4090
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Any WORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] XOR_MASK_LWORD
+SingleTextLine=LWORD exclusive OR bit-to-bit mask
+Help=[Context]4101
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Must have LWORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=LWORD
+ShortName=MSK
+SingleTextLine=Must have LWORD format
+[end]
+
+[function] ABS_LREAL
+SingleTextLine=Absolute value
+Help=[Context]4059
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any signed LREAL value
+[end]
+
+[function] ROR_LWORD
+SingleTextLine=Make the bits of a LWORD rotate to the right
+Help=[Context]4085
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Any LWORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] NOT_MASK_LWORD
+SingleTextLine=LWORD bit-to-bit negation mask
+Help=[Context]4072
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Must have LWORD format
+[end]
+
+[function] SHL_LWORD
+SingleTextLine=Make the bits of a LWORD shift to the left
+Help=[Context]4089
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Any LWORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] AND_MASK_DWORD
+SingleTextLine=DWORD AND bit-to-bit mask
+Help=[Context]4062
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Must have DWORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=DWORD
+ShortName=MSK
+SingleTextLine=Must have DWORD format
+[end]
+
+[function] NOT_MASK_BYTE
+SingleTextLine=BYTE bit-to-bit negation mask
+Help=[Context]4070
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Must have BYTE format
+[end]
+
+[function] XOR_MASK_BYTE
+SingleTextLine=BYTE exclusive OR bit-to-bit mask
+Help=[Context]4099
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Must have BYTE format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=BYTE
+ShortName=MSK
+SingleTextLine=Must have BYTE format
+[end]
+
+[function] COS_LREAL
+SingleTextLine=Cosine
+Help=[Context]4067
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any LREAL value
+[end]
+
+[function] ROR_BYTE
+SingleTextLine=Make the bits of a BYTE rotate to the right
+Help=[Context]4083
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Any BYTE value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] ACOS_LREAL
+SingleTextLine=Arc cosine
+Help=[Context]4060
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Must be in set (-1.0 ... +1.0)
+[end]
+
+[function] ROL_DWORD
+SingleTextLine=Make the bits of a DWORD rotate to the left
+Help=[Context]4080
+GroupName=Binary operations DWORD
+Type=DWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=DWORD
+ShortName=IN
+SingleTextLine=Any DWORD value
+[end]
+
+[pOUParam] NbR
+Direction=Input
+Type=BYTE
+ShortName=NbR
+SingleTextLine=Number of 1 bit rotations
+[end]
+
+[function] SHR_BYTE
+SingleTextLine=Make the bits of a BYTE shift to the right
+Help=[Context]4091
+GroupName=Binary operations BYTE
+Type=BYTE
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=BYTE
+ShortName=IN
+SingleTextLine=Any BYTE value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] SHR_LWORD
+SingleTextLine=Make the bits of a LWORD shift to the right
+Help=[Context]4093
+GroupName=Binary operations LWORD
+Type=LWORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LWORD
+ShortName=IN
+SingleTextLine=Any LWORD value
+[end]
+
+[pOUParam] NbS
+Direction=Input
+Type=BYTE
+ShortName=NbS
+SingleTextLine=Number of 1 bit shifts
+[end]
+
+[function] NOT_MASK_WORD
+SingleTextLine=WORD bit-to-bit negation mask
+Help=[Context]4073
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Must have WORD format
+[end]
+
+[function] TRUNC_LREAL
+SingleTextLine=Truncate decimal part
+Help=[Context]4098
+GroupName=Arithmetic LREAL
+Type=LREAL
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=LREAL
+ShortName=IN
+SingleTextLine=Any LREAL value
+[end]
+
+[function] XOR_MASK_WORD
+SingleTextLine=WORD exclusive OR bit-to-bit mask
+Help=[Context]4102
+GroupName=Binary operations WORD
+Type=WORD
+ShortName=Q
+[end]
+
+[pOUParam] IN
+Direction=Input
+Type=WORD
+ShortName=IN
+SingleTextLine=Must have WORD format
+[end]
+
+[pOUParam] MSK
+Direction=Input
+Type=WORD
+ShortName=MSK
+SingleTextLine=Must have WORD format
+[end]
+
+[function] rt_all_by_type
+GroupName=FDA functions
+Type=DINT
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for all variables of type "typename"
+[end]
+
+[pOUParam] typename
+Direction=Input
+Type=STRING
+StringLength=5
+ShortName=
+SingleTextLine=name of type
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] rt_begin
+GroupName=FDA functions
+Type=DINT
+[end]
+
+[function] rt_log_name
+GroupName=FDA functions
+Type=DINT
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=enable or disable logging
+[end]
+
+[pOUParam] name
+Direction=Input
+Type=STRING
+StringLength=128
+ShortName=
+SingleTextLine=name of a variable, struct or array
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=dopusk for logging
+[end]
+
+[function] rt_arr
+GroupName=FDA functions
+Type=DINT
+[end]
+
+[pOUParam] name
+Direction=Input
+Type=STRING
+StringLength=128
+ShortName=
+SingleTextLine=array name
+[end]
+
+[pOUParam] start
+Direction=Input
+Type=DINT
+ShortName=
+SingleTextLine=start index of a element
+[end]
+
+[pOUParam] nmbr
+Direction=Input
+Type=DINT
+ShortName=
+SingleTextLine=number of elements for archiving
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=
+SingleTextLine=disable or enable logging
+[end]
+
+[function] rt_var_ulint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=ULINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_bool
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=BOOL
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_dint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=DINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_uint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=UINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_lreal
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=LREAL
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=
+SingleTextLine=
+[end]
+
+[function] rt_var_sint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=SINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_int
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=TIME
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_real
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=REAL
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[pOUParam] delta
+Direction=Input
+Type=REAL
+ShortName=5
+SingleTextLine=dopusk for logging
+[end]
+
+[function] rt_var_time
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=TIME
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_date
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=DATE
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_udint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=UDINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_usint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=USINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[function] rt_var_lint
+GroupName=FDA functions
+Type=BOOL
+[end]
+
+[pOUParam] enable
+Direction=Input
+Type=BOOL
+ShortName=2
+SingleTextLine=enable or disable logging for this variable
+[end]
+
+[pOUParam] pvar
+Direction=Input
+Type=LINT
+ShortName=3
+SingleTextLine=variable
+[end]
+
+[device] control
+PackageName=rt
+DriverName=logs
+Type=DINT
+Direction=Output
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] state
+PackageName=rt
+DriverName=logs
+SingleTextLine=get status if 'open' completed with errors number of logged variables in current cycle if OK
+Type=DINT
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] in
+PackageName=rt
+DriverName=logs
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[complex] rtlog
+PackageName=rt
+DriverName=logs
+SingleTextLine=FDA variables registrator
+Devices=control,state,in
+ComplexOption=1
+[end]
+
+[deviceParam] maxvars
+Format=LONG
+Access=USER DEFINED
+Default=500
+SingleTextLine=size of RT table in number variables
+[end]
+
+[deviceParam] mode
+Format=WORD
+Access=USER DEFINED
+Default=3
+SingleTextLine=1 - network mode, 2- local mode, other value - both modes
+[end]
+
+$$[$desc] control&rtlogs
+$$<reserv channel for control device
+$$[end]
+
+$$[$desc] state&rtlogs
+$$<resrv chanel - device indicator
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[device] RtSched
+PackageName=realtime
+DriverName=sched
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=0
+[end]
+
+[deviceParam] isRealTimeTask
+Format=BOOLEAN
+Access=USER DEFINED
+Default=true
+SingleTextLine=set scheduler FIFO if true
+[end]
+
+[deviceParam] priority
+Format=LONG
+Access=USER DEFINED
+Default=10
+SingleTextLine=setup process priority
+[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[function] sys_kill
+GroupName=sys
+Type=BOOL
+ShortName=2
+[end]
+
+[pOUParam] pid
+Direction=Input
+Type=DINT
+ShortName=1
+SingleTextLine=
+[end]
+
+[function] sys_exec
+GroupName=sys
+Type=DINT
+[end]
+
+[pOUParam] ProgName
+Direction=Input
+Type=STRING
+StringLength=255
+ShortName=1
+SingleTextLine=
+[end]
+
+[pOUParam] Args
+Direction=Input
+Type=STRING
+StringLength=128
+Dimension=[1..16]
+ShortName=2
+SingleTextLine=
+[end]
+
+[pOUParam] Nargs
+Direction=Input
+Type=DINT
+ShortName=3
+SingleTextLine=
+[end]
+
+$$[$desc] sys_exec
+$$<Start background program
+$$<Return PID of started process
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[structure] DateTime
+Internal=No
+Hidden=No
+[end]
+
+[display] 0
+[field] Day
+Type=DINT
+SingleTextLine=Day
+Hidden=No
+[end]
+
+[field] Month
+Type=DINT
+SingleTextLine=Month
+Hidden=No
+[end]
+
+[field] Year
+Type=DINT
+SingleTextLine=Year
+Hidden=No
+[end]
+
+[field] Hour
+Type=DINT
+SingleTextLine=Hour
+Hidden=No
+[end]
+
+[field] Minute
+Type=DINT
+SingleTextLine=Minute
+Hidden=No
+[end]
+
+[field] Second
+Type=DINT
+SingleTextLine=Second
+Hidden=No
+[end]
+
+[field] Weekday
+Type=DINT
+SingleTextLine=Weekday
+Hidden=No
+[end]
+
+[function] getHiResTime
+SingleTextLine=get target work time in microseconds
+GroupName=Time
+Type=ULINT
+ShortName=USEC
+[end]
+
+[functionBlock] getCurrentTime
+SingleTextLine=get current date and time
+GroupName=Time
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] GMT
+Direction=Input
+Type=BOOL
+ShortName=GMT
+SingleTextLine=get Greenwich Mean Time if TRUE, local time - if FALSE
+[end]
+
+[pOUParam] DATETIME
+Direction=Output
+Type=DateTime
+ShortName=DTIM
+SingleTextLine=
+[end]
+
+$$[setList] TDB1
+$$+Default
+$$:DateTime
+$$:getHiResTime
+$$:getCurrentTime
+$$>Default
+$$[end]
+
