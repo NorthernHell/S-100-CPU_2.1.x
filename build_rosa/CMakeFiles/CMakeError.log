@@ -1,0 +1,47 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc 
+Build flags: -march=armv4t;-mtune=arm920t;-march=armv4t;-mtune=arm920t
+Id flags: 
+
+The output was:
+No such file or directory
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc 
+Build flags: -march=armv4t;-mtune=arm920t;-march=armv4t;-mtune=arm920t
+Id flags: -c
+
+The output was:
+No such file or directory
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc 
+Build flags: -march=armv4t;-mtune=arm920t;-march=armv4t;-mtune=arm920t
+Id flags: -Aa
+
+The output was:
+No such file or directory
+
+
+Checking whether the C compiler is IAR using "" did not match "IAR .+ Compiler":
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++ 
+Build flags: -march=armv4t;-mtune=arm920t;-march=armv4t;-mtune=arm920t
+Id flags: 
+
+The output was:
+No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++ 
+Build flags: -march=armv4t;-mtune=arm920t;-march=armv4t;-mtune=arm920t
+Id flags: -c
+
+The output was:
+No such file or directory
+
+
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
