@@ -1,0 +1,2 @@
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-ar qc libevro_rtus.a  CMakeFiles/evro_rtus.dir/modbus_rtu_server.c.o CMakeFiles/evro_rtus.dir/modbus_rtu_coil_i_.c.o CMakeFiles/evro_rtus.dir/modbus_rtu_coil_o_.c.o CMakeFiles/evro_rtus.dir/modbus_rtu_holding_i_.c.o CMakeFiles/evro_rtus.dir/modbus_rtu_holding_o_.c.o CMakeFiles/evro_rtus.dir/modbus_rtu_inp_bits_.c.o CMakeFiles/evro_rtus.dir/modbus_rtu_inp_reg_.c.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-ranlib libevro_rtus.a

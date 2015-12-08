@@ -1,0 +1,2 @@
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-ar qc libevro_tcp.a  CMakeFiles/evro_tcp.dir/evro_tcp_evro_tcp_modbus_tcp_server.c.o CMakeFiles/evro_tcp.dir/evro_tcp_evro_tcp_mts_coil_i.c.o CMakeFiles/evro_tcp.dir/evro_tcp_evro_tcp_mts_coil_o.c.o CMakeFiles/evro_tcp.dir/evro_tcp_evro_tcp_mts_holdingr_i.c.o CMakeFiles/evro_tcp.dir/evro_tcp_evro_tcp_mts_holdingr_o.c.o CMakeFiles/evro_tcp.dir/evro_tcp_evro_tcp_mts_inp_bits.c.o CMakeFiles/evro_tcp.dir/evro_tcp_evro_tcp_mts_inp_reg.c.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-ranlib libevro_tcp.a

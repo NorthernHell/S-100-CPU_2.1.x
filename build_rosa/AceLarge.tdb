@@ -1,3 +1,406 @@
+[target] ACE-TARGET_L
+SingleTextLine=Ace Target V5.41
+Code=TIC code
+Code=Structured C source code
+Model=Large
+IsIsagraf3=No
+IsEnhancedTarget=Yes
+ByteOrder=LH
+MaxBlockSize=0
+AlignNumber=4
+StrictAlign=No
+Quantum=1
+UCHARSize=1
+UINT16Size=2
+UINT32Size=4
+PointerSize=4
+EolChar=10
+MaxPara=128
+MaxCallStackDepth=0
+MaxPouSize=200000
+UserData=Yes
+NewBindConsUpd=No
+ResNbr=8
+FirstVa=1024
+SM=32768
+SysVarZZZZ=0
+SysVarResName=4
+SysVarCycleDate=264
+SysVarCycycTime=268
+SysVarCyCurrent=272
+SysVarCyMaximum=276
+SysVarCyOverFlow=280
+SysVarScanCnt=284
+SysVarCycleCnt=288
+SysVarResMode=292
+SysVarCCExec=293
+SysVarKVBPerr=294
+SysVarKVBCErr=295
+SysVarWNGNum=296
+SysVarWNGarg=300
+SysVarWNGCMPTNM=304
+SysVarWNGCMD=315
+SysVarBFDATASZE=352
+SysVarKPVRDTBPTRS=356
+SysVarSLAVENUM=360
+SysVarCYCTIMEBASE=364
+SysVarMICROCYCLEDATE=368
+SysVarMICROTCYCYCTIME=372
+SysVarMICROTCYCURRENT=376
+SysVarMICROTCYMAXIMUM=380
+FeaturePassword=Yes
+FeatureOptCode=Yes
+FeatureBinding=Yes
+FeatureMultiResources=Yes
+FeatureOnline=Yes
+FeatureRetain=Yes
+FeatureMicroCycTime=No
+FeatureArInpRf=Yes
+FeatureBigPous=Yes
+FeatureSfcPrio=Yes
+FeatureComplexSubVarConnectedToIoChan=Yes
+FeatureIoChanOemParam=Yes
+
+FeatureIntrpt=No
+FeatureNetworkInst=No
+SfuCURRENT_ISA_DATE=No
+LanguageFBD=Yes
+LanguageIL=Yes
+Language61499=Yes
+LanguageLD=Yes
+LanguageSFC=Yes
+LanguageST=Yes
+LanguageFC=Yes
+LanguageSAMA=Yes
+DataTypeBOOL=Yes
+DataTypeDATE=Yes
+DataTypeDINT=Yes
+DataTypeINT=Yes
+DataTypeLINT=Yes
+DataTypeLREAL=Yes
+DataTypeREAL=Yes
+DataTypeSINT=Yes
+DataTypeSTRING=Yes
+DataTypeTIME=Yes
+DataTypeUDINT=Yes
+DataTypeUINT=Yes
+DataTypeULINT=Yes
+DataTypeUSINT=Yes
+DataTypeSAFEBOOL=No
+DataTypeANY_ELEMENTARY=No
+SfuABS=Yes
+SfuCOS=Yes
+SfuACOS=Yes
+SfuSIN=Yes
+SfuASIN=Yes
+SfuTAN=Yes
+SfuATAN=Yes
+SfuEXPT=Yes
+SfuPOW=Yes
+SfuLOG=Yes
+SfuSQRT=Yes
+SfuMOD=Yes
+SfuTRUNC=Yes
+SfuRAND=Yes
+SfuODD=Yes
+SfuMIN=Yes
+SfuMAX=Yes
+SfuLIMIT=Yes
+SfuSEL=Yes
+SfuMUX4=Yes
+SfuMUX8=Yes
+SfuSHL=Yes
+SfuSHR=Yes
+SfuROL=Yes
+SfuROR=Yes
+SfuSUB_DATE_DATE=Yes
+SfuLOCK_CPU=Yes
+SfuUNLOCK_CPU=Yes
+SfuASCII=Yes
+SfuCHAR=Yes
+SfuDELETE=Yes
+SfuFIND=Yes
+SfuINSERT=Yes
+SfuLEFT=Yes
+SfuMID=Yes
+SfuMLEN=Yes
+SfuREPLACE=Yes
+SfuRIGHT=Yes
+SfuAND_MASK=Yes
+SfuOR_MASK=Yes
+SfuNOT_MASK=Yes
+SfuXOR_MASK=Yes
+SfbLIM_ALRM=Yes
+
+SfbSR=Yes
+SfbRS=Yes
+SfbR_TRIG=Yes
+SfbF_TRIG=Yes
+SfbCTD=Yes
+SfbCTU=Yes
+SfbCTUD=Yes
+SfbCMP=Yes
+SfbAVERAGE=Yes
+SfbCOMMUNICATION=Yes
+SfbBLINK=Yes
+SfbSIG_GEN=Yes
+SfbDERIVATE=Yes
+SfbINTEGRAL=Yes
+SfbHYSTER=Yes
+SfbSTACKINT=Yes
+SfbSEMA=No
+SfbTON=Yes
+SfbTOF=Yes
+SfbTP=Yes
+[end]
+
+[network] ISARSI
+SingleTextLine=Standard Remote Serial Interface link
+DistributedNet=Yes
+LocalNet=No
+OnlyUsedForBinding=No
+AllowWorkbenchConnection=Yes
+[end]
+
+[netParam] Port
+Format=STRING
+Access=USER DEFINED
+Default=COM1
+SingleTextLine=Workbench communication port
+[end]
+
+[netParam] BaudRate
+Format=LONG
+Access=USER DEFINED
+Default=19200
+SingleTextLine=Data transfer baud rate
+[end]
+
+[netParam] Parity
+Format=CHARACTER
+Access=USER DEFINED
+Default=N
+SingleTextLine=N: None, E: Even, O: Odd
+[end]
+
+[netParam] StopBit
+Format=WORD
+Access=USER DEFINED
+Default=1
+SingleTextLine=1 or 2 Stop bits
+[end]
+
+[netParam] HardwareFlowControl
+Format=BOOLEAN
+Access=USER DEFINED
+Default=FALSE
+SingleTextLine=TRUE when using hardware flow control
+[end]
+
+[network] HSD
+SingleTextLine=Host System Driver for local binding
+DistributedNet=No
+LocalNet=Yes
+OnlyUsedForBinding=No
+AllowWorkbenchConnection=No
+[end]
+
+[resNetParam] ValidityTime
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Produced Variables validity time.
+[end]
+
+[network] ETCP
+SingleTextLine=protocol based on TCP/IP
+DistributedNet=Yes
+LocalNet=No
+OnlyUsedForBinding=No
+AllowWorkbenchConnection=Yes
+[end]
+
+[connectParam] IPAddress
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=IP address or Computer name
+[end]
+
+[resNetParam] TimeOut
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=Maximum allowed time (in ms) to transport a variable
+[end]
+
+$$[$desc] ISARSI
+$$<standard Remote Serial Interface link
+$$<It can be used to dialog through a point to point serial link
+$$<between the workbench and one configuration.
+$$<CAN NOT BE USED FOR BINDING.
+$$<
+$$<Just connect the configuration to the network in the Hardware view and
+$$<fill the network parameters with settings corresponding to the PC where the workbench is currently running.
+$$[end]
+
+$$[$desc] HSD
+$$<HSD: Host System Driver
+$$<standard driver used for binbing between 2 resources local to a configuration.
+$$[end]
+
+$$[$desc] ETCP
+$$<ETCP: Enhanced TCP/IP driver
+$$<standard driver that uses TCP/IP protocol.
+$$<It is used for communication between Workbench and targets (IXL).
+$$<It is also used for binding between two configurations.
+$$[end]
+
+$$[setList] TDB1
+$$+Default
+$$>Default
+$$[end]
+
+[resParam] FailoverDatalinkTimeoutMs
+Format=LONG
+Access=USER DEFINED
+Default=2000
+SingleTextLine=Timeout of the FAILOVER data link
+[end]
+
+[connectParam] FailoverPrimaryIP
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=IP address of the primary FAILOVER controller
+[end]
+
+[connectParam] FailoverSecondaryIP
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=IP address of the secondary FAILOVER controller
+[end]
+
+[connectParam] FailoverDatalinkPrimaryIP
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=Default parameter of the FAILOVER data link IXL driver for the primary controller
+[end]
+
+[connectParam] FailoverDatalinkSecondaryIP
+Format=STRING
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=127.0.0.1
+SingleTextLine=Default parameter of the FAILOVER data link IXL driver for the secondary controller
+[end]
+
+[connectParam] EnableFailover
+Format=BOOLEAN
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=FALSE
+SingleTextLine=Enable the FAILOVER mechanism
+[end]
+
+[connectParam] FailoverHeartbeatTimeoutMs
+Format=LONG
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=2000
+SingleTextLine=Timeout of the FAILOVER heartbeat
+[end]
+
+[connectParam] FailoverHeartbeatDeactivationTimeMs
+Format=LONG
+Access=USER DEFINED
+ParaDefinedOncePerConf=No
+ParaValueUniqueForConf=No
+ParaValueUniqueForNetInst=No
+Default=10000
+SingleTextLine=Heartbeat deactivation time when heartbeat link is bad.
+[end]
+
+[resNetParam] TimeOut
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=Maximum allowed time (in ms) to transport a variable
+[end]
+
+[userSysVars] UserSystemVariables
+[end]
+
+[userSysVar] SYSVA_FO_ISENABLE
+Type=BOOL
+SingleTextLine=Determines if failover is enabled
+VA=384
+ReadOnly=Yes
+[end]
+
+[userSysVar] SYSVA_FO_ERRCODE
+Type=UDINT
+SingleTextLine=Failover error code
+VA=388
+ReadOnly=Yes
+[end]
+
+[userSysVar] SYSVA_FO_ISPRIMARY
+Type=BOOL
+SingleTextLine=Determines if communication is done with primary controller
+VA=392
+ReadOnly=Yes
+[end]
+
+[userSysVar] SYSVA_FO_ISACTIVE
+Type=BOOL
+SingleTextLine=Determines if communication is done with active controller
+VA=396
+ReadOnly=Yes
+[end]
+
+[userSysVar] SYSVA_FO_DATASYNCTIME
+Type=UDINT
+SingleTextLine=Data synchronization time
+VA=400
+ReadOnly=Yes
+[end]
+
+[userSysVar] SYSVA_FO_HBEATSYNCTIME
+Type=UDINT
+SingleTextLine=Heartbeat synchronization time
+VA=404
+ReadOnly=Yes
+[end]
+
+[userSysVar] SYSVA_FO_DATASYNCCNT
+Type=UDINT
+SingleTextLine=Counter of full data synchronization
+VA=408
+ReadOnly=Yes
+InitValue=0
+[end]
+
 [device] MTCP_AI
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
