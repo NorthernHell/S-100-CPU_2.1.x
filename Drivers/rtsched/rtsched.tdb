@@ -5,7 +5,7 @@ Type=BOOL
 Direction=Input
 LowerChannel=1
 UpperChannel=1
-HiddenMemberOfComplexDevice=0
+HiddenMemberOfComplexDevice=1
 [end]
 
 [deviceParam] isRealTimeTask
