@@ -191,7 +191,7 @@ HiddenMemberOfComplexDevice=1
 [complex] Modbus_AI
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=M_AI
+Devices=M_AI,modbusstatus
 ComplexOption=3
 [end]
 
@@ -268,7 +268,7 @@ SingleTextLine=temeout s
 [complex] IO_6RTD
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
+Devices=IO6RTD,modbusstatus
 ComplexOption=1
 [end]
 
@@ -415,7 +415,7 @@ SingleTextLine=temeout s
 [complex] Modbus_DI
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=M_DI
+Devices=M_DI,modbusstatus
 ComplexOption=3
 [end]
 
@@ -485,8 +485,8 @@ SingleTextLine=temeout s
 [complex] IO_DAIO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO2DO,IO4DI,IO2AI,IO2RTD,IO1AO,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -604,8 +604,8 @@ SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
 [complex] IO_8DIO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO8DI,IO8DO,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -674,8 +674,8 @@ SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
 [complex] IO_8TCS
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO8TCS,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -758,8 +758,8 @@ SingleTextLine=1=°C, 2=°F
 [complex] IO_8AO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO8AO,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -821,8 +821,8 @@ SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
 [complex] IO_16DO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO16DO,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -884,8 +884,8 @@ SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
 [complex] IO_16DI
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO16DI,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -947,8 +947,8 @@ SingleTextLine=0 = Disable, >0 = Enable. (x10ms)
 [complex] IO_8AI
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO8AI,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -1003,8 +1003,8 @@ SingleTextLine=temeout s
 [complex] IO_4RO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO4RO,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -1066,7 +1066,7 @@ SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
 [complex] Modbus_AO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=M_AO
+Devices=M_AO,modbusstatus
 ComplexOption=3
 [end]
 
@@ -1210,14 +1210,14 @@ SingleTextLine=temeout s
 ;$$<4 канала, RS-485 (Modbus RTU 115200 бит/с), индикация, до 1 А на канал
 ;$$[end]
 
-;$$[$desc] modbusstatus&evro_ext_evro_ext_
-;$$<Статус связи (есть/нет) с модулем расширения
-;$$[end]
-
 ;$$[$desc] Modbus_AO&evro_ext_evro_ext_
 ;$$<Модуль аналогового вывода (универсальный)
 ;$$<127 каналов максимум, тип канала INT16,
 ;$$<поддерживаемые Modbus функции: 16 - preset multiple regs, 06 - preset single register
+;$$[end]
+
+;$$[$desc] modbusstatus&evro_ext_evro_ext_
+;$$<Статус связи (есть/нет) с модулем расширения
 ;$$[end]
 
 ;$$[setList] TDB1
