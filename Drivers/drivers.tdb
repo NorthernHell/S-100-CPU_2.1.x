@@ -258,11 +258,11 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
-$$[setList] TDB1
-$$+Default
-$$:MODBUS_TCP_STATUS&evro_tcpc_evro_tcpc_
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$:MODBUS_TCP_STATUS&evro_tcpc_evro_tcpc_
+;$$>Default
+;$$[end]
 
 [device] MODBUS_RTU_COIL_O_
 PackageName=_evro_RTUS_
@@ -366,21 +366,21 @@ Default=1
 SingleTextLine=1,2 stop bita
 [end]
 
-$$[$desc] MODBUS_RTU_SERVER&_evro_RTUS_evro_RTUS
-$$<MODBUS_RTU_SERVER
-$$[end]
+;$$[$desc] MODBUS_RTU_SERVER&_evro_RTUS_evro_RTUS
+;$$<MODBUS_RTU_SERVER
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$:MODBUS_RTU_COIL_O_&_evro_RTUS_evro_RTUS
-$$:MODBUS_RTU_INP_BITS_&_evro_RTUS_evro_RTUS
-$$:MODBUS_RTU_COIL_I_&_evro_RTUS_evro_RTUS
-$$:MODBUS_RTU_SERVER&_evro_RTUS_evro_RTUS
-$$:MODBUS_RTU_HOLDING_O_&_evro_RTUS_evro_RTUS
-$$:MODBUS_RTU_INP_REG_&_evro_RTUS_evro_RTUS
-$$:MODBUS_RTU_HOLDING_I_&_evro_RTUS_evro_RTUS
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$:MODBUS_RTU_COIL_O_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_INP_BITS_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_COIL_I_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_SERVER&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_HOLDING_O_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_INP_REG_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_HOLDING_I_&_evro_RTUS_evro_RTUS
+;$$>Default
+;$$[end]
 
 [device] MTS_HOLDINGR_I
 PackageName=evro_TCP
@@ -456,45 +456,45 @@ Default=502
 SingleTextLine=Port for modbus server
 [end]
 
-$$[$desc] MTS_HOLDINGR_I&evro_TCP_evro_TCP_
-$$<Holding registers READ
-$$[end]
+;$$[$desc] MTS_HOLDINGR_I&evro_TCP_evro_TCP_
+;$$<Holding registers READ
+;$$[end]
 
-$$[$desc] MODBUS_TCP_SERVER&evro_TCP_evro_TCP_
-$$<Modbus TCP server
-$$[end]
+;$$[$desc] MODBUS_TCP_SERVER&evro_TCP_evro_TCP_
+;$$<Modbus TCP server
+;$$[end]
 
-$$[$desc] MTS_INP_BITS&evro_TCP_evro_TCP_
-$$<INPUT BITS WRITE
-$$[end]
+;$$[$desc] MTS_INP_BITS&evro_TCP_evro_TCP_
+;$$<INPUT BITS WRITE
+;$$[end]
 
-$$[$desc] MTS_INP_REG&evro_TCP_evro_TCP_
-$$<INPUT REGISTERS WRITE
-$$[end]
+;$$[$desc] MTS_INP_REG&evro_TCP_evro_TCP_
+;$$<INPUT REGISTERS WRITE
+;$$[end]
 
-$$[$desc] MTS_COIL_O&evro_TCP_evro_TCP_
-$$<Coil registers write
-$$[end]
+;$$[$desc] MTS_COIL_O&evro_TCP_evro_TCP_
+;$$<Coil registers write
+;$$[end]
 
-$$[$desc] MTS_COIL_I&evro_TCP_evro_TCP_
-$$<COIL registers read
-$$[end]
+;$$[$desc] MTS_COIL_I&evro_TCP_evro_TCP_
+;$$<COIL registers read
+;$$[end]
 
-$$[$desc] MTS_HOLDINGR_O&evro_TCP_evro_TCP_
-$$<HOLDING registers WRITE
-$$[end]
+;$$[$desc] MTS_HOLDINGR_O&evro_TCP_evro_TCP_
+;$$<HOLDING registers WRITE
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$:MTS_HOLDINGR_I&evro_TCP_evro_TCP_
-$$:MODBUS_TCP_SERVER&evro_TCP_evro_TCP_
-$$:MTS_INP_BITS&evro_TCP_evro_TCP_
-$$:MTS_INP_REG&evro_TCP_evro_TCP_
-$$:MTS_COIL_O&evro_TCP_evro_TCP_
-$$:MTS_COIL_I&evro_TCP_evro_TCP_
-$$:MTS_HOLDINGR_O&evro_TCP_evro_TCP_
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$:MTS_HOLDINGR_I&evro_TCP_evro_TCP_
+;$$:MODBUS_TCP_SERVER&evro_TCP_evro_TCP_
+;$$:MTS_INP_BITS&evro_TCP_evro_TCP_
+;$$:MTS_INP_REG&evro_TCP_evro_TCP_
+;$$:MTS_COIL_O&evro_TCP_evro_TCP_
+;$$:MTS_COIL_I&evro_TCP_evro_TCP_
+;$$:MTS_HOLDINGR_O&evro_TCP_evro_TCP_
+;$$>Default
+;$$[end]
 
 [device] IO2DO
 PackageName=evro_ext
@@ -1638,90 +1638,90 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
-$$[$desc] Modbus_AI&evro_ext_evro_ext_
-$$<Модуль аналогового ввода (универсальный)
-$$<127 каналов максимум, тип канала INT16,
-$$<поддерживаемые Modbus функции: 04 - read Holdind registers(0x03), 03 - read input redisters(0x04)
-$$[end]
+;$$[$desc] Modbus_AI&evro_ext_evro_ext_
+;$$<Модуль аналогового ввода (универсальный)
+;$$<127 каналов максимум, тип канала INT16,
+;$$<поддерживаемые Modbus функции: 04 - read Holdind registers(0x03), 03 - read input redisters(0x04)
+;$$[end]
 
-$$[$desc] IO_6RTD&evro_ext_evro_ext_
-$$<Модуль аналогового ввода (термометр сопротивления) IO-6RTD
-$$<6 каналов, Pt100, Ni120, Pt1000, Ni1000, Ni1000LG& Ohms, RS-485 (Modbus RTU 115200 бит/с), индикация
-$$[end]
+;$$[$desc] IO_6RTD&evro_ext_evro_ext_
+;$$<Модуль аналогового ввода (термометр сопротивления) IO-6RTD
+;$$<6 каналов, Pt100, Ni120, Pt1000, Ni1000, Ni1000LG& Ohms, RS-485 (Modbus RTU 115200 бит/с), индикация
+;$$[end]
 
-$$[$desc] Modbus_DO&evro_ext_evro_ext_
-$$<Модуль дискретного вывода (универсальный)
-$$<127 каналов максимум, тип канала BOOL,
-$$<поддерживаемые Modbus функции: 15 - force multiple coils
-$$[end]
+;$$[$desc] Modbus_DO&evro_ext_evro_ext_
+;$$<Модуль дискретного вывода (универсальный)
+;$$<127 каналов максимум, тип канала BOOL,
+;$$<поддерживаемые Modbus функции: 15 - force multiple coils
+;$$[end]
 
-$$[$desc] Modbus_DI&evro_ext_evro_ext_
-$$<Модуль дискретного ввода (универсальный)
-$$<127 каналов максимум, тип канала BOOL,
-$$<поддерживаемые Modbus функции: 02 - read input status (0x01)
-$$[end]
+;$$[$desc] Modbus_DI&evro_ext_evro_ext_
+;$$<Модуль дискретного ввода (универсальный)
+;$$<127 каналов максимум, тип канала BOOL,
+;$$<поддерживаемые Modbus функции: 02 - read input status (0x01)
+;$$[end]
 
-$$[$desc] IO_DAIO&evro_ext_evro_ext_
-$$<Модуль аналогового и дискретного ввода-вывода IO-DAIO, комбинированный модуль
-$$<2 вх. термометров сопротивления, 2 аналоговых токовых входа 0(4) - 20mA / 0(2) – 10В,
-$$<1 аналоговый токовый выход 0(4) - 20mA / 0(2) – 10В, 4 дискретных входа, 2 дискретных выхода
-$$<
-$$[end]
+;$$[$desc] IO_DAIO&evro_ext_evro_ext_
+;$$<Модуль аналогового и дискретного ввода-вывода IO-DAIO, комбинированный модуль
+;$$<2 вх. термометров сопротивления, 2 аналоговых токовых входа 0(4) - 20mA / 0(2) – 10В,
+;$$<1 аналоговый токовый выход 0(4) - 20mA / 0(2) – 10В, 4 дискретных входа, 2 дискретных выхода
+;$$<
+;$$[end]
 
-$$[$desc] IO_8DIO&evro_ext_evro_ext_
-$$<Модуль дискретного ввода-вывода IO-8DIO
-$$<8 каналов дискретного ввода / 8 каналов дискретного вывода,
-$$<RS-485 (Modbus RTU 115200 бит/с)
-$$<
-$$<
-$$[end]
+;$$[$desc] IO_8DIO&evro_ext_evro_ext_
+;$$<Модуль дискретного ввода-вывода IO-8DIO
+;$$<8 каналов дискретного ввода / 8 каналов дискретного вывода,
+;$$<RS-485 (Modbus RTU 115200 бит/с)
+;$$<
+;$$<
+;$$[end]
 
-$$[$desc] IO_8TCS&evro_ext_evro_ext_
-$$<Модуль аналогового ввода (термопара) IO-8TC	, модуль аналогового ввода изолированного (термопара) IO-8TCS,
-$$<8 каналов без гальванической развязязки или гальванически развязанных в зависимости от типа модуля
-$$<J, K, T, E, N, B, S, R, C, D, G, mV, RS-485 (Modbus RTU 115200 бит/с), индикация
-$$[end]
+;$$[$desc] IO_8TCS&evro_ext_evro_ext_
+;$$<Модуль аналогового ввода (термопара) IO-8TC	, модуль аналогового ввода изолированного (термопара) IO-8TCS,
+;$$<8 каналов без гальванической развязязки или гальванически развязанных в зависимости от типа модуля
+;$$<J, K, T, E, N, B, S, R, C, D, G, mV, RS-485 (Modbus RTU 115200 бит/с), индикация
+;$$[end]
 
-$$[$desc] IO_8AO&evro_ext_evro_ext_
-$$<Модуль аналогового вывода (ток) IO-8AOI, модуль аналогового вывода (напряжение) IO-8AOV
-$$<8 каналов (ток/напряжение), RS-485 (Modbus RTU 115200 бит/с), индикация
-$$[end]
+;$$[$desc] IO_8AO&evro_ext_evro_ext_
+;$$<Модуль аналогового вывода (ток) IO-8AOI, модуль аналогового вывода (напряжение) IO-8AOV
+;$$<8 каналов (ток/напряжение), RS-485 (Modbus RTU 115200 бит/с), индикация
+;$$[end]
 
-$$[$desc] IO_16DO&evro_ext_evro_ext_
-$$<Модуль дискретного вывода IO-16DO
-$$<16 каналов, RS-485 (Modbus RTU 115200 бит/с), индикация, до 0,1 А на канал
-$$[end]
+;$$[$desc] IO_16DO&evro_ext_evro_ext_
+;$$<Модуль дискретного вывода IO-16DO
+;$$<16 каналов, RS-485 (Modbus RTU 115200 бит/с), индикация, до 0,1 А на канал
+;$$[end]
 
-$$[$desc] IO_16DI&evro_ext_evro_ext_
-$$<Модуль дискретного ввода IO-16DI
-$$<16 каналов, RS-485 (Modbus RTU 115200 бит/с), индикация, механические контакты/биполярные ключи
-$$[end]
+;$$[$desc] IO_16DI&evro_ext_evro_ext_
+;$$<Модуль дискретного ввода IO-16DI
+;$$<16 каналов, RS-485 (Modbus RTU 115200 бит/с), индикация, механические контакты/биполярные ключи
+;$$[end]
 
-$$[$desc] IO_8AI&evro_ext_evro_ext_
-$$<Модуль аналогового ввода (напряжение) IO-8AIV, модуль аналогового ввода изолированного (напряжение) IO-8AIVS,
-$$<модуль аналогового ввода (ток) IO-8AII, модуль аналогового ввода изолированного (ток) IO-8AIIS,
-$$<8 каналов изоляция взависимости от типа модуля, RS-485 (Modbus RTU 115200 бит/с)
-$$[end]
+;$$[$desc] IO_8AI&evro_ext_evro_ext_
+;$$<Модуль аналогового ввода (напряжение) IO-8AIV, модуль аналогового ввода изолированного (напряжение) IO-8AIVS,
+;$$<модуль аналогового ввода (ток) IO-8AII, модуль аналогового ввода изолированного (ток) IO-8AIIS,
+;$$<8 каналов изоляция взависимости от типа модуля, RS-485 (Modbus RTU 115200 бит/с)
+;$$[end]
 
-$$[$desc] IO_4RO&evro_ext_evro_ext_
-$$<Модуль релейного вывода IO-4RO
-$$<4 канала, RS-485 (Modbus RTU 115200 бит/с), индикация, до 1 А на канал
-$$[end]
+;$$[$desc] IO_4RO&evro_ext_evro_ext_
+;$$<Модуль релейного вывода IO-4RO
+;$$<4 канала, RS-485 (Modbus RTU 115200 бит/с), индикация, до 1 А на канал
+;$$[end]
 
-$$[$desc] Modbus_AO&evro_ext_evro_ext_
-$$<Модуль аналогового вывода (универсальный)
-$$<127 каналов максимум, тип канала INT16,
-$$<поддерживаемые Modbus функции: 16 - preset multiple regs, 06 - preset single register
-$$[end]
+;$$[$desc] Modbus_AO&evro_ext_evro_ext_
+;$$<Модуль аналогового вывода (универсальный)
+;$$<127 каналов максимум, тип канала INT16,
+;$$<поддерживаемые Modbus функции: 16 - preset multiple regs, 06 - preset single register
+;$$[end]
 
-$$[$desc] modbusstatus&evro_ext_evro_ext_
-$$<Статус связи (есть/нет) с модулем расширения
-$$[end]
+;$$[$desc] modbusstatus&evro_ext_evro_ext_
+;$$<Статус связи (есть/нет) с модулем расширения
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [device] EVRO_4AO
 PackageName=evro_int
@@ -2561,84 +2561,84 @@ Default=1
 SingleTextLine=Node ID
 [end]
 
-$$[$desc] EVRO_6RTD_&evro_int_evro_int_
-$$<Модуль термосопротивлений S-100-RTD6
-$$<6 каналов гальванически развязанных,  RS-485 (Modbus RTU 230400 бит/с), время опроса канала <150 мс,
-$$<свободное конфигурирование Pt50, Pt100, 50П, 100П, 50М, 100М, 100Н, R-Ом, диагностика работы, абсолютная погрешность <0,3 С
-$$[end]
+;$$[$desc] EVRO_6RTD_&evro_int_evro_int_
+;$$<Модуль термосопротивлений S-100-RTD6
+;$$<6 каналов гальванически развязанных,  RS-485 (Modbus RTU 230400 бит/с), время опроса канала <150 мс,
+;$$<свободное конфигурирование Pt50, Pt100, 50П, 100П, 50М, 100М, 100Н, R-Ом, диагностика работы, абсолютная погрешность <0,3 С
+;$$[end]
 
-$$[$desc] EVRO_indicate_info&evro_int_evro_int_
-$$<Х.3.0 - Индикация канала 01, Х.3.1 - Индикация канала 02, Х.3.2 - Индикация канала 03, Х.3.3 - Индикация канала 04.,
-$$<Х.3.4 - Индикация канала 05, Х.3.5 - Индикация канала 06, Х.3.6 - Индикация канала 07, Х.3.7 - Индикация канала 08.
-$$[end]
+;$$[$desc] EVRO_indicate_info&evro_int_evro_int_
+;$$<Х.3.0 - Индикация канала 01, Х.3.1 - Индикация канала 02, Х.3.2 - Индикация канала 03, Х.3.3 - Индикация канала 04.,
+;$$<Х.3.4 - Индикация канала 05, Х.3.5 - Индикация канала 06, Х.3.6 - Индикация канала 07, Х.3.7 - Индикация канала 08.
+;$$[end]
 
-$$[$desc] EVRO_6AI_&evro_int_evro_int_
-$$<Модуль аналогового ввода S-100-АI6
-$$<6 каналов гальванически развязанных, 4-20 мА (0-10 В), RS-485 (Modbus RTU 230400 бит/с), время опроса канала <8 мс,
-$$<свободное конфигурирование, диагностика работы, приведенная погрешность <0,25, активный/пассивный.
-$$[end]
+;$$[$desc] EVRO_6AI_&evro_int_evro_int_
+;$$<Модуль аналогового ввода S-100-АI6
+;$$<6 каналов гальванически развязанных, 4-20 мА (0-10 В), RS-485 (Modbus RTU 230400 бит/с), время опроса канала <8 мс,
+;$$<свободное конфигурирование, диагностика работы, приведенная погрешность <0,25, активный/пассивный.
+;$$[end]
 
-$$[$desc] EVRO_8RO_&evro_int_evro_int_
-$$<Модуль релейного вывода S-100-RО8
-$$<8 каналов, RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <20 мс,
-$$<свободное конфигурирование, диагностика работы, до 4А на канал (до 2А на канал – все включены)
-$$[end]
+;$$[$desc] EVRO_8RO_&evro_int_evro_int_
+;$$<Модуль релейного вывода S-100-RО8
+;$$<8 каналов, RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <20 мс,
+;$$<свободное конфигурирование, диагностика работы, до 4А на канал (до 2А на канал – все включены)
+;$$[end]
 
-$$[$desc] EVRO_avar_info&evro_int_evro_int_
-$$<Х.1.0 - Ошибка канала 01, Х.1.1 - Ошибка канала 02, Х.1.2 - Ошибка канала 03, Х.1.3 - Ошибка канала 04.,
-$$<Х.1.4 - Ошибка канала 05, Х.1.5 - Ошибка канала 06, Х.1.6 - Ошибка канала 07, Х.1.7 - Ошибка канала 08.
-$$[end]
+;$$[$desc] EVRO_avar_info&evro_int_evro_int_
+;$$<Х.1.0 - Ошибка канала 01, Х.1.1 - Ошибка канала 02, Х.1.2 - Ошибка канала 03, Х.1.3 - Ошибка канала 04.,
+;$$<Х.1.4 - Ошибка канала 05, Х.1.5 - Ошибка канала 06, Х.1.6 - Ошибка канала 07, Х.1.7 - Ошибка канала 08.
+;$$[end]
 
-$$[$desc] EVRO_modul_info_&evro_int_evro_int_
-$$<Виртуальный драйвер диагностики
-$$<поддерживает все модули S-100-XXXX серии (HARD), состоит из следующих простых устройств:
-$$<1) Общие ошибки.  2) Поканальные ошибки. 3) Температура процессора. 4) Светодиодная индикация.
-$$[end]
+;$$[$desc] EVRO_modul_info_&evro_int_evro_int_
+;$$<Виртуальный драйвер диагностики
+;$$<поддерживает все модули S-100-XXXX серии (HARD), состоит из следующих простых устройств:
+;$$<1) Общие ошибки.  2) Поканальные ошибки. 3) Температура процессора. 4) Светодиодная индикация.
+;$$[end]
 
-$$[$desc] EVRO_temp_info&evro_int_evro_int_
-$$<Х.2.0 - Температура процессора.
-$$[end]
+;$$[$desc] EVRO_temp_info&evro_int_evro_int_
+;$$<Х.2.0 - Температура процессора.
+;$$[end]
 
-$$[$desc] EVRO_16DI_&evro_int_evro_int_
-$$<Модуль дискретного ввода S-100-DI16
-$$<16 каналов (гальванически развязанны 2 группы по 8 каналов), RS-485 (Modbus RTU 230400 бит/с), время опроса канала  – от 0,1 мс,
-$$<режим счетчика до 4 кГц, свободное конфигурирование, диагностика работы, механические контакты/биполярные, полевые ключи
-$$[end]
+;$$[$desc] EVRO_16DI_&evro_int_evro_int_
+;$$<Модуль дискретного ввода S-100-DI16
+;$$<16 каналов (гальванически развязанны 2 группы по 8 каналов), RS-485 (Modbus RTU 230400 бит/с), время опроса канала  – от 0,1 мс,
+;$$<режим счетчика до 4 кГц, свободное конфигурирование, диагностика работы, механические контакты/биполярные, полевые ключи
+;$$[end]
 
-$$[$desc] EVRO_8TC_&evro_int_evro_int_
-$$<Модуль термопарный S-100-TC8
-$$<8 каналов гальванически развязанных,R,S,B,T,L,J,K,E,N,A-1,A-2,A-3 RS-485 (Modbus RTU 230400 бит/с), время опроса канала <150 мс,
-$$<свободное конфигурирование, диагностика работы, абсолютная погрешность <0,3 С, термокомпенсация «холодных» концов
-$$[end]
+;$$[$desc] EVRO_8TC_&evro_int_evro_int_
+;$$<Модуль термопарный S-100-TC8
+;$$<8 каналов гальванически развязанных,R,S,B,T,L,J,K,E,N,A-1,A-2,A-3 RS-485 (Modbus RTU 230400 бит/с), время опроса канала <150 мс,
+;$$<свободное конфигурирование, диагностика работы, абсолютная погрешность <0,3 С, термокомпенсация «холодных» концов
+;$$[end]
 
-$$[$desc] EVRO_modul_info&evro_int_evro_int_
-$$<Х.0.0 - Перегрев канала,	             Х.0.1 - Авария канала,  Х.0.2 - Превышена t модуля,             Х.0.3 - Изменены настр. польз.,
-$$<Х.0.4 - Ошибка памяти процессора, Х.0.5 - резерв,               Х.0.6 - Ошибки данных на приеме,    Х.0.7 - Ошибка CRC,
-$$<Х.0.8 - Был широковещ. запрос,       Х.0.9 - Был перерыв питания.
-$$[end]
+;$$[$desc] EVRO_modul_info&evro_int_evro_int_
+;$$<Х.0.0 - Перегрев канала,	             Х.0.1 - Авария канала,  Х.0.2 - Превышена t модуля,             Х.0.3 - Изменены настр. польз.,
+;$$<Х.0.4 - Ошибка памяти процессора, Х.0.5 - резерв,               Х.0.6 - Ошибки данных на приеме,    Х.0.7 - Ошибка CRC,
+;$$<Х.0.8 - Был широковещ. запрос,       Х.0.9 - Был перерыв питания.
+;$$[end]
 
-$$[$desc] EVRO_4AO_&evro_int_evro_int_
-$$<Модуль аналогового вывода S-100-АО4
-$$<4 канала гальванически развязанных, 4-20 мА (0-10 В), RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <500 мс,
-$$<свободное конфигурирование, диагностика работы, приведенная погрешность не более 0,25
-$$[end]
+;$$[$desc] EVRO_4AO_&evro_int_evro_int_
+;$$<Модуль аналогового вывода S-100-АО4
+;$$<4 канала гальванически развязанных, 4-20 мА (0-10 В), RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <500 мс,
+;$$<свободное конфигурирование, диагностика работы, приведенная погрешность не более 0,25
+;$$[end]
 
-$$[$desc] EVRO_16DO_&evro_int_evro_int_
-$$<Модуль дискретного вывода S-100-DО16
-$$<16 каналов (гальванически развязанны 2 группы по 8 каналов), RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <10 мс,
-$$<свободное конфигурирование, диагностика работы, до 2А на канал (до 4А на группу)
-$$[end]
+;$$[$desc] EVRO_16DO_&evro_int_evro_int_
+;$$<Модуль дискретного вывода S-100-DО16
+;$$<16 каналов (гальванически развязанны 2 группы по 8 каналов), RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <10 мс,
+;$$<свободное конфигурирование, диагностика работы, до 2А на канал (до 4А на группу)
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$:status_m&evro_int_evro_int_
-$$:EVRO_8DIR&evro_int_evro_int_
-$$:EVRO_8AO&evro_int_evro_int_
-$$:EVRO_8AI&evro_int_evro_int_
-$$:EVRO_8DO&evro_int_evro_int_
-$$:EVRO_8DI&evro_int_evro_int_
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$:status_m&evro_int_evro_int_
+;$$:EVRO_8DIR&evro_int_evro_int_
+;$$:EVRO_8AO&evro_int_evro_int_
+;$$:EVRO_8AI&evro_int_evro_int_
+;$$:EVRO_8DO&evro_int_evro_int_
+;$$:EVRO_8DI&evro_int_evro_int_
+;$$>Default
+;$$[end]
 
 [structure] St_Handle
 [end]
@@ -2937,79 +2937,79 @@ ShortName=hB
 SingleTextLine=
 [end]
 
-$$[$desc] Fast_array_dot
-$$<The Creation of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_dot
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_range
-$$<The Creation of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_range
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_create
-$$<The Creation of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_create
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_add
-$$<The Creation of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_add
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_min
-$$<Find and return minimal value of array items
-$$<
-$$[end]
+;$$[$desc] Fast_array_min
+;$$<Find and return minimal value of array items
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_max
-$$<Find and return maximal value of array items
-$$<
-$$<
-$$[end]
+;$$[$desc] Fast_array_max
+;$$<Find and return maximal value of array items
+;$$<
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_cumulsum
-$$<The Copying of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_cumulsum
+;$$<The Copying of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_mul
-$$<The Creation of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_mul
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_fill
-$$<The Creation of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_fill
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_zeroes
-$$<The Creation of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_zeroes
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_copy
-$$<The Copying of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_copy
+;$$<The Copying of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_scale
-$$<The Creation of a fast array
-$$<
-$$[end]
+;$$[$desc] Fast_array_scale
+;$$<The Creation of a fast array
+;$$<
+;$$[end]
 
-$$[$desc] Fast_array_spectrum
-$$<calculate  the power spectrum of dataarray
-$$<return number of garmonics or 0 (if error)
-$$<
-$$<
-$$[end]
+;$$[$desc] Fast_array_spectrum
+;$$<calculate  the power spectrum of dataarray
+;$$<return number of garmonics or 0 (if error)
+;$$<
+;$$<
+;$$[end]
 
 
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [structure] Mt_Handle
 [end]
@@ -3247,56 +3247,56 @@ ShortName=Hand
 SingleTextLine=matrixA  x arrayX = arrayRes
 [end]
 
-$$[$desc] Fast_matrix_fill
-$$<Fill matrix any value
-$$<
-$$<
-$$[end]
+;$$[$desc] Fast_matrix_fill
+;$$<Fill matrix any value
+;$$<
+;$$<
+;$$[end]
 
-$$[$desc] Fast_matrix_copy
-$$<The Copying of a fast matrix
-$$<
-$$<
-$$[end]
+;$$[$desc] Fast_matrix_copy
+;$$<The Copying of a fast matrix
+;$$<
+;$$<
+;$$[end]
 
-$$[$desc] Fast_matrix_on_vec
-$$<MatA * VecB = VecRes
-$$<
-$$[end]
+;$$[$desc] Fast_matrix_on_vec
+;$$<MatA * VecB = VecRes
+;$$<
+;$$[end]
 
-$$[$desc] Fast_matrix_zeroes
-$$<The Creation of a fast matrix
-$$<
-$$<
-$$[end]
+;$$[$desc] Fast_matrix_zeroes
+;$$<The Creation of a fast matrix
+;$$<
+;$$<
+;$$[end]
 
-$$[$desc] Fast_matrix_scale
-$$<Multiply matrix on any value
-$$[end]
+;$$[$desc] Fast_matrix_scale
+;$$<Multiply matrix on any value
+;$$[end]
 
-$$[$desc] Fast_matrix_add
-$$<The Summa of a fast matrixes
-$$<
-$$<
-$$[end]
+;$$[$desc] Fast_matrix_add
+;$$<The Summa of a fast matrixes
+;$$<
+;$$<
+;$$[end]
 
-$$[$desc] Fast_matrix_create
-$$<The Creation of a fast matrix
-$$<
-$$[end]
+;$$[$desc] Fast_matrix_create
+;$$<The Creation of a fast matrix
+;$$<
+;$$[end]
 
-$$[$desc] Fast_matrix_linsolve
-$$<find unknown vector X for linear system
-$$<MatA have dimensions [1..N,1..N]
-$$<Vecs have dimensions [1..N]
-$$<MatA * VecX = VecRes
-$$<
-$$[end]
+;$$[$desc] Fast_matrix_linsolve
+;$$<find unknown vector X for linear system
+;$$<MatA have dimensions [1..N,1..N]
+;$$<Vecs have dimensions [1..N]
+;$$<MatA * VecX = VecRes
+;$$<
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [function] alarm_ulint
 SingleTextLine=send ULINT variable to FDA-OPC
@@ -3549,126 +3549,126 @@ Default=1520
 SingleTextLine=UDP port on computer with FDA-OPC for alarm receive
 [end]
 
-$$[$desc] alarm_ulint
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_ulint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_lint
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_lint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_lreal
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_lreal
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_resend
-$$<return value:
-$$<0  - if answer was received
-$$<1  - if if answer wasn't received and new alarm send
-$$<-1  -if error
-$$[end]
+;$$[$desc] alarm_resend
+;$$<return value:
+;$$<0  - if answer was received
+;$$<1  - if if answer wasn't received and new alarm send
+;$$<-1  -if error
+;$$[end]
 
-$$[$desc] alarm_int
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_int
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_bool
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_bool
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_send
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_send
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_string
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_string
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_udint
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_udint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_dint
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_dint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_uint
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_uint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_usint
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_usint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_sint
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_sint
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_real
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_real
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_time
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_time
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[$desc] alarm_date
-$$<return value:
-$$<1 - if ok
-$$<0 - if error
-$$[end]
+;$$[$desc] alarm_date
+;$$<return value:
+;$$<1 - if ok
+;$$<0 - if error
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$:alarm_ulint
-$$:alarm_lint
-$$:Alarm&rtalarm
-$$:alarm_lreal
-$$:alarm_resend
-$$:alarm_int
-$$:alarm_bool
-$$:alarm_send
-$$:alarm_string
-$$:alarm_udint
-$$:alarm_dint
-$$:alarm_uint
-$$:alarm_usint
-$$:alarm_sint
-$$:send&rtalarm
-$$:status&rtalarm
-$$:alarm_real
-$$:alarm_time
-$$:alarm_date
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$:alarm_ulint
+;$$:alarm_lint
+;$$:Alarm&rtalarm
+;$$:alarm_lreal
+;$$:alarm_resend
+;$$:alarm_int
+;$$:alarm_bool
+;$$:alarm_send
+;$$:alarm_string
+;$$:alarm_udint
+;$$:alarm_dint
+;$$:alarm_uint
+;$$:alarm_usint
+;$$:alarm_sint
+;$$:send&rtalarm
+;$$:status&rtalarm
+;$$:alarm_real
+;$$:alarm_time
+;$$:alarm_date
+;$$>Default
+;$$[end]
 
 [complex] FDA_serv
 PackageName=rt
@@ -3705,10 +3705,10 @@ Default=0
 SingleTextLine=Parameter -t for fda_serv utility. If 0 fda_serv works in blocking mode
 [end]
 
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [structure] FIR_Handle
 [end]
@@ -3847,34 +3847,34 @@ ShortName=2
 SingleTextLine=data point for filtering
 [end]
 
-$$[$desc] FIR_vector
-$$<Data filtering from array Source and store in array Dest
-$$[end]
+;$$[$desc] FIR_vector
+;$$<Data filtering from array Source and store in array Dest
+;$$[end]
 
-$$[$desc] FIRf
-$$<Data filtering point by point
-$$[end]
+;$$[$desc] FIRf
+;$$<Data filtering point by point
+;$$[end]
 
-$$[$desc] FIR_create
-$$<The Creation of a FIR object
-$$<from Isagraf Matrix with dimension [2,N]
-$$<N - FIR degree
-$$<Matrix [1] -  FIR coeffs "b"
-$$<Matrix[2] - reserved system data (internal FIR stack )
-$$<
-$$<
-$$<
-$$<
-$$[end]
+;$$[$desc] FIR_create
+;$$<The Creation of a FIR object
+;$$<from Isagraf Matrix with dimension [2,N]
+;$$<N - FIR degree
+;$$<Matrix [1] -  FIR coeffs "b"
+;$$<Matrix[2] - reserved system data (internal FIR stack )
+;$$<
+;$$<
+;$$<
+;$$<
+;$$[end]
 
-$$[$desc] FIR
-$$<Data filtering point by point
-$$[end]
+;$$[$desc] FIR
+;$$<Data filtering point by point
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [structure] IIR_Handle
 [end]
@@ -4013,38 +4013,38 @@ ShortName=3
 SingleTextLine=
 [end]
 
-$$[$desc] IIRf
-$$<Data filtering point by point
-$$[end]
+;$$[$desc] IIRf
+;$$<Data filtering point by point
+;$$[end]
 
-$$[$desc] IIR_create
-$$<The Creation of a IIR object
-$$<from Isagraf Matrix with dimension [3,N]
-$$<N - FIR degree
-$$<Matrix [1] -  FIR coeffs "b"
-$$<Matrix [2] -  FIR coeffs "a"
-$$<Matrix[3] - reserved system data (internal IIR stack )
-$$<Matrix[4] - reserved system data (internal IIR stack )
-$$<
-$$<
-$$<
-$$<
-$$<
-$$<
-$$[end]
+;$$[$desc] IIR_create
+;$$<The Creation of a IIR object
+;$$<from Isagraf Matrix with dimension [3,N]
+;$$<N - FIR degree
+;$$<Matrix [1] -  FIR coeffs "b"
+;$$<Matrix [2] -  FIR coeffs "a"
+;$$<Matrix[3] - reserved system data (internal IIR stack )
+;$$<Matrix[4] - reserved system data (internal IIR stack )
+;$$<
+;$$<
+;$$<
+;$$<
+;$$<
+;$$<
+;$$[end]
 
-$$[$desc] IIR
-$$<Data filtering point by point
-$$[end]
+;$$[$desc] IIR
+;$$<Data filtering point by point
+;$$[end]
 
-$$[$desc] IIR_vector
-$$<Data filtering from array Source and store in array Dest
-$$[end]
+;$$[$desc] IIR_vector
+;$$<Data filtering from array Source and store in array Dest
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [array] RESERVED_AE_CONTEXT
 Internal=No
@@ -4099,13 +4099,13 @@ SingleTextLine=structured type representing the time the process value of an I/O
 [display] 0
 [field] Sec
 Type=DINT
-SingleTextLine=Number of seconds elapsed since 1970/01/01 00:00:00:000 in the timestamp of the process value (TIME)
+SingleTextLine=Number of seconds; elapsed since 1970/01/01 00:00:00:000; in the timestamp of the process value (TIME)
 Hidden=No
 [end]
 
 [field] Nsec
 Type=DINT
-SingleTextLine=Number of nanoseconds in the timestamp of the process value from the beginning of the second indicated by Sec (TIME)
+SingleTextLine=Number of nanoseconds in the timestamp of the process value; from the beginning of the second indicated by Sec (TIME)
 Hidden=No
 [end]
 
@@ -4118,7 +4118,7 @@ SingleTextLine=Alarm condition input parameters
 [display] 0
 [field] state
 Type=DINT
-SingleTextLine=bit 0=active/inactive bit 1=enable/disable bit 2=ack/no ack
+SingleTextLine=bit 0=active/inactive; bit 1=enable/disable; bit 2=ack/no ack
 Hidden=No
 [end]
 
@@ -4160,7 +4160,7 @@ Hidden=No
 
 [field] mode
 Type=SINT
-SingleTextLine=0=0->1 active 2=1->0 active 3=0->1 or 1->0 active
+SingleTextLine=0=0->1 active; 2=1->0 active; 3=0->1 or 1->0 active
 Hidden=No
 [end]
 
@@ -4211,7 +4211,7 @@ SingleTextLine=Alarm condition input parameters
 [display] 0
 [field] state
 Type=DINT
-SingleTextLine=bit 0=active/inactive bit 1=enable/disable bit 2=ack/no ack
+SingleTextLine=bit 0=active/inactive; bit 1=enable/disable; bit 2=ack/no ack
 Hidden=No
 [end]
 
@@ -4377,7 +4377,7 @@ SingleTextLine=Alarm condition input parameters
 [display] 0
 [field] state
 Type=DINT
-SingleTextLine=bit 0=active/inactive bit 1=enable/disable bit 2=ack/no ack
+SingleTextLine=bit 0=active/inactive; bit 1=enable/disable; bit 2=ack/no ack
 Hidden=No
 [end]
 
@@ -6697,13 +6697,13 @@ ShortName=FILE
 SingleTextLine=File name
 [end]
 
-$$[setList] TDB1
-$$+Default
-$$:setSave
-$$:setRegName
-$$:setRead
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$:setSave
+;$$:setRegName
+;$$:setRead
+;$$>Default
+;$$[end]
 
 [function] OR_MASK_DWORD
 SingleTextLine=DWORD OR bit-to-bit mask
@@ -7949,7 +7949,7 @@ HiddenMemberOfComplexDevice=1
 [device] state
 PackageName=rt
 DriverName=logs
-SingleTextLine=get status if 'open' completed with errors number of logged variables in current cycle if OK
+SingleTextLine=get status if 'open' completed with errors; number of logged variables in current cycle if OK
 Type=DINT
 Direction=Input
 LowerChannel=1
@@ -7989,18 +7989,18 @@ Default=3
 SingleTextLine=1 - network mode, 2- local mode, other value - both modes
 [end]
 
-$$[$desc] control&rtlogs
-$$<reserv channel for control device
-$$[end]
+;$$[$desc] control&rtlogs
+;$$<reserv channel for control device
+;$$[end]
 
-$$[$desc] state&rtlogs
-$$<resrv chanel - device indicator
-$$[end]
+;$$[$desc] state&rtlogs
+;$$<resrv chanel - device indicator
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [device] RtSched
 PackageName=realtime
@@ -8026,10 +8026,10 @@ Default=10
 SingleTextLine=setup process priority
 [end]
 
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [function] sys_kill
 GroupName=sys
@@ -8073,15 +8073,15 @@ ShortName=3
 SingleTextLine=
 [end]
 
-$$[$desc] sys_exec
-$$<Start background program
-$$<Return PID of started process
-$$[end]
+;$$[$desc] sys_exec
+;$$<Start background program
+;$$<Return PID of started process
+;$$[end]
 
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [structure] DateTime
 Internal=No
@@ -8159,11 +8159,11 @@ ShortName=DTIM
 SingleTextLine=
 [end]
 
-$$[setList] TDB1
-$$+Default
-$$:DateTime
-$$:getHiResTime
-$$:getCurrentTime
-$$>Default
-$$[end]
+;$$[setList] TDB1
+;$$+Default
+;$$:DateTime
+;$$:getHiResTime
+;$$:getCurrentTime
+;$$>Default
+;$$[end]
 
