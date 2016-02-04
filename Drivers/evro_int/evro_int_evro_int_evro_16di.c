@@ -14,7 +14,7 @@ Device name:        EVRO_16dI
 typedef struct _tag_strEvro_16di
 {
     int32  ID;   /* Node ID */
-   
+
 } strOemParam;
 
 
@@ -29,17 +29,17 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_int_evro_int_evro_16diIosOpen
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
-{    /*
-     * Basically, for a complex device the driver can browse all
-     * simple devices and perform corressponding initializations.
-     * For a simple device it just initializes it.
-     */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+{   /*
+    * Basically, for a complex device the driver can browse all
+    * simple devices and perform corressponding initializations.
+    * For a simple device it just initializes it.
+    */
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     printf("EVRO 16dI init\n");
-	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
@@ -53,8 +53,8 @@ typSTATUS evro_int_evro_int_evro_16diIosOpen
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-       
-		if (rc == -1)
+
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }
@@ -80,7 +80,7 @@ warning     :
 
 void evro_int_evro_int_evro_16diIosClose
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("EVRO 16dI Exit\n");
@@ -122,11 +122,11 @@ void evro_int_evro_int_evro_16diIosRead
      * avoid testing each of them when no channels are locked or when all
      * channels are locked.
      */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;		 
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     uint16 tab_reg_2[32];// for input bits
-	uint16_t tab_reg[32]; // for input registers
+    uint16_t tab_reg[32]; // for input registers
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
@@ -137,91 +137,94 @@ void evro_int_evro_int_evro_16diIosRead
         printf("Connexion failed: \n");
         modbus_free(ctx);
     }
-  else
+    else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         // rc= modbus_read_input_bits(ctx, 10000, 16, tab_reg); read from the input bits registers
-		   rc= modbus_read_input_registers(ctx, 30019, 1, tab_reg); // read from  the input registers(bit mask)
-								//for EVRO_modules adress=30019//
-		if (rc == -1)
+        rc= modbus_read_input_registers(ctx, 30019, 1, tab_reg); // read from  the input registers(bit mask)
+        modbus_close(ctx);
+        modbus_free(ctx);
+        //for EVRO_modules adress=30019//
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }
         else
         {
+            strRtIoChan*        pChannel;
+            strDfIoSplDvc*      pStaticDef;
+            uint16              nbChannel;
+            uint16              nbIndex;
+
+            uchar*              pPhyData;   /* Physical value            */
+            uchar*              pLogData;   /* Logical Value               */
+            uchar               byElecData; /* Electrical value ('1' or '0') */
+
+            pStaticDef = pRtIoSplDvc->pDfIoSplDvc;
+            nbChannel  = pStaticDef->huNbChan;
+            pChannel   = pRtIoSplDvc->pRtIoChan;
             cpxDev->luUser =1;
-       
-		//start data conversion for normal representation in the development environment
-		tab_reg_2[0] = ((tab_reg[0] & 0x0001) > 0) ? 1: 0;
-		tab_reg_2[1] = ((tab_reg[0] & 0x0002) > 0) ? 1: 0;
-		tab_reg_2[2] = ((tab_reg[0] & 0x0004) > 0) ? 1: 0;
-		tab_reg_2[3] = ((tab_reg[0] & 0x0008) > 0) ? 1: 0;
-		tab_reg_2[4] = ((tab_reg[0] & 0x0010) > 0) ? 1: 0;
-		tab_reg_2[5] = ((tab_reg[0] & 0x0020) > 0) ? 1: 0;
-		tab_reg_2[6] = ((tab_reg[0] & 0x0040) > 0) ? 1: 0;
-		tab_reg_2[7] = ((tab_reg[0] & 0x0080) > 0) ? 1: 0;
-		tab_reg_2[8] = ((tab_reg[0] & 0x0100) > 0) ? 1: 0;
-		tab_reg_2[9] = ((tab_reg[0] & 0x0200) > 0) ? 1: 0;
-		tab_reg_2[10] = ((tab_reg[0] & 0x0400) > 0) ? 1: 0;
-		tab_reg_2[11] = ((tab_reg[0] & 0x0800) > 0) ? 1: 0;
-		tab_reg_2[12] = ((tab_reg[0] & 0x1000) > 0) ? 1: 0;
-		tab_reg_2[13] = ((tab_reg[0] & 0x2000) > 0) ? 1: 0;
-		tab_reg_2[14] = ((tab_reg[0] & 0x4000) > 0) ? 1: 0;
-		tab_reg_2[15] = ((tab_reg[0] & 0x8000) > 0) ? 1: 0;
-		//end data conversion for normal representation in the development environment
-		};
-        modbus_close(ctx);
-        modbus_free(ctx);
 
-
-    };
-    ////////
-    strRtIoChan*        pChannel;
-    strDfIoSplDvc*      pStaticDef;
-    uint16              nbChannel;
-    uint16              nbIndex;
-
-    uchar*              pPhyData;   /* Physical value            */
-    uchar*              pLogData;   /* Logical Value               */
-    uchar               byElecData; /* Electrical value ('1' or '0') */
-
-    pStaticDef = pRtIoSplDvc->pDfIoSplDvc;
-    nbChannel  = pStaticDef->huNbChan;
-    pChannel   = pRtIoSplDvc->pRtIoChan;
-    /* Update all channels */
-    for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
-    {
-        pPhyData = (uchar*)(pChannel->pvKerPhyData);
-        pLogData = (uchar*)(pChannel->pvKerData);
-		//
-		byElecData = tab_reg_2[nbIndex];
-		//
-        if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
-            pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &byElecData, &byElecData);
-
-
-        if((pChannel->luCnvMult) != 1)            /* If the input is reversed */
-        {
-            if( *pPhyData == byElecData) /* If Physic value = Electrical value */
+            //start data conversion for normal representation in the development environment
+            tab_reg_2[0] = ((tab_reg[0] & 0x0001) > 0) ? 1: 0;
+            tab_reg_2[1] = ((tab_reg[0] & 0x0002) > 0) ? 1: 0;
+            tab_reg_2[2] = ((tab_reg[0] & 0x0004) > 0) ? 1: 0;
+            tab_reg_2[3] = ((tab_reg[0] & 0x0008) > 0) ? 1: 0;
+            tab_reg_2[4] = ((tab_reg[0] & 0x0010) > 0) ? 1: 0;
+            tab_reg_2[5] = ((tab_reg[0] & 0x0020) > 0) ? 1: 0;
+            tab_reg_2[6] = ((tab_reg[0] & 0x0040) > 0) ? 1: 0;
+            tab_reg_2[7] = ((tab_reg[0] & 0x0080) > 0) ? 1: 0;
+            tab_reg_2[8] = ((tab_reg[0] & 0x0100) > 0) ? 1: 0;
+            tab_reg_2[9] = ((tab_reg[0] & 0x0200) > 0) ? 1: 0;
+            tab_reg_2[10] = ((tab_reg[0] & 0x0400) > 0) ? 1: 0;
+            tab_reg_2[11] = ((tab_reg[0] & 0x0800) > 0) ? 1: 0;
+            tab_reg_2[12] = ((tab_reg[0] & 0x1000) > 0) ? 1: 0;
+            tab_reg_2[13] = ((tab_reg[0] & 0x2000) > 0) ? 1: 0;
+            tab_reg_2[14] = ((tab_reg[0] & 0x4000) > 0) ? 1: 0;
+            tab_reg_2[15] = ((tab_reg[0] & 0x8000) > 0) ? 1: 0;
+            //end data conversion for normal representation in the development environment
+            /* Update all channels */
+            for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)
             {
-                /* printf ("Input value - channel %d has changed\n",nbIndex); */
-                if( byElecData) *pPhyData =0; /* Logic value != Physic value */
-                else            *pPhyData =1;
+                pPhyData = (uchar*)(pChannel->pvKerPhyData);
+                pLogData = (uchar*)(pChannel->pvKerData);
+                //
+                byElecData = tab_reg_2[nbIndex];
+                //
+                if((pChannel->pfnCnvCall) != 0)           /* If there is a conversion */
+                    pChannel->pfnCnvCall( ISA_IO_DIR_INPUT, &byElecData, &byElecData);
+
+
+                if((pChannel->luCnvMult) != 1)            /* If the input is reversed */
+                {
+                    if( *pPhyData == byElecData) /* If Physic value = Electrical value */
+                    {
+                        /* printf ("Input value - channel %d has changed\n",nbIndex); */
+                        if( byElecData) *pPhyData =0; /* Logic value != Physic value */
+                        else            *pPhyData =1;
+                    }
+                }
+                else                          /* If the input is direct */
+                {
+                    if( byElecData != *pPhyData)
+                    {
+                        /* printf ("Input value - channel %d has changed\n",nbIndex); */
+                        *pPhyData = byElecData;
+                    }
+                }
+                /* update the channel if not locked */
+                if (!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
+
+                pChannel++;
             }
         }
-        else                          /* If the input is direct */
-        {
-            if( byElecData != *pPhyData)
-            {
-                /* printf ("Input value - channel %d has changed\n",nbIndex); */
-                *pPhyData = byElecData;
-            }
-        }
-        /* update the channel if not locked */
-        if (!(pChannel->cuIsLocked))  *pLogData = *pPhyData;
 
-        pChannel++;
+
+
     }
+    ////////
+
+
 
 
 }

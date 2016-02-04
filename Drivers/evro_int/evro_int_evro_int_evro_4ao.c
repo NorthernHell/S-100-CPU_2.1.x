@@ -15,7 +15,7 @@ Device name:        EVRO_4AO
 typedef struct _tag_strEvro_4ao
 {
     int32  ID;   /* Node ID */
- 
+
 } strOemParam;
 
 
@@ -30,15 +30,15 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_int_evro_int_evro_4aoIosOpen
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {   /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
      * For a simple device it just initializes it.
      */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     printf("EVRO 4AO init\n");
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
@@ -55,8 +55,8 @@ typSTATUS evro_int_evro_int_evro_4aoIosOpen
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-       
-		if (rc == -1)
+
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }
@@ -82,7 +82,7 @@ warning     :
 
 void evro_int_evro_int_evro_4aoIosClose
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("EVRO 4AO Exit\n");
@@ -130,8 +130,8 @@ void evro_int_evro_int_evro_4aoIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;		  
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -197,8 +197,8 @@ void evro_int_evro_int_evro_4aoIosWrite
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_write_registers(ctx, 40000, 4, tab_reg);
-        
-		if (rc == -1)
+
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }

@@ -13,8 +13,8 @@ Device name:        EVRO_8DIR
 
 typedef struct _tag_strEvro_8dir
 {
-   
-	//int32  Counter_1;
+
+    //int32  Counter_1;
     //int32  Counter_2;
     //int32  Counter_3;
     //int32  Counter_4;
@@ -30,12 +30,12 @@ typedef struct _tag_strEvro_8dir
     //int32  CCounter_6;   /* Capture Counter */
     //int32  CCounter_7;   /* Capture Counter */
     //int32  CCounter_8;   /* Capture Counter */
-   
-	
-	// int32  Counter_Capture;   /* Bit1 = 1 to Capture Counter1, Bit2 = 1 to */
+
+
+    // int32  Counter_Capture;   /* Bit1 = 1 to Capture Counter1, Bit2 = 1 to */
     // int32  Counter_Mode;   /* 0=Disable, 1=Up Counting */
     // int32  Capture_Zero;   /* 0 = Disabled, bit1 = auto zero counter 1. */
-	
+
 } strOemParam;
 
 
@@ -61,9 +61,9 @@ typSTATUS evro_int_evro_int_evro_8dirIosOpen
     strOemParam* pOemParam;
     pOemParam=(strOemParam*)(pvRtIoDvc->pvOemParam);
     printf("EVRO 8DIC init\n");
-    
-	/*
-	modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+
+    /*
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
     int rc;
     uint16_t tab_reg[33];
     struct timeval response_timeout;
@@ -164,9 +164,9 @@ typSTATUS evro_int_evro_int_evro_8dirIosOpen
         {
             pvRtIoDvc->luUser=1;
         };
-//Counter_Capture
-      
-		tab_reg[0]=pOemParam->Counter_Capture;
+    //Counter_Capture
+
+    	tab_reg[0]=pOemParam->Counter_Capture;
         rc = modbus_write_register(ctx, 34,tab_reg[0]);
         if (rc == -1)
         {
@@ -184,8 +184,8 @@ typSTATUS evro_int_evro_int_evro_8dirIosOpen
         {
             pvRtIoDvc->luUser=1;
         };
-//
-//Counter_Mode
+    //
+    //Counter_Mode
         tab_reg[0]=pOemParam->Counter_Mode;
         rc = modbus_write_register(ctx, 100,tab_reg[0]);
         if (rc == -1)
@@ -204,8 +204,8 @@ typSTATUS evro_int_evro_int_evro_8dirIosOpen
         {
             pvRtIoDvc->luUser=1;
         };
-//
-//Capture_Zero
+    //
+    //Capture_Zero
         tab_reg[0]=pOemParam->Capture_Zero;
         rc = modbus_write_register(ctx, 102,tab_reg[0]);
         if (rc == -1)
@@ -229,7 +229,7 @@ typSTATUS evro_int_evro_int_evro_8dirIosOpen
         modbus_close(ctx);
         modbus_free(ctx);
     };
-*/
+    */
     return (0);
 }
 
@@ -337,31 +337,31 @@ void evro_int_evro_int_evro_8dirIosRead
             tab_counters[7]=tab_reg[15];
             tab_counters[7]=tab_counters[7]*65535;
             tab_counters[7]=tab_counters[7]+tab_reg[14];
-			tab_counters[8]=tab_reg[17];
+            tab_counters[8]=tab_reg[17];
             tab_counters[8]=tab_counters[8]*65535;
             tab_counters[8]=tab_counters[8]+tab_reg[16];
-			tab_counters[9]=tab_reg[19];
+            tab_counters[9]=tab_reg[19];
             tab_counters[9]=tab_counters[9]*65535;
             tab_counters[9]=tab_counters[9]+tab_reg[18];
-			tab_counters[10]=tab_reg[21];
+            tab_counters[10]=tab_reg[21];
             tab_counters[10]=tab_counters[10]*65535;
             tab_counters[10]=tab_counters[10]+tab_reg[20];
-			tab_counters[11]=tab_reg[23];
+            tab_counters[11]=tab_reg[23];
             tab_counters[11]=tab_counters[10]*65535;
             tab_counters[11]=tab_counters[10]+tab_reg[22];
-			tab_counters[12]=tab_reg[25];
+            tab_counters[12]=tab_reg[25];
             tab_counters[12]=tab_counters[12]*65535;
             tab_counters[12]=tab_counters[12]+tab_reg[24];
-			tab_counters[13]=tab_reg[27];
+            tab_counters[13]=tab_reg[27];
             tab_counters[13]=tab_counters[13]*65535;
             tab_counters[13]=tab_counters[13]+tab_reg[26];
-			tab_counters[14]=tab_reg[29];
+            tab_counters[14]=tab_reg[29];
             tab_counters[14]=tab_counters[14]*65535;
             tab_counters[14]=tab_counters[14]+tab_reg[28];
-			tab_counters[15]=tab_reg[31];
+            tab_counters[15]=tab_reg[31];
             tab_counters[15]=tab_counters[15]*65535;
             tab_counters[15]=tab_counters[15]+tab_reg[30];
-		};
+        };
         modbus_close(ctx);
         modbus_free(ctx);
     };
