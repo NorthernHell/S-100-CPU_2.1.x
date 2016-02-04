@@ -1,0 +1,44 @@
+###############################################################################
+# ISaGRAF PRO: GLOBAL DEFINITIONS FOR MAKEFILEs
+# 23-Jan-2002: ICS Triplex ISaGRAF Inc.
+###############################################################################
+
+OS = ACE_LNX
+
+##### DEMO PERIOD (uncomment DEMOPERIOD for set DEMO mode) #################### 
+#DEMOPERIOD=3600
+ifdef DEMOPERIOD
+    DEMO = -DISATIMELIMIT=$(DEMOPERIOD)
+else
+    DEMO = 
+endif
+
+######## PATHS ###################################################
+CONFDIR = 
+RDIR = Rels/$(CONFDIR)
+RCDIR= Rels/C/$(CONFDIR)
+LDIR = $(ROOT)/Lib/$(CONFDIR)
+ODIR = $(ROOT)/Cmds/$(CONFDIR)
+##################################################################
+
+CC = gcc -O3 -xc++ -mno-align-double -DJIT_DISABLED -D$(OS) $(DEMO) -DHAS_BZLIB -DGLOBAL_LOCK -DTIMEMARK=50000 -I$(ROOT)/include -I/usr/local/include -Wall -c $(CC_INCLUDE)
+LK = gcc -s 
+LKFLAGS= -L /usr/lib -lm -lstdc++ -lbz2 -L/usr/local/lib -lACE -L $(LDIR) -Wl,--rpath -Wl,/usr/local/lib
+LD = ld -o
+LDFLAGS = -r
+
+CC_INCLUDE = $(CC_EXTRA_INCLUDE)
+
+
+#CFLAG = $(CC_OPTIM) $(CC_WARNINGS) $(CC_INCLUDE) $(CC_COMPILER)\
+#   $(CC_DEFINES) $(CC_ADDED_CFLAGS)
+
+#CC_OPTIM = $(CC_OPTIM_NORMAL)
+#CC_WARNINGS = -w1
+#CC_DEFINES = $(CC_EXTRA_DEFINES)
+#CC_ADDED_CFLAGS = $(CC_DEBUG)
+
+#CC_EXTRA_DEFINES = 
+#CC_DEBUG = -g2
+
+##############################################################

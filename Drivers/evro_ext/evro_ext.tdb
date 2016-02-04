@@ -18,16 +18,6 @@ UpperChannel=9
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] IO1AO
-PackageName=evro_ext
-DriverName=_evro_ext_
-Type=INT
-Direction=Output
-LowerChannel=1
-UpperChannel=1
-HiddenMemberOfComplexDevice=1
-[end]
-
 [device] IO16DO
 PackageName=evro_ext
 DriverName=_evro_ext_
@@ -38,13 +28,23 @@ UpperChannel=16
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] M_AO
+[device] IO1AO
 PackageName=evro_ext
 DriverName=_evro_ext_
 Type=INT
 Direction=Output
 LowerChannel=1
-UpperChannel=128
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] IO16DI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=16
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -58,13 +58,13 @@ UpperChannel=128
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] IO16DI
+[device] M_AO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Type=BOOL
-Direction=Input
+Type=INT
+Direction=Output
 LowerChannel=1
-UpperChannel=16
+UpperChannel=128
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -88,13 +88,13 @@ UpperChannel=128
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] M_DI
+[device] IO8AI
 PackageName=evro_ext
 DriverName=_evro_ext_
-Type=BOOL
+Type=INT
 Direction=Input
 LowerChannel=1
-UpperChannel=128
+UpperChannel=8
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -108,13 +108,13 @@ UpperChannel=8
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] IO8AI
+[device] M_DI
 PackageName=evro_ext
 DriverName=_evro_ext_
-Type=INT
+Type=BOOL
 Direction=Input
 LowerChannel=1
-UpperChannel=8
+UpperChannel=128
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -128,16 +128,6 @@ UpperChannel=7
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] IO4RO
-PackageName=evro_ext
-DriverName=_evro_ext_
-Type=BOOL
-Direction=Output
-LowerChannel=1
-UpperChannel=4
-HiddenMemberOfComplexDevice=1
-[end]
-
 [device] IO2RTD
 PackageName=evro_ext
 DriverName=_evro_ext_
@@ -148,13 +138,13 @@ UpperChannel=2
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] IO8DO
+[device] IO4RO
 PackageName=evro_ext
 DriverName=_evro_ext_
 Type=BOOL
 Direction=Output
 LowerChannel=1
-UpperChannel=8
+UpperChannel=4
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -168,13 +158,13 @@ UpperChannel=8
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] modbusstatus
+[device] IO8DO
 PackageName=evro_ext
 DriverName=_evro_ext_
 Type=BOOL
-Direction=Input
+Direction=Output
 LowerChannel=1
-UpperChannel=1
+UpperChannel=8
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -188,87 +178,20 @@ UpperChannel=2
 HiddenMemberOfComplexDevice=1
 [end]
 
-[complex] Modbus_AI
+[device] modbusstatus
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=M_AI
-ComplexOption=3
-[end]
-
-[deviceParam] baud_rate
-Format=LONG
-Access=USER DEFINED
-Default=115200
-SingleTextLine=Baud Rate
-[end]
-
-[deviceParam] NCOM
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=COM port number
-[end]
-
-[deviceParam] ID
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=Device address
-[end]
-
-[deviceParam] Adress
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=address of the first register
-[end]
-
-[deviceParam] NR
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=number of registers
-[end]
-
-[deviceParam] Func
-Format=LONG
-Access=USER DEFINED
-Default=4
-SingleTextLine=Modbus function 3-read holding registers 4-read input registers
-[end]
-
-[deviceParam] Parity
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=0 - None 1-even 2-odd
-[end]
-
-[deviceParam] Stop_bits
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=1,2 stop bit`s
-[end]
-
-[deviceParam] TimeOutu
-Format=LONG
-Access=USER DEFINED
-Default=20000
-SingleTextLine=timeout mcs
-[end]
-
-[deviceParam] TimeOutsec
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=temeout s
+Type=BOOL
+Direction=Input
+LowerChannel=1
+UpperChannel=1
+HiddenMemberOfComplexDevice=1
 [end]
 
 [complex] IO_6RTD
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
+Devices=IO6RTD,modbusstatus
 ComplexOption=1
 [end]
 
@@ -342,10 +265,10 @@ Default=1
 SingleTextLine=1=°C, 2=°F
 [end]
 
-[complex] Modbus_DO
+[complex] Modbus_AI
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=M_DO
+Devices=M_AI,modbusstatus
 ComplexOption=3
 [end]
 
@@ -384,6 +307,13 @@ Default=1
 SingleTextLine=number of registers
 [end]
 
+[deviceParam] Func
+Format=LONG
+Access=USER DEFINED
+Default=4
+SingleTextLine=Modbus function 3-read holding registers 4-read input registers
+[end]
+
 [deviceParam] Parity
 Format=LONG
 Access=USER DEFINED
@@ -412,10 +342,10 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
-[complex] Modbus_DI
+[complex] Modbus_DO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=M_DI
+Devices=M_DO,modbusstatus
 ComplexOption=3
 [end]
 
@@ -485,8 +415,8 @@ SingleTextLine=temeout s
 [complex] IO_DAIO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO2DO,IO4DI,IO2AI,IO2RTD,IO1AO,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -601,11 +531,81 @@ Default=0
 SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
 [end]
 
+[complex] Modbus_DI
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=M_DI,modbusstatus
+ComplexOption=3
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bit`s
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
 [complex] IO_8DIO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO8DI,IO8DO,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -674,8 +674,8 @@ SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
 [complex] IO_8TCS
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO8TCS,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -755,137 +755,11 @@ Default=1
 SingleTextLine=1=°C, 2=°F
 [end]
 
-[complex] IO_8AO
-PackageName=evro_ext
-DriverName=_evro_ext_
-Devices=
-ComplexOption=1
-[end]
-
-[deviceParam] baud_rate
-Format=LONG
-Access=USER DEFINED
-Default=115200
-SingleTextLine=Baud Rate
-[end]
-
-[deviceParam] NCOM
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=COM port number
-[end]
-
-[deviceParam] ID
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=Device address
-[end]
-
-[deviceParam] Parity
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=0 - None 1-even 2-odd
-[end]
-
-[deviceParam] Stop_bits
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=1,2 stop bita
-[end]
-
-[deviceParam] TimeOutu
-Format=LONG
-Access=USER DEFINED
-Default=20000
-SingleTextLine=timeout mcs
-[end]
-
-[deviceParam] TimeOutsec
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=temeout s
-[end]
-
-[deviceParam] Watchdog_Timer
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
-[end]
-
-[complex] IO_16DO
-PackageName=evro_ext
-DriverName=_evro_ext_
-Devices=
-ComplexOption=1
-[end]
-
-[deviceParam] baud_rate
-Format=LONG
-Access=USER DEFINED
-Default=115200
-SingleTextLine=Baud Rate
-[end]
-
-[deviceParam] NCOM
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=COM port number
-[end]
-
-[deviceParam] ID
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=Device address
-[end]
-
-[deviceParam] Parity
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=0 - None 1-even 2-odd
-[end]
-
-[deviceParam] Stop_bits
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=1,2 stop bita
-[end]
-
-[deviceParam] TimeOutu
-Format=LONG
-Access=USER DEFINED
-Default=20000
-SingleTextLine=timeout mcs
-[end]
-
-[deviceParam] TimeOutsec
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=temeout s
-[end]
-
-[deviceParam] Watchdog_Timer
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
-[end]
-
 [complex] IO_16DI
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO16DI,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -944,11 +818,137 @@ Default=0
 SingleTextLine=0 = Disable, >0 = Enable. (x10ms)
 [end]
 
+[complex] IO_16DO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=IO16DO,modbusstatus
+ComplexOption=3
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] Watchdog_Timer
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
+[end]
+
+[complex] IO_8AO
+PackageName=evro_ext
+DriverName=_evro_ext_
+Devices=IO8AO,modbusstatus
+ComplexOption=3
+[end]
+
+[deviceParam] baud_rate
+Format=LONG
+Access=USER DEFINED
+Default=115200
+SingleTextLine=Baud Rate
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=COM port number
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] Parity
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=0 - None 1-even 2-odd
+[end]
+
+[deviceParam] Stop_bits
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=1,2 stop bita
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] Watchdog_Timer
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
+[end]
+
 [complex] IO_8AI
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO8AI,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -1003,8 +1003,8 @@ SingleTextLine=temeout s
 [complex] IO_4RO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=
-ComplexOption=1
+Devices=IO4RO,modbusstatus
+ComplexOption=3
 [end]
 
 [deviceParam] baud_rate
@@ -1066,7 +1066,7 @@ SingleTextLine=Timer in seconds. 0 = disabled. 1 - 255 = enabled.
 [complex] Modbus_AO
 PackageName=evro_ext
 DriverName=_evro_ext_
-Devices=M_AO
+Devices=M_AO,modbusstatus
 ComplexOption=3
 [end]
 
@@ -1140,15 +1140,15 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
+;$$[$desc] IO_6RTD&evro_ext_evro_ext_
+;$$<Модуль аналогового ввода (термометр сопротивления) IO-6RTD
+;$$<6 каналов, Pt100, Ni120, Pt1000, Ni1000, Ni1000LG& Ohms, RS-485 (Modbus RTU 115200 бит/с), индикация
+;$$[end]
+
 ;$$[$desc] Modbus_AI&evro_ext_evro_ext_
 ;$$<Модуль аналогового ввода (универсальный)
 ;$$<127 каналов максимум, тип канала INT16,
 ;$$<поддерживаемые Modbus функции: 04 - read Holdind registers(0x03), 03 - read input redisters(0x04)
-;$$[end]
-
-;$$[$desc] IO_6RTD&evro_ext_evro_ext_
-;$$<Модуль аналогового ввода (термометр сопротивления) IO-6RTD
-;$$<6 каналов, Pt100, Ni120, Pt1000, Ni1000, Ni1000LG& Ohms, RS-485 (Modbus RTU 115200 бит/с), индикация
 ;$$[end]
 
 ;$$[$desc] Modbus_DO&evro_ext_evro_ext_
@@ -1157,17 +1157,17 @@ SingleTextLine=temeout s
 ;$$<поддерживаемые Modbus функции: 15 - force multiple coils
 ;$$[end]
 
-;$$[$desc] Modbus_DI&evro_ext_evro_ext_
-;$$<Модуль дискретного ввода (универсальный)
-;$$<127 каналов максимум, тип канала BOOL,
-;$$<поддерживаемые Modbus функции: 02 - read input status (0x01)
-;$$[end]
-
 ;$$[$desc] IO_DAIO&evro_ext_evro_ext_
 ;$$<Модуль аналогового и дискретного ввода-вывода IO-DAIO, комбинированный модуль
 ;$$<2 вх. термометров сопротивления, 2 аналоговых токовых входа 0(4) - 20mA / 0(2) – 10В,
 ;$$<1 аналоговый токовый выход 0(4) - 20mA / 0(2) – 10В, 4 дискретных входа, 2 дискретных выхода
 ;$$<
+;$$[end]
+
+;$$[$desc] Modbus_DI&evro_ext_evro_ext_
+;$$<Модуль дискретного ввода (универсальный)
+;$$<127 каналов максимум, тип канала BOOL,
+;$$<поддерживаемые Modbus функции: 02 - read input status (0x01)
 ;$$[end]
 
 ;$$[$desc] IO_8DIO&evro_ext_evro_ext_
@@ -1184,9 +1184,9 @@ SingleTextLine=temeout s
 ;$$<J, K, T, E, N, B, S, R, C, D, G, mV, RS-485 (Modbus RTU 115200 бит/с), индикация
 ;$$[end]
 
-;$$[$desc] IO_8AO&evro_ext_evro_ext_
-;$$<Модуль аналогового вывода (ток) IO-8AOI, модуль аналогового вывода (напряжение) IO-8AOV
-;$$<8 каналов (ток/напряжение), RS-485 (Modbus RTU 115200 бит/с), индикация
+;$$[$desc] IO_16DI&evro_ext_evro_ext_
+;$$<Модуль дискретного ввода IO-16DI
+;$$<16 каналов, RS-485 (Modbus RTU 115200 бит/с), индикация, механические контакты/биполярные ключи
 ;$$[end]
 
 ;$$[$desc] IO_16DO&evro_ext_evro_ext_
@@ -1194,9 +1194,9 @@ SingleTextLine=temeout s
 ;$$<16 каналов, RS-485 (Modbus RTU 115200 бит/с), индикация, до 0,1 А на канал
 ;$$[end]
 
-;$$[$desc] IO_16DI&evro_ext_evro_ext_
-;$$<Модуль дискретного ввода IO-16DI
-;$$<16 каналов, RS-485 (Modbus RTU 115200 бит/с), индикация, механические контакты/биполярные ключи
+;$$[$desc] IO_8AO&evro_ext_evro_ext_
+;$$<Модуль аналогового вывода (ток) IO-8AOI, модуль аналогового вывода (напряжение) IO-8AOV
+;$$<8 каналов (ток/напряжение), RS-485 (Modbus RTU 115200 бит/с), индикация
 ;$$[end]
 
 ;$$[$desc] IO_8AI&evro_ext_evro_ext_
@@ -1210,14 +1210,14 @@ SingleTextLine=temeout s
 ;$$<4 канала, RS-485 (Modbus RTU 115200 бит/с), индикация, до 1 А на канал
 ;$$[end]
 
-;$$[$desc] modbusstatus&evro_ext_evro_ext_
-;$$<Статус связи (есть/нет) с модулем расширения
-;$$[end]
-
 ;$$[$desc] Modbus_AO&evro_ext_evro_ext_
 ;$$<Модуль аналогового вывода (универсальный)
 ;$$<127 каналов максимум, тип канала INT16,
 ;$$<поддерживаемые Modbus функции: 16 - preset multiple regs, 06 - preset single register
+;$$[end]
+
+;$$[$desc] modbusstatus&evro_ext_evro_ext_
+;$$<Статус связи (есть/нет) с модулем расширения
 ;$$[end]
 
 ;$$[setList] TDB1

@@ -1,0 +1,276 @@
+The target system is: Linux -  - 
+The host system is: Linux - 2.6.32-5-686 - i686
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc 
+Build flags: -march=armv4t;-mtune=arm920t;-march=armv4t;-mtune=arm920t
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/S-100-CPU_GIT/build/CMakeFiles/3.1.3/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++ 
+Build flags: -march=armv4t;-mtune=arm920t;-march=armv4t;-mtune=arm920t
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/S-100-CPU_GIT/build/CMakeFiles/3.1.3/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2012829172/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2012829172.dir/build.make CMakeFiles/cmTryCompileExec2012829172.dir/build
+make[1]: Entering directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_progress_report /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2012829172.dir/testCCompiler.c.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc   -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    -o CMakeFiles/cmTryCompileExec2012829172.dir/testCCompiler.c.o   -c /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec2012829172
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2012829172.dir/link.txt --verbose=1
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc  -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    CMakeFiles/cmTryCompileExec2012829172.dir/testCCompiler.c.o  -o cmTryCompileExec2012829172 -rdynamic 
+make[1]: Leaving directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1180502757/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1180502757.dir/build.make CMakeFiles/cmTryCompileExec1180502757.dir/build
+make[1]: Entering directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_progress_report /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1180502757.dir/CMakeCCompilerABI.c.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc   -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    -o CMakeFiles/cmTryCompileExec1180502757.dir/CMakeCCompilerABI.c.o   -c /root/iodk/merk/cmake-3.1.3-Linux-i386/share/cmake-3.1/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec1180502757
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1180502757.dir/link.txt --verbose=1
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc  -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t   -v CMakeFiles/cmTryCompileExec1180502757.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1180502757 -rdynamic  
+Using built-in specs.
+Target: arm-none-linux-gnueabi
+Configured with: /scratch/julian/lite-respin/linux/src/gcc-4.3/configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --target=arm-none-linux-gnueabi --enable-threads --disable-libmudflap --disable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --enable-shared --enable-symvers=gnu --enable-__cxa_atexit --with-pkgversion='Sourcery G++ Lite 2008q3-72' --with-bugurl=https://support.codesourcery.com/GNUToolchain/ --disable-nls --prefix=/opt/codesourcery --with-sysroot=/opt/codesourcery/arm-none-linux-gnueabi/libc --with-build-sysroot=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/libc --with-gmp=/scratch/julian/lite-respin/linux/obj/host-libs-2008q3-72-arm-none-linux-gnueabi-i686-pc-linux-gnu/usr --with-mpfr=/scratch/julian/lite-respin/linux/obj/host-libs-2008q3-72-arm-none-linux-gnueabi-i686-pc-linux-gnu/usr --disable-libgomp --enable-poison-system-directories --with-build-time-tools=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/bin --with-build-time-tools=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/bin
+Thread model: posix
+gcc version 4.3.2 (Sourcery G++ Lite 2008q3-72) 
+COMPILER_PATH=/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/:/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/bin/
+LIBRARY_PATH=/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/:/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib/:/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/
+COLLECT_GCC_OPTIONS='-march=armv4t' '-mtune=arm920t' '-march=armv4t' '-mtune=arm920t' '-v' '-o' 'cmTryCompileExec1180502757' '-rdynamic'
+ /usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/collect2 --sysroot=/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux.so.3 -X -m armelf_linux_eabi -o cmTryCompileExec1180502757 /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crt1.o /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crti.o /usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtbegin.o -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2 -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib -L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib -L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib CMakeFiles/cmTryCompileExec1180502757.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtend.o /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crtn.o
+make[1]: Leaving directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(arm-none-linux-gnueabi-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec1180502757/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1180502757.dir/build.make CMakeFiles/cmTryCompileExec1180502757.dir/build]
+  ignore line: [make[1]: Entering directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp']
+  ignore line: [/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_progress_report /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec1180502757.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc   -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    -o CMakeFiles/cmTryCompileExec1180502757.dir/CMakeCCompilerABI.c.o   -c /root/iodk/merk/cmake-3.1.3-Linux-i386/share/cmake-3.1/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec1180502757]
+  ignore line: [/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1180502757.dir/link.txt --verbose=1]
+  ignore line: [/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc  -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t   -v CMakeFiles/cmTryCompileExec1180502757.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1180502757 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [Target: arm-none-linux-gnueabi]
+  ignore line: [Configured with: /scratch/julian/lite-respin/linux/src/gcc-4.3/configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --target=arm-none-linux-gnueabi --enable-threads --disable-libmudflap --disable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --enable-shared --enable-symvers=gnu --enable-__cxa_atexit --with-pkgversion='Sourcery G++ Lite 2008q3-72' --with-bugurl=https://support.codesourcery.com/GNUToolchain/ --disable-nls --prefix=/opt/codesourcery --with-sysroot=/opt/codesourcery/arm-none-linux-gnueabi/libc --with-build-sysroot=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/libc --with-gmp=/scratch/julian/lite-respin/linux/obj/host-libs-2008q3-72-arm-none-linux-gnueabi-i686-pc-linux-gnu/usr --with-mpfr=/scratch/julian/lite-respin/linux/obj/host-libs-2008q3-72-arm-none-linux-gnueabi-i686-pc-linux-gnu/usr --disable-libgomp --enable-poison-system-directories --with-build-time-tools=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/bin --with-build-time-tools=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/bin]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.3.2 (Sourcery G++ Lite 2008q3-72) ]
+  ignore line: [COMPILER_PATH=/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/:/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/bin/]
+  ignore line: [LIBRARY_PATH=/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/:/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib/:/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=armv4t' '-mtune=arm920t' '-march=armv4t' '-mtune=arm920t' '-v' '-o' 'cmTryCompileExec1180502757' '-rdynamic']
+  link line: [ /usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/collect2 --sysroot=/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux.so.3 -X -m armelf_linux_eabi -o cmTryCompileExec1180502757 /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crt1.o /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crti.o /usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtbegin.o -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2 -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib -L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib -L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib CMakeFiles/cmTryCompileExec1180502757.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtend.o /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crtn.o]
+    arg [/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/collect2] ==> ignore
+    arg [--sysroot=/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec1180502757] ==> ignore
+    arg [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crt1.o] ==> ignore
+    arg [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crti.o] ==> ignore
+    arg [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtbegin.o] ==> ignore
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib]
+    arg [CMakeFiles/cmTryCompileExec1180502757.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtend.o] ==> ignore
+    arg [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t] ==> [/usr/src/mini2440/arm-2008q3/lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t] ==> [/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib/armv4t]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2] ==> [/usr/src/mini2440/arm-2008q3/lib/gcc/arm-none-linux-gnueabi/4.3.2]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc] ==> [/usr/src/mini2440/arm-2008q3/lib/gcc]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib] ==> [/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib] ==> [/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/libc/armv4t/lib]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib] ==> [/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/libc/armv4t/usr/lib]
+  implicit libs: [c]
+  implicit dirs: [/usr/src/mini2440/arm-2008q3/lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t;/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib/armv4t;/usr/src/mini2440/arm-2008q3/lib/gcc/arm-none-linux-gnueabi/4.3.2;/usr/src/mini2440/arm-2008q3/lib/gcc;/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib;/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/libc/armv4t/lib;/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/libc/armv4t/usr/lib]
+  implicit fwks: []
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1377606904/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1377606904.dir/build.make CMakeFiles/cmTryCompileExec1377606904.dir/build
+make[1]: Entering directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_progress_report /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1377606904.dir/testCXXCompiler.cxx.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++    -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    -o CMakeFiles/cmTryCompileExec1377606904.dir/testCXXCompiler.cxx.o -c /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec1377606904
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1377606904.dir/link.txt --verbose=1
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++   -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    CMakeFiles/cmTryCompileExec1377606904.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec1377606904 -rdynamic 
+make[1]: Leaving directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3881721696/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3881721696.dir/build.make CMakeFiles/cmTryCompileExec3881721696.dir/build
+make[1]: Entering directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_progress_report /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3881721696.dir/CMakeCXXCompilerABI.cpp.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++    -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    -o CMakeFiles/cmTryCompileExec3881721696.dir/CMakeCXXCompilerABI.cpp.o -c /root/iodk/merk/cmake-3.1.3-Linux-i386/share/cmake-3.1/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec3881721696
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3881721696.dir/link.txt --verbose=1
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++   -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t   -v CMakeFiles/cmTryCompileExec3881721696.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3881721696 -rdynamic  
+Using built-in specs.
+Target: arm-none-linux-gnueabi
+Configured with: /scratch/julian/lite-respin/linux/src/gcc-4.3/configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --target=arm-none-linux-gnueabi --enable-threads --disable-libmudflap --disable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --enable-shared --enable-symvers=gnu --enable-__cxa_atexit --with-pkgversion='Sourcery G++ Lite 2008q3-72' --with-bugurl=https://support.codesourcery.com/GNUToolchain/ --disable-nls --prefix=/opt/codesourcery --with-sysroot=/opt/codesourcery/arm-none-linux-gnueabi/libc --with-build-sysroot=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/libc --with-gmp=/scratch/julian/lite-respin/linux/obj/host-libs-2008q3-72-arm-none-linux-gnueabi-i686-pc-linux-gnu/usr --with-mpfr=/scratch/julian/lite-respin/linux/obj/host-libs-2008q3-72-arm-none-linux-gnueabi-i686-pc-linux-gnu/usr --disable-libgomp --enable-poison-system-directories --with-build-time-tools=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/bin --with-build-time-tools=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/bin
+Thread model: posix
+gcc version 4.3.2 (Sourcery G++ Lite 2008q3-72) 
+COMPILER_PATH=/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/:/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/bin/
+LIBRARY_PATH=/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/:/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib/:/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/
+COLLECT_GCC_OPTIONS='-march=armv4t' '-mtune=arm920t' '-march=armv4t' '-mtune=arm920t' '-v' '-o' 'cmTryCompileExec3881721696' '-rdynamic' '-shared-libgcc'
+ /usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/collect2 --sysroot=/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux.so.3 -X -m armelf_linux_eabi -o cmTryCompileExec3881721696 /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crt1.o /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crti.o /usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtbegin.o -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2 -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib -L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib -L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib CMakeFiles/cmTryCompileExec3881721696.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtend.o /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crtn.o
+make[1]: Leaving directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(arm-none-linux-gnueabi-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec3881721696/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec3881721696.dir/build.make CMakeFiles/cmTryCompileExec3881721696.dir/build]
+  ignore line: [make[1]: Entering directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp']
+  ignore line: [/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_progress_report /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec3881721696.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++    -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    -o CMakeFiles/cmTryCompileExec3881721696.dir/CMakeCXXCompilerABI.cpp.o -c /root/iodk/merk/cmake-3.1.3-Linux-i386/share/cmake-3.1/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec3881721696]
+  ignore line: [/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3881721696.dir/link.txt --verbose=1]
+  ignore line: [/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++   -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t   -v CMakeFiles/cmTryCompileExec3881721696.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3881721696 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [Target: arm-none-linux-gnueabi]
+  ignore line: [Configured with: /scratch/julian/lite-respin/linux/src/gcc-4.3/configure --build=i686-pc-linux-gnu --host=i686-pc-linux-gnu --target=arm-none-linux-gnueabi --enable-threads --disable-libmudflap --disable-libssp --disable-libstdcxx-pch --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --enable-shared --enable-symvers=gnu --enable-__cxa_atexit --with-pkgversion='Sourcery G++ Lite 2008q3-72' --with-bugurl=https://support.codesourcery.com/GNUToolchain/ --disable-nls --prefix=/opt/codesourcery --with-sysroot=/opt/codesourcery/arm-none-linux-gnueabi/libc --with-build-sysroot=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/libc --with-gmp=/scratch/julian/lite-respin/linux/obj/host-libs-2008q3-72-arm-none-linux-gnueabi-i686-pc-linux-gnu/usr --with-mpfr=/scratch/julian/lite-respin/linux/obj/host-libs-2008q3-72-arm-none-linux-gnueabi-i686-pc-linux-gnu/usr --disable-libgomp --enable-poison-system-directories --with-build-time-tools=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/bin --with-build-time-tools=/scratch/julian/lite-respin/linux/install/arm-none-linux-gnueabi/bin]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.3.2 (Sourcery G++ Lite 2008q3-72) ]
+  ignore line: [COMPILER_PATH=/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/:/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/bin/]
+  ignore line: [LIBRARY_PATH=/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/:/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/:/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib/:/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=armv4t' '-mtune=arm920t' '-march=armv4t' '-mtune=arm920t' '-v' '-o' 'cmTryCompileExec3881721696' '-rdynamic' '-shared-libgcc']
+  link line: [ /usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/collect2 --sysroot=/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux.so.3 -X -m armelf_linux_eabi -o cmTryCompileExec3881721696 /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crt1.o /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crti.o /usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtbegin.o -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2 -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc -L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib -L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib -L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib CMakeFiles/cmTryCompileExec3881721696.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtend.o /usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crtn.o]
+    arg [/usr/src/mini2440/arm-2008q3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.3.2/collect2] ==> ignore
+    arg [--sysroot=/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec3881721696] ==> ignore
+    arg [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crt1.o] ==> ignore
+    arg [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crti.o] ==> ignore
+    arg [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtbegin.o] ==> ignore
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib]
+    arg [-L/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib] ==> dir [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib]
+    arg [CMakeFiles/cmTryCompileExec3881721696.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t/crtend.o] ==> ignore
+    arg [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t] ==> [/usr/src/mini2440/arm-2008q3/lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/armv4t] ==> [/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib/armv4t]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2] ==> [/usr/src/mini2440/arm-2008q3/lib/gcc/arm-none-linux-gnueabi/4.3.2]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc] ==> [/usr/src/mini2440/arm-2008q3/lib/gcc]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib] ==> [/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/lib] ==> [/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/libc/armv4t/lib]
+  collapse library dir [/usr/src/mini2440/arm-2008q3/bin/../arm-none-linux-gnueabi/libc/armv4t/usr/lib] ==> [/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/libc/armv4t/usr/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/usr/src/mini2440/arm-2008q3/lib/gcc/arm-none-linux-gnueabi/4.3.2/armv4t;/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib/armv4t;/usr/src/mini2440/arm-2008q3/lib/gcc/arm-none-linux-gnueabi/4.3.2;/usr/src/mini2440/arm-2008q3/lib/gcc;/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib;/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/libc/armv4t/lib;/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/libc/armv4t/usr/lib]
+  implicit fwks: []
+
+
+Determining if files pthread.h exist passed with the following output:
+Change Dir: /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2294786376/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2294786376.dir/build.make CMakeFiles/cmTryCompileExec2294786376.dir/build
+make[1]: Entering directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_progress_report /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2294786376.dir/CheckIncludeFiles.c.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc   -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    -o CMakeFiles/cmTryCompileExec2294786376.dir/CheckIncludeFiles.c.o   -c /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec2294786376
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2294786376.dir/link.txt --verbose=1
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc  -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    CMakeFiles/cmTryCompileExec2294786376.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec2294786376 -rdynamic 
+make[1]: Leaving directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3165383507/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3165383507.dir/build.make CMakeFiles/cmTryCompileExec3165383507.dir/build
+make[1]: Entering directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_progress_report /S-100-CPU_GIT/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3165383507.dir/CheckFunctionExists.c.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc   -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec3165383507.dir/CheckFunctionExists.c.o   -c /root/iodk/merk/cmake-3.1.3-Linux-i386/share/cmake-3.1/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3165383507
+/root/iodk/merk/cmake-3.1.3-Linux-i386/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3165383507.dir/link.txt --verbose=1
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc  -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t -DCHECK_FUNCTION_EXISTS=pthread_create   CMakeFiles/cmTryCompileExec3165383507.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3165383507 -rdynamic -lpthread 
+make[1]: Leaving directory `/S-100-CPU_GIT/build/CMakeFiles/CMakeTmp'
+
+

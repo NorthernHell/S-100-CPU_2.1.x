@@ -34,11 +34,11 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_ext_evro_ext_io4roIosOpen
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     /*
      * Basically, for a complex device the driver can browse all
      * simple devices and perform corressponding initializations.
@@ -91,7 +91,7 @@ typSTATUS evro_ext_evro_ext_io4roIosOpen
         modbus_set_response_timeout(ctx, &response_timeout);
         rc = modbus_write_register(ctx, 100, oemCPar->Watchdog_Timer);
         if (rc == -1)
-       {
+        {
             cpxDev->luUser =0;
         }
         else
@@ -115,7 +115,7 @@ warning     :
 
 void evro_ext_evro_ext_io4roIosClose
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
 
@@ -163,8 +163,8 @@ void evro_ext_evro_ext_io4roIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;	 
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -256,7 +256,7 @@ void evro_ext_evro_ext_io4roIosWrite
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc  = modbus_write_bits(ctx, 0,nbChannel, tab_reg);
-		if (rc == -1)
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }

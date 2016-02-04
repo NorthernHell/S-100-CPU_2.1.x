@@ -1,0 +1,19 @@
+SET (CMAKE_SYSTEM_NAME Linux)
+SET (CMAKE_C_COMPILER /home/binkm/work/clients/sm180/arm-unknown-linux-gnueabi/bin/arm-unknown-linux-gnueabi-gcc)
+SET (CMAKE_CXX_COMPILER /home/binkm/work/clients/sm180/arm-unknown-linux-gnueabi/bin/arm-unknown-linux-gnueabi-g++)
+
+
+#message(STATUS "CMAKE_C_FLAGS" ${CMAKE_C_FLAGS})
+
+SET (CMAKE_FIND_ROOT_PATH /home/binkm/work/clients/sm180/arm-unknown-linux-gnueabi/)
+SET (CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+
+SET (CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+SET (CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+
+#SET (CMAKE_C_FLAGS ${CMAKE_C_FLAGS} "-march=armv5te")
+#SET (CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-march=armv5te")
+
+#STRING (REGEX REPLACE ";" " " CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+#STRING (REGEX REPLACE ";" " " CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+#SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS}" CACHE STRING "")

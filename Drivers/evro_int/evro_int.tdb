@@ -769,7 +769,7 @@ SingleTextLine=Node ID
 [complex] EVRO_modul_info_
 PackageName=evro_int
 DriverName=_evro_int_
-Devices=EVRO_modul_info,EVRO_avar_info,EVRO_indicate_info,status_m
+Devices=EVRO_modul_info,EVRO_avar_info,EVRO_temp_info,EVRO_indicate_info,status_m
 ComplexOption=3
 [end]
 
@@ -783,7 +783,7 @@ SingleTextLine=Node ID
 [complex] EVRO_16DI_
 PackageName=evro_int
 DriverName=_evro_int_
-Devices=EVRO_16DI,status_m
+Devices=EVRO_16DI,EVRO_16DIR,status_m
 ComplexOption=3
 [end]
 

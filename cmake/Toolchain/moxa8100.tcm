@@ -1,0 +1,13 @@
+SET (CMAKE_SYSTEM_NAME Linux)
+SET (CMAKE_C_COMPILER /home/ubuntu/work/moxa/usr/local/arm-linux-gnueabihf-4.7-20130415/bin/arm-linux-gnueabihf-gcc)
+SET (CMAKE_CXX_COMPILER /home/ubuntu/work/moxa/usr/local/arm-linux-gnueabihf-4.7-20130415/bin/arm-linux-gnueabihf-g++)
+
+SET (CMAKE_FIND_ROOT_PATH /home/ubuntu/work/moxa/usr/local/arm-linux-gnueabihf-4.7-20130415/arm-linux-gnueabihf)
+SET (CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+
+SET (CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+SET (CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+
+SET (CUSTOM_LINKER_LIBS "rt")
+#SET (CMAKE_C_FLAGS "-DMOXA_GCC332_MUTEX_BUG -DGLOBAL_LOCK")
+#SET (CMAKE_CXX_FLAGS "-DMOXA_GCC332_MUTEX_BUG -DGLOBAL_LOCK")

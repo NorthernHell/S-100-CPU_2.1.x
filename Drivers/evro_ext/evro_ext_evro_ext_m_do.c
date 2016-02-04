@@ -34,35 +34,6 @@ return value: typSTATUS :  0 if successful, BAD_RET if error
 warning     : Returning with an error stops the kernel resource starting
 ****************************************************************************/
 
-typSTATUS  evro_ext_evro_ext_IosInit
-(
-    strRtIoDrv* pRtIoDrv /* Run time io struct of the driver to init */
-)
-{
-    /*
-     * Basically, the driver can browse all
-     * used devices and perform a global initialization
-     */
-
-    return (0);
-}
-
-/****************************************************************************
-function    :  evro_ext_evro_ext_IosExit
-description : Driver Exit function
-parameters  :
-   (input) strRtIoDrv* pRtIoDrv :  Run time io struct of the driver to exit
-return value: None
-warning     :
-****************************************************************************/
-
-void evro_ext_evro_ext_IosExit
-(
-    strRtIoDrv* pRtIoDrv /* Run time io struct of the driver to exit */
-)
-{
-
-}
 
 
 /****************************************************************************
@@ -76,7 +47,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_ext_evro_ext_m_doIosOpen
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     /*
@@ -99,7 +70,7 @@ warning     :
 
 void evro_ext_evro_ext_m_doIosClose
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("MB DO exit\n");
@@ -148,8 +119,8 @@ void evro_ext_evro_ext_m_doIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -240,7 +211,7 @@ void evro_ext_evro_ext_m_doIosWrite
     {
         modbus_set_response_timeout(ctx, &response_timeout);
         rc = modbus_write_bits(ctx, oemCPar->Adress, oemCPar->NR, tab_reg);
- 		if (rc == -1)
+        if (rc == -1)
         {
             cpxDev->luUser =0;
         }
