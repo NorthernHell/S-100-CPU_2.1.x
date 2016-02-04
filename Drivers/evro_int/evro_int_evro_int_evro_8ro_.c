@@ -18,7 +18,7 @@ Device name:        EVRO_8ro_
 typedef struct _tag_strEvro_8ro_
 {
     int32  ID;   /* Node ID */
-  
+
 } strEvro_8ro_;
 
 
@@ -123,7 +123,7 @@ void evro_int_evro_int_evro_8ro_evro_8roIosWrite
      *   Then do not forget to update the physical data with the logical data
      */
     evro_int_evro_int_evro_8roIosWrite(pRtIoSplDvc);
- //   modbus8ro=pRtIoSplDvc->luUser;
+//   modbus8ro=pRtIoSplDvc->luUser;
 }
 
 /****************************************************************************

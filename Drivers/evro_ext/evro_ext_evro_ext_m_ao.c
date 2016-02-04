@@ -18,7 +18,7 @@ typedef struct _tag_strM_ao
     int32  ID;   /* Device address */
     int32  Adress;   /* address of the first register */
     int32  NR;   /* number of registers */
-	int32  Func;  /* functions modbus */
+    int32  Func;  /* functions modbus */
     int32  Parity;   /* 0 - None 1-even 2-odd */
     int32  Stop_bits;   /* 1,2 stop bita */
     int32  TimeOutu;   /* timeout mcs */
@@ -36,7 +36,7 @@ warning     : Returning with an error stops the kernel resource starting
 
 typSTATUS evro_ext_evro_ext_m_aoIosOpen
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     /*
@@ -59,7 +59,7 @@ warning     :
 
 void evro_ext_evro_ext_m_aoIosClose
 (
-  strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */	
+    strRtIoSplDvc* pRtIoSplDvc /* Run time io struct of the device to read */
 )
 {
     printf("AO Close\n");
@@ -107,8 +107,8 @@ void evro_ext_evro_ext_m_aoIosWrite
      *   consuming hardware access (remote I/Os, network, etc.).
      *   Then do not forget to update the physical data with the logical data
      */
-	strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
-	strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
+    strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
+    strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     strRtIoChan*     pChannel;
     strDfIoSplDvc*   pStaticDef;
     uint16           nbChannel;
@@ -207,13 +207,13 @@ void evro_ext_evro_ext_m_aoIosWrite
         if (oemCPar->Func==16)
         {
             rc = modbus_write_registers(ctx, oemCPar->Adress, oemCPar->NR, tab_reg);
- 		if (rc == -1)
-        {
-            cpxDev->luUser =0;
-        }
-        else
-        {
-            cpxDev->luUser =1;
+            if (rc == -1)
+            {
+                cpxDev->luUser =0;
+            }
+            else
+            {
+                cpxDev->luUser =1;
             }
             modbus_close(ctx);
             modbus_free(ctx);
@@ -226,7 +226,7 @@ void evro_ext_evro_ext_m_aoIosWrite
                 rc = modbus_write_register(ctx, oemCPar->Adress+i,tab_reg[i]);
                 if (rc == -1)
                 {
-					cpxDev->luUser =0;
+                    cpxDev->luUser =0;
                     break;
                 }
             }
