@@ -1,6 +1,0 @@
-/home/northernhell/S_100_CPU_Git/build_rosa/IsaVm/CMakeFiles/IsaVM.dir
-/home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_int/CMakeFiles/evro_int.dir
-/home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_ext/CMakeFiles/evro_ext.dir
-/home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcp/CMakeFiles/evro_tcp.dir
-/home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_rtus/CMakeFiles/evro_rtus.dir
-/home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir

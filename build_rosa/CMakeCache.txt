@@ -15,11 +15,17 @@
 ########################
 
 //Specify include-directories that might contain ace.h here.
-ACE_INCLUDE_DIR:PATH=/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/include
+ACE_INCLUDE_DIR:PATH=ACE_INCLUDE_DIR-NOTFOUND
 
 //Specify library-locations that might contain the ACE library
 // here.
-ACE_LIBRARIES:FILEPATH=/usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib/libACE.so
+ACE_LIBRARIES:FILEPATH=ACE_LIBRARIES-NOTFOUND
+
+//ACE library
+ACE_LIBRARY_DEBUG:FILEPATH=NOT_FOUND
+
+//ACE library
+ACE_LIBRARY_RELEASE:FILEPATH=NOT_FOUND
 
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-ar

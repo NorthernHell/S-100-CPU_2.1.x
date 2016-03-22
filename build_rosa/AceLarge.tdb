@@ -15,7 +15,7 @@ UINT16Size=2
 UINT32Size=4
 PointerSize=4
 EolChar=10
-MaxPara=128
+MaxPara=512
 MaxCallStackDepth=0
 MaxPouSize=200000
 UserData=Yes
@@ -55,15 +55,13 @@ FeatureMultiResources=Yes
 FeatureOnline=Yes
 FeatureRetain=Yes
 FeatureMicroCycTime=No
+FeatureIntrpt=Yes
 FeatureArInpRf=Yes
 FeatureBigPous=Yes
+FeatureNetworkInst=Yes
 FeatureSfcPrio=Yes
 FeatureComplexSubVarConnectedToIoChan=Yes
 FeatureIoChanOemParam=Yes
-
-FeatureIntrpt=Yes
-FeatureNetworkInst=Yes
-SfuCURRENT_ISA_DATE=Yes
 LanguageFBD=Yes
 LanguageIL=Yes
 Language61499=Yes
@@ -113,6 +111,7 @@ SfuSHL=Yes
 SfuSHR=Yes
 SfuROL=Yes
 SfuROR=Yes
+SfuCURRENT_ISA_DATE=Yes
 SfuSUB_DATE_DATE=Yes
 SfuLOCK_CPU=Yes
 SfuUNLOCK_CPU=Yes
@@ -131,7 +130,6 @@ SfuOR_MASK=Yes
 SfuNOT_MASK=Yes
 SfuXOR_MASK=Yes
 SfbLIM_ALRM=Yes
-
 SfbSR=Yes
 SfbRS=Yes
 SfbR_TRIG=Yes
@@ -237,35 +235,9 @@ Default=10000
 SingleTextLine=Maximum allowed time (in ms) to transport a variable
 [end]
 
-$$[$desc] ISARSI
-$$<standard Remote Serial Interface link
-$$<It can be used to dialog through a point to point serial link
-$$<between the workbench and one configuration.
-$$<CAN NOT BE USED FOR BINDING.
-$$<
-$$<Just connect the configuration to the network in the Hardware view and
-$$<fill the network parameters with settings corresponding to the PC where the workbench is currently running.
-$$[end]
-
-$$[$desc] HSD
-$$<HSD: Host System Driver
-$$<standard driver used for binbing between 2 resources local to a configuration.
-$$[end]
-
-$$[$desc] ETCP
-$$<ETCP: Enhanced TCP/IP driver
-$$<standard driver that uses TCP/IP protocol.
-$$<It is used for communication between Workbench and targets (IXL).
-$$<It is also used for binding between two configurations.
-$$[end]
-
-$$[setList] TDB1
-$$+Default
-$$>Default
-$$[end]
-
 [interrupts] Interrupts
 [end]
+
 [interrupt] MyTimerIRQ_0
 Type=UDINT
 SingleTextLine=Timer Interrupt definition
@@ -289,6 +261,11 @@ Type=UDINT
 SingleTextLine=Timer Interrupt definition
 Num=3
 [end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
 
 [device] MTCP_AI
 PackageName=evro_tcpc
