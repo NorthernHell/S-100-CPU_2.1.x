@@ -1,0 +1,2 @@
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-ar qc libcjcsmpl.a  CMakeFiles/cjcsmpl.dir/CBSample.c.o CMakeFiles/cjcsmpl.dir/CFSample.c.o CMakeFiles/cjcsmpl.dir/ScrlStr.c.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-ranlib libcjcsmpl.a

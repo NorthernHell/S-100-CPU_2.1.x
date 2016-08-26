@@ -188,7 +188,7 @@ typSTATUS _evro_rtus_evro_rtusmodbus_rtu_serverIosOpen
 		response_timeout.tv_usec = 1;
 modbus_set_byte_timeout(ctx_rtu, &response_timeout);
 ///
-    mb_mapping_rtu = modbus_mapping_new(0xff, 0xff,0xff, 0xff);
+    mb_mapping_rtu = modbus_mapping_new(0xffff, 0xffff,0xffff, 0xffff);
     if (mb_mapping_rtu == NULL)
     {
         fprintf(stderr, "Failed to allocate the mapping: %s\n",
