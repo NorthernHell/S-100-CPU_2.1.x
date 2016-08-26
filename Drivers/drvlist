@@ -3,6 +3,7 @@ evro_rtus
 evro_tcp
 evro_ext
 evro_int
+evro_fb
 fastarr
 fastmatrix
 fda_alarm
@@ -18,3 +19,4 @@ rtsched
 symlib
 sys
 time
+cjcsmpl

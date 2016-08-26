@@ -125,7 +125,8 @@ void evro_int_evro_int_evro_16diIosRead
     strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
     strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
-    uint16 tab_reg_2[32];// for input bits
+    uint8_t tab_reg_2[32];// for input bits
+   // uint16 tab_reg_2[32];// for input bits
     uint16_t tab_reg[32]; // for input registers
     int rc;
     struct timeval response_timeout;
@@ -140,8 +141,8 @@ void evro_int_evro_int_evro_16diIosRead
     else
     {
         modbus_set_response_timeout(ctx, &response_timeout);
-        // rc= modbus_read_input_bits(ctx, 10000, 16, tab_reg); read from the input bits registers
-        rc= modbus_read_input_registers(ctx, 30019, 1, tab_reg); // read from  the input registers(bit mask)
+        rc= modbus_read_input_bits(ctx, 10000, 16, tab_reg_2); //read from the input bits registers
+        //rc= modbus_read_input_registers(ctx, 30019, 1, tab_reg); // read from  the input registers(bit mask)
         modbus_close(ctx);
         modbus_free(ctx);
         //for EVRO_modules adress=30019//
@@ -166,6 +167,7 @@ void evro_int_evro_int_evro_16diIosRead
             cpxDev->luUser =1;
 
             //start data conversion for normal representation in the development environment
+/*
             tab_reg_2[0] = ((tab_reg[0] & 0x0001) > 0) ? 1: 0;
             tab_reg_2[1] = ((tab_reg[0] & 0x0002) > 0) ? 1: 0;
             tab_reg_2[2] = ((tab_reg[0] & 0x0004) > 0) ? 1: 0;
@@ -182,6 +184,7 @@ void evro_int_evro_int_evro_16diIosRead
             tab_reg_2[13] = ((tab_reg[0] & 0x2000) > 0) ? 1: 0;
             tab_reg_2[14] = ((tab_reg[0] & 0x4000) > 0) ? 1: 0;
             tab_reg_2[15] = ((tab_reg[0] & 0x8000) > 0) ? 1: 0;
+*/
             //end data conversion for normal representation in the development environment
             /* Update all channels */
             for (nbIndex=0; nbIndex <  nbChannel ; nbIndex++)

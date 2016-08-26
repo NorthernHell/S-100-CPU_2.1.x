@@ -1,20 +1,20 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e1522/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e1522.dir/build.make CMakeFiles/cmTC_e1522.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_a958e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a958e.dir/build.make CMakeFiles/cmTC_a958e.dir/build
 make[1]: Вход в каталог `/home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_e1522.dir/CheckSymbolExists.c.o
-/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc    -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    -o CMakeFiles/cmTC_e1522.dir/CheckSymbolExists.c.o   -c /home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_e1522
-/home/northernhell/Загрузки/cmake-3.4.0-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e1522.dir/link.txt --verbose=1
-/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc  -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t     CMakeFiles/cmTC_e1522.dir/CheckSymbolExists.c.o  -o cmTC_e1522 -rdynamic 
-CMakeFiles/cmTC_e1522.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_a958e.dir/CheckSymbolExists.c.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc    -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t    -o CMakeFiles/cmTC_a958e.dir/CheckSymbolExists.c.o   -c /home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_a958e
+/home/northernhell/Загрузки/cmake-3.4.0-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a958e.dir/link.txt --verbose=1
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc  -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t     CMakeFiles/cmTC_a958e.dir/CheckSymbolExists.c.o  -o cmTC_a958e -rdynamic 
+CMakeFiles/cmTC_a958e.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x38): undefined reference to `pthread_create'
 collect2: ld returned 1 exit status
 make[1]: Выход из каталога `/home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles/CMakeTmp'
-make[1]: *** [cmTC_e1522] Ошибка 1
-make: *** [cmTC_e1522/fast] Ошибка 2
+make[1]: *** [cmTC_a958e] Ошибка 1
+make: *** [cmTC_a958e/fast] Ошибка 2
 
 File /home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -34,18 +34,18 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7c863/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7c863.dir/build.make CMakeFiles/cmTC_7c863.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_51e1a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_51e1a.dir/build.make CMakeFiles/cmTC_51e1a.dir/build
 make[1]: Вход в каталог `/home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_7c863.dir/CheckFunctionExists.c.o
-/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc    -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_7c863.dir/CheckFunctionExists.c.o   -c /home/northernhell/Загрузки/cmake-3.4.0-Linux-x86_64/share/cmake-3.4/Modules/CheckFunctionExists.c
-Linking C executable cmTC_7c863
-/home/northernhell/Загрузки/cmake-3.4.0-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7c863.dir/link.txt --verbose=1
-/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc  -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_7c863.dir/CheckFunctionExists.c.o  -o cmTC_7c863 -rdynamic -lpthreads 
+Building C object CMakeFiles/cmTC_51e1a.dir/CheckFunctionExists.c.o
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc    -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_51e1a.dir/CheckFunctionExists.c.o   -c /home/northernhell/Загрузки/cmake-3.4.0-Linux-x86_64/share/cmake-3.4/Modules/CheckFunctionExists.c
+Linking C executable cmTC_51e1a
+/home/northernhell/Загрузки/cmake-3.4.0-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51e1a.dir/link.txt --verbose=1
+/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-gcc  -march=armv4t -mtune=arm920t -march=armv4t -mtune=arm920t -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_51e1a.dir/CheckFunctionExists.c.o  -o cmTC_51e1a -rdynamic -lpthreads 
 /usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/bin/ld: cannot find -lpthreads
 collect2: ld returned 1 exit status
 make[1]: Выход из каталога `/home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles/CMakeTmp'
-make[1]: *** [cmTC_7c863] Ошибка 1
-make: *** [cmTC_7c863/fast] Ошибка 2
+make[1]: *** [cmTC_51e1a] Ошибка 1
+make: *** [cmTC_51e1a/fast] Ошибка 2
 
 
