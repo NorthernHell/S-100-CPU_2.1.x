@@ -1,2 +1,0 @@
-/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-ar qc libevro_fb.a  CMakeFiles/evro_fb.dir/pid_evro.c.o
-/usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-ranlib libevro_fb.a

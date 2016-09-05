@@ -121,7 +121,6 @@ Cmds/IsaVM: Drivers/evro_rtus/libevro_rtus.a
 Cmds/IsaVM: Drivers/evro_tcp/libevro_tcp.a
 Cmds/IsaVM: Drivers/evro_ext/libevro_ext.a
 Cmds/IsaVM: Drivers/evro_int/libevro_int.a
-Cmds/IsaVM: Drivers/evro_fb/libevro_fb.a
 Cmds/IsaVM: ../Lib/libfastarr.a
 Cmds/IsaVM: ../Lib/libfastmatrix.a
 Cmds/IsaVM: ../Lib/libfda_alarm.a
@@ -137,7 +136,6 @@ Cmds/IsaVM: ../Lib/librtsched.a
 Cmds/IsaVM: ../Lib/libsymlib.a
 Cmds/IsaVM: ../Lib/libsys.a
 Cmds/IsaVM: ../Lib/libtime.a
-Cmds/IsaVM: Drivers/cjcsmpl/libcjcsmpl.a
 Cmds/IsaVM: /usr/src/mini2440/arm-2008q3/arm-none-linux-gnueabi/lib/libACE.so
 Cmds/IsaVM: ../Lib/libISysSoc.a
 Cmds/IsaVM: ../Lib/libIsaKer.a

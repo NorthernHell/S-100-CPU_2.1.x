@@ -176,32 +176,6 @@ evro_int/fast:
 .PHONY : evro_int/fast
 
 #=============================================================================
-# Target rules for targets named evro_fb
-
-# Build rule for target.
-evro_fb: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 evro_fb
-.PHONY : evro_fb
-
-# fast build rule for target.
-evro_fb/fast:
-	$(MAKE) -f Drivers/evro_fb/CMakeFiles/evro_fb.dir/build.make Drivers/evro_fb/CMakeFiles/evro_fb.dir/build
-.PHONY : evro_fb/fast
-
-#=============================================================================
-# Target rules for targets named cjcsmpl
-
-# Build rule for target.
-cjcsmpl: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 cjcsmpl
-.PHONY : cjcsmpl
-
-# fast build rule for target.
-cjcsmpl/fast:
-	$(MAKE) -f Drivers/cjcsmpl/CMakeFiles/cjcsmpl.dir/build.make Drivers/cjcsmpl/CMakeFiles/cjcsmpl.dir/build
-.PHONY : cjcsmpl/fast
-
-#=============================================================================
 # Target rules for targets named IsaVM
 
 # Build rule for target.
@@ -227,8 +201,6 @@ help:
 	@echo "... evro_tcp"
 	@echo "... evro_ext"
 	@echo "... evro_int"
-	@echo "... evro_fb"
-	@echo "... cjcsmpl"
 	@echo "... IsaVM"
 .PHONY : help
 
