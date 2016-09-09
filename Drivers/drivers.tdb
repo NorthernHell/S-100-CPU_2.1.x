@@ -18,6 +18,16 @@ UpperChannel=128
 HiddenMemberOfComplexDevice=1
 [end]
 
+[device] MTCP_AO_FLOAT
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=REAL
+Direction=Output
+LowerChannel=1
+UpperChannel=64
+HiddenMemberOfComplexDevice=1
+[end]
+
 [device] MODBUS_TCP_STATUS
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
@@ -41,10 +51,10 @@ HiddenMemberOfComplexDevice=1
 [device] MTCP_AO
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
-Type=REAL
+Type=INT
 Direction=Output
 LowerChannel=1
-UpperChannel=64
+UpperChannel=128
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -88,6 +98,62 @@ Format=LONG
 Access=USER DEFINED
 Default=4
 SingleTextLine=Modbus function 3-read holding registers 4-read input registers
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[complex] MODBUS_TCP_CLIENT_AO_FLOAT
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_AO_FLOAT,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] Func
+Format=LONG
+Access=USER DEFINED
+Default=16
+SingleTextLine=modbus function number (16 or 6)
 [end]
 
 [deviceParam] TimeOutu
@@ -260,10 +326,19 @@ SingleTextLine=temeout s
 
 ;$$[setList] TDB1
 ;$$+Default
+;$$:MTCP_AI&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AI&evro_tcpc_evro_tcpc_
+;$$:MTCP_DO&evro_tcpc_evro_tcpc_
+;$$:MTCP_AO_FLOAT&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AO_FLOAT&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_DO&evro_tcpc_evro_tcpc_
 ;$$:MODBUS_TCP_STATUS&evro_tcpc_evro_tcpc_
+;$$:MTCP_DI&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_DI&evro_tcpc_evro_tcpc_
+;$$:MTCP_AO&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AO&evro_tcpc_evro_tcpc_
 ;$$>Default
 ;$$[end]
-
 
 [device] MODBUS_RTU_COIL_O_
 PackageName=_evro_RTUS_

@@ -106,6 +106,9 @@ void evro_tcpc_evro_tcpc_mtcp_aoIosWrite
                 iElecData = ((iElecData) * (int16)(pChannel->luCnvMult)
                              / (int16)(pChannel->luCnvDiv)) + (int16)(pChannel->luCnvOfs);
             tab_reg[nbIndex]=iElecData;
+
+             printf("%d ggg\n",iElecData );
+
             /* If the variable has changed, we print in the file the new value */
             if (okChange)
             {

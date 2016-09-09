@@ -103,17 +103,32 @@ void evro_tcpc_evro_tcpc_mtcp_ao_floatIosWrite
 
             /* Apply gain and offset  */
             if (pChannel->luCnvDiv != 0)
-                iElecData = ((iElecData) * (int16)(pChannel->luCnvMult)
-                             / (int16)(pChannel->luCnvDiv)) + (int16)(pChannel->luCnvOfs);
+                iElecData = ((iElecData) * (float)(pChannel->luCnvMult)
+                             / (float)(pChannel->luCnvDiv)) + (float)(pChannel->luCnvOfs);
            //tab_reg[nbIndex]=iElecData;
              
-             tab_reg[nbIndex*2]=(int32)iElecData & 0xffff;
-             tab_reg[nbIndex*2+1]=(int32)iElecData>16 & 0xffff;
+	unsigned int tmp = *((unsigned int*)(&iElecData));
+
+             tab_reg[nbIndex*2]=(int16)tmp;
+             tab_reg[nbIndex*2+1]=(int16)(tmp >> 16);
+
+  //           tab_reg[nbIndex*2]=0x3333;
+ //            tab_reg[nbIndex*2+1]=0x40d3;
+//0x40d3 3333
+             printf("%d LSB\n",tab_reg[0] );
+             printf("%d MSB\n",tab_reg[1] );
+             printf("%10.3f iEl\n",iElecData );
+
             /* If the variable has changed, we print in the file the new value */
             if (okChange)
             {
-                tab_reg[nbIndex]=iElecData;
-                iCountChange++;
+             tab_reg[nbIndex*2]=(int16)((int32)iElecData & 0xffff);
+             tab_reg[nbIndex*2+1]=(int16)(((int32)iElecData & 0xffff0000)>16);
+
+//             tab_reg[nbIndex*2]=0x3333;
+//             tab_reg[nbIndex*2+1]=0x40d3;
+             printf("%10.3f iEl2",iElecData);
+                 iCountChange++;
             }
         }
         pChannel++; /* Go to the next channel */
@@ -132,7 +147,7 @@ void evro_tcpc_evro_tcpc_mtcp_ao_floatIosWrite
     ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
     if (modbus_connect(ctx) == -1)
     {
-        printf("Connexion failed: \n");
+        printf("Connexion failed_Float: \n");
         modbus_free(ctx);
     }
     else
@@ -199,12 +214,12 @@ void evro_tcpc_evro_tcpc_mtcp_ao_floatIosCtl
                 pfnCnvCall != 0   ==> 'C' conversion to applied
            - Apply just computed electrical value to the actuator
      */
-    int16*        pPhyData;      /* Physical value */
+    float*        pPhyData;      /* Physical value */
     strRtIoChan*  pChannel;
-    int16         iElecData;     /* Electrical value */
+    float         iElecData;     /* Electrical value */
     pChannel  =  pRtIoSplDvc->pRtIoChan;
     pChannel += huChanNum;
-    pPhyData  = (int16*)(pChannel->pvKerPhyData);
+    pPhyData  = (float*)(pChannel->pvKerPhyData);
 
     switch( cuSubFunct)
     {
@@ -219,8 +234,8 @@ void evro_tcpc_evro_tcpc_mtcp_ao_floatIosCtl
             iElecData = *pPhyData;
         /* Apply gain and offset  */
         if (pChannel->luCnvDiv != 0)
-            iElecData = ((iElecData) * (int16)(pChannel->luCnvMult)
-                         / (int16)(pChannel->luCnvDiv)) + (int16)(pChannel->luCnvOfs);
+            iElecData = ((iElecData) * (float)(pChannel->luCnvMult)
+                         / (float)(pChannel->luCnvDiv)) + (float)(pChannel->luCnvOfs);
         break;
     }
 
