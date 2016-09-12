@@ -8,20 +8,20 @@ UpperChannel=256
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] MTS_INP_BITS
+[device] MTS_INP_REG
 PackageName=evro_TCP
 DriverName=_evro_TCP_
-Type=BOOL
+Type=INT
 Direction=Output
 LowerChannel=1
 UpperChannel=256
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] MTS_INP_REG
+[device] MTS_INP_BITS
 PackageName=evro_TCP
 DriverName=_evro_TCP_
-Type=INT
+Type=BOOL
 Direction=Output
 LowerChannel=1
 UpperChannel=256
@@ -80,12 +80,12 @@ SingleTextLine=Port for modbus server
 ;$$<Modbus TCP server
 ;$$[end]
 
-;$$[$desc] MTS_INP_BITS&evro_TCP_evro_TCP_
-;$$<INPUT BITS WRITE
-;$$[end]
-
 ;$$[$desc] MTS_INP_REG&evro_TCP_evro_TCP_
 ;$$<INPUT REGISTERS WRITE
+;$$[end]
+
+;$$[$desc] MTS_INP_BITS&evro_TCP_evro_TCP_
+;$$<INPUT BITS WRITE
 ;$$[end]
 
 ;$$[$desc] MTS_COIL_O&evro_TCP_evro_TCP_
@@ -104,8 +104,8 @@ SingleTextLine=Port for modbus server
 ;$$+Default
 ;$$:MTS_HOLDINGR_I&evro_TCP_evro_TCP_
 ;$$:MODBUS_TCP_SERVER&evro_TCP_evro_TCP_
-;$$:MTS_INP_BITS&evro_TCP_evro_TCP_
 ;$$:MTS_INP_REG&evro_TCP_evro_TCP_
+;$$:MTS_INP_BITS&evro_TCP_evro_TCP_
 ;$$:MTS_COIL_O&evro_TCP_evro_TCP_
 ;$$:MTS_COIL_I&evro_TCP_evro_TCP_
 ;$$:MTS_HOLDINGR_O&evro_TCP_evro_TCP_

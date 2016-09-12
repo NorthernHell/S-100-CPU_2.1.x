@@ -797,7 +797,7 @@ SingleTextLine=Node ID
 [complex] EVRO_16DI_
 PackageName=evro_int
 DriverName=_evro_int_
-Devices=EVRO_16DI,status_m
+Devices=EVRO_16DI,EVRO_16DIR,status_m
 ComplexOption=3
 [end]
 
@@ -906,12 +906,32 @@ SingleTextLine=Node ID
 
 ;$$[setList] TDB1
 ;$$+Default
+;$$:EVRO_4AO&evro_int_evro_int_
+;$$:EVRO_6RTD_&evro_int_evro_int_
+;$$:EVRO_indicate_info&evro_int_evro_int_
 ;$$:status_m&evro_int_evro_int_
+;$$:EVRO_6RTD&evro_int_evro_int_
+;$$:EVRO_6AI_&evro_int_evro_int_
+;$$:EVRO_8RO&evro_int_evro_int_
+;$$:EVRO_8RO_&evro_int_evro_int_
+;$$:EVRO_avar_info&evro_int_evro_int_
+;$$:EVRO_6AI&evro_int_evro_int_
+;$$:EVRO_modul_info_&evro_int_evro_int_
 ;$$:EVRO_8DIR&evro_int_evro_int_
+;$$:EVRO_temp_info&evro_int_evro_int_
+;$$:EVRO_16DI_&evro_int_evro_int_
+;$$:EVRO_8TC_&evro_int_evro_int_
 ;$$:EVRO_8AI&evro_int_evro_int_
 ;$$:EVRO_8AO&evro_int_evro_int_
+;$$:EVRO_modul_info&evro_int_evro_int_
+;$$:EVRO_16DO&evro_int_evro_int_
+;$$:EVRO_4AO_&evro_int_evro_int_
+;$$:EVRO_16DI&evro_int_evro_int_
 ;$$:EVRO_8DO&evro_int_evro_int_
+;$$:EVRO_8TC&evro_int_evro_int_
 ;$$:EVRO_8DI&evro_int_evro_int_
+;$$:EVRO_16DIR&evro_int_evro_int_
+;$$:EVRO_16DO_&evro_int_evro_int_
 ;$$>Default
 ;$$[end]
 
