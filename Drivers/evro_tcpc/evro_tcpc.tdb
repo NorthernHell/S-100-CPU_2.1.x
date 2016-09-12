@@ -260,7 +260,15 @@ SingleTextLine=temeout s
 
 ;$$[setList] TDB1
 ;$$+Default
+;$$:MTCP_AI&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AI&evro_tcpc_evro_tcpc_
+;$$:MTCP_DO&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_DO&evro_tcpc_evro_tcpc_
 ;$$:MODBUS_TCP_STATUS&evro_tcpc_evro_tcpc_
+;$$:MTCP_DI&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_DI&evro_tcpc_evro_tcpc_
+;$$:MTCP_AO&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AO&evro_tcpc_evro_tcpc_
 ;$$>Default
 ;$$[end]
 

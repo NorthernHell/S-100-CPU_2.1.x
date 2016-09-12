@@ -28,17 +28,17 @@ UpperChannel=256
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] MODBUS_RTU_INP_REG_
+[device] MODBUS_RTU_HOLDING_O_
 PackageName=_evro_RTUS_
 DriverName=evro_RTUS
 Type=INT
 Direction=Output
 LowerChannel=1
-UpperChannel=256
+UpperChannel=625
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] MODBUS_RTU_HOLDING_O_
+[device] MODBUS_RTU_INP_REG_
 PackageName=_evro_RTUS_
 DriverName=evro_RTUS
 Type=INT
@@ -54,7 +54,7 @@ DriverName=evro_RTUS
 Type=INT
 Direction=Input
 LowerChannel=1
-UpperChannel=256
+UpperChannel=625
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -108,10 +108,10 @@ SingleTextLine=1,2 stop bita
 ;$$+Default
 ;$$:MODBUS_RTU_COIL_O_&_evro_RTUS_evro_RTUS
 ;$$:MODBUS_RTU_INP_BITS_&_evro_RTUS_evro_RTUS
-;$$:MODBUS_RTU_COIL_I_&_evro_RTUS_evro_RTUS
 ;$$:MODBUS_RTU_SERVER&_evro_RTUS_evro_RTUS
-;$$:MODBUS_RTU_HOLDING_O_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_COIL_I_&_evro_RTUS_evro_RTUS
 ;$$:MODBUS_RTU_INP_REG_&_evro_RTUS_evro_RTUS
+;$$:MODBUS_RTU_HOLDING_O_&_evro_RTUS_evro_RTUS
 ;$$:MODBUS_RTU_HOLDING_I_&_evro_RTUS_evro_RTUS
 ;$$>Default
 ;$$[end]
