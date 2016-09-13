@@ -152,6 +152,13 @@ SfbTOF=Yes
 SfbTP=Yes
 [end]
 
+[resParam] FailoverDatalinkTimeoutMs
+Format=LONG
+Access=USER DEFINED
+Default=2000
+SingleTextLine=Timeout of the FAILOVER data link
+[end]
+
 [network] ISARSI
 SingleTextLine=Standard Remote Serial Interface link
 DistributedNet=Yes
