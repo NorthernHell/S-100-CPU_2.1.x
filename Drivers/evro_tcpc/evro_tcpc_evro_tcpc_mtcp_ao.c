@@ -9,6 +9,26 @@ Device name:        MTCP_AO
 #include <dios0def.h>
 #include <evro_tcpc_evro_tcpc_mtcp_ao.h>
 #include <modbus/modbus.h>
+void *modbus_tcpc(void *ctx_void_ptr)
+{
+	modbus_t* ctx_2 = (modbus_t*)ctx_void_ptr;
+	struct timeval response_timeout;
+	printf("CREATE MODBUS SOCKET\n");
+	modbus_get_response_timeout(ctx_2, &response_timeout);
+	printf("TIMEOUT 1 %d 2 %d \n",response_timeout.tv_sec,response_timeout.tv_usec);
+	printf("CONNECT\n");
+
+	if (modbus_connect(ctx_2) != -1) {
+		printf("CONNECT OK\n");
+	response_timeout.tv_sec = 0;
+    	response_timeout.tv_usec = 200000;
+	modbus_set_response_timeout(ctx_2, &response_timeout);
+	} else {
+	printf("CONNECT NOT OK\n");	
+	}
+	
+	
+}
 /* OEM Parameters */
 typedef struct _tag_strMtcp_ao
 {
@@ -125,14 +145,31 @@ void evro_tcpc_evro_tcpc_mtcp_aoIosWrite
     fclose( pFile);
     */
     modbus_t *ctx;
+    int modbus_connect_stat=0;
+    uint32_t modbus_connect_index=10000;
+    pthread_t threadmodbusTCPC;
     int rc;
     struct timeval response_timeout;
-    response_timeout.tv_sec = oemCPar->TimeOutsec;
-    response_timeout.tv_usec = oemCPar->TimeOutu;
+    response_timeout.tv_sec = 0;
+    response_timeout.tv_usec = 200000;
     ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
-    if (modbus_connect(ctx) == -1)
+    modbus_set_response_timeout(ctx, &response_timeout);
+	modbus_get_response_timeout(ctx, &response_timeout);
+	printf("TIMEOUT 1 %d 2 %d \n",response_timeout.tv_sec,response_timeout.tv_usec);
+    pthread_create(&threadmodbusTCPC, NULL, modbus_tcpc, ctx);
+    pthread_detach(threadmodbusTCPC);
+    while (modbus_connect_index){
+	modbus_connect_index--;
+	if (pthread_kill(threadmodbusTCPC,0)!=0){
+	printf("CONNECT SOCK FINISH\n");
+	modbus_connect_stat=1;
+	break;	
+	}
+}
+    if (modbus_connect_stat == 0)
     {
         printf("Connexion failed: \n");
+	pthread_cancel(threadmodbusTCPC);
         modbus_free(ctx);
     }
     else
