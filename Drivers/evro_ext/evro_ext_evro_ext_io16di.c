@@ -127,7 +127,7 @@ typSTATUS evro_ext_evro_ext_io16diIosOpen
     modbus_set_slave(ctx, pOemParam->ID);
     if (modbus_connect(ctx) == -1)
     {
-        printf("Connexion failed: \n");
+        //printf("Connexion failed: \n");
         pvRtIoDvc->luUser=0;
         modbus_free(ctx);
     }
@@ -238,7 +238,7 @@ void evro_ext_evro_ext_io16diIosRead
     modbus_set_slave(ctx, pOemParam->ID);
     if (modbus_connect(ctx) == -1)
     {
-        printf("Connexion failed: \n");
+        //printf("Connexion failed: \n");
         pRtIoSplDvc->luUser=0;
         modbus_free(ctx);
     }

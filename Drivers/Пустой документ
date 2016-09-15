@@ -1,0 +1,6 @@
+/usr/src/mini2440/arm-2008q3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.2/../../../../arm-none-linux-gnueabi/lib/libmodbus.so: undefined reference to `accept4@GLIBC_2.10'
+collect2: ld returned 1 exit status
+make[2]: *** [Cmds/IsaVM] Ошибка 1
+make[1]: *** [IsaVm/CMakeFiles/IsaVM.dir/all] Ошибка 2
+make: *** [all] Ошибка 2
+

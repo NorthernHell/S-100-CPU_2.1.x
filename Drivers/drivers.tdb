@@ -8,16 +8,6 @@ UpperChannel=128
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] MTCP_DO
-PackageName=evro_tcpc
-DriverName=_evro_tcpc_
-Type=BOOL
-Direction=Output
-LowerChannel=1
-UpperChannel=128
-HiddenMemberOfComplexDevice=1
-[end]
-
 [device] MTCP_AO_FLOAT
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
@@ -25,6 +15,16 @@ Type=REAL
 Direction=Output
 LowerChannel=1
 UpperChannel=64
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] MTCP_DO
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=128
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -114,6 +114,13 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
+[end]
+
 [complex] MODBUS_TCP_CLIENT_AO_FLOAT
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
@@ -170,6 +177,13 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
+[end]
+
 [complex] MODBUS_TCP_CLIENT_DO
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
@@ -219,6 +233,13 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
+[end]
+
 [complex] MODBUS_TCP_CLIENT_DI
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
@@ -266,6 +287,13 @@ Format=LONG
 Access=USER DEFINED
 Default=0
 SingleTextLine=temeout s
+[end]
+
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
 [end]
 
 [complex] MODBUS_TCP_CLIENT_AO
@@ -324,13 +352,20 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
+[end]
+
 ;$$[setList] TDB1
 ;$$+Default
 ;$$:MTCP_AI&evro_tcpc_evro_tcpc_
 ;$$:MODBUS_TCP_CLIENT_AI&evro_tcpc_evro_tcpc_
-;$$:MTCP_DO&evro_tcpc_evro_tcpc_
-;$$:MTCP_AO_FLOAT&evro_tcpc_evro_tcpc_
 ;$$:MODBUS_TCP_CLIENT_AO_FLOAT&evro_tcpc_evro_tcpc_
+;$$:MTCP_AO_FLOAT&evro_tcpc_evro_tcpc_
+;$$:MTCP_DO&evro_tcpc_evro_tcpc_
 ;$$:MODBUS_TCP_CLIENT_DO&evro_tcpc_evro_tcpc_
 ;$$:MODBUS_TCP_STATUS&evro_tcpc_evro_tcpc_
 ;$$:MTCP_DI&evro_tcpc_evro_tcpc_
