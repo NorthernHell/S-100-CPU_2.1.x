@@ -166,6 +166,8 @@ unsigned int tmp = *((unsigned int*)(&iElecData));
         //printf("Connexion failed: \n");
 	pthread_cancel(threadmodbusTCPC);
         cpxDev->luUser =0;
+	int soc = modbus_get_socket(ctx);
+	close(soc);
         modbus_free(ctx);
     }
     else

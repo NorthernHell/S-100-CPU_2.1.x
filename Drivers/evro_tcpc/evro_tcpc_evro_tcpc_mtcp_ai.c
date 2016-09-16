@@ -115,6 +115,8 @@ void evro_tcpc_evro_tcpc_mtcp_aiIosRead
        // printf("Connexion failed: \n");
 	pthread_cancel(threadmodbusTCPC);
             cpxDev->luUser =0;
+	int soc = modbus_get_socket(ctx);
+	close(soc);
         modbus_free(ctx);
     }
     else
