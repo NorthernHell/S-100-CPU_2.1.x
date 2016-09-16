@@ -8,6 +8,16 @@ UpperChannel=128
 HiddenMemberOfComplexDevice=1
 [end]
 
+[device] MTCP_AO_FLOAT
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Type=REAL
+Direction=Output
+LowerChannel=1
+UpperChannel=64
+HiddenMemberOfComplexDevice=1
+[end]
+
 [device] MTCP_DO
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
@@ -104,6 +114,76 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
+[end]
+
+[complex] MODBUS_TCP_CLIENT_AO_FLOAT
+PackageName=evro_tcpc
+DriverName=_evro_tcpc_
+Devices=MTCP_AO_FLOAT,MODBUS_TCP_STATUS
+ComplexOption=3
+[end]
+
+[deviceParam] IP
+Format=STRING
+Access=USER DEFINED
+Default=127.0.0.1
+SingleTextLine=Device address
+[end]
+
+[deviceParam] PORT
+Format=LONG
+Access=USER DEFINED
+Default=502
+SingleTextLine=Modbus Server PORT
+[end]
+
+[deviceParam] Adress
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=address of the first register
+[end]
+
+[deviceParam] NR
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=number of registers
+[end]
+
+[deviceParam] Func
+Format=LONG
+Access=USER DEFINED
+Default=16
+SingleTextLine=modbus function number (16 or 6)
+[end]
+
+[deviceParam] TimeOutu
+Format=LONG
+Access=USER DEFINED
+Default=20000
+SingleTextLine=timeout mcs
+[end]
+
+[deviceParam] TimeOutsec
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=temeout s
+[end]
+
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
+[end]
+
 [complex] MODBUS_TCP_CLIENT_DO
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
@@ -153,6 +233,13 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
+[end]
+
 [complex] MODBUS_TCP_CLIENT_DI
 PackageName=evro_tcpc
 DriverName=_evro_tcpc_
@@ -200,6 +287,13 @@ Format=LONG
 Access=USER DEFINED
 Default=0
 SingleTextLine=temeout s
+[end]
+
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
 [end]
 
 [complex] MODBUS_TCP_CLIENT_AO
@@ -258,9 +352,26 @@ Default=0
 SingleTextLine=temeout s
 [end]
 
+[deviceParam] TimeOutTCP
+Format=LONG
+Access=USER DEFINED
+Default=10000
+SingleTextLine=TimeOut for connect TCP, ticks
+[end]
+
 ;$$[setList] TDB1
 ;$$+Default
+;$$:MTCP_AI&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AI&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AO_FLOAT&evro_tcpc_evro_tcpc_
+;$$:MTCP_AO_FLOAT&evro_tcpc_evro_tcpc_
+;$$:MTCP_DO&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_DO&evro_tcpc_evro_tcpc_
 ;$$:MODBUS_TCP_STATUS&evro_tcpc_evro_tcpc_
+;$$:MTCP_DI&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_DI&evro_tcpc_evro_tcpc_
+;$$:MTCP_AO&evro_tcpc_evro_tcpc_
+;$$:MODBUS_TCP_CLIENT_AO&evro_tcpc_evro_tcpc_
 ;$$>Default
 ;$$[end]
 
@@ -2637,37 +2748,6 @@ SingleTextLine=Node ID
 ;$$:EVRO_8AI&evro_int_evro_int_
 ;$$:EVRO_8DO&evro_int_evro_int_
 ;$$:EVRO_8DI&evro_int_evro_int_
-;$$>Default
-;$$[end]
-
-[functionBlock] PID_EVRO
-InitInstance=Yes
-Is1499=No
-[end]
-
-[pOUParam] P
-Direction=Input
-Type=REAL
-ShortName=P
-SingleTextLine=Параметр
-[end]
-
-[pOUParam] SP
-Direction=Input
-Type=REAL
-ShortName=SP
-SingleTextLine=Уставка
-[end]
-
-[pOUParam] Q
-Direction=Output
-Type=REAL
-ShortName=Q
-SingleTextLine=Воздействие на исполнительный механизм
-[end]
-
-;$$[setList] TDB1
-;$$+Default
 ;$$>Default
 ;$$[end]
 
@@ -8197,120 +8277,4 @@ SingleTextLine=
 ;$$:getCurrentTime
 ;$$>Default
 ;$$[end]
-
-[functionBlock] ScrollString
-InitInstance=Yes
-SingleTextLine=Scrolls a string
-Keyword=ScrollString
-[end]
-
-
-[pOUParam] cuEnable
-Type=BOOL
-Direction=Input
-ShortName=cuEnable
-SingleTextLine=Enable scroll
-[end]
-
-[pOUParam] strIn
-Type=STRING
-StringLength=80
-Direction=Input
-ShortName=strIn
-SingleTextLine=string to scroll
-[end]
-
-[pOUParam] NbStep
-Type=DINT
-Direction=Input
-ShortName=NbStep
-SingleTextLine=Number of scrolling step
-[end]
-
-[pOUParam] strOut
-Type=STRING
-StringLength=80
-Direction=Output
-ShortName=strOut
-SingleTextLine=output string
-[end]
-
-[pOUParam] cuMemEnable
-Type=BOOL
-Direction=Local
-ShortName=cuMemEnable
-SingleTextLine=Memorisation of enable scroll
-[end]
-
-
-
-
-; CBSample C function block
-; Addition and substraction of 2 Analogs
-
-[functionBlock] CBSample
-InitInstance=Yes
-SingleTextLine=Combines an addition and a substraction
-Keyword=CBSample
-[end]
-
-
-[pOUParam] P1
-Type=DINT
-Direction=Input
-ShortName=P1
-SingleTextLine=First Operand
-[end]
-
-
-[pOUParam] P2
-Type=DINT
-Direction=Input
-ShortName=P2
-SingleTextLine=Second Operand
-[end]
-
-[pOUParam] QADD
-Type=DINT
-Direction=Output
-ShortName=QADD
-SingleTextLine=Addition of P1 and P2
-[end]
-
-[pOUParam] QSUB
-Type=DINT
-Direction=Output
-ShortName=QSUB
-SingleTextLine=Substraction of P1 and P2
-[end]
-
-
-
-
-; CFSample C function
-; Addition of 2 Analogs
-
-[function] CFSample
-Type=DINT
-SingleTextLine=Addition of 2 DINT
-Keyword=CFSample
-[end]
-
-[pOUParam] IN1
-Type=DINT
-Direction=Input
-ShortName=IN1
-SingleTextLine=First operand
-[end]
-
-[pOUParam] IN2
-Type=DINT
-Direction=Input
-ShortName=IN2
-SingleTextLine=Second operand
-[end]
-
-
-
-
 
