@@ -50,7 +50,7 @@ typSTATUS evro_int_evro_int_evro_modul_infoIosOpen
     modbus_set_slave(ctx, oemCPar->ID);
     if (modbus_connect(ctx) == -1)
     {
-        printf("Connexion failed: \n");
+       // printf("Connexion failed: \n");
         modbus_free(ctx);
     }
     else
@@ -144,7 +144,7 @@ void evro_int_evro_int_evro_modul_infoIosRead
     modbus_set_slave(ctx,  oemCPar->ID);
     if (modbus_connect(ctx) == -1)
     {
-        printf("Connexion failed: \n");
+       // printf("Connexion failed: \n");
         modbus_free(ctx);
     }
     else

@@ -18,9 +18,18 @@ typedef struct _tag_strMtcp_do
     int32  NR;
     int32  TimeOutu;
     int32  TimeOutsec;
+    int32  TimeOutTCP;
 } strOemParam;
-
-
+void *modbus_tcpcdo(void *ctx_void_ptr)
+{
+	modbus_t* ctx_2 = (modbus_t*)ctx_void_ptr;
+	if (modbus_connect(ctx_2)==-1){
+	struct timeval response_timeout;
+	response_timeout.tv_sec = 0;
+	response_timeout.tv_usec = 1;
+	modbus_set_response_timeout(ctx_2, &response_timeout);	
+	}			
+}
 /****************************************************************************
 function    : evro_tcpc_evro_tcpc_mtcp_doIosOpen
 description : Level 1 device Open function
@@ -119,16 +128,38 @@ void evro_tcpc_evro_tcpc_mtcp_doIosWrite
         pChannel++;
     }
 	modbus_t *ctx;
-	int rc;
+    int modbus_connect_stat=0;
+    int rc =0;
+    uint32_t modbus_connect_index=oemCPar->TimeOutTCP;//TCP timeout TICKs newOEMparam !!!
+    pthread_t threadmodbusTCPC;
     sNewMsg[ nbChannel] = 0; /* null char at the end of the string */
     /* If one variable has changed, we print in the file the new values */
     struct timeval response_timeout;
     response_timeout.tv_sec = oemCPar->TimeOutsec;
     response_timeout.tv_usec = oemCPar->TimeOutu;
     ctx = modbus_new_tcp(oemCPar->IP, oemCPar->PORT); //connect
-    if (modbus_connect(ctx) == -1)
+    modbus_set_response_timeout(ctx, &response_timeout);
+    modbus_get_response_timeout(ctx, &response_timeout);
+    pthread_create(&threadmodbusTCPC, NULL, modbus_tcpcdo, ctx);
+    pthread_detach(threadmodbusTCPC);
+    while (modbus_connect_index){
+	modbus_connect_index--;
+	if (pthread_kill(threadmodbusTCPC,0)!=0){
+	modbus_connect_stat=1;
+	modbus_get_response_timeout(ctx, &response_timeout);
+	if (response_timeout.tv_usec ==1){
+	modbus_connect_stat=0;
+	}
+	break;	
+	}
+}
+    if (modbus_connect_stat == 0)
     {
-        printf("Connexion failed: \n");
+      //  printf("Connexion failed: \n");
+	pthread_cancel(threadmodbusTCPC);
+            cpxDev->luUser =0;
+	int soc = modbus_get_socket(ctx);
+	close(soc);
         modbus_free(ctx);
     }
     else

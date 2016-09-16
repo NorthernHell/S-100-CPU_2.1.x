@@ -1,0 +1,31 @@
+[functionBlock] PID_EVRO
+InitInstance=Yes
+Is1499=No
+[end]
+
+[pOUParam] P
+Direction=Input
+Type=REAL
+ShortName=P
+SingleTextLine=Параметр
+[end]
+
+[pOUParam] SP
+Direction=Input
+Type=REAL
+ShortName=SP
+SingleTextLine=Уставка
+[end]
+
+[pOUParam] Q
+Direction=Output
+Type=REAL
+ShortName=Q
+SingleTextLine=Воздействие на исполнительный механизм
+[end]
+
+;$$[setList] TDB1
+;$$+Default
+;$$>Default
+;$$[end]
+
