@@ -83,11 +83,13 @@ IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcp/evro_tcp_evro_tcp_m
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcp/pack_evro_tcp.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ai.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao.h
+IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_di.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_do.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_status.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ai.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao.h
+IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao_float.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_di.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_do.h
 IsaVm/CMakeFiles/IsaVM.dir/dipl0lnk.c.o: ../Drivers/evro_tcpc/pack_evro_tcpc.h

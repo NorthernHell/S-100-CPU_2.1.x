@@ -273,6 +273,54 @@ Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client
 Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ai.c.o.provides.build: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ai.c.o
 
 
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/flags.make
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao_float.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o"
+	cd /home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcpc && /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o -c /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao_float.c
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.i"
+	cd /home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcpc && /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao_float.c > CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.i
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.s"
+	cd /home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcpc && /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao_float.c -o CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.s
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o.requires:
+
+.PHONY : Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o.requires
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o.provides: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o.requires
+	$(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o.provides.build
+.PHONY : Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o.provides
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o.provides.build: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o
+
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/flags.make
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o: ../Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o"
+	cd /home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcpc && /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o -c /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.i"
+	cd /home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcpc && /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c > CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.i
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.s"
+	cd /home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcpc && /usr/src/mini2440/arm-2008q3/bin/arm-none-linux-gnueabi-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c -o CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.s
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o.requires:
+
+.PHONY : Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o.requires
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o.provides: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o.requires
+	$(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o.provides.build
+.PHONY : Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o.provides
+
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o.provides.build: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o
+
+
 # Object files for target evro_tcpc
 evro_tcpc_OBJECTS = \
 "CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ai.c.o" \
@@ -283,7 +331,9 @@ evro_tcpc_OBJECTS = \
 "CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_do.c.o" \
 "CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao.c.o" \
 "CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_di.c.o" \
-"CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ai.c.o"
+"CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ai.c.o" \
+"CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o" \
+"CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o"
 
 # External object files for target evro_tcpc
 evro_tcpc_EXTERNAL_OBJECTS =
@@ -297,9 +347,11 @@ Drivers/evro_tcpc/libevro_tcpc.a: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evr
 Drivers/evro_tcpc/libevro_tcpc.a: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao.c.o
 Drivers/evro_tcpc/libevro_tcpc.a: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_di.c.o
 Drivers/evro_tcpc/libevro_tcpc.a: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ai.c.o
+Drivers/evro_tcpc/libevro_tcpc.a: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o
+Drivers/evro_tcpc/libevro_tcpc.a: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o
 Drivers/evro_tcpc/libevro_tcpc.a: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make
 Drivers/evro_tcpc/libevro_tcpc.a: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libevro_tcpc.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/northernhell/S_100_CPU_Git/build_rosa/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libevro_tcpc.a"
 	cd /home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcpc && $(CMAKE_COMMAND) -P CMakeFiles/evro_tcpc.dir/cmake_clean_target.cmake
 	cd /home/northernhell/S_100_CPU_Git/build_rosa/Drivers/evro_tcpc && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/evro_tcpc.dir/link.txt --verbose=$(VERBOSE)
 
@@ -317,6 +369,8 @@ Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/requires: Drivers/evro_tcpc/CMakeFile
 Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/requires: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao.c.o.requires
 Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/requires: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_di.c.o.requires
 Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/requires: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ai.c.o.requires
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/requires: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o.requires
+Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/requires: Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o.requires
 
 .PHONY : Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/requires
 

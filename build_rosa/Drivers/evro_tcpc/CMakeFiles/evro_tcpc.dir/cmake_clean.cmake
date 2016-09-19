@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao.c.o"
   "CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_di.c.o"
   "CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ai.c.o"
+  "CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o"
+  "CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o"
   "libevro_tcpc.pdb"
   "libevro_tcpc.a"
 )

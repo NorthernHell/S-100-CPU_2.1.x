@@ -1,5 +1,5 @@
 set (drvname ${CURDRV})
-set (${drvname}_SRCS evro_tcpc_evro_tcpc_mtcp_ai.c evro_tcpc_evro_tcpc_mtcp_di.c evro_tcpc_evro_tcpc_mtcp_ao.c evro_tcpc_evro_tcpc_mtcp_do.c evro_tcpc_evro_tcpc_modbus_tcp_status.c evro_tcpc_evro_tcpc_modbus_tcp_client_do.c evro_tcpc_evro_tcpc_modbus_tcp_client_ao.c evro_tcpc_evro_tcpc_modbus_tcp_client_di.c evro_tcpc_evro_tcpc_modbus_tcp_client_ai.c )
+set (${drvname}_SRCS evro_tcpc_evro_tcpc_mtcp_ai.c evro_tcpc_evro_tcpc_mtcp_di.c evro_tcpc_evro_tcpc_mtcp_ao.c evro_tcpc_evro_tcpc_mtcp_do.c evro_tcpc_evro_tcpc_modbus_tcp_status.c evro_tcpc_evro_tcpc_modbus_tcp_client_do.c evro_tcpc_evro_tcpc_modbus_tcp_client_ao.c evro_tcpc_evro_tcpc_modbus_tcp_client_di.c evro_tcpc_evro_tcpc_modbus_tcp_client_ai.c evro_tcpc_evro_tcpc_mtcp_ao_float.c evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c )
 set (ALL_SRCS ${${drvname}_SRCS})
 
 
