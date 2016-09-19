@@ -456,6 +456,8 @@ evro_tcp_evro_tcp_mts_holdingr_o.h
 
 /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao.h
 
+/home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.h
+
 /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_di.h
 
 /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_do.h
@@ -465,6 +467,8 @@ evro_tcp_evro_tcp_mts_holdingr_o.h
 /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ai.h
 
 /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao.h
+
+/home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao_float.h
 
 /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_di.h
 
@@ -491,6 +495,10 @@ evro_tcpc_evro_tcpc_mtcp_ao.h
 /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao.h
 evro_tcpc_evro_tcpc_modbus_tcp_client_ao.h
 /home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao.h
+evro_tcpc_evro_tcpc_mtcp_ao_float.h
+/home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_mtcp_ao_float.h
+evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.h
+/home/northernhell/S_100_CPU_Git/Drivers/evro_tcpc/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.h
 
 /home/northernhell/S_100_CPU_Git/Drivers/fastarr/fast_array_add.h
 

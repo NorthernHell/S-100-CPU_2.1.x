@@ -20,6 +20,8 @@ POU name:
 #include "evro_tcpc_evro_tcpc_modbus_tcp_client_di.h" /* "modbus_tcp_client_di */
 #include "evro_tcpc_evro_tcpc_mtcp_ao.h" /* "mtcp_ao */
 #include "evro_tcpc_evro_tcpc_modbus_tcp_client_ao.h" /* "modbus_tcp_client_ao */
+#include "evro_tcpc_evro_tcpc_mtcp_ao_float.h" /* "mtcp_ao_float */
+#include "evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.h" /* "modbus_tcp_client_ao_float */
 
 /* package definition */
 
@@ -71,6 +73,17 @@ ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_aomodbus_tcp_statusIos
 ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_aomodbus_tcp_statusIosCtl", evro_tcpc_evro_tcpc_modbus_tcp_client_aomodbus_tcp_statusIosCtl) \
 ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_aomtcp_aoIosWrite", evro_tcpc_evro_tcpc_modbus_tcp_client_aomtcp_aoIosWrite) \
 ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_aomtcp_aoIosCtl", evro_tcpc_evro_tcpc_modbus_tcp_client_aomtcp_aoIosCtl) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_mtcp_ao_floatIosOpen", evro_tcpc_evro_tcpc_mtcp_ao_floatIosOpen) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_mtcp_ao_floatIosClose", evro_tcpc_evro_tcpc_mtcp_ao_floatIosClose) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_mtcp_ao_floatIosWrite", evro_tcpc_evro_tcpc_mtcp_ao_floatIosWrite) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_mtcp_ao_floatIosCtl", evro_tcpc_evro_tcpc_mtcp_ao_floatIosCtl) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatIosOpen", evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatIosOpen) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatIosClose", evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatIosClose) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatmodbus_tcp_statusIosRead", evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatmodbus_tcp_statusIosRead) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatmodbus_tcp_statusIosCtl", evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatmodbus_tcp_statusIosCtl) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatmtcp_ao_floatIosWrite", evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatmtcp_ao_floatIosWrite) \
+ISA_DECLARE_HANDLE("evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatmtcp_ao_floatIosCtl", evro_tcpc_evro_tcpc_modbus_tcp_client_ao_floatmtcp_ao_floatIosCtl) \
+
 ;
 
 #endif /* _PACK_EVRO_TCPC_H */

@@ -179,6 +179,33 @@ evro_tcpc_evro_tcpc_modbus_tcp_client_ao.c.s:
 	cd /home/northernhell/S_100_CPU_Git/build_rosa && $(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao.c.s
 .PHONY : evro_tcpc_evro_tcpc_modbus_tcp_client_ao.c.s
 
+evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.o: evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o
+
+.PHONY : evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.o
+
+# target to build an object file
+evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o:
+	cd /home/northernhell/S_100_CPU_Git/build_rosa && $(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o
+.PHONY : evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.o
+
+evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.i: evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.i
+
+.PHONY : evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.i
+
+# target to preprocess a source file
+evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.i:
+	cd /home/northernhell/S_100_CPU_Git/build_rosa && $(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.i
+.PHONY : evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.i
+
+evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.s: evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.s
+
+.PHONY : evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.s
+
+# target to generate assembly for a file
+evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.s:
+	cd /home/northernhell/S_100_CPU_Git/build_rosa && $(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.s
+.PHONY : evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.c.s
+
 evro_tcpc_evro_tcpc_modbus_tcp_client_di.o: evro_tcpc_evro_tcpc_modbus_tcp_client_di.c.o
 
 .PHONY : evro_tcpc_evro_tcpc_modbus_tcp_client_di.o
@@ -314,6 +341,33 @@ evro_tcpc_evro_tcpc_mtcp_ao.c.s:
 	cd /home/northernhell/S_100_CPU_Git/build_rosa && $(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao.c.s
 .PHONY : evro_tcpc_evro_tcpc_mtcp_ao.c.s
 
+evro_tcpc_evro_tcpc_mtcp_ao_float.o: evro_tcpc_evro_tcpc_mtcp_ao_float.c.o
+
+.PHONY : evro_tcpc_evro_tcpc_mtcp_ao_float.o
+
+# target to build an object file
+evro_tcpc_evro_tcpc_mtcp_ao_float.c.o:
+	cd /home/northernhell/S_100_CPU_Git/build_rosa && $(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.o
+.PHONY : evro_tcpc_evro_tcpc_mtcp_ao_float.c.o
+
+evro_tcpc_evro_tcpc_mtcp_ao_float.i: evro_tcpc_evro_tcpc_mtcp_ao_float.c.i
+
+.PHONY : evro_tcpc_evro_tcpc_mtcp_ao_float.i
+
+# target to preprocess a source file
+evro_tcpc_evro_tcpc_mtcp_ao_float.c.i:
+	cd /home/northernhell/S_100_CPU_Git/build_rosa && $(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.i
+.PHONY : evro_tcpc_evro_tcpc_mtcp_ao_float.c.i
+
+evro_tcpc_evro_tcpc_mtcp_ao_float.s: evro_tcpc_evro_tcpc_mtcp_ao_float.c.s
+
+.PHONY : evro_tcpc_evro_tcpc_mtcp_ao_float.s
+
+# target to generate assembly for a file
+evro_tcpc_evro_tcpc_mtcp_ao_float.c.s:
+	cd /home/northernhell/S_100_CPU_Git/build_rosa && $(MAKE) -f Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/build.make Drivers/evro_tcpc/CMakeFiles/evro_tcpc.dir/evro_tcpc_evro_tcpc_mtcp_ao_float.c.s
+.PHONY : evro_tcpc_evro_tcpc_mtcp_ao_float.c.s
+
 evro_tcpc_evro_tcpc_mtcp_di.o: evro_tcpc_evro_tcpc_mtcp_di.c.o
 
 .PHONY : evro_tcpc_evro_tcpc_mtcp_di.o
@@ -383,6 +437,9 @@ help:
 	@echo "... evro_tcpc_evro_tcpc_modbus_tcp_client_ao.o"
 	@echo "... evro_tcpc_evro_tcpc_modbus_tcp_client_ao.i"
 	@echo "... evro_tcpc_evro_tcpc_modbus_tcp_client_ao.s"
+	@echo "... evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.o"
+	@echo "... evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.i"
+	@echo "... evro_tcpc_evro_tcpc_modbus_tcp_client_ao_float.s"
 	@echo "... evro_tcpc_evro_tcpc_modbus_tcp_client_di.o"
 	@echo "... evro_tcpc_evro_tcpc_modbus_tcp_client_di.i"
 	@echo "... evro_tcpc_evro_tcpc_modbus_tcp_client_di.s"
@@ -398,6 +455,9 @@ help:
 	@echo "... evro_tcpc_evro_tcpc_mtcp_ao.o"
 	@echo "... evro_tcpc_evro_tcpc_mtcp_ao.i"
 	@echo "... evro_tcpc_evro_tcpc_mtcp_ao.s"
+	@echo "... evro_tcpc_evro_tcpc_mtcp_ao_float.o"
+	@echo "... evro_tcpc_evro_tcpc_mtcp_ao_float.i"
+	@echo "... evro_tcpc_evro_tcpc_mtcp_ao_float.s"
 	@echo "... evro_tcpc_evro_tcpc_mtcp_di.o"
 	@echo "... evro_tcpc_evro_tcpc_mtcp_di.i"
 	@echo "... evro_tcpc_evro_tcpc_mtcp_di.s"
