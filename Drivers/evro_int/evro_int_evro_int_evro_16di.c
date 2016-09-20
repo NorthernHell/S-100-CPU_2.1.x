@@ -39,7 +39,8 @@ typSTATUS evro_int_evro_int_evro_16diIosOpen
     strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
     strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     printf("EVRO 16dI init\n");
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    //modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 230400, 'N', 8, 1);//baud_rate_UP
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
@@ -124,7 +125,8 @@ void evro_int_evro_int_evro_16diIosRead
      */
     strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
     strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    //modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 230400, 'N', 8, 1);//baud_rate_UP
     uint8_t tab_reg_2[32];// for input bits
    // uint16 tab_reg_2[32];// for input bits
     uint16_t tab_reg[32]; // for input registers

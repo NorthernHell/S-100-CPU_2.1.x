@@ -40,7 +40,8 @@ typSTATUS evro_int_evro_int_evro_4aoIosOpen
     strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
     strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     printf("EVRO 4AO init\n");
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+//    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 230400, 'N', 8, 1);//baud_rate_UP
     int rc;
     uint16_t tab_reg[33];
     struct timeval response_timeout;
@@ -182,7 +183,8 @@ void evro_int_evro_int_evro_4aoIosWrite
     printf( "%s\n", sNewMsg);
     fclose( pFile);
     */
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+   // modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 230400, 'N', 8, 1);//baud_rate_UP
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;

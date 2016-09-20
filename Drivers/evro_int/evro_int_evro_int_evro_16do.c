@@ -39,7 +39,8 @@ typSTATUS evro_int_evro_int_evro_16doIosOpen
     strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
     strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     printf("EVRO 16DO init\n");
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    //modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 230400, 'N', 8, 1);//baud_rate_UP
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
@@ -178,7 +179,8 @@ void evro_int_evro_int_evro_16doIosWrite
     }
     sNewMsg[ nbChannel] = 0; /* null char at the end of the string */
     /* If one variable has changed, we print in the file the new values */
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    //modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 230400, 'N', 8, 1);//baud_rate_UP
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
