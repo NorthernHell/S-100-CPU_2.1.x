@@ -14,7 +14,7 @@ Device name:        EVRO_8tc
 typedef struct _tag_strEvro_8tc
 {
     int32  ID;   /* Node ID */
-
+    int32  NCOM;   /* COM port number */
 } strOemParam;
 
 
@@ -40,7 +40,10 @@ typSTATUS evro_int_evro_int_evro_8tcIosOpen
     strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
     strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
     printf("EVRO 8TC init\n");
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx;
+    if (oemCPar->NCOM==1) {ctx = modbus_new_rtu("/dev/ttySAC0", 230400, 'N', 8, 1);}
+    if (oemCPar->NCOM==2) {ctx = modbus_new_rtu("/dev/ttySAC1", 230400, 'N', 8, 1);}
+    if (oemCPar->NCOM==3) {ctx = modbus_new_rtu("/dev/ttySAC2", 230400, 'N', 8, 1);}
     int rc;
     struct timeval response_timeout;
     response_timeout.tv_sec = 0;
@@ -124,7 +127,10 @@ void evro_int_evro_int_evro_8tcIosRead
      */
     strRtIoCpxDvc *cpxDev=(strRtIoCpxDvc *)pRtIoSplDvc->pvRtIoLevBack;
     strOemParam *oemCPar=(strOemParam *)cpxDev->pvOemParam;
-    modbus_t *ctx = modbus_new_rtu("/dev/ttySAC2", 115200, 'N', 8, 1);
+    modbus_t *ctx;
+    if (oemCPar->NCOM==1) {ctx = modbus_new_rtu("/dev/ttySAC0", 230400, 'N', 8, 1);}
+    if (oemCPar->NCOM==2) {ctx = modbus_new_rtu("/dev/ttySAC1", 230400, 'N', 8, 1);}
+    if (oemCPar->NCOM==3) {ctx = modbus_new_rtu("/dev/ttySAC2", 230400, 'N', 8, 1);}
     uint16_t tab_reg[32]; //data array
     int rc;
     struct timeval response_timeout;

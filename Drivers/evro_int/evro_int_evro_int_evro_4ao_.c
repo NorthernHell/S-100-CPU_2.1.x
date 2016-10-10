@@ -19,6 +19,7 @@ Device name:        EVRO_4AO_
 typedef struct _tag_strEvro_4ao_
 {
     int32  ID;   /* Node ID */
+    int32  NCOM;   /* COM port number */
 
 } strEvro_4ao_;
 

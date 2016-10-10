@@ -19,7 +19,7 @@ Device name:        EVRO_16dI_
 typedef struct _tag_strEvro_16di_
 {
     int32  ID;   /* Node ID */
-
+    int32  NCOM;   /* COM port number */
 } strEvro_16di_;
 
 
