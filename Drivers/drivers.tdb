@@ -1854,16 +1854,6 @@ UpperChannel=16
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] status_m
-PackageName=evro_int
-DriverName=_evro_int_
-Type=BOOL
-Direction=Input
-LowerChannel=1
-UpperChannel=1
-HiddenMemberOfComplexDevice=1
-[end]
-
 [device] EVRO_6RTD
 PackageName=evro_int
 DriverName=_evro_int_
@@ -1874,13 +1864,13 @@ UpperChannel=6
 HiddenMemberOfComplexDevice=1
 [end]
 
-[device] EVRO_8RO
+[device] status_m
 PackageName=evro_int
 DriverName=_evro_int_
 Type=BOOL
-Direction=Output
+Direction=Input
 LowerChannel=1
-UpperChannel=8
+UpperChannel=1
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -1894,6 +1884,16 @@ UpperChannel=16
 HiddenMemberOfComplexDevice=1
 [end]
 
+[device] EVRO_8RO
+PackageName=evro_int
+DriverName=_evro_int_
+Type=BOOL
+Direction=Output
+LowerChannel=1
+UpperChannel=8
+HiddenMemberOfComplexDevice=1
+[end]
+
 [device] EVRO_6AI
 PackageName=evro_int
 DriverName=_evro_int_
@@ -1901,6 +1901,16 @@ Type=INT
 Direction=Input
 LowerChannel=1
 UpperChannel=6
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_temp_info
+PackageName=evro_int
+DriverName=_evro_int_
+Type=UINT
+Direction=Input
+LowerChannel=1
+UpperChannel=1
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -2045,68 +2055,6 @@ Format=LONG
 Access=USER DEFINED
 Default=0
 SingleTextLine=0 = Disabled, bit1 = auto zero counter 1.
-[end]
-
-[device] EVRO_temp_info
-PackageName=evro_int
-DriverName=_evro_int_
-Type=UINT
-Direction=Input
-LowerChannel=1
-UpperChannel=1
-HiddenMemberOfComplexDevice=1
-[end]
-
-[device] EVRO_8AO
-PackageName=evro_int
-DriverName=_evro_int_
-Type=UINT
-Direction=Output
-LowerChannel=1
-UpperChannel=4
-HiddenMemberOfComplexDevice=1
-[end]
-
-[deviceParam] ID
-Format=LONG
-Access=USER DEFINED
-Default=1
-SingleTextLine=Node ID
-[end]
-
-[deviceParam] Initial_Value_1
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=
-[end]
-
-[deviceParam] Initial_Value_2
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=
-[end]
-
-[deviceParam] Initial_Value_3
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=
-[end]
-
-[deviceParam] Initial_Value_4
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=
-[end]
-
-[deviceParam] Watchdog
-Format=LONG
-Access=USER DEFINED
-Default=0
-SingleTextLine=Timer in seconds. 0 = disabled. 1 - 65535 = enabled
 [end]
 
 [device] EVRO_8AI
@@ -2350,6 +2298,58 @@ Default=0
 SingleTextLine=
 [end]
 
+[device] EVRO_8AO
+PackageName=evro_int
+DriverName=_evro_int_
+Type=UINT
+Direction=Output
+LowerChannel=1
+UpperChannel=4
+HiddenMemberOfComplexDevice=1
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[deviceParam] Initial_Value_1
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_2
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_3
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Initial_Value_4
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=
+[end]
+
+[deviceParam] Watchdog
+Format=LONG
+Access=USER DEFINED
+Default=0
+SingleTextLine=Timer in seconds. 0 = disabled. 1 - 65535 = enabled
+[end]
+
 [device] EVRO_modul_info
 PackageName=evro_int
 DriverName=_evro_int_
@@ -2377,6 +2377,16 @@ Type=BOOL
 Direction=Input
 LowerChannel=1
 UpperChannel=16
+HiddenMemberOfComplexDevice=1
+[end]
+
+[device] EVRO_8TC
+PackageName=evro_int
+DriverName=_evro_int_
+Type=INT
+Direction=Input
+LowerChannel=1
+UpperChannel=8
 HiddenMemberOfComplexDevice=1
 [end]
 
@@ -2458,16 +2468,6 @@ Format=LONG
 Access=USER DEFINED
 Default=0
 SingleTextLine=Timer in seconds. 0 = disabled. 1 - 65535 = enabled.
-[end]
-
-[device] EVRO_8TC
-PackageName=evro_int
-DriverName=_evro_int_
-Type=INT
-Direction=Input
-LowerChannel=1
-UpperChannel=8
-HiddenMemberOfComplexDevice=1
 [end]
 
 [device] EVRO_8DI
@@ -2574,18 +2574,11 @@ Default=1
 SingleTextLine=Node ID
 [end]
 
-[complex] EVRO_6AI_
-PackageName=evro_int
-DriverName=_evro_int_
-Devices=EVRO_6AI,status_m
-ComplexOption=3
-[end]
-
-[deviceParam] ID
+[deviceParam] NCOM
 Format=LONG
 Access=USER DEFINED
-Default=1
-SingleTextLine=Node ID
+Default=3
+SingleTextLine=COM port number
 [end]
 
 [complex] EVRO_8RO_
@@ -2602,10 +2595,17 @@ Default=1
 SingleTextLine=Node ID
 [end]
 
-[complex] EVRO_modul_info_
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=3
+SingleTextLine=COM port number
+[end]
+
+[complex] EVRO_6AI_
 PackageName=evro_int
 DriverName=_evro_int_
-Devices=EVRO_modul_info,EVRO_avar_info,EVRO_temp_info,EVRO_indicate_info,status_m
+Devices=EVRO_6AI,status_m
 ComplexOption=3
 [end]
 
@@ -2616,10 +2616,17 @@ Default=1
 SingleTextLine=Node ID
 [end]
 
-[complex] EVRO_16DI_
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=3
+SingleTextLine=COM port number
+[end]
+
+[complex] EVRO_modul_info_
 PackageName=evro_int
 DriverName=_evro_int_
-Devices=EVRO_16DI,EVRO_16DIR,status_m
+Devices=EVRO_modul_info,EVRO_avar_info,EVRO_temp_info,EVRO_indicate_info,status_m
 ComplexOption=3
 [end]
 
@@ -2644,6 +2651,34 @@ Default=1
 SingleTextLine=Node ID
 [end]
 
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=3
+SingleTextLine=COM port number
+[end]
+
+[complex] EVRO_16DI_
+PackageName=evro_int
+DriverName=_evro_int_
+Devices=EVRO_16DI,EVRO_16DIR,status_m
+ComplexOption=3
+[end]
+
+[deviceParam] ID
+Format=LONG
+Access=USER DEFINED
+Default=1
+SingleTextLine=Node ID
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=3
+SingleTextLine=COM port number
+[end]
+
 [complex] EVRO_4AO_
 PackageName=evro_int
 DriverName=_evro_int_
@@ -2656,6 +2691,13 @@ Format=LONG
 Access=USER DEFINED
 Default=1
 SingleTextLine=Node ID
+[end]
+
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=3
+SingleTextLine=COM port number
 [end]
 
 [complex] EVRO_16DO_
@@ -2672,6 +2714,13 @@ Default=1
 SingleTextLine=Node ID
 [end]
 
+[deviceParam] NCOM
+Format=LONG
+Access=USER DEFINED
+Default=3
+SingleTextLine=COM port number
+[end]
+
 ;$$[$desc] EVRO_6RTD_&evro_int_evro_int_
 ;$$<Модуль термосопротивлений S-100-RTD6
 ;$$<6 каналов гальванически развязанных,  RS-485 (Modbus RTU 230400 бит/с), время опроса канала <150 мс,
@@ -2683,16 +2732,16 @@ SingleTextLine=Node ID
 ;$$<Х.3.4 - Индикация канала 05, Х.3.5 - Индикация канала 06, Х.3.6 - Индикация канала 07, Х.3.7 - Индикация канала 08.
 ;$$[end]
 
-;$$[$desc] EVRO_6AI_&evro_int_evro_int_
-;$$<Модуль аналогового ввода S-100-АI6
-;$$<6 каналов гальванически развязанных, 4-20 мА (0-10 В), RS-485 (Modbus RTU 230400 бит/с), время опроса канала <8 мс,
-;$$<свободное конфигурирование, диагностика работы, приведенная погрешность <0,25, активный/пассивный.
-;$$[end]
-
 ;$$[$desc] EVRO_8RO_&evro_int_evro_int_
 ;$$<Модуль релейного вывода S-100-RО8
 ;$$<8 каналов, RS-485 (Modbus RTU 230400 бит/с), время уст. сигнала  <20 мс,
 ;$$<свободное конфигурирование, диагностика работы, до 4А на канал (до 2А на канал – все включены)
+;$$[end]
+
+;$$[$desc] EVRO_6AI_&evro_int_evro_int_
+;$$<Модуль аналогового ввода S-100-АI6
+;$$<6 каналов гальванически развязанных, 4-20 мА (0-10 В), RS-485 (Modbus RTU 230400 бит/с), время опроса канала <8 мс,
+;$$<свободное конфигурирование, диагностика работы, приведенная погрешность <0,25, активный/пассивный.
 ;$$[end]
 
 ;$$[$desc] EVRO_avar_info&evro_int_evro_int_
@@ -2710,16 +2759,16 @@ SingleTextLine=Node ID
 ;$$<Х.2.0 - Температура процессора.
 ;$$[end]
 
-;$$[$desc] EVRO_16DI_&evro_int_evro_int_
-;$$<Модуль дискретного ввода S-100-DI16
-;$$<16 каналов (гальванически развязанны 2 группы по 8 каналов), RS-485 (Modbus RTU 230400 бит/с), время опроса канала  – от 0,1 мс,
-;$$<режим счетчика до 4 кГц, свободное конфигурирование, диагностика работы, механические контакты/биполярные, полевые ключи
-;$$[end]
-
 ;$$[$desc] EVRO_8TC_&evro_int_evro_int_
 ;$$<Модуль термопарный S-100-TC8
 ;$$<8 каналов гальванически развязанных,R,S,B,T,L,J,K,E,N,A-1,A-2,A-3 RS-485 (Modbus RTU 230400 бит/с), время опроса канала <150 мс,
 ;$$<свободное конфигурирование, диагностика работы, абсолютная погрешность <0,3 С, термокомпенсация «холодных» концов
+;$$[end]
+
+;$$[$desc] EVRO_16DI_&evro_int_evro_int_
+;$$<Модуль дискретного ввода S-100-DI16
+;$$<16 каналов (гальванически развязанны 2 группы по 8 каналов), RS-485 (Modbus RTU 230400 бит/с), время опроса канала  – от 0,1 мс,
+;$$<режим счетчика до 4 кГц, свободное конфигурирование, диагностика работы, механические контакты/биполярные, полевые ключи
 ;$$[end]
 
 ;$$[$desc] EVRO_modul_info&evro_int_evro_int_
@@ -2742,12 +2791,32 @@ SingleTextLine=Node ID
 
 ;$$[setList] TDB1
 ;$$+Default
+;$$:EVRO_6RTD_&evro_int_evro_int_
+;$$:EVRO_4AO&evro_int_evro_int_
+;$$:EVRO_indicate_info&evro_int_evro_int_
+;$$:EVRO_6RTD&evro_int_evro_int_
 ;$$:status_m&evro_int_evro_int_
+;$$:EVRO_avar_info&evro_int_evro_int_
+;$$:EVRO_8RO_&evro_int_evro_int_
+;$$:EVRO_8RO&evro_int_evro_int_
+;$$:EVRO_6AI_&evro_int_evro_int_
+;$$:EVRO_6AI&evro_int_evro_int_
+;$$:EVRO_modul_info_&evro_int_evro_int_
+;$$:EVRO_temp_info&evro_int_evro_int_
 ;$$:EVRO_8DIR&evro_int_evro_int_
-;$$:EVRO_8AO&evro_int_evro_int_
+;$$:EVRO_8TC_&evro_int_evro_int_
+;$$:EVRO_16DI_&evro_int_evro_int_
 ;$$:EVRO_8AI&evro_int_evro_int_
+;$$:EVRO_8AO&evro_int_evro_int_
+;$$:EVRO_modul_info&evro_int_evro_int_
+;$$:EVRO_4AO_&evro_int_evro_int_
+;$$:EVRO_16DO&evro_int_evro_int_
+;$$:EVRO_16DI&evro_int_evro_int_
+;$$:EVRO_8TC&evro_int_evro_int_
 ;$$:EVRO_8DO&evro_int_evro_int_
 ;$$:EVRO_8DI&evro_int_evro_int_
+;$$:EVRO_16DO_&evro_int_evro_int_
+;$$:EVRO_16DIR&evro_int_evro_int_
 ;$$>Default
 ;$$[end]
 
