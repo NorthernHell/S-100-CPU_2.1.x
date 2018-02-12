@@ -18,7 +18,7 @@ Device name:        EVRO_8ro_
 typedef struct _tag_strEvro_8ro_
 {
     int32  ID;   /* Node ID */
-
+    int32  NCOM;   /* COM port number */
 } strEvro_8ro_;
 
 

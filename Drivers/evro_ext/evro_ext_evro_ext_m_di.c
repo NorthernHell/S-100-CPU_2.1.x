@@ -105,7 +105,7 @@ void evro_ext_evro_ext_m_diIosRead
     struct timeval response_timeout;
     response_timeout.tv_sec = oemCPar->TimeOutsec;
     response_timeout.tv_usec = oemCPar->TimeOutu;
-    if (oemCPar->NCOM==1)
+    if ((oemCPar->NCOM==1)||(oemCPar->NCOM>2))
     {
         if (oemCPar->Parity==0)
         {
